@@ -1,0 +1,2340 @@
+fileFormatVersion: 2
+guid: 44f9a272d427380468df756fe0d28bff
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6537227821093851980
+    second: pixelCardAssest_V01 2_0
+  - first:
+      213: 7229420539338224579
+    second: pixelCardAssest_V01 2_1
+  - first:
+      213: -1398336829930826934
+    second: pixelCardAssest_V01 2_2
+  - first:
+      213: -3225217064126320595
+    second: pixelCardAssest_V01 2_3
+  - first:
+      213: -9112709517447711718
+    second: pixelCardAssest_V01 2_4
+  - first:
+      213: -1675848319484892289
+    second: pixelCardAssest_V01 2_5
+  - first:
+      213: -4123781308631521851
+    second: pixelCardAssest_V01 2_6
+  - first:
+      213: -6264968062732972961
+    second: pixelCardAssest_V01 2_7
+  - first:
+      213: -1480834023299325176
+    second: pixelCardAssest_V01 2_8
+  - first:
+      213: -5583278693006796943
+    second: pixelCardAssest_V01 2_9
+  - first:
+      213: -1009090456635496592
+    second: pixelCardAssest_V01 2_10
+  - first:
+      213: -7597821708814071073
+    second: pixelCardAssest_V01 2_11
+  - first:
+      213: -8940058065014996545
+    second: pixelCardAssest_V01 2_12
+  - first:
+      213: -5066637019423667694
+    second: pixelCardAssest_V01 2_13
+  - first:
+      213: -4901349247819601534
+    second: pixelCardAssest_V01 2_14
+  - first:
+      213: -1839726711257839491
+    second: pixelCardAssest_V01 2_15
+  - first:
+      213: -7736465411320170080
+    second: pixelCardAssest_V01 2_16
+  - first:
+      213: 8272581366086503919
+    second: pixelCardAssest_V01 2_17
+  - first:
+      213: 6308129103481956956
+    second: pixelCardAssest_V01 2_18
+  - first:
+      213: -8512255645466623762
+    second: pixelCardAssest_V01 2_19
+  - first:
+      213: -3037763073174948229
+    second: pixelCardAssest_V01 2_20
+  - first:
+      213: -1137885602470092833
+    second: pixelCardAssest_V01 2_21
+  - first:
+      213: -1846629660970634512
+    second: pixelCardAssest_V01 2_22
+  - first:
+      213: -5421172570716725641
+    second: pixelCardAssest_V01 2_23
+  - first:
+      213: -1672980352262353947
+    second: pixelCardAssest_V01 2_24
+  - first:
+      213: 7481313591009418203
+    second: pixelCardAssest_V01 2_25
+  - first:
+      213: -1614067528611221287
+    second: pixelCardAssest_V01 2_26
+  - first:
+      213: 7521989343775039627
+    second: pixelCardAssest_V01 2_27
+  - first:
+      213: -3016183602662635283
+    second: pixelCardAssest_V01 2_28
+  - first:
+      213: 6287338962847010467
+    second: pixelCardAssest_V01 2_29
+  - first:
+      213: 2121670357730027145
+    second: pixelCardAssest_V01 2_30
+  - first:
+      213: -5443407757173939055
+    second: pixelCardAssest_V01 2_31
+  - first:
+      213: -5083216056158254777
+    second: pixelCardAssest_V01 2_32
+  - first:
+      213: 7460594271705297941
+    second: pixelCardAssest_V01 2_33
+  - first:
+      213: 7498215545277114458
+    second: pixelCardAssest_V01 2_34
+  - first:
+      213: 9096612878923151763
+    second: pixelCardAssest_V01 2_35
+  - first:
+      213: 1078845817645748236
+    second: pixelCardAssest_V01 2_36
+  - first:
+      213: -3648161244613127274
+    second: pixelCardAssest_V01 2_37
+  - first:
+      213: -2552585488803443761
+    second: pixelCardAssest_V01 2_38
+  - first:
+      213: -2386628108929695657
+    second: pixelCardAssest_V01 2_39
+  - first:
+      213: 3134926637181241702
+    second: pixelCardAssest_V01 2_40
+  - first:
+      213: 7408837643681295858
+    second: pixelCardAssest_V01 2_41
+  - first:
+      213: -5084959901177359741
+    second: pixelCardAssest_V01 2_42
+  - first:
+      213: 227419470454790852
+    second: pixelCardAssest_V01 2_43
+  - first:
+      213: 428875864626565483
+    second: pixelCardAssest_V01 2_44
+  - first:
+      213: 6817973813988819924
+    second: pixelCardAssest_V01 2_45
+  - first:
+      213: -720601588300839171
+    second: pixelCardAssest_V01 2_46
+  - first:
+      213: 68414466066487742
+    second: pixelCardAssest_V01 2_47
+  - first:
+      213: 8071125528441741750
+    second: pixelCardAssest_V01 2_48
+  - first:
+      213: 8911298925185371786
+    second: pixelCardAssest_V01 2_49
+  - first:
+      213: 433009694934446680
+    second: pixelCardAssest_V01 2_50
+  - first:
+      213: 1471797181485695223
+    second: pixelCardAssest_V01 2_51
+  - first:
+      213: 8712253494694172408
+    second: pixelCardAssest_V01 2_52
+  - first:
+      213: -1224790340752598563
+    second: pixelCardAssest_V01 2_53
+  - first:
+      213: -8445151943474537790
+    second: pixelCardAssest_V01 2_54
+  - first:
+      213: -6408639794250143771
+    second: pixelCardAssest_V01 2_55
+  - first:
+      213: -3174280361994565202
+    second: pixelCardAssest_V01 2_56
+  - first:
+      213: 6994498073781896715
+    second: pixelCardAssest_V01 2_57
+  - first:
+      213: 1204525024110117781
+    second: pixelCardAssest_V01 2_58
+  - first:
+      213: 3803064107642161145
+    second: pixelCardAssest_V01 2_59
+  - first:
+      213: -2278045938902441180
+    second: pixelCardAssest_V01 2_60
+  - first:
+      213: -5648411403113591307
+    second: pixelCardAssest_V01 2_61
+  - first:
+      213: -6386280225119702141
+    second: pixelCardAssest_V01 2_62
+  - first:
+      213: 7440583766697795752
+    second: pixelCardAssest_V01 2_63
+  - first:
+      213: 8038990918709402016
+    second: pixelCardAssest_V01 2_64
+  - first:
+      213: 3905166569458840394
+    second: pixelCardAssest_V01 2_65
+  - first:
+      213: -7295193241140486478
+    second: pixelCardAssest_V01 2_66
+  - first:
+      213: -3932656216534328750
+    second: pixelCardAssest_V01 2_67
+  - first:
+      213: -6977167014656454445
+    second: pixelCardAssest_V01 2_68
+  - first:
+      213: 1928643639129710221
+    second: pixelCardAssest_V01 2_69
+  - first:
+      213: -2470073906564537238
+    second: pixelCardAssest_V01 2_70
+  - first:
+      213: 1238823599600604961
+    second: pixelCardAssest_V01 2_71
+  - first:
+      213: -7884755679685790158
+    second: pixelCardAssest_V01 2_72
+  - first:
+      213: 5315446170193386926
+    second: pixelCardAssest_V01 2_73
+  - first:
+      213: 8359410041823695481
+    second: pixelCardAssest_V01 2_74
+  - first:
+      213: -7232219971932304672
+    second: pixelCardAssest_V01 2_75
+  - first:
+      213: -8986690686798675166
+    second: pixelCardAssest_V01 2_76
+  - first:
+      213: -6077695057924305978
+    second: pixelCardAssest_V01 2_77
+  - first:
+      213: -5259413683894966286
+    second: pixelCardAssest_V01 2_78
+  - first:
+      213: -6052163385117520185
+    second: pixelCardAssest_V01 2_79
+  - first:
+      213: 3608950380766745973
+    second: pixelCardAssest_V01 2_80
+  - first:
+      213: 4053130583434663138
+    second: pixelCardAssest_V01 2_81
+  - first:
+      213: 8778634100430084305
+    second: pixelCardAssest_V01 2_82
+  - first:
+      213: 5856133596005370560
+    second: pixelCardAssest_V01 2_83
+  - first:
+      213: -1345074206320468817
+    second: pixelCardAssest_V01 2_84
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 20
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_0
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 480
+        width: 102
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bc66e3bee91745a0800000000000000
+      internalID: -6537227821093851980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_1
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 480
+        width: 102
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c3fa2b6daf045460800000000000000
+      internalID: 7229420539338224579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_2
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 480
+        width: 102
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4390a7df0c189ce0800000000000000
+      internalID: -1398336829930826934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_3
+      rect:
+        serializedVersion: 2
+        x: 365
+        y: 480
+        width: 102
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d20f8390b2abd33d0800000000000000
+      internalID: -3225217064126320595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_4
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 480
+        width: 102
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a14353f99f6298180800000000000000
+      internalID: -9112709517447711718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_5
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 480
+        width: 102
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7beaab15d03eb8e0800000000000000
+      internalID: -1675848319484892289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_6
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 404
+        width: 88
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c56f9f9fb265c6c0800000000000000
+      internalID: -4123781308631521851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_7
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 404
+        width: 88
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5c42ab7dbc5e09a0800000000000000
+      internalID: -6264968062732972961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 404
+        width: 88
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8036ee53d45037be0800000000000000
+      internalID: -1480834023299325176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_9
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 452
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17792553c953482b0800000000000000
+      internalID: -5583278693006796943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_10
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 458
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 077210a739dfef1f0800000000000000
+      internalID: -1009090456635496592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_11
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 458
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdac26b296d1f8690800000000000000
+      internalID: -7597821708814071073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_12
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 444
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb14a6b6e888ee380800000000000000
+      internalID: -8940058065014996545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_13
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 438
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21a886b9970bfa9b0800000000000000
+      internalID: -5066637019423667694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_14
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 438
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 289a59bd3d8eafbb0800000000000000
+      internalID: -4901349247819601534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_15
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 438
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d78cdabad4af776e0800000000000000
+      internalID: -1839726711257839491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_16
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 444
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a93a2da2bd82a490800000000000000
+      internalID: -7736465411320170080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_17
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 444
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fed0a152cec1ec270800000000000000
+      internalID: 8272581366086503919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_18
+      rect:
+        serializedVersion: 2
+        x: 497
+        y: 444
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5a685a6ff9fa8750800000000000000
+      internalID: 6308129103481956956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_19
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 444
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee006ae17946ed980800000000000000
+      internalID: -8512255645466623762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_20
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 444
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b76bb976492b7d5d0800000000000000
+      internalID: -3037763073174948229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_21
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 327
+        width: 102
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdf1db5c21b6530f0800000000000000
+      internalID: -1137885602470092833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_22
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 410
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f235227b147f56e0800000000000000
+      internalID: -1846629660970634512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_23
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 410
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77e9650054024c4b0800000000000000
+      internalID: -5421172570716725641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_24
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 410
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ebc133cb3168c8e0800000000000000
+      internalID: -1672980352262353947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_25
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 428
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdb1b65c217f2d760800000000000000
+      internalID: 7481313591009418203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_26
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 428
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d0b2a9622ea999e0800000000000000
+      internalID: -1614067528611221287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_27
+      rect:
+        serializedVersion: 2
+        x: 498
+        y: 428
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b802cf77479736860800000000000000
+      internalID: 7521989343775039627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_28
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 428
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de88fe96efc5426d0800000000000000
+      internalID: -3016183602662635283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_29
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 428
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ae08f6997d114750800000000000000
+      internalID: 6287338962847010467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_30
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 414
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98669f203ffa17d10800000000000000
+      internalID: 2121670357730027145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_31
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 414
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 194aa0a3c712574b0800000000000000
+      internalID: -5443407757173939055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_32
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 413
+        width: 10
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7490020dde9c479b0800000000000000
+      internalID: -5083216056158254777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_33
+      rect:
+        serializedVersion: 2
+        x: 499
+        y: 413
+        width: 10
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 514fe4256fa598760800000000000000
+      internalID: 7460594271705297941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_34
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 415
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a58ed89af430f0860800000000000000
+      internalID: 7498215545277114458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_35
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 415
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 399357ba739ad3e70800000000000000
+      internalID: 9096612878923151763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_36
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 374
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c00d0302e84d8fe00800000000000000
+      internalID: 1078845817645748236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_37
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 374
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 693dc734da02f5dc0800000000000000
+      internalID: -3648161244613127274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_38
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 374
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcbcd09a505639cd0800000000000000
+      internalID: -2552585488803443761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_39
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 394
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 750884c316ef0eed0800000000000000
+      internalID: -2386628108929695657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_40
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 394
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 669091eba2f718b20800000000000000
+      internalID: 3134926637181241702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_41
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 394
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fd6a2e459a71d660800000000000000
+      internalID: 7408837643681295858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_42
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 381
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 382d73149e79e69b0800000000000000
+      internalID: -5084959901177359741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_43
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 360
+        width: 98
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ca177fadc4f72300800000000000000
+      internalID: 227419470454790852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_44
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 359
+        width: 98
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b611ecb935ca3f500800000000000000
+      internalID: 428875864626565483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_45
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 360
+        width: 98
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d308b68f0f4e9e50800000000000000
+      internalID: 6817973813988819924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_46
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 355
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df60fb06ca8eff5f0800000000000000
+      internalID: -720601588300839171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_47
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 355
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb9146b289e03f000800000000000000
+      internalID: 68414466066487742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_48
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 355
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b16b5cc7e5620070800000000000000
+      internalID: 8071125528441741750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_49
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 373
+        width: 24
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8e8efa882b4bab70800000000000000
+      internalID: 8911298925185371786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_50
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 374
+        width: 24
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8523edaf50c520600800000000000000
+      internalID: 433009694934446680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_51
+      rect:
+        serializedVersion: 2
+        x: 526
+        y: 374
+        width: 24
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f040e71dbfdc6410800000000000000
+      internalID: 1471797181485695223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_52
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 349
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f6d668d46428e870800000000000000
+      internalID: 8712253494694172408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_53
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 321
+        width: 98
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd99c1f9caba00fe0800000000000000
+      internalID: -1224790340752598563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_54
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 352
+        width: 24
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ca100f3d0bccca80800000000000000
+      internalID: -8445151943474537790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_55
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 352
+        width: 24
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e7a942cf00ff07a0800000000000000
+      internalID: -6408639794250143771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_56
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 321
+        width: 98
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea9c0dd24d0b2f3d0800000000000000
+      internalID: -3174280361994565202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_57
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 321
+        width: 98
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b068ced80f2711160800000000000000
+      internalID: 6994498073781896715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_58
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 321
+        width: 98
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5930729a02557b010800000000000000
+      internalID: 1204525024110117781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_59
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 322
+        width: 9
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f78c0a08a237c430800000000000000
+      internalID: 3803064107642161145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_60
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 321
+        width: 9
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 423e2b5c941c260e0800000000000000
+      internalID: -2278045938902441180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_61
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 321
+        width: 14
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fd062461cfcc91b0800000000000000
+      internalID: -5648411403113591307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_62
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 325
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38373a1a8ff5f57a0800000000000000
+      internalID: -6386280225119702141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_63
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 324
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a06f8f8383424760800000000000000
+      internalID: 7440583766697795752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_64
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 320
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a9d34ee5ab309f60800000000000000
+      internalID: 8038990918709402016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_65
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 284
+        width: 99
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a433351fd40f13630800000000000000
+      internalID: 3905166569458840394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_66
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 293
+        width: 96
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2be9df5166442ca90800000000000000
+      internalID: -7295193241140486478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_67
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 293
+        width: 79
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25a5db5d1066c69c0800000000000000
+      internalID: -3932656216534328750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_68
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 291
+        width: 80
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d054d8119f1c2f90800000000000000
+      internalID: -6977167014656454445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_69
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 287
+        width: 24
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8e94a0eb2be3ca10800000000000000
+      internalID: 1928643639129710221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_70
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 283
+        width: 29
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6462467ed888bdd0800000000000000
+      internalID: -2470073906564537238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_71
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 285
+        width: 25
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1279091108f213110800000000000000
+      internalID: 1238823599600604961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_72
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 281
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 236b59b0c78b39290800000000000000
+      internalID: -7884755679685790158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_73
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 294
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ead561d112244c940800000000000000
+      internalID: 5315446170193386926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_74
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 281
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9721cba9427920470800000000000000
+      internalID: 8359410041823695481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_75
+      rect:
+        serializedVersion: 2
+        x: 603
+        y: 278
+        width: 30
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ea4d73e04ef1ab90800000000000000
+      internalID: -7232219971932304672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_76
+      rect:
+        serializedVersion: 2
+        x: 637
+        y: 277
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 223cd031f6cd84380800000000000000
+      internalID: -8986690686798675166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_77
+      rect:
+        serializedVersion: 2
+        x: 666
+        y: 281
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cb464bbb80b7aba0800000000000000
+      internalID: -6077695057924305978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_78
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 147
+        width: 102
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f7ac9cbe1fc207b0800000000000000
+      internalID: -5259413683894966286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_79
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 147
+        width: 102
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cec17b8775620ca0800000000000000
+      internalID: -6052163385117520185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_80
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 147
+        width: 102
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 575dc911041951230800000000000000
+      internalID: 3608950380766745973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_81
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 147
+        width: 102
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e415ed8acc9f3830800000000000000
+      internalID: 4053130583434663138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_82
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 14
+        width: 96
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d814410439f3d970800000000000000
+      internalID: 8778634100430084305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_83
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 11
+        width: 102
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ca812b7a7a254150800000000000000
+      internalID: 5856133596005370560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelCardAssest_V01 2_84
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 11
+        width: 102
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fac5ab7c226555de0800000000000000
+      internalID: -1345074206320468817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      pixelCardAssest_V01 2_0: -6537227821093851980
+      pixelCardAssest_V01 2_1: 7229420539338224579
+      pixelCardAssest_V01 2_10: -1009090456635496592
+      pixelCardAssest_V01 2_11: -7597821708814071073
+      pixelCardAssest_V01 2_12: -8940058065014996545
+      pixelCardAssest_V01 2_13: -5066637019423667694
+      pixelCardAssest_V01 2_14: -4901349247819601534
+      pixelCardAssest_V01 2_15: -1839726711257839491
+      pixelCardAssest_V01 2_16: -7736465411320170080
+      pixelCardAssest_V01 2_17: 8272581366086503919
+      pixelCardAssest_V01 2_18: 6308129103481956956
+      pixelCardAssest_V01 2_19: -8512255645466623762
+      pixelCardAssest_V01 2_2: -1398336829930826934
+      pixelCardAssest_V01 2_20: -3037763073174948229
+      pixelCardAssest_V01 2_21: -1137885602470092833
+      pixelCardAssest_V01 2_22: -1846629660970634512
+      pixelCardAssest_V01 2_23: -5421172570716725641
+      pixelCardAssest_V01 2_24: -1672980352262353947
+      pixelCardAssest_V01 2_25: 7481313591009418203
+      pixelCardAssest_V01 2_26: -1614067528611221287
+      pixelCardAssest_V01 2_27: 7521989343775039627
+      pixelCardAssest_V01 2_28: -3016183602662635283
+      pixelCardAssest_V01 2_29: 6287338962847010467
+      pixelCardAssest_V01 2_3: -3225217064126320595
+      pixelCardAssest_V01 2_30: 2121670357730027145
+      pixelCardAssest_V01 2_31: -5443407757173939055
+      pixelCardAssest_V01 2_32: -5083216056158254777
+      pixelCardAssest_V01 2_33: 7460594271705297941
+      pixelCardAssest_V01 2_34: 7498215545277114458
+      pixelCardAssest_V01 2_35: 9096612878923151763
+      pixelCardAssest_V01 2_36: 1078845817645748236
+      pixelCardAssest_V01 2_37: -3648161244613127274
+      pixelCardAssest_V01 2_38: -2552585488803443761
+      pixelCardAssest_V01 2_39: -2386628108929695657
+      pixelCardAssest_V01 2_4: -9112709517447711718
+      pixelCardAssest_V01 2_40: 3134926637181241702
+      pixelCardAssest_V01 2_41: 7408837643681295858
+      pixelCardAssest_V01 2_42: -5084959901177359741
+      pixelCardAssest_V01 2_43: 227419470454790852
+      pixelCardAssest_V01 2_44: 428875864626565483
+      pixelCardAssest_V01 2_45: 6817973813988819924
+      pixelCardAssest_V01 2_46: -720601588300839171
+      pixelCardAssest_V01 2_47: 68414466066487742
+      pixelCardAssest_V01 2_48: 8071125528441741750
+      pixelCardAssest_V01 2_49: 8911298925185371786
+      pixelCardAssest_V01 2_5: -1675848319484892289
+      pixelCardAssest_V01 2_50: 433009694934446680
+      pixelCardAssest_V01 2_51: 1471797181485695223
+      pixelCardAssest_V01 2_52: 8712253494694172408
+      pixelCardAssest_V01 2_53: -1224790340752598563
+      pixelCardAssest_V01 2_54: -8445151943474537790
+      pixelCardAssest_V01 2_55: -6408639794250143771
+      pixelCardAssest_V01 2_56: -3174280361994565202
+      pixelCardAssest_V01 2_57: 6994498073781896715
+      pixelCardAssest_V01 2_58: 1204525024110117781
+      pixelCardAssest_V01 2_59: 3803064107642161145
+      pixelCardAssest_V01 2_6: -4123781308631521851
+      pixelCardAssest_V01 2_60: -2278045938902441180
+      pixelCardAssest_V01 2_61: -5648411403113591307
+      pixelCardAssest_V01 2_62: -6386280225119702141
+      pixelCardAssest_V01 2_63: 7440583766697795752
+      pixelCardAssest_V01 2_64: 8038990918709402016
+      pixelCardAssest_V01 2_65: 3905166569458840394
+      pixelCardAssest_V01 2_66: -7295193241140486478
+      pixelCardAssest_V01 2_67: -3932656216534328750
+      pixelCardAssest_V01 2_68: -6977167014656454445
+      pixelCardAssest_V01 2_69: 1928643639129710221
+      pixelCardAssest_V01 2_7: -6264968062732972961
+      pixelCardAssest_V01 2_70: -2470073906564537238
+      pixelCardAssest_V01 2_71: 1238823599600604961
+      pixelCardAssest_V01 2_72: -7884755679685790158
+      pixelCardAssest_V01 2_73: 5315446170193386926
+      pixelCardAssest_V01 2_74: 8359410041823695481
+      pixelCardAssest_V01 2_75: -7232219971932304672
+      pixelCardAssest_V01 2_76: -8986690686798675166
+      pixelCardAssest_V01 2_77: -6077695057924305978
+      pixelCardAssest_V01 2_78: -5259413683894966286
+      pixelCardAssest_V01 2_79: -6052163385117520185
+      pixelCardAssest_V01 2_8: -1480834023299325176
+      pixelCardAssest_V01 2_80: 3608950380766745973
+      pixelCardAssest_V01 2_81: 4053130583434663138
+      pixelCardAssest_V01 2_82: 8778634100430084305
+      pixelCardAssest_V01 2_83: 5856133596005370560
+      pixelCardAssest_V01 2_84: -1345074206320468817
+      pixelCardAssest_V01 2_9: -5583278693006796943
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

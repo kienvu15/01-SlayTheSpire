@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85c5f1589e0e5e24c9e482cd451c75e4, type: 3}
+  m_Name: Misdirect
+  m_EditorClassIdentifier: 
+  cardName: Misdirect
+  cardType: 0
+  effectOn: 1
+  artwork: {fileID: 3917640888610193689, guid: 82f05ba89c6a48b48a1bb860d71c93e2, type: 3}
+  icon: {fileID: 7440583766697795752, guid: 44f9a272d427380468df756fe0d28bff, type: 3}
+  manaCost: 0
+  description: Deals 5 damage and critical hit to enemy behind target
+  effects:
+  - effect: {fileID: 11400000, guid: e81070099ce428a45866a34af0111db6, type: 2}
+    overrideValue: 0
+    valueOverride: 0

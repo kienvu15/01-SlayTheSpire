@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85c5f1589e0e5e24c9e482cd451c75e4, type: 3}
+  m_Name: Carnival
+  m_EditorClassIdentifier: Assembly-CSharp::CardData
+  cardName: Carnival
+  cardType: 3
+  effectOn: 0
+  artwork: {fileID: -1903424281760741967, guid: b2a09cd664220d54e984ef6d72ec32d1, type: 3}
+  manaCost: 0
+  description: Applies Drunk x2 to all characters.
+  effects:
+  - effect: {fileID: 11400000, guid: 0286c64299cc8494eba3569be730db5e, type: 2}
+    overrideValue: 0
+    valueOverride: 0

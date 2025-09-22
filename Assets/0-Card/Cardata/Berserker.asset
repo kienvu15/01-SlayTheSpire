@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85c5f1589e0e5e24c9e482cd451c75e4, type: 3}
+  m_Name: Berserker
+  m_EditorClassIdentifier: Assembly-CSharp::CardData
+  cardName: Berserker
+  cardType: 3
+  effectOn: 0
+  artwork: {fileID: -6294850016167491611, guid: 82f05ba89c6a48b48a1bb860d71c93e2, type: 3}
+  icon: {fileID: 0}
+  manaCost: 2
+  description: Next attack card gain 100% Lifesteal.
+  effects:
+  - effect: {fileID: 11400000, guid: c26664e9d8aa8214996db3c2b3488a7f, type: 2}
+    overrideValue: 0
+    valueOverride: 0

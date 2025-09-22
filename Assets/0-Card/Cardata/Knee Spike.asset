@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85c5f1589e0e5e24c9e482cd451c75e4, type: 3}
+  m_Name: Knee Spike
+  m_EditorClassIdentifier: Assembly-CSharp::CardData
+  cardName: Knee Spike
+  cardType: 0
+  effectOn: 1
+  artwork: {fileID: 8681853275401130053, guid: 391b7072cb75b184b93868407d9168ec, type: 3}
+  manaCost: 0
+  description: Deals 7 damage. Draw a card if your hand is emty
+  effects:
+  - effect: {fileID: 11400000, guid: 95b499c955322c849833cffa205243ae, type: 2}
+    overrideValue: 0
+    valueOverride: 0

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 192761407e2ed224b97c34f5613d33d9, type: 3}
+  m_Name: AttackEffect_Weakened
+  m_EditorClassIdentifier: Assembly-CSharp::AttackEffect_Weakened
+  description: 
+  damage: 6
+  vfxType: 0
+  weakenedDuration: 1

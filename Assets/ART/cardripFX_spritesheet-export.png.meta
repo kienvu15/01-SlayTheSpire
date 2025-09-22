@@ -1,0 +1,492 @@
+fileFormatVersion: 2
+guid: afa27751ed688ad4a8b372571eef2c75
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7080011984408891997
+    second: cardripFX_spritesheet-export_0
+  - first:
+      213: -2635101109211118256
+    second: cardripFX_spritesheet-export_1
+  - first:
+      213: 7410181810490616381
+    second: cardripFX_spritesheet-export_2
+  - first:
+      213: -9192264772283124038
+    second: cardripFX_spritesheet-export_3
+  - first:
+      213: -3893387968587618600
+    second: cardripFX_spritesheet-export_4
+  - first:
+      213: -6574417613614953602
+    second: cardripFX_spritesheet-export_5
+  - first:
+      213: 7566217200352206851
+    second: cardripFX_spritesheet-export_6
+  - first:
+      213: 3896874703286693161
+    second: cardripFX_spritesheet-export_7
+  - first:
+      213: 2286461938784858899
+    second: cardripFX_spritesheet-export_8
+  - first:
+      213: -440853479589337741
+    second: cardripFX_spritesheet-export_9
+  - first:
+      213: -5861026031849725448
+    second: cardripFX_spritesheet-export_10
+  - first:
+      213: -2969940733664548773
+    second: cardripFX_spritesheet-export_11
+  - first:
+      213: 7288463768163564703
+    second: cardripFX_spritesheet-export_12
+  - first:
+      213: 2246950388228172169
+    second: cardripFX_spritesheet-export_13
+  - first:
+      213: 6049634497781429410
+    second: cardripFX_spritesheet-export_14
+  - first:
+      213: 7863886086530434498
+    second: cardripFX_spritesheet-export_15
+  - first:
+      213: 2961263667685219011
+    second: cardripFX_spritesheet-export_16
+  - first:
+      213: 8051449369606723887
+    second: cardripFX_spritesheet-export_17
+  - first:
+      213: -6968303813379289362
+    second: cardripFX_spritesheet-export_18
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 40
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: cardripFX_spritesheet-export_0
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 270
+        width: 102
+        height: 130
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3adacc79c9ebebd90800000000000000
+      internalID: -7080011984408891997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cardripFX_spritesheet-export_1
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 270
+        width: 102
+        height: 130
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 055cb36a08d3e6bd0800000000000000
+      internalID: -2635101109211118256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cardripFX_spritesheet-export_2
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 270
+        width: 102
+        height: 130
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3aaa57881146d660800000000000000
+      internalID: 7410181810490616381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cardripFX_spritesheet-export_3
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 270
+        width: 102
+        height: 130
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab63abe64e38e6080800000000000000
+      internalID: -9192264772283124038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cardripFX_spritesheet-export_4
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 270
+        width: 102
+        height: 130
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d62e874548e7f9c0800000000000000
+      internalID: -3893387968587618600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cardripFX_spritesheet-export_5
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 270
+        width: 102
+        height: 130
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7bc86f530af2c4a0800000000000000
+      internalID: -6574417613614953602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cardripFX_spritesheet-export_6
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 270
+        width: 102
+        height: 130
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 300a178c47a900960800000000000000
+      internalID: 7566217200352206851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cardripFX_spritesheet-export_7
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 52
+        width: 102
+        height: 130
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92deb9765ea741630800000000000000
+      internalID: 3896874703286693161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cardripFX_spritesheet-export_8
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 52
+        width: 102
+        height: 130
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 313f8b5e4052bbf10800000000000000
+      internalID: 2286461938784858899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cardripFX_spritesheet-export_10
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 52
+        width: 102
+        height: 138
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f1a74880e379aea0800000000000000
+      internalID: -5861026031849725448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cardripFX_spritesheet-export_12
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 43
+        width: 109
+        height: 156
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9cb1b36e23d52560800000000000000
+      internalID: 7288463768163564703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cardripFX_spritesheet-export_16
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 25
+        width: 112
+        height: 178
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cad5a6cd95881920800000000000000
+      internalID: 2961263667685219011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cardripFX_spritesheet-export_17
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 14
+        width: 124
+        height: 184
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2993721b8e7cbf60800000000000000
+      internalID: 8051449369606723887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5678a532fb63a474a9f6778a67492f25
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      cardripFX_spritesheet-export_0: -7080011984408891997
+      cardripFX_spritesheet-export_1: -2635101109211118256
+      cardripFX_spritesheet-export_10: -5861026031849725448
+      cardripFX_spritesheet-export_11: -2969940733664548773
+      cardripFX_spritesheet-export_12: 7288463768163564703
+      cardripFX_spritesheet-export_13: 2246950388228172169
+      cardripFX_spritesheet-export_14: 6049634497781429410
+      cardripFX_spritesheet-export_15: 7863886086530434498
+      cardripFX_spritesheet-export_16: 2961263667685219011
+      cardripFX_spritesheet-export_17: 8051449369606723887
+      cardripFX_spritesheet-export_18: -6968303813379289362
+      cardripFX_spritesheet-export_2: 7410181810490616381
+      cardripFX_spritesheet-export_3: -9192264772283124038
+      cardripFX_spritesheet-export_4: -3893387968587618600
+      cardripFX_spritesheet-export_5: -6574417613614953602
+      cardripFX_spritesheet-export_6: 7566217200352206851
+      cardripFX_spritesheet-export_7: 3896874703286693161
+      cardripFX_spritesheet-export_8: 2286461938784858899
+      cardripFX_spritesheet-export_9: -440853479589337741
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

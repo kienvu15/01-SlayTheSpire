@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a159bd04f0dd9a47b58130a0c15f9ba, type: 3}
+  m_Name: ImpactVFXDatabase
+  m_EditorClassIdentifier: Assembly-CSharp::ImpactVFXDatabase
+  meleeSlashPrefab: {fileID: 893422564729561991, guid: 0d434bac96b4df948a8557c5e89e1bf1, type: 3}
+  rangedImpactPrefab: {fileID: 5274589271321726040, guid: fab5d067550629347bd262e582cda051, type: 3}
+  defenseShieldPrefab: {fileID: 7228982065060191985, guid: 43ee1598ad8037c4db535844daa33ee1, type: 3}
+  magicExplosionPrefab: {fileID: 4762432888697363515, guid: a1ceb46a86eed5345b546b9194d0040d, type: 3}
+  specialEffectPrefab: {fileID: 319659254274455272, guid: 202bdc374b66e43478883b06b12382f5, type: 3}
