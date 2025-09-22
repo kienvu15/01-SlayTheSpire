@@ -102,6 +102,8 @@ public class Character : MonoBehaviour
         return true;
     }
 
+    public RelicManager relicManager; // kéo từ Inspector hoặc GetComponent ở Start()
+
     // Deal damage with all checks (miss, dodge, crit, conditions, skills...)
     public bool DealDamage(Character target, int baseDamage, CardType vfxType = CardType.Mellee)
     {
@@ -139,6 +141,11 @@ public class Character : MonoBehaviour
 
         int dmg = Mathf.RoundToInt(baseDamage * multiplier);
 
+        // 🟢 Relic hook: modify damage trước khi tính crit
+        if (relicManager != null)
+            dmg = relicManager.ApplyOnBeforeDealDamage(this, target, dmg);
+
+
         bool isCrit = false;
         foreach (var cond in activeConditions)
             if (cond.ForceCritical()) { isCrit = true; break; }
@@ -151,6 +158,10 @@ public class Character : MonoBehaviour
 
         // ===== Apply damage =====
         target.TakeDamage(dmg);
+
+        // 🟢 Relic hook: sau khi gây damage
+        if (relicManager != null)
+            relicManager.ApplyOnAfterDealDamage(this, target, dmg);
 
         // ===== VFX + Popup cho mỗi lần hit =====
         AttackImpactManager.Instance.ShowImpact(vfxType, target.transform);
@@ -176,86 +187,6 @@ public class Character : MonoBehaviour
 
         return true; // ✅ hit
     }
-
-    //public void DealDamage(Character target, int baseDamage)
-    //{
-    //    // Check attacker’s own accuracy debuffs
-    //    float selfMissChance = 0f;
-    //    foreach (var cond in activeConditions)  // attacker
-    //    {
-    //        selfMissChance = Mathf.Max(selfMissChance, cond.GetAttackerMissChance());
-    //    }
-
-    //    if (selfMissChance > 0f && Random.value < selfMissChance)
-    //    {
-    //        Debug.Log($"[DealDamage] {name} missed because of {selfMissChance * 100}% miss chance!");
-    //        return;
-    //    }
-
-
-    //    // ===== Multiplier từ Conditions =====
-    //    float multiplier = 1f;
-    //    foreach (var cond in activeConditions)
-    //        multiplier *= cond.GetDamageDealtMultiplier();
-
-    //    int dmg = Mathf.RoundToInt(baseDamage * multiplier);
-
-    //    // ===== Crit check (ban đầu false) =====
-    //    bool isCrit = false;
-
-    //    // Crit từ Condition
-    //    foreach (var cond in activeConditions)
-    //    {
-    //        if (cond.ForceCritical())
-    //        {
-    //            isCrit = true;
-    //            break;
-    //        }
-    //    }
-
-    //    // Crit từ Skill (hook trước damage apply)
-    //    foreach (var skill in activeSkills.ToArray()) // dùng ToArray để tránh lỗi khi giảm stacks trong loop
-    //    {
-    //        Debug.Log($"[DealDamage] Found skill: {skill.type}, stacks={skill.stacks}");
-
-    //        skill.OnDealDamage(this, target, ref dmg, ref isCrit);
-
-
-    //    }
-
-    //    // Crit từ stat nếu chưa có
-    //    if (!isCrit && Random.value < stats.critChance)
-    //        isCrit = true;
-
-    //    if (isCrit)
-    //        dmg = Mathf.RoundToInt(dmg * stats.critDamage);
-
-    //    // ===== Apply damage =====
-    //    target.TakeDamage(dmg);
-
-    //    // ===== Post-hit effects từ Skill =====
-    //    foreach (var skill in activeSkills.ToArray())
-    //    {
-    //        skill.OnHit(this, target, dmg);
-    //        if (skillPanelUI != null)
-    //            skillPanelUI.UpdateStacks(skill.type, skill.stacks);
-    //    }
-
-    //    // ===== Xóa skill hết stack =====
-    //    foreach (var skill in activeSkills.ToArray())
-    //    {
-    //        if (skill.stacks <= 0)
-    //        {
-    //            if (skillPanelUI != null)
-    //                skillPanelUI.RemoveSkill(skill.type);
-
-    //            activeSkills.Remove(skill);
-    //        }
-    //    }
-    //}
-
-
-    // ================== Condition ==================
 
     public void AddCondition(Condition newCondition, CardType vfxType = CardType.Special)
     {

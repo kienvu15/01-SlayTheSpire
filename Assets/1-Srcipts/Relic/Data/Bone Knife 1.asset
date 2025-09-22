@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 713cb5d480658084092c0d9d94b021c5, type: 3}
+  m_Name: Bone Knife 1
+  m_EditorClassIdentifier: Assembly-CSharp::BoneKnife
+  relicName: Bone Knife22
+  description: +1 melee damage.22
+  icon: {fileID: 8925406581192117434, guid: c0ec32ffd013d9f4fb51f8c8a63578d1, type: 3}
+  bonusDamage: 1

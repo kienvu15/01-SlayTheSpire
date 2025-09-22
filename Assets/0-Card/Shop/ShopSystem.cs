@@ -5,14 +5,21 @@ using UnityEngine.UI;
 public class ShopSystem : MonoBehaviour
 {
     [Header("References")]
-    public AllCardData allCardDatabase;    // database toàn bộ card
-    public CardHolder playerCardHolder;    // deck của Player
-    public Transform shopSlotsParent;      // nơi chứa các card UI
-    public GameObject cardDisplayPrefab;   // prefab CardDisplay
-
+    public AllCardData allCardDatabase;    
+    public CardHolder playerCardHolder;    
+    public Transform shopSlotsParent;     
+    public GameObject cardDisplayPrefab;   
     private List<CardData> shopCards = new List<CardData>();
 
-    public ToggleUI deckToggleUI;                // cái ToggleUI để bật panel deck
+    [Header("Relics Shop")]
+    public AllRelicDatabase allRelicDatabase;   
+    public Transform relicSlotsParent;         
+    public GameObject relicDisplayPrefab;
+    private List<Relic> shopRelics = new List<Relic>();
+    public RelicManager relicManager;
+
+    [Header("FF")]
+    public ToggleUI deckToggleUI;
     public CardCollectionPanel cardCollection;
 
     public void OnClickMyDeck()
@@ -31,6 +38,7 @@ public class ShopSystem : MonoBehaviour
     void Start()
     {
         GenerateShop();
+        GenerateRelicShop();
     }
 
     public void GenerateShop()
@@ -57,11 +65,59 @@ public class ShopSystem : MonoBehaviour
         }
     }
 
-    public void BuyCard(CardData card)
+    public void GenerateRelicShop()
     {
-        if (card == null) return;
+        // Xoá relic shop cũ
+        foreach (Transform child in relicSlotsParent)
+            Destroy(child.gameObject);
 
-        playerCardHolder.AddCard(card);
-        Debug.Log("Mua thành công: " + card.cardName);
+        shopRelics.Clear();
+
+        // Lấy toàn bộ relic có thể bán
+        List<Relic> availableRelics = new List<Relic>(allRelicDatabase.allRelics);
+
+        // Loại bỏ relic đã trang bị
+        foreach (var equipped in relicManager.equippedRelics)
+            availableRelics.Remove(equipped);
+
+        // Random tối đa 2 relic từ danh sách available (không trùng)
+        for (int i = 0; i < 2; i++)
+        {
+            if (availableRelics.Count == 0) break;
+
+            int index = Random.Range(0, availableRelics.Count);
+            Relic randomRelic = availableRelics[index];
+
+            shopRelics.Add(randomRelic);
+
+            // Bỏ relic này khỏi danh sách để không trùng
+            availableRelics.RemoveAt(index);
+
+            // Tạo UI slot
+            GameObject slot = Instantiate(relicDisplayPrefab, relicSlotsParent);
+            RelicDisplay display = slot.GetComponent<RelicDisplay>();
+            display.Init(randomRelic, this); // shopMode = true
+        }
     }
+
+
+    public void BuyCard(CardData card) 
+    { 
+        if (card == null) return; 
+        playerCardHolder.AddCard(card); 
+        Debug.Log("Mua thành công: " + card.cardName); 
+    }
+
+    public void BuyRelic(Relic relic)
+    {
+        if (relic == null) return;
+
+        relicManager.AddRelic(relic);
+        
+
+        Debug.Log("Mua thành công relic: " + relic.relicName);
+    }
+
+
+
 }
