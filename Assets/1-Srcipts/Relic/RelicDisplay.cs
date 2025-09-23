@@ -13,6 +13,7 @@ public class RelicDisplay : MonoBehaviour
 
     public Button iconButton;
     public GameObject buyButton;
+    public TextMeshProUGUI priceTXT;
 
     public ShopSystem shopSystem;
     private Relic relicData;
@@ -36,6 +37,8 @@ public class RelicDisplay : MonoBehaviour
 
         relicNameText.text = relic.relicName;
         relicDescText.text = relic.description;
+
+        priceTXT.text = Random.Range(50, 180).ToString();
 
         iconButton.onClick.AddListener(OnClick);
 
@@ -74,7 +77,11 @@ public class RelicDisplay : MonoBehaviour
                 btn.onClick.AddListener(() =>
                 {
                     shopSystem.BuyRelic(relicData);
-                    buyButton.SetActive(false); // ẩn nút sau khi mua
+
+                    Button buyButtonBB = buyButton.GetComponent<Button>();
+                    buyButtonBB.onClick.RemoveAllListeners();
+                    buyButtonBB.interactable = false;
+                    priceTXT.text = ("Sold Out").ToString();
                 });
             }
             else

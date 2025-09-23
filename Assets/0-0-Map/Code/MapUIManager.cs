@@ -14,7 +14,10 @@ public class MapUIManager : MonoBehaviour
     [Header("Battle UI")]
     public BattleCanvasDatabase battleDatabase;
     public Transform battleCanvasHolder;   // parent để spawn canvas
-    public List<GameObject> hideOnBattle;  // list object cần ẩn khi battle
+
+    [Header("Hide On")]
+    public List<GameObject> hideOnBattle;
+    public List<GameObject> hideOnShop;
 
     [Header("Shop UI")]
     public GameObject shopUI;
@@ -26,6 +29,8 @@ public class MapUIManager : MonoBehaviour
     public PlayerSelfCast playerSelfCast;
     public Player player;
     public GameObject EndButton;
+    public PanCamera panCamera;
+
     private void Awake()
     {
         Instance = this;
@@ -41,9 +46,10 @@ public class MapUIManager : MonoBehaviour
         // spawn vào holder
         var go = Instantiate(prefab, battleCanvasHolder);
         go.transform.localPosition = Vector3.zero;
-      //  Button endButton = go.GetComponentInChildren<Button>();
-      //  endButton.onClick.AddListener(() => { match.EndTurn(); });
+        //  Button endButton = go.GetComponentInChildren<Button>();
+        //  endButton.onClick.AddListener(() => { match.EndTurn(); });
 
+        deck.spawner = go.GetComponentInChildren<EnemySpawner>();
         deck.discard = go.GetComponentInChildren<Discard>(); // gán discard mới cho deck
         deck.handParent = go.transform.Find("HandPanel");
         deck.deckTransform = go.transform.Find("Deck");
@@ -59,6 +65,11 @@ public class MapUIManager : MonoBehaviour
 
         match.discard = go.GetComponentInChildren<Discard>();
         match.enemySystem = go.GetComponentInChildren<EnemySystem>();
+
+        GameFlowManager.Instance.spawner = go.GetComponentInChildren<EnemySpawner>();
+        GameFlowManager.Instance.discard = go.GetComponentInChildren<Discard>();
+
+       
 
         GameObject panel = go.GetComponentInChildren<ManaPanel>().gameObject;
         if (panel != null)
@@ -84,10 +95,11 @@ public class MapUIManager : MonoBehaviour
         // mở shop UI
         shopUI.SetActive(true);
         // hide UI khác
-        foreach (var obj in hideOnBattle)
+        foreach (var obj in hideOnShop)
         {
             if (obj != null) obj.SetActive(false);
         }
+        //panCamera.enabled = false;
     }
 
     public void HideBattleCanvas()

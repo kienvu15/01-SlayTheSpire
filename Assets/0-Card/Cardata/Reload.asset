@@ -15,8 +15,7 @@ MonoBehaviour:
   cardName: Mana
   cardType: 3
   effectOn: 0
-  artwork: {fileID: -2270983095469587532, guid: 841d868b52030144ab7cb545c4b4bcb2, type: 3}
-  icon: {fileID: -8250387517596122808, guid: 841d868b52030144ab7cb545c4b4bcb2, type: 3}
+  artwork: {fileID: -4070229175047885226, guid: 391b7072cb75b184b93868407d9168ec, type: 3}
   manaCost: 0
   description: Reload 1
   effects:

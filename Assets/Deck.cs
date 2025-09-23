@@ -13,8 +13,10 @@ public class Deck : MonoBehaviour
     public GameObject cardPrefab;
     public Transform handParent;
     public Transform deckTransform;   // vị trí chồng bài (spawn point)
+    public EnemySpawner spawner;
 
     [Header("UI Debug")]
+    public bool hasDrawFisrtRow = false;
     public TextMeshProUGUI[] deckCountText;
     public TextMeshProUGUI discardCountText;
 
@@ -33,15 +35,22 @@ public class Deck : MonoBehaviour
         cardHolder = FindFirstObjectByType<CardHolder>();
     }
 
-    public bool hasDrawFisrtRow = false;
+    
     private void Update()
     {
-        if (GameSystem.Instance != null && GameSystem.Instance.IsBattlePhase == true && hasDrawFisrtRow == false)
+        if (GameSystem.Instance != null && GameSystem.Instance.isBattlePhase == true && hasDrawFisrtRow == false)
         {
             hasDrawFisrtRow = true;
             StartCoroutine(DelayAndDraw());
         }
     }
+
+    public void DrawFirstHand(int count)
+    {
+        hasDrawFisrtRow = true;
+        StartCoroutine(DrawHand(count));
+    }
+
 
     public void CacheDeckCountText()
     {
@@ -80,8 +89,6 @@ public class Deck : MonoBehaviour
         //}
     }
 
-
-
     IEnumerator DelayAndDraw()
     {
         yield return null; // chờ 1 frame để Unity build layout
@@ -105,9 +112,7 @@ public class Deck : MonoBehaviour
         yield return StartCoroutine(DrawCards(count));
     }
 
-    /// <summary>
     /// Rút count lá (nếu deck hết giữa chừng sẽ dừng và trả về)
-    /// </summary>
     public IEnumerator DrawCards(int count)
     {
         for (int k = 0; k < count; k++)

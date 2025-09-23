@@ -7,6 +7,8 @@ public class ToggleUI : MonoBehaviour
     public GameObject[] Tap;
     public GameObject[] Pop;
 
+    public PanCamera panCamera;
+
     [Header("Card Deck (Optional)")]
     public CardCollectionPanel cardCollectionPanel; // kéo vào nếu panel này là deck
     public bool openInRemoveMode = false;           // gắn từ Inspector hoặc set bằng code trước khi PopUp
@@ -32,6 +34,7 @@ public class ToggleUI : MonoBehaviour
         {
             button.SetActive(!button.activeSelf);
         }
+
     }
 
 

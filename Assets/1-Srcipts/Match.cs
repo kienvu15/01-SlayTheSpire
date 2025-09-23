@@ -8,6 +8,8 @@ public class Match : MonoBehaviour
     public Discard discard;
     public ManaSystem manaSystem;
     public EnemySystem enemySystem;
+    public GameSystem gameSystem;
+    public PlayerSelfCast playerSelfCast;
     public Player player;
    // public Enemy enemy;
 
@@ -90,6 +92,42 @@ public class Match : MonoBehaviour
         }
     }
 
+    public void EndGameRoutine()
+    {
+        StartCoroutine(EndGame());
+    }
+    public IEnumerator EndGame()
+    {
+        isBusy = true;  // bắt đầu -> chặn
+
+        // --- phần discard ---
+        List<GameObject> handObjects = new List<GameObject>(deck.GetCurrentHandObjects());
+        if (handObjects.Count > 0)
+        {
+            foreach (GameObject cardGO in handObjects)
+            {
+                if (cardGO == null) continue;
+                CardDisplay cd = cardGO.GetComponent<CardDisplay>();
+                if (cd != null)
+                {
+                    Debug.Log($"[EndGame] Discarding {cd.GetCardData().name}");
+                    discard.AddToDiscard(cd.GetCardData());
+                }
+            }
+
+            yield return StartCoroutine(discard.AnimateDiscardHand(handObjects));
+            deck.ClearHandReferencesOnly();
+        }
+        yield return new WaitForSeconds(waitAfterDiscardAnimations);
+
+        deck.UpdateUI();
+        if (discard != null) discard.UpdateDiscardCount();
+
+        isBusy = false; // xong xuôi -> mở khóa
+        deck.hasDrawFisrtRow = false;
+        //CanvasGroup pls = playerSelfCast.GetComponent<CanvasGroup>();
+        //pls.blocksRaycasts = false;
+    }
 
     private IEnumerator TryDrawNextHand()
     {

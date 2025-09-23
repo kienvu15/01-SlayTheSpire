@@ -36,22 +36,21 @@ public class Discard : MonoBehaviour
 
     }
     public int Count => discardPile.Count;
-    /// <summary>
+
     /// Thêm lá bài vào discardPile (chỉ dữ liệu)
-    /// </summary>
     public void AddToDiscard(CardData card)
     {
         if (card != null)
         {
             discardPile.Add(card);
-            PlayerSelfCast.blocksRaycasts = true; // tắt chặn raycast
+            Debug.Log($"[Discard] Added {card.name}, total now {discardPile.Count}");
+            PlayerSelfCast.blocksRaycasts = true;
             UpdateDiscardCount();
         }
     }
 
-    /// <summary>
+
     /// Lấy toàn bộ bài trong discard và xóa sạch discard
-    /// </summary>
     public List<CardData> TakeAllCards()
     {
         List<CardData> taken = new List<CardData>(discardPile);
@@ -60,18 +59,14 @@ public class Discard : MonoBehaviour
         return taken;
     }
 
-    /// <summary>
     /// Xóa sạch discard
-    /// </summary>
     public void Clear()
     {
         discardPile.Clear();
         UpdateDiscardCount();
     }
 
-    /// <summary>
     /// Animate hand bay về discard và Destroy card GO
-    /// </summary>
     public IEnumerator AnimateDiscardHand(List<GameObject> handObjects)
     {
         foreach (GameObject cardGO in handObjects)
@@ -108,13 +103,7 @@ public class Discard : MonoBehaviour
         UpdateDiscardCount();
     }
 
-
-
-
-
-    /// <summary>
     /// Update số lá trong discard lên UI
-    /// </summary>
     public void UpdateDiscardCount()
     {
         if (discardCountText != null)

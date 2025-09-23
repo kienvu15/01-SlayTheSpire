@@ -286,7 +286,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8154073965577935057
 RectTransform:
   m_ObjectHideFlags: 0
@@ -494,6 +494,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoomUI
   circleHighlight: {fileID: 6018015707015761786}
   goButton: {fileID: 6916628637036035366}
+  ButtonPar: {fileID: 0}
 --- !u!1 &6469957827077063147
 GameObject:
   m_ObjectHideFlags: 0

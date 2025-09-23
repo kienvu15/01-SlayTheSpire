@@ -256,7 +256,7 @@ MonoBehaviour:
   artworkImage: {fileID: 1615529035648149412}
   descriptionPanel: {fileID: 7669659774631721061}
   descriptionText: {fileID: 5563345688805347502}
-  buyButton: {fileID: 1740402897941232442}
+  buyButton: {fileID: 8337342223879227843}
   shopSystem: {fileID: 0}
   cardData: {fileID: 0}
 --- !u!114 &1564760113545748473

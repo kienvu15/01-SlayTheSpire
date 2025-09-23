@@ -11,9 +11,9 @@ public class EnemyView : Enemy
 
     // public Transform target;
     public List<OverrideValues> overrideValuesPattern;
-    public EnemyActionTypeIcon typeIcons;   // SO database icon
-    public EnemyIntentUI intentUI;          // tham chiếu prefab UI trên canvas
-    public Spot currentSlot;                // Enemy biết mình đang ở slot nào
+    public EnemyActionTypeIcon typeIcons;   
+    public EnemyIntentUI intentUI;         
+    public Spot currentSlot;            
 
     private void Awake()
     {
@@ -25,20 +25,13 @@ public class EnemyView : Enemy
     {
         base.Start();
         UpdateUI();
-        ShowNextIntent(); // hiển thị intent ngay khi spawn
-
-        // Nếu muốn cho enemy spawn là tự chạy vào slot → bật coroutine
-        // if (currentSlot != null)
-        // {
-        //     StartCoroutine(Move2Slot(currentSlot));
-        // }
+        ShowNextIntent(); 
     }
 
     protected override void Update()
     {
         base.Update();
 
-        // Kiểm tra nếu HP = 0 thì hủy enemy
         if (stats.currentHP <= 0)
         {
             EnemySystem system = FindFirstObjectByType<EnemySystem>();
@@ -64,7 +57,7 @@ public class EnemyView : Enemy
         RectTransform enemyRect = (RectTransform)transform;
         RectTransform enemyCanvas = enemyRect.parent as RectTransform;
 
-        float speed = 50f; // pixel per second
+        float speed = 50f;
 
         // Clear slot cũ
         if (currentSlot != null && currentSlot.occupant == this)

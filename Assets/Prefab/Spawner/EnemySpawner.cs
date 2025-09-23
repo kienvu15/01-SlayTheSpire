@@ -11,7 +11,7 @@ public class EnemySpawner : MonoBehaviour
 
     private int currentEncounterIndex = 0;
     private int currentWaveIndex = 0;
-
+    public bool isOver = false;
     private void Start()
     {
         if (enemySystem != null)
@@ -22,9 +22,7 @@ public class EnemySpawner : MonoBehaviour
         SpawnWave(currentEncounterIndex, currentWaveIndex);
     }
 
-    /// <summary>
     /// Lấy 1 wave ngẫu nhiên từ database
-    /// </summary>
     public WaveData GetRandomEncounter()
     {
         if (encounterDatabase == null ||
@@ -51,9 +49,7 @@ public class EnemySpawner : MonoBehaviour
         return chosenEncounter.waves[randomWaveIndex];
     }
 
-    /// <summary>
     /// Spawn wave theo EncounterIndex + WaveIndex
-    /// </summary>
     public void SpawnWave(int encounterIndex, int waveIndex)
     {
         if (encounterDatabase == null ||
@@ -118,9 +114,12 @@ public class EnemySpawner : MonoBehaviour
         enemySystem.RefreshEnemies();
     }
 
-    /// <summary>
+    public bool HasMoreWaves()
+    {
+        return currentEncounterIndex < encounterDatabase.encounters.Length;
+    }
+
     /// Sang wave tiếp theo, nếu hết thì sang Encounter mới
-    /// </summary>
     public void NextWave()
     {
         currentWaveIndex++;
@@ -128,16 +127,31 @@ public class EnemySpawner : MonoBehaviour
         if (currentEncounterIndex >= encounterDatabase.encounters.Length)
         {
             Debug.Log("[EnemySpawner] Không còn Encounter nào!");
+            FindFirstObjectByType<GameFlowManager>()?.HideAllG();
+            MapUIManager.Instance?.HideBattleCanvas(); // xoá toàn bộ battle UI
+            
             return;
         }
 
-        // nếu hết wave thì sang Encounter mới
         if (currentWaveIndex >= encounterDatabase.encounters[currentEncounterIndex].waves.Length)
         {
             currentEncounterIndex++;
             currentWaveIndex = 0;
         }
 
+        if (currentEncounterIndex >= encounterDatabase.encounters.Length)
+        {
+            isOver = true;
+            Debug.Log("[EnemySpawner] Tất cả Encounter đã xong!");
+            FindFirstObjectByType<GameFlowManager>()?.HideAllG();
+            MapUIManager.Instance?.HideBattleCanvas(); // xoá toàn bộ battle UI
+            
+            
+            return;
+        }
+
         SpawnWave(currentEncounterIndex, currentWaveIndex);
     }
+
+
 }

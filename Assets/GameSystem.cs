@@ -32,6 +32,10 @@ public class GameSystem : MonoBehaviour
                 Debug.Log($"[GameSystem] BattlePhase = {isBattlePhase}");
             }
         }
+        else
+        {
+            isBattlePhase = false;
+        }
 
         if(gameCanvas.activeSelf == false)
         {
@@ -52,6 +56,6 @@ public class GameSystem : MonoBehaviour
 
     public bool IsGamePaused { get; private set; } = false;
 
-    [SerializeField] private bool isBattlePhase = false;   // hiện trong Inspector
-    public bool IsBattlePhase => isBattlePhase;
+    [SerializeField] public bool isBattlePhase = false;   // hiện trong Inspector
+
 }
