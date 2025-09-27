@@ -7,16 +7,16 @@ public class AttackKnockbackEffect : EffectData, IOverrideValue
 
     public override bool Apply(Character self, Character target, ManaSystem manaSystem, Deck deck)
     {
-        if (target == null) return true; // vẫn coi là chơi xong
+        if (target == null) return false; // ❌ Không có target → trả card về tay
 
         EnemyView enemy = target as EnemyView;
-        if (enemy == null || enemy.currentSlot == null) return true;
+        if (enemy == null || enemy.currentSlot == null) return false; // ❌ Không phải enemy hợp lệ
 
         Spot frontSlot = SlotManager.Instance.GetFrontSlot(enemy.currentSlot);
         if (frontSlot != null && frontSlot.isOccupied)
         {
             Debug.LogWarning("[KnockbackEffect] Target không phải enemy đứng đầu!");
-            return true; // vẫn dùng bài, nhưng không tác dụng
+            return false; // ❌ card fail → trả về tay
         }
 
         // ✅ kiểm tra hit
@@ -24,7 +24,7 @@ public class AttackKnockbackEffect : EffectData, IOverrideValue
         if (!hit)
         {
             Debug.Log($"[KnockbackEffect] {self.name} missed → no knockback.");
-            return true; // vẫn dùng bài thành công, chỉ không có hiệu ứng
+            return false; // ❌ miss thì cũng trả card về tay
         }
 
         // Knockback logic
@@ -46,7 +46,7 @@ public class AttackKnockbackEffect : EffectData, IOverrideValue
         }
 
         Debug.Log($"[KnockbackEffect] {self.name} dealt {damage} dmg and knocked {enemy.name}.");
-        return true;
+        return true; // ✅ thành công → card bị consume
     }
 
     public override int GetIntentValue()
