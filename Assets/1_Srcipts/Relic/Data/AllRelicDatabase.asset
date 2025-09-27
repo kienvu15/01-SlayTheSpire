@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2206bec023226f743a706a4937dda535, type: 3}
+  m_Name: AllRelicDatabase
+  m_EditorClassIdentifier: Assembly-CSharp::AllRelicDatabase
+  allRelics:
+  - {fileID: 11400000, guid: 660e2ef9173aa114e99d7b9def708b50, type: 2}
+  - {fileID: 11400000, guid: f8250bc503cdc2646ae981f517663e43, type: 2}
+  - {fileID: 11400000, guid: e31d5f7f53a294e459e62df013ba7cd4, type: 2}
