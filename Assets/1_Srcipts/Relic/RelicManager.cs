@@ -4,7 +4,6 @@ using UnityEngine;
 public class RelicManager : MonoBehaviour
 {
     public List<Relic> equippedRelics = new List<Relic>();
-    public Relic boneKnife;
 
     // UI events
     public System.Action<Relic> onRelicAdded;
@@ -19,7 +18,7 @@ public class RelicManager : MonoBehaviour
     }
     void Start()
     {
-        EquipRelic(boneKnife);
+
     }
 
     public void EquipRelic(Relic relic)

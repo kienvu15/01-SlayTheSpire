@@ -31,14 +31,25 @@ public class EnemyView : Enemy
 
         // Tạo instance runtime cho từng enemy → cooldown tách biệt
         actionPattern = new List<EnemyActionInstance>();
-        foreach (var action in actionPatternAssets)
+        for (int i = 0; i < actionPatternAssets.Count; i++)
         {
-            actionPattern.Add(new EnemyActionInstance(action));
+            int? cdOverride = null;
+
+            // Nếu có override cooldown
+            if (overrideValuesPattern != null && i < overrideValuesPattern.Count)
+            {
+                int cd = overrideValuesPattern[i].overrideCooldown;
+                if (cd >= 0) cdOverride = cd;
+            }
+
+            EnemyActionInstance instance = new EnemyActionInstance(actionPatternAssets[i], cdOverride);
+            actionPattern.Add(instance);
         }
 
         UpdateUI();
         ShowNextIntent();
     }
+
 
     protected override void Update()
     {
@@ -158,7 +169,7 @@ public class EnemyView : Enemy
                     // Dùng action
                     action.Apply(this, target, overrides);
 
-                    if (animator != null && action.Type == Type.Attack)
+                    if (animator != null && (action.Type == Type.Attack || action.Type == Type.BadBuff))
                         animator.SetTrigger("Attack");
 
                     // Giảm cooldown tất cả action khác (ngoại trừ action vừa dùng)
@@ -197,7 +208,7 @@ public class EnemyView : Enemy
 
             action.Apply(this, target, overrides);
 
-            if (animator != null && action.Type == Type.Attack)
+            if (animator != null && (action.Type == Type.Attack || action.Type == Type.BadBuff))
                 animator.SetTrigger("Attack");
 
             // Giảm cooldown tất cả action khác

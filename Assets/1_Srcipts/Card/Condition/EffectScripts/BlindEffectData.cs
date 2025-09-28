@@ -16,7 +16,8 @@ public class BlindEffectData : EffectData, IOverrideValue
             duration = duration
         };
 
-        target.AddCondition(blind);
+        bool isFromPlayer = self is Player;
+        target.AddCondition(blind, isFromPlayer);
 
         Debug.Log($"[BlindEffect] {self.name} applied Blind({duration}) to {target.name}");
         return true;
@@ -42,8 +43,8 @@ public class BlindEffectData : EffectData, IOverrideValue
             type = ConditionType.Blind,
             duration = overrideValue
         };
-
-        target.AddCondition(blind);
+        bool isFromPlayer = self is Player;
+        target.AddCondition(blind, isFromPlayer);
 
         Debug.Log($"[BlindEffect] {self.name} applied Blind({overrideValue}) to {target.name}");
     }

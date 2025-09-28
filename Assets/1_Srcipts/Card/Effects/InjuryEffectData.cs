@@ -17,7 +17,8 @@ public class InjuryEffectData : EffectData, IOverrideValue
             level = level
         };
 
-        target.AddCondition(injury);
+        bool isFromPlayer = self is Player;
+        target.AddCondition(injury, isFromPlayer);
 
         Debug.Log($"[InjuryEffect] {self.name} applied Injury({level}) for {duration} turns to {target.name}");
         return true;
@@ -45,7 +46,8 @@ public class InjuryEffectData : EffectData, IOverrideValue
             level = overrideValue
         };
 
-        target.AddCondition(injury);
+        bool isFromPlayer = self is Player;
+        target.AddCondition(injury, isFromPlayer);
 
         Debug.Log($"[InjuryEffect] {self.name} applied Injury({overrideValue}) for {duration} turns to {target.name}");
     }

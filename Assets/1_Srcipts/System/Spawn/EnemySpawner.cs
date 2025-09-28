@@ -8,67 +8,39 @@ public class EnemySpawner : MonoBehaviour
     public EnemySystem enemySystem;
     public EnemyDatabase enemyDatabase;
 
-    private int currentEncounterIndex = 0;
+    private EncounterData currentEncounter;
     private int currentWaveIndex = 0;
     public bool isOver = false;
+
     private void Start()
     {
         if (enemySystem != null)
-        {
             enemySystem.spawner = this;
-        }
 
-        SpawnWave(currentEncounterIndex, currentWaveIndex);
+        // chọn encounter random ngay từ đầu
+        currentEncounter = encounterDatabase.GetRandomEncounter();
+        currentWaveIndex = 0;
+
+        if (currentEncounter != null)
+            SpawnWave(currentWaveIndex);
+        else
+            Debug.LogError("[EnemySpawner] Không có Encounter hợp lệ!");
     }
 
-    /// Lấy 1 wave ngẫu nhiên từ database
-    public WaveData GetRandomEncounter()
+    /// Spawn 1 wave theo index trong currentEncounter
+    public void SpawnWave(int waveIndex)
     {
-        if (encounterDatabase == null ||
-            encounterDatabase.encounters == null ||
-            encounterDatabase.encounters.Length == 0)
-        {
-            Debug.LogError("[EnemySpawner] EncounterDatabase rỗng!");
-            return null;
-        }
-
-        // chọn Encounter ngẫu nhiên
-        EncounterData chosenEncounter = encounterDatabase.encounters[
-            Random.Range(0, encounterDatabase.encounters.Length)
-        ];
-
-        if (chosenEncounter == null || chosenEncounter.waves == null || chosenEncounter.waves.Length == 0)
-        {
-            Debug.LogError("[EnemySpawner] Encounter rỗng!");
-            return null;
-        }
-
-        // chọn Wave ngẫu nhiên
-        int randomWaveIndex = Random.Range(0, chosenEncounter.waves.Length);
-        return chosenEncounter.waves[randomWaveIndex];
-    }
-
-    /// Spawn wave theo EncounterIndex + WaveIndex
-    public void SpawnWave(int encounterIndex, int waveIndex)
-    {
-        if (encounterDatabase == null ||
-            encounterDatabase.encounters == null ||
-            encounterIndex >= encounterDatabase.encounters.Length)
-        {
-            Debug.Log("[EnemySpawner] Tất cả Encounter đã xong!");
-            return;
-        }
-
-        EncounterData encounter = encounterDatabase.encounters[encounterIndex];
-        if (encounter == null || encounter.waves == null || waveIndex >= encounter.waves.Length)
+        if (currentEncounter == null ||
+            currentEncounter.waves == null ||
+            waveIndex >= currentEncounter.waves.Length)
         {
             Debug.Log("[EnemySpawner] Encounter hoặc wave rỗng!");
             return;
         }
 
-        WaveData wave = encounter.waves[waveIndex];
+        WaveData wave = currentEncounter.waves[waveIndex];
+        if (wave == null) return;
 
-        // === GIỮ NGUYÊN LOGIC SLOT & MOVE TO SLOT ===
         GameObject systemCanvas = GameObject.Find("EnemyFM");
         if (systemCanvas == null)
         {
@@ -77,8 +49,6 @@ public class EnemySpawner : MonoBehaviour
         }
 
         Spot[] slots = SlotManager.Instance.GetAllSlots();
-
-        // Lấy rule-based slot assignment (đã fix để trả ra list)
         List<(EnemyType type, Spot slot)> assigned = SlotAssigner.AssignSlots(wave.enemyTypes, slots);
 
         foreach (var pair in assigned)
@@ -87,7 +57,6 @@ public class EnemySpawner : MonoBehaviour
             Spot slot = pair.slot;
             if (slot == null) continue;
 
-            // lọc prefab có type đúng
             List<GameObject> candidates = enemyDatabase.enemyPrefabs
                 .FindAll(p => p.GetComponent<EnemyView>()?.enemyType == type);
 
@@ -99,12 +68,9 @@ public class EnemySpawner : MonoBehaviour
             GameObject enemyGO = Instantiate(prefab, systemCanvas.transform);
             RectTransform enemyRect = enemyGO.GetComponent<RectTransform>();
 
-            // reset về 0 để tránh bị lệch layer
             Vector3 localPos = enemyRect.localPosition;
             localPos.z = 0;
             enemyRect.localPosition = localPos;
-
-            // ban đầu để giữa, Move2Slot sẽ kéo về đúng slot
             enemyRect.anchoredPosition = Vector2.zero;
 
             EnemyView enemy = enemyGO.GetComponent<EnemyView>();
@@ -119,45 +85,34 @@ public class EnemySpawner : MonoBehaviour
         enemySystem.RefreshEnemies();
     }
 
-
-    public bool HasMoreWaves()
-    {
-        return currentEncounterIndex < encounterDatabase.encounters.Length;
-    }
-
-    /// Sang wave tiếp theo, nếu hết thì sang Encounter mới
+    /// Chuyển sang wave tiếp theo
     public void NextWave()
     {
+        if (currentEncounter == null)
+        {
+            Debug.Log("[EnemySpawner] Không có Encounter!");
+            EndBattle();
+            return;
+        }
+
         currentWaveIndex++;
 
-        if (currentEncounterIndex >= encounterDatabase.encounters.Length)
+        // Nếu đã hết wave trong encounter hiện tại → kết thúc
+        if (currentWaveIndex >= currentEncounter.waves.Length)
         {
-            Debug.Log("[EnemySpawner] Không còn Encounter nào!");
-            FindFirstObjectByType<GameFlowManager>()?.HideAllG();
-            MapUIManager.Instance?.HideBattleCanvas(); // xoá toàn bộ battle UI
-            
+            Debug.Log("[EnemySpawner] Encounter đã xong!");
+            EndBattle();
             return;
         }
 
-        if (currentWaveIndex >= encounterDatabase.encounters[currentEncounterIndex].waves.Length)
-        {
-            currentEncounterIndex++;
-            currentWaveIndex = 0;
-        }
-
-        if (currentEncounterIndex >= encounterDatabase.encounters.Length)
-        {
-            isOver = true;
-            Debug.Log("[EnemySpawner] Tất cả Encounter đã xong!");
-            FindFirstObjectByType<GameFlowManager>()?.HideAllG();
-            MapUIManager.Instance?.HideBattleCanvas(); // xoá toàn bộ battle UI
-            
-            
-            return;
-        }
-
-        SpawnWave(currentEncounterIndex, currentWaveIndex);
+        // còn wave thì spawn tiếp
+        SpawnWave(currentWaveIndex);
     }
 
-
+    private void EndBattle()
+    {
+        isOver = true;
+        FindFirstObjectByType<GameFlowManager>()?.HideAllG();
+        MapUIManager.Instance?.HideBattleCanvas();
+    }
 }

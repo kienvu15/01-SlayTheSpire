@@ -52,7 +52,7 @@ public class CardDisplay : MonoBehaviour
             if (blockerGroup == null)
                 blockerGroup = blocker.AddComponent<CanvasGroup>();
 
-            HideBlocker(); // ẩn ngay từ đầu
+           // HideBlocker(); // ẩn ngay từ đầu
         }
 
         BGHold bghold = GetComponentInParent<BGHold>();

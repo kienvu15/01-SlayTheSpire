@@ -21,7 +21,9 @@ public class AttackInjuryEffect : EffectData, IOverrideValue
                 type = ConditionType.Injury,
                 duration = injuryDuration,
             };
-            target.AddCondition(injury);
+
+            bool isFromPlayer = self is Player;
+            target.AddCondition(injury, isFromPlayer);
 
             Debug.Log($"[AttackInjuryEffect] {target.name} gained Injury for {injuryDuration} turns");
         }
@@ -61,7 +63,9 @@ public class AttackInjuryEffect : EffectData, IOverrideValue
                 type = ConditionType.Injury,
                 duration = injuryDuration,
             };
-            target.AddCondition(injury);
+
+            bool isFromPlayer = self is Player;
+            target.AddCondition(injury, isFromPlayer);
         }
         else
         {

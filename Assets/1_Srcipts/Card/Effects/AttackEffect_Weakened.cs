@@ -27,7 +27,9 @@ public class AttackEffect_Weakened : EffectData, IOverrideValue
                 duration = weakenedDuration,
                 level = 1
             };
-            target.AddCondition(weakened, CardType.Special);
+
+            bool isFromPlayer = self is Player;
+            target.AddCondition(weakened, isFromPlayer,CardType.Special);
             Debug.Log($"[AttackEffect_Weakened] Applied Weakened x{weakened.level} to {target.name}");
         }
 
@@ -61,7 +63,9 @@ public class AttackEffect_Weakened : EffectData, IOverrideValue
                 duration = weakenedDuration,
                 level = 1
             };
-            target.AddCondition(weakened, CardType.Special);
+
+            bool isFromPlayer = self is Player;
+            target.AddCondition(weakened, isFromPlayer, CardType.Special);
             Debug.Log($"[AttackEffect_Weakened] Applied Weakened x{weakened.level} to {target.name} (override)");
         }
 

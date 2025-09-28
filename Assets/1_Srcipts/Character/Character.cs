@@ -192,7 +192,7 @@ public class Character : MonoBehaviour
         return true; // ✅ hit
     }
 
-    public void AddCondition(Condition newCondition, CardType vfxType = CardType.Special)
+    public void AddCondition(Condition newCondition, bool isFromPlayer, CardType vfxType = CardType.Special)
     {
         // Không thể replace nếu có Immunity
         foreach (var cond in activeConditions)
@@ -208,14 +208,13 @@ public class Character : MonoBehaviour
 
         if (existing != null)
         {
-            existing.duration += newCondition.duration; // cộng stack bằng cách tăng duration
+            existing.duration += newCondition.duration;
             Debug.Log($"[Condition] {newCondition.type} refreshed, new duration = {existing.duration}");
         }
         else
         {
             if (activeConditions.Count >= maxConditions)
             {
-                // Xóa condition cũ nhất (FIFO)
                 Condition removed = activeConditions[0];
                 removed.OnExpire(this);
                 activeConditions.RemoveAt(0);
@@ -223,35 +222,110 @@ public class Character : MonoBehaviour
             }
 
             Condition clone = newCondition.Clone();
+
+            // 🟢 Gán owner chi tiết
+            if (isFromPlayer)
+                clone.owner = (this is Player) ? ConditionOwner.PlayerOnSelf : ConditionOwner.Player;
+            else
+                clone.owner = (this is EnemyView) ? ConditionOwner.EnemyOnSelf : ConditionOwner.Enemy;
+
             activeConditions.Add(clone);
             AttackImpactManager.Instance.ShowConditionImpact(transform, vfxType);
 
-            Debug.Log($"[Condition] Added {clone.type} ({clone.duration} turns)");
+            Debug.Log($"[Condition] Added {clone.type} ({clone.duration} turns) from {clone.owner}");
         }
 
         if (conditionPanelUI != null)
             conditionPanelUI.UpdateConditions(activeConditions);
     }
 
-    public void TickConditions()
+
+    // Gọi ở START TURN
+    public void TriggerConditionEffects()
+    {
+        foreach (var cond in activeConditions.ToArray())
+        {
+            cond.OnTurn(this); // chỉ chạy effect, KHÔNG trừ duration
+        }
+    }
+
+    // Player tự buff chính mình
+    public void DecreasePlayerSelfConditions()
     {
         for (int i = activeConditions.Count - 1; i >= 0; i--)
         {
-            Condition cond = activeConditions[i];
-            cond.OnTurn(this);
-
-            cond.duration--;
-
-            if (cond.duration <= 0)
+            var cond = activeConditions[i];
+            if (cond.owner == ConditionOwner.PlayerOnSelf)
             {
-                cond.OnExpire(this);
-                activeConditions.RemoveAt(i);
+                cond.duration--;
+                if (cond.duration <= 0)
+                {
+                    cond.OnExpire(this);
+                    activeConditions.RemoveAt(i);
+                }
             }
         }
-
-        if (conditionPanelUI != null)
-            conditionPanelUI.UpdateConditions(activeConditions);
+        conditionPanelUI?.UpdateConditions(activeConditions);
     }
+
+    // Enemy tự buff chính mình
+    public void DecreaseEnemySelfConditions()
+    {
+        for (int i = activeConditions.Count - 1; i >= 0; i--)
+        {
+            var cond = activeConditions[i];
+            if (cond.owner == ConditionOwner.EnemyOnSelf)
+            {
+                cond.duration--;
+                if (cond.duration <= 0)
+                {
+                    cond.OnExpire(this);
+                    activeConditions.RemoveAt(i);
+                }
+            }
+        }
+        conditionPanelUI?.UpdateConditions(activeConditions);
+    }
+
+
+    // Gọi ở END TURN của Player
+    public void DecreasePlayerConditions()
+    {
+        for (int i = activeConditions.Count - 1; i >= 0; i--)
+        {
+            var cond = activeConditions[i];
+            if (cond.owner == ConditionOwner.Player) // chỉ giảm condition do Player cast
+            {
+                cond.duration--;
+                if (cond.duration <= 0)
+                {
+                    cond.OnExpire(this);
+                    activeConditions.RemoveAt(i);
+                }
+            }
+        }
+        conditionPanelUI?.UpdateConditions(activeConditions);
+    }
+
+    // Gọi ở END TURN của Enemy
+    public void DecreaseEnemyConditions()
+    {
+        for (int i = activeConditions.Count - 1; i >= 0; i--)
+        {
+            var cond = activeConditions[i];
+            if (cond.owner == ConditionOwner.Enemy) // chỉ giảm condition do Enemy cast
+            {
+                cond.duration--;
+                if (cond.duration <= 0)
+                {
+                    cond.OnExpire(this);
+                    activeConditions.RemoveAt(i);
+                }
+            }
+        }
+        conditionPanelUI?.UpdateConditions(activeConditions);
+    }
+
 
     // ================== Skill ==================
     public void AddSkill(Skill newSkill)

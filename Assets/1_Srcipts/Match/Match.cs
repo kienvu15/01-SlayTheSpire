@@ -11,6 +11,7 @@ public class Match : MonoBehaviour
     public GameSystem gameSystem;
     public PlayerSelfCast playerSelfCast;
     public Player player;
+    public CanvasGroup blockPanel;
    // public Enemy enemy;
 
     public int handSize = 5;
@@ -19,8 +20,7 @@ public class Match : MonoBehaviour
     public float waitAfterDiscardAnimations = 0.5f;
     public float waitBeforeRefill = 3f;   // thời gian chờ refill khi deck trống
 
-    private bool isBusy = false;  
-    public bool IsBusy => isBusy;
+    //private bool isBusy = false;  
 
     private void Start()
     {
@@ -28,29 +28,34 @@ public class Match : MonoBehaviour
         {
             deck = FindFirstObjectByType<Deck>();
         }
+        
     }
 
     public void EndTurn()
     {
-        if (isBusy)
+        if (GameStage.Instance.isBusy) return;
+
+        // Player endturn thì giảm duration của condition do ENEMY cast lên player
+        if (player != null)
         {
-            Debug.Log("[Match] Đang bận (enemy/action/draw), không thể EndTurn!");
-            return;
+            player.DecreaseEnemyConditions();
+
+            
         }
 
+        blockPanel.blocksRaycasts = true;
         StartCoroutine(EndTurnRoutine());
 
         if (manaSystem != null)
-        {
             manaSystem.StartTurn();
-        }
     }
+
 
     private IEnumerator EndTurnRoutine()
     {
-        isBusy = true;  // bắt đầu -> chặn
+        GameStage.Instance.SetBusy(true);
 
-        // --- phần discard ---
+        // --- discard ---
         List<GameObject> handObjects = new List<GameObject>(deck.GetCurrentHandObjects());
         if (handObjects.Count > 0)
         {
@@ -66,31 +71,45 @@ public class Match : MonoBehaviour
         }
         yield return new WaitForSeconds(waitAfterDiscardAnimations);
 
-        // --- enemy turn ---
+        // --- Enemy TURN ---
         if (enemySystem != null)
         {
+            // StartTurn của enemy (trigger poison/regen/v.v…)
+            foreach (var enemy in enemySystem.enemies)
+                enemy.TriggerConditionEffects();
+
             yield return StartCoroutine(enemySystem.EnemyTurn(player));
+
+            // EndTurn của enemy -> giảm condition do PLAYER cast lên enemy
+            foreach (var enemy in enemySystem.enemies)
+                enemy.DecreasePlayerConditions();
+
+            // 🟢 giảm luôn condition mà Enemy tự cast lên Enemy
+            foreach (var enemy in enemySystem.enemies)
+                enemy.DecreaseEnemySelfConditions();
+
+            // 🟢 giảm luôn condition mà Player tự cast lên Player
+            player.DecreasePlayerSelfConditions();
         }
 
-        // --- draw hand ---
+        // --- Player START TURN ---
+        if (player != null)
+        {
+            // Trigger effect (poison, regen...) nhưng KHÔNG giảm duration
+            player.TriggerConditionEffects();
+        }
+
+        // --- Draw hand ---
         yield return StartCoroutine(TryDrawNextHand());
 
         deck.UpdateUI();
         if (discard != null) discard.UpdateDiscardCount();
 
-        isBusy = false; // xong xuôi -> mở khóa
-
-        if (player != null)
-            player.TickConditions();
-
-        if (enemySystem != null)
-        {
-            foreach (var enemy in enemySystem.enemies) // giả sử enemySystem có list enemies
-            {
-                enemy.TickConditions();
-            }
-        }
+        GameStage.Instance.SetBusy(false);
+        blockPanel.blocksRaycasts = false;
     }
+
+
 
     private IEnumerator TryDrawNextHand()
     {
@@ -120,7 +139,6 @@ public class Match : MonoBehaviour
                     Debug.Log($"[Match] Taken {taken.Count} cards from discard to deck.");
                     deck.ReceiveCards(taken);
                     deck.ShuffleDeck();
-                    // tiếp vòng while sẽ rút tiếp
                 }
                 else
                 {

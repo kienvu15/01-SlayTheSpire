@@ -15,7 +15,8 @@ public class DodgeEffectData : EffectData, IOverrideValue
             duration = duration
         };
 
-        target.AddCondition(dodge);
+        bool isFromPlayer = self is Player;
+        target.AddCondition(dodge, isFromPlayer);
 
         Debug.Log($"[DodgeEffect] {self.name} applied Dodge({duration}) to {target.name}");
         return true;
@@ -42,7 +43,8 @@ public class DodgeEffectData : EffectData, IOverrideValue
             duration = overrideValue
         };
 
-        target.AddCondition(dodge);
+        bool isFromPlayer = self is Player;
+        target.AddCondition(dodge, isFromPlayer);
 
         Debug.Log($"[DodgeEffect] {self.name} applied Dodge({overrideValue}) to {target.name}");
     }

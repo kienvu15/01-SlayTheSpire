@@ -1,15 +1,7 @@
-﻿using UnityEngine;
+using UnityEngine;
 
-public class BattleManager : MonoBehaviour
+public class ConditionExpireTiming : MonoBehaviour
 {
-    public static BattleManager Instance;
-
-    public Player player;
-
-    private void Awake()
-    {
-        Instance = this;
-    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

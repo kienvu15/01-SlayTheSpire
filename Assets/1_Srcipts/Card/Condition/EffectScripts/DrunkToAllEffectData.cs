@@ -22,7 +22,8 @@ public class DrunkToAllEffectData : EffectData
                 type = ConditionType.Drunk,
                 duration = duration
             };
-            match.player.AddCondition(drunk, vfxType);
+            bool isFromPlayer = self is Player;
+            match.player.AddCondition(drunk, isFromPlayer, vfxType);
             Debug.Log($"[DrunkToAllEffect] Applied Drunk x ({drunk.duration}) to {match.player.name}");
             applied = true;
         }
@@ -39,7 +40,8 @@ public class DrunkToAllEffectData : EffectData
                     type = ConditionType.Drunk,
                     duration = duration
                 };
-                enemy.AddCondition(drunk, vfxType);
+                bool isFromPlayer = self is Player;
+                enemy.AddCondition(drunk, isFromPlayer, vfxType);
 //                AttackImpactManager.Instance.ShowConditionImpact(enemy.transform, vfxType);
 
                 Debug.Log($"[DrunkToAllEffect] Applied Drunk x ({drunk.duration}) to {enemy.name}");

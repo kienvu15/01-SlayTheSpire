@@ -4,4 +4,5 @@ using System.Collections.Generic;
 public class OverrideValues
 {
     public List<int> values = new List<int>();
+    public int overrideCooldown = -1;
 }

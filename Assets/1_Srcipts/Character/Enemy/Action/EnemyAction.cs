@@ -23,8 +23,31 @@ public class EnemyAction : ScriptableObject
 
     public void Apply(Character self, Character target = null, List<int> overrideValues = null)
     {
-        if (type == Type.Buff) target = self;
+        // ====== Determine default target ======
+        switch (type)
+        {
+            case Type.Buff:
+                target = self; // buff bản thân
+                break;
 
+            case Type.Attack:
+            case Type.BadBuff:
+            case Type.Charge:
+                if (target == null)
+                {
+                    target = BattleManager.Instance.player;
+                }
+                break;
+
+            default:
+                if (target == null)
+                {
+                    Debug.LogWarning($"[EnemyAction] {actionName} không có target!");
+                }
+                break;
+        }
+
+        // ====== Apply effects ======
         for (int i = 0; i < effects.Count; i++)
         {
             var effect = effects[i];
@@ -42,5 +65,4 @@ public class EnemyAction : ScriptableObject
             }
         }
     }
-
 }

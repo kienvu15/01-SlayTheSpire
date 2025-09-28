@@ -13,12 +13,21 @@ public enum ConditionType
     Weakened,
 }
 
+public enum ConditionOwner
+{
+    Player,
+    Enemy,
+    EnemyOnSelf,
+    PlayerOnSelf
+}
+
 [System.Serializable]
 public class Condition
 {
     public ConditionType type;
     public int duration = 1;       // số lượt tồn tại
-    public int level = 1;          // dùng cho Injury stack (sát thương theo level)
+    public int level = 1;
+    public ConditionOwner owner;
 
     public Condition Clone() => (Condition)MemberwiseClone();
 

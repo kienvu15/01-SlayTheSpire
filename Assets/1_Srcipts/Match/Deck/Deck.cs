@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Deck : MonoBehaviour
 {
@@ -12,7 +11,7 @@ public class Deck : MonoBehaviour
     public Discard discard;
     public GameObject cardPrefab;
     public Transform handParent;
-    public Transform deckTransform;   // vị trí chồng bài (spawn point)
+    public Transform deckTransform;  
     public EnemySpawner spawner;
     public Match match;
 
@@ -22,9 +21,9 @@ public class Deck : MonoBehaviour
     public TextMeshProUGUI discardCountText;
 
     [Header("Animation Settings")]
-    public float drawDuration = 0.6f;   // thời gian 1 lá bay ra
-    public float drawDelay = 0.15f;     // delay giữa các lá
-    public float refillDelay = 3f;      // thời gian chờ trước khi refill từ discard
+    public float drawDuration = 0.6f;   
+    public float drawDelay = 0.15f;     
+    public float refillDelay = 3f;      
 
     private List<CardData> deck = new List<CardData>();
     private List<GameObject> currentHand = new List<GameObject>();

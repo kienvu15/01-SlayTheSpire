@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &9133371623583088132
+--- !u!1001 &2690980984024186971
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,14 +8,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 224903615666772557, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -1988031052278033391, guid: f6373b5d20aec284db8278b0aa0a82b2, type: 3}
-    - target: {fileID: 224903615666772557, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
-      propertyPath: m_SortingLayer
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2085457821108544885, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -42,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5908720391771571872, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
       propertyPath: m_Name
-      value: Skeleton Variant
+      value: SlimeMan Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6128709756016876796, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
       propertyPath: m_Pivot.x
@@ -106,11 +98,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6128709756016876796, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -1.13051
       objectReference: {fileID: 0}
     - target: {fileID: 6128709756016876796, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 0.38775
       objectReference: {fileID: 0}
     - target: {fileID: 6128709756016876796, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -157,24 +149,36 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7810826842247326027, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
-      propertyPath: randomizeHP
-      value: 1
+      propertyPath: actionPatternAssets.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7810826842247326027, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
-      propertyPath: stats.maxHP
-      value: 23
+      propertyPath: overrideValuesPattern.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7810826842247326027, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
       propertyPath: 'actionPatternAssets.Array.data[2]'
       value: 
-      objectReference: {fileID: 11400000, guid: 9faa333789b6c7f4eb21e8b56b6e127c, type: 2}
+      objectReference: {fileID: 11400000, guid: 00e46c75b28dcb84ea002cd380841693, type: 2}
     - target: {fileID: 7810826842247326027, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
-      propertyPath: overrideValuesPattern.Array.data[2].overrideCooldown
-      value: 4
+      propertyPath: overrideValuesPattern.Array.data[2].values.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7810826842247326027, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
-      propertyPath: overrideValuesPattern.Array.data[3].overrideCooldown
-      value: 5
+      propertyPath: overrideValuesPattern.Array.data[3].values.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7810826842247326027, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
+      propertyPath: 'overrideValuesPattern.Array.data[0].values.Array.data[0]'
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7810826842247326027, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
+      propertyPath: 'overrideValuesPattern.Array.data[1].values.Array.data[0]'
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7810826842247326027, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
+      propertyPath: 'overrideValuesPattern.Array.data[2].values.Array.data[0]'
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

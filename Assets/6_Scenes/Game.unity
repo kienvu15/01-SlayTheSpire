@@ -3279,6 +3279,7 @@ GameObject:
   - component: {fileID: 851573328}
   - component: {fileID: 851573327}
   - component: {fileID: 851573326}
+  - component: {fileID: 851573330}
   m_Layer: 5
   m_Name: Block-Panel
   m_TagString: Untagged
@@ -3367,6 +3368,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 851573324}
   m_CullTransparentMesh: 1
+--- !u!114 &851573330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851573324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e6c77a8e272a0f4cb0b6a9a7a3da8d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BlockPanelWatcher
+  target: {fileID: 851573326}
 --- !u!1 &935593220
 GameObject:
   m_ObjectHideFlags: 0
@@ -3927,6 +3941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fda83871de7fd5045871b8e48507c5e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleManager
+  player: {fileID: 3420904897396927793}
 --- !u!114 &1015698130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3980,13 +3995,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deck: {fileID: 6872667435211596292}
   allCardData:
+  - {fileID: 11400000, guid: 8bd7bf1ee3dea9d44bac74cc0b42ceec, type: 2}
+  - {fileID: 11400000, guid: 8bd7bf1ee3dea9d44bac74cc0b42ceec, type: 2}
   - {fileID: 11400000, guid: 421b37df3e05a2b4fa22a3861400202d, type: 2}
   - {fileID: 11400000, guid: 892c0c187551e4544a7cf398c3ab7150, type: 2}
-  - {fileID: 11400000, guid: 421b37df3e05a2b4fa22a3861400202d, type: 2}
-  - {fileID: 11400000, guid: 892c0c187551e4544a7cf398c3ab7150, type: 2}
-  - {fileID: 11400000, guid: 892c0c187551e4544a7cf398c3ab7150, type: 2}
-  - {fileID: 11400000, guid: 892c0c187551e4544a7cf398c3ab7150, type: 2}
-  - {fileID: 11400000, guid: 421b37df3e05a2b4fa22a3861400202d, type: 2}
+  - {fileID: 11400000, guid: 6b6bd41c9c1c3c2458d6d85d5a4ef771, type: 2}
+  - {fileID: 11400000, guid: 899a9d2e5d01d9a499fd9621b4853250, type: 2}
+  - {fileID: 11400000, guid: 899a9d2e5d01d9a499fd9621b4853250, type: 2}
+  - {fileID: 11400000, guid: 504e0353ae2324841b86d97dc478a283, type: 2}
+  - {fileID: 11400000, guid: 504e0353ae2324841b86d97dc478a283, type: 2}
+  - {fileID: 11400000, guid: 875467f6ba7d93140afd27cf13b34c81, type: 2}
+  - {fileID: 11400000, guid: 8bd7bf1ee3dea9d44bac74cc0b42ceec, type: 2}
 --- !u!4 &1043002064
 Transform:
   m_ObjectHideFlags: 0
@@ -5243,7 +5262,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RelicManager
   equippedRelics: []
-  boneKnife: {fileID: 11400000, guid: 660e2ef9173aa114e99d7b9def708b50, type: 2}
 --- !u!4 &1513381808
 Transform:
   m_ObjectHideFlags: 0
@@ -5546,6 +5564,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1672195084}
   - component: {fileID: 1672195083}
+  - component: {fileID: 1672195085}
   m_Layer: 0
   m_Name: GameSystem
   m_TagString: Untagged
@@ -5584,6 +5603,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1138903148}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1672195085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672195082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 239bed2cb968ad44790aecaa0adb72f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameStage
 --- !u!1 &1706738772
 GameObject:
   m_ObjectHideFlags: 0
@@ -7996,7 +8027,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxMana: 2
   currentMana: 2
-  manaPerTurn: 2
+  manaPerTurn: 0
   manaContainer: {fileID: 0}
   manaImagePrefab: {fileID: 2309555640636810385, guid: a49cfb03af17edf428f95dd84fbee145, type: 3}
   hollowManaImagePrefab: {fileID: 2050474164684921082, guid: 600d5afcf6fa0be419d25e088f1ab6b4, type: 3}
@@ -8069,6 +8100,7 @@ MonoBehaviour:
   gameSystem: {fileID: 0}
   playerSelfCast: {fileID: 1158502313028343789}
   player: {fileID: 3420904897396927793}
+  blockPanel: {fileID: 851573326}
   handSize: 5
   waitAfterDiscardAnimations: 0.2
   waitBeforeRefill: 1
