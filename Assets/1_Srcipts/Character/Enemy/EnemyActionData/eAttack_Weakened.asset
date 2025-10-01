@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d4c58cc7bd85214b95ab08f2ab8281a, type: 3}
   m_Name: eAttack_Weakened
   m_EditorClassIdentifier: 
-  type: 2
-  targetType: 1
+  type: 0
+  buffTargetMode: 0
   actionName: Attack
   cooldown: 4
   currentCooldown: 0

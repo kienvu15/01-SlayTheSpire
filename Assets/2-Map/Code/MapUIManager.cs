@@ -11,15 +11,18 @@ public class MapUIManager : MonoBehaviour
 
     [Header("Battle UI")]
     public BattleCanvasDatabase battleDatabase;
-    public Transform battleCanvasHolder;   
+    public Transform battleCanvasHolder;
+
+    [Header("Shop UI")]
+    public GameObject shopUI;
+
+    [Header("Event UI")]
+    public GameObject eventUI;
 
     [Header("Hide On")]
     public List<GameObject> hideOnBattle;
     public List<GameObject> hideOnShop;
     public List<GameObject> hideOnEvent;
-
-    [Header("Shop UI")]
-    public GameObject shopUI;
 
     [Header("References")]
     public GameObject enemyFM;
@@ -93,6 +96,7 @@ public class MapUIManager : MonoBehaviour
         GameFlowManager.Instance.spawner = go.GetComponentInChildren<EnemySpawner>();
         GameFlowManager.Instance.discard = go.GetComponentInChildren<Discard>();
         GameFlowManager.Instance.player = player;
+       // GameFlowManager.Instance.manasystem = manaSystem;
 
         //manaSystem + object player
         GameObject panel = go.GetComponentInChildren<ManaPanel>().gameObject;
@@ -127,6 +131,15 @@ public class MapUIManager : MonoBehaviour
         }
     }
 
+    public void ShowEventUI()
+    {
+        eventUI.SetActive(true);
+        // hide UI khác
+        foreach (var obj in hideOnEvent)
+        {
+            if (obj != null) obj.SetActive(false);
+        }
+    }
     public void HideBattleCanvas()
     {
         // clear all children trong holder

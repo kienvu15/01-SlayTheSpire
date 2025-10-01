@@ -21,9 +21,7 @@ public class ManaSystem : MonoBehaviour
     {
     }
 
-    /// <summary>
     /// Reset mana mỗi lượt (gọi khi End Turn)
-    /// </summary>
     public void StartTurn()
     {
         currentMana += manaPerTurn;
@@ -31,17 +29,13 @@ public class ManaSystem : MonoBehaviour
         UpdateManaUI();
     }
 
-    /// <summary>
     /// Kiểm tra xem có đủ mana để chơi card không
-    /// </summary>
     public bool CanPlayCard(CardData card)
     {
         return currentMana >= card.manaCost;
     }
 
-    /// <summary>
     /// Trừ mana khi chơi card
-    /// </summary>
     public void SpendMana(int amount)
     {
         currentMana -= amount;
@@ -49,9 +43,14 @@ public class ManaSystem : MonoBehaviour
         UpdateManaUI();
     }
 
-    /// <summary>
+    // reset mana to max when player enters a battle
+    public void ResetManaToMax()
+    {
+        currentMana = maxMana;
+        UpdateManaUI();
+    }
+
     /// Cập nhật UI Mana bằng icon
-    /// </summary>
     public void UpdateManaUI()
     {
         // Xóa icon cũ
@@ -75,4 +74,5 @@ public class ManaSystem : MonoBehaviour
             manaIcons.Add(icon);
         }
     }
+
 }

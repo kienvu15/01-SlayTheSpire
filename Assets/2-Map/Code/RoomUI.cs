@@ -61,6 +61,11 @@ public class RoomUI : MonoBehaviour
         {
             MapUIManager.Instance.OpenShop();
         }
+
+        if(room.type == RoomType.Event)
+        {
+            MapUIManager.Instance.ShowEventUI();
+        }
     }
 
 

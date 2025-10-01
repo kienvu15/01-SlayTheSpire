@@ -7,6 +7,9 @@ public class EventManager : MonoBehaviour
 {
     public static EventManager Instance;
 
+    [Header("Reference")]
+    public CoinManager coinManager;
+
     [Header("UI References")]
     public GameObject eventPanel;
     public TMP_Text titleText;
@@ -30,9 +33,9 @@ public class EventManager : MonoBehaviour
     {
         ShowRandomEvent();
     }
+
     public void ShowRandomEvent()
     {
-        // Lấy random event
         var data = eventDatabase.events[Random.Range(0, eventDatabase.events.Length)];
         ShowEvent(data);
     }
@@ -80,53 +83,59 @@ public class EventManager : MonoBehaviour
     {
         Debug.Log($"Player chọn: {choice.choiceText}");
 
-        // Nếu có event tiếp theo → nhảy sang event khác luôn
+        // Nếu có outcome → random 1 kết quả và áp dụng
+        if (choice.outcomes.Count > 0)
+        {
+            var outcome = GetRandomOutcome(choice.outcomes);
+            Debug.Log($"Outcome: {outcome.resultType} ({outcome.value})");
+
+            switch (outcome.resultType)
+            {
+                case EventResultType.Leave:
+                    gameObject.SetActive(false);
+                    break;
+
+                case EventResultType.Gold:
+                    coinManager.AddCoins(outcome.value);
+                    break;
+
+                case EventResultType.Damage:
+                    // Player.Instance.hp -= outcome.value;
+                    break;
+
+                case EventResultType.Heal:
+                    // Player.Instance.hp += outcome.value;
+                    break;
+
+                case EventResultType.Combat:
+                    MapUIManager.Instance.ShowBattleCanvas();
+                    break;
+
+                case EventResultType.Shop:
+                    MapUIManager.Instance.OpenShop();
+                    break;
+
+                case EventResultType.Relic:
+                    // Inventory.AddRelic(outcome.value);
+                    break;
+            }
+
+            // hiện text outcome
+            descriptionText.text = outcome.resultText;
+            eventImageUI.sprite = null;
+        }
+
+        // Sau khi thực hiện outcome → nếu có event tiếp theo thì nhảy tiếp
         if (choice.nextEvent != null)
         {
             ShowEvent(choice.nextEvent);
             return;
         }
 
-        // Nếu có outcome → random 1 kết quả
-        if (choice.outcomes.Count > 0)
-        {
-            var outcome = GetRandomOutcome(choice.outcomes);
-            Debug.Log($"Outcome: {outcome.resultType} ({outcome.value})");
-
-            // Xử lý kết quả
-            switch (outcome.resultType)
-            {
-                case EventResultType.Leave:
-                    gameObject.SetActive(false);
-                    break;
-                case EventResultType.Gold:
-                    // Player.Instance.gold += outcome.value;
-                    break;
-                case EventResultType.Damage:
-                    // Player.Instance.hp -= outcome.value;
-                    break;
-                case EventResultType.Heal:
-                    // Player.Instance.hp += outcome.value;
-                    break;
-                case EventResultType.Combat:
-                    MapUIManager.Instance.ShowBattleCanvas();
-                    break;
-                case EventResultType.Shop:
-                    MapUIManager.Instance.OpenShop();
-                    break;
-                case EventResultType.Relic:
-                    // Inventory.AddRelic(outcome.value);
-                    break;
-            }
-
-            // hiện text outcome lên UI
-            descriptionText.text = outcome.resultText;
-            eventImageUI.sprite = null;
-        }
-
-        // Sau khi xong thì có thể đóng panel hoặc để player bấm "Continue"
+        // Nếu không có outcome và không có nextEvent thì đóng panel
         // eventPanel.SetActive(false);
     }
+
 
     private EventOutcome GetRandomOutcome(List<EventOutcome> list)
     {

@@ -13,7 +13,7 @@ public class GameFlowManager : MonoBehaviour
     public Discard discard;
     public Match match;
     public CoinManager coinManager;
-
+    public ManaSystem manasystem;
     public List<GameObject> hideOnBattle;
 
     private void Awake()
@@ -39,6 +39,7 @@ public class GameFlowManager : MonoBehaviour
         StartCoroutine(OnAllEncountersCleared());
         player.ClearAllConditionsAndSkills();
         coinManager.AddCoins(Random.Range(14, 17));
+        manasystem.ResetManaToMax();
     }
 
     /// Hàm này được EnemySystem gọi khi sóng cuối cùng clear

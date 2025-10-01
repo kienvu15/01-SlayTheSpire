@@ -15,13 +15,13 @@ MonoBehaviour:
   eventTitle: There's a chest!?
   description: What you gonna do?
   eventImage: {fileID: 7863668928567222943, guid: 4062011332f407243997b0f5d848cc52, type: 3}
-  BackgroundImage: {fileID: -1555388434437248711, guid: f3996a90e41c6e84ba45a4ecc748b47b, type: 3}
+  BackgroundImage: {fileID: -7992452208110515111, guid: 0b899b4e157b28b4aa2b6b0764deaa08, type: 3}
   choices:
   - choiceText: Open
     choiceImage: {fileID: -5366053918321049083, guid: 4062011332f407243997b0f5d848cc52, type: 3}
     nextEvent: {fileID: 11400000, guid: 44bbbbc42ea8e1240b8f1301dfe93db3, type: 2}
     outcomes:
     - resultText: 
-      resultType: 1
+      resultType: 2
       value: 10
-      weight: 0
+      weight: 1

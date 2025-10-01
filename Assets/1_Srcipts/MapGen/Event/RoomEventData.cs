@@ -40,10 +40,8 @@ public class EventChoice
     {
         if (outcomes == null || outcomes.Count == 0) return null;
 
-        // Nếu chỉ có 1 thì return luôn
         if (outcomes.Count == 1) return outcomes[0];
 
-        // Weighted random
         float totalWeight = 0f;
         foreach (var outcome in outcomes)
             totalWeight += outcome.weight;
