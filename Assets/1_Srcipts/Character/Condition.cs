@@ -31,9 +31,7 @@ public class Condition
 
     public Condition Clone() => (Condition)MemberwiseClone();
 
-    /// <summary>
     /// Gọi mỗi lượt → thực hiện hiệu ứng theo thời gian
-    /// </summary>
     public void OnTurn(Character character)
     {
         switch (type)
@@ -46,17 +44,13 @@ public class Condition
         }
     }
 
-    /// <summary>
     /// Gọi khi Condition hết hạn
-    /// </summary>
     public void OnExpire(Character character)
     {
         Debug.Log($"[Condition] {type} expired on {character.name}");
     }
 
-    /// <summary>
     /// Xác suất né tránh từ Condition
-    /// </summary>
     public float GetDodgeChance()
     {
         switch (type)
@@ -67,9 +61,7 @@ public class Condition
         return 0f;
     }
 
-    /// <summary>
     /// Trả xác suất khiến NGƯỜI TẤN CÔNG miss khi tấn công mục tiêu có condition này.
-    /// </summary>
     public float GetAttackerMissChance()
     {
         switch (type)
@@ -82,9 +74,7 @@ public class Condition
         return 0f;
     }
 
-    /// <summary>
     /// Nhân sát thương gây ra
-    /// </summary>
     public float GetDamageDealtMultiplier()
     {
         switch (type)
@@ -95,21 +85,28 @@ public class Condition
         return 1f;
     }
 
-    /// <summary>
     /// Nhân sát thương nhận vào
-    /// </summary>
     public float GetDamageTakenMultiplier()
     {
         switch (type)
         {
-            case ConditionType.Fragile: return 1.5f; // -50% armor effect ~ nhận nhiều dmg hơn
+            // case ConditionType.Fragile: return 1.5f; // -50% armor effect ~ nhận nhiều dmg hơn
         }
         return 1f;
     }
 
-    /// <summary>
+    /// Nhân giá trị shield được cộng vào
+    public float GetShieldGainMultiplier()
+    {
+        switch (type)
+        {
+            case ConditionType.Fragile:
+                return 0.5f; // chỉ nhận 50% shield
+        }
+        return 1f;
+    }
+
     /// Check luôn Crit từ condition
-    /// </summary>
     public bool ForceCritical()
     {
         switch (type)
@@ -122,9 +119,7 @@ public class Condition
         return false;
     }
 
-    /// <summary>
     /// Kiểm tra có phải là trạng thái miễn nhiễm (không bị replace)
-    /// </summary>
     public bool IsImmune()
     {
         return type == ConditionType.Immunity;

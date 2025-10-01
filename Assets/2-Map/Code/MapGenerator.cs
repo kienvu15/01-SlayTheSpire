@@ -39,6 +39,9 @@ public class MapGenerator : MonoBehaviour
         lastShopRow = -999;
         lastEliteRow = -999;
 
+        if (MapUIManager.Instance != null)
+            MapUIManager.Instance.battleRoomCount = 0;
+
         height = Random.Range(minHeight, maxHeight + 1);
 
         // --- ROW 0: START ---
@@ -93,7 +96,6 @@ public class MapGenerator : MonoBehaviour
         cam.maxBounds = new Vector2(0, maxY);
     }
 
-
     private RoomType GetRandomRoomType(int rowIndex)
     {
         List<RoomType> options = new List<RoomType>();
@@ -135,8 +137,6 @@ public class MapGenerator : MonoBehaviour
 
         return list;
     }
-
-
 
     private Room CreateRoomAt(int rowIndex, RoomType type)
     {
@@ -187,7 +187,6 @@ public class MapGenerator : MonoBehaviour
         }
     }
 
-
     private void DrawAllConnections()
     {
         foreach (var row in rows)
@@ -204,7 +203,6 @@ public class MapGenerator : MonoBehaviour
             }
         }
     }
-
 
     private void DrawConnection(Vector3 a, Vector3 b)
     {
@@ -233,7 +231,6 @@ public class MapGenerator : MonoBehaviour
             }
         }
     }
-
 
     private void ClearMap()
     {

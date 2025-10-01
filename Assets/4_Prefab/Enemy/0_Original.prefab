@@ -1026,6 +1026,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5e2be4cd86c4334b9f78a79d5e0dcbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  faction: 1
+  isAlive: 1
   stats:
     maxHP: 26
     currentHP: 26
@@ -1045,12 +1047,15 @@ MonoBehaviour:
   isStunned: 0
   stunDuration: 0
   relicManager: {fileID: 0}
+  randomizeHP: 0
+  randomRange: 3
   animator: {fileID: 4468868954388692692}
   rb: {fileID: 2296956086345072344}
   typeIcons: {fileID: 11400000, guid: 58df069efe116de41af94ce326a2e0c4, type: 2}
   intentUI: {fileID: 4382904733074479775}
   currentSlot: {fileID: 0}
   isBoss: 0
+  enemyType: 0
   actionPatternAssets:
   - {fileID: 11400000, guid: 9faa333789b6c7f4eb21e8b56b6e127c, type: 2}
   - {fileID: 11400000, guid: 9faa333789b6c7f4eb21e8b56b6e127c, type: 2}
@@ -1058,9 +1063,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c40a86c9a5ae2d1488095756cc96070b, type: 2}
   overrideValuesPattern:
   - values: 05000000
+    overrideCooldown: -1
   - values: 05000000
+    overrideCooldown: -1
   - values: 08000000
+    overrideCooldown: -1
   - values: 05000000
+    overrideCooldown: -1
 --- !u!50 &2296956086345072344
 Rigidbody2D:
   serializedVersion: 5

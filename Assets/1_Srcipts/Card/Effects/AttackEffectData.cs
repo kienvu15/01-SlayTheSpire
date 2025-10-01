@@ -50,7 +50,7 @@ public class AttackEffectData : EffectData, IOverrideValue
 
         int old = damage;
         damage = overrideValue;
-        bool hit = self.DealDamage(target, damage);
+        bool hit = self.DealDamage(target, damage, vfxType);
 
         if (hit)
             Debug.Log($"[AttackEffect] {self.name} dealt {overrideValue} damage to {target.name} (override)");

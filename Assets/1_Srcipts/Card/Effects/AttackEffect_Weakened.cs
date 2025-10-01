@@ -29,7 +29,7 @@ public class AttackEffect_Weakened : EffectData, IOverrideValue
             };
 
             bool isFromPlayer = self is Player;
-            target.AddCondition(weakened, isFromPlayer,CardType.Special);
+            target.AddCondition(weakened, isFromPlayer, CardType.Special);
             Debug.Log($"[AttackEffect_Weakened] Applied Weakened x{weakened.level} to {target.name}");
         }
 

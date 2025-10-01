@@ -7,6 +7,7 @@ public class GameFlowManager : MonoBehaviour
     public static GameFlowManager Instance { get; private set; }
 
     public EnemySpawner spawner;
+    public Player player;
     public GameObject victoryPanel;
     public Deck deck;
     public Discard discard;
@@ -36,6 +37,7 @@ public class GameFlowManager : MonoBehaviour
     public void HideAllG()
     {
         StartCoroutine(OnAllEncountersCleared());
+        player.ClearAllConditionsAndSkills();
         coinManager.AddCoins(Random.Range(14, 17));
     }
 

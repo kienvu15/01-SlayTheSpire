@@ -16,10 +16,9 @@ MonoBehaviour:
   cardType: 1
   effectOn: 1
   artwork: {fileID: -3657138873779901607, guid: 82f05ba89c6a48b48a1bb860d71c93e2, type: 3}
-  icon: {fileID: 8359410041823695481, guid: 44f9a272d427380468df756fe0d28bff, type: 3}
   manaCost: 1
   description: Ranged. Deal 7 damage.
   effects:
-  - effect: {fileID: 11400000, guid: 8c16c3fa9234edb489c2df4f788fe946, type: 2}
+  - effect: {fileID: 11400000, guid: d0973812e68a3d04f916998687d396ec, type: 2}
     overrideValue: 0
     valueOverride: 0

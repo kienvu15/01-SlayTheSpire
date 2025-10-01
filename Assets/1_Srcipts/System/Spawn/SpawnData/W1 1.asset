@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: W1 1
   m_EditorClassIdentifier: 
   waves:
-  - enemyTypes: 0000000002000000
+  - enemyTypes: 0100000002000000

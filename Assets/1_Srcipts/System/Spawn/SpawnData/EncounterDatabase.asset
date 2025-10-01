@@ -12,5 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1e6298a4e6d3584a86d4526f08ad2a0, type: 3}
   m_Name: EncounterDatabase
   m_EditorClassIdentifier: Assembly-CSharp::EncounterDatabase
-  encounters:
+  earlyEncounters:
   - {fileID: 11400000, guid: 2e6488f4b81ef17489d192e6c37a919d, type: 2}
+  - {fileID: 11400000, guid: 96376a12ba2816f4d91823e5db638028, type: 2}
+  - {fileID: 11400000, guid: 439795096570e864a8d4a90c93cf6f31, type: 2}
+  - {fileID: 11400000, guid: a9eae7288468e0a40925dfef2320c3cd, type: 2}
+  midEncounters: []
+  lateEncounters: []

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: eAttack
   m_EditorClassIdentifier: 
   type: 0
+  targetType: 1
   actionName: Attack
   cooldown: 0
-  overrideValues: 04000000
   currentCooldown: 0
   effects:
   - {fileID: 11400000, guid: 8c16c3fa9234edb489c2df4f788fe946, type: 2}

@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -2946662619305601574, guid: f6373b5d20aec284db8278b0aa0a82b2, type: 3}
+    - target: {fileID: 224903615666772557, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2085457821108544885, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -153,8 +157,56 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7810826842247326027, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
+      propertyPath: faction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7810826842247326027, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
       propertyPath: enemyType
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7810826842247326027, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
+      propertyPath: actionPatternAssets.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7810826842247326027, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
+      propertyPath: overrideValuesPattern.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7810826842247326027, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
+      propertyPath: 'actionPatternAssets.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: c18a02e23fa5a094c815886dc1549e7b, type: 2}
+    - target: {fileID: 7810826842247326027, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
+      propertyPath: 'actionPatternAssets.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 22dc4f22a0a9bae4eb1b0f6dbb9a88c8, type: 2}
+    - target: {fileID: 7810826842247326027, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
+      propertyPath: 'actionPatternAssets.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: c40a86c9a5ae2d1488095756cc96070b, type: 2}
+    - target: {fileID: 7810826842247326027, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
+      propertyPath: 'actionPatternAssets.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: ab376cff4a46cbe48b7e708d4cd2b64f, type: 2}
+    - target: {fileID: 7810826842247326027, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
+      propertyPath: overrideValuesPattern.Array.data[0].overrideCooldown
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7810826842247326027, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
+      propertyPath: overrideValuesPattern.Array.data[1].overrideCooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7810826842247326027, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
+      propertyPath: 'overrideValuesPattern.Array.data[0].values.Array.data[0]'
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7810826842247326027, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
+      propertyPath: 'overrideValuesPattern.Array.data[1].values.Array.data[0]'
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7810826842247326027, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
+      propertyPath: 'overrideValuesPattern.Array.data[2].values.Array.data[0]'
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

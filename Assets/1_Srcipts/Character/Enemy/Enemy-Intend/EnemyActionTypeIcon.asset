@@ -16,10 +16,14 @@ MonoBehaviour:
   - type: 0
     icon: {fileID: 7440583766697795752, guid: 44f9a272d427380468df756fe0d28bff, type: 3}
   - type: 1
-    icon: {fileID: -6077695057924305978, guid: 44f9a272d427380468df756fe0d28bff, type: 3}
-  - type: 2
     icon: {fileID: 7408837643681295858, guid: 44f9a272d427380468df756fe0d28bff, type: 3}
+  - type: 2
+    icon: {fileID: -6077695057924305978, guid: 44f9a272d427380468df756fe0d28bff, type: 3}
   - type: 3
-    icon: {fileID: -1224790340752598563, guid: 44f9a272d427380468df756fe0d28bff, type: 3}
-  - type: 4
     icon: {fileID: 5315446170193386926, guid: 44f9a272d427380468df756fe0d28bff, type: 3}
+  - type: 4
+    icon: {fileID: -2386628108929695657, guid: 44f9a272d427380468df756fe0d28bff, type: 3}
+  - type: 5
+    icon: {fileID: 6817973813988819924, guid: 44f9a272d427380468df756fe0d28bff, type: 3}
+  - type: 6
+    icon: {fileID: -720601588300839171, guid: 44f9a272d427380468df756fe0d28bff, type: 3}

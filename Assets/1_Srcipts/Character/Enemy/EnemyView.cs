@@ -142,10 +142,6 @@ public class EnemyView : Enemy
     public override void AddShield(int amount)
     {
         base.AddShield(amount);
-        if (animator != null)
-        {
-            animator.SetTrigger("Up");
-        }
     }
 
     public void PerformAction(Character target)
@@ -171,6 +167,7 @@ public class EnemyView : Enemy
 
                     if (animator != null && (action.Type == Type.Attack || action.Type == Type.BadBuff))
                         animator.SetTrigger("Attack");
+
 
                     // Giảm cooldown tất cả action khác (ngoại trừ action vừa dùng)
                     for (int i = 0; i < actionPattern.Count; i++)
@@ -210,6 +207,9 @@ public class EnemyView : Enemy
 
             if (animator != null && (action.Type == Type.Attack || action.Type == Type.BadBuff))
                 animator.SetTrigger("Attack");
+
+            if (animator != null && (action.Type == Type.Buff))
+                animator.SetTrigger("Up");
 
             // Giảm cooldown tất cả action khác
             for (int i = 0; i < actionPattern.Count; i++)

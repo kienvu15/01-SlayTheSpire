@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ScorechingShell
   m_EditorClassIdentifier: Assembly-CSharp::ScorechingShell
   relicName: 
-  description: 
+  description: '- 10 HP, + 2 mana'
   icon: {fileID: 21300000, guid: 5558ed06d1bb5254ea6b07a48ce2964a, type: 3}
   bonusHP: 10
   bonusMana: 2

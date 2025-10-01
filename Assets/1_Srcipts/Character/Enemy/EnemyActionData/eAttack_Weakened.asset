@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: eAttack_Weakened
   m_EditorClassIdentifier: 
   type: 2
+  targetType: 1
   actionName: Attack
   cooldown: 4
   currentCooldown: 0

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d4c58cc7bd85214b95ab08f2ab8281a, type: 3}
   m_Name: eShield
   m_EditorClassIdentifier: 
-  type: 1
+  type: 2
+  buffTargetMode: 1
   actionName: Gian Ammor
   cooldown: 3
   currentCooldown: 0

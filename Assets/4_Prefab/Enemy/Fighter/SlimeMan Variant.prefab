@@ -149,20 +149,32 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7810826842247326027, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
+      propertyPath: faction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7810826842247326027, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
       propertyPath: actionPatternAssets.Array.size
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7810826842247326027, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
       propertyPath: overrideValuesPattern.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7810826842247326027, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
       propertyPath: 'actionPatternAssets.Array.data[2]'
       value: 
       objectReference: {fileID: 11400000, guid: 00e46c75b28dcb84ea002cd380841693, type: 2}
     - target: {fileID: 7810826842247326027, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
+      propertyPath: overrideValuesPattern.Array.data[0].overrideCooldown
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7810826842247326027, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
+      propertyPath: overrideValuesPattern.Array.data[2].overrideCooldown
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7810826842247326027, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
       propertyPath: overrideValuesPattern.Array.data[2].values.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7810826842247326027, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
       propertyPath: overrideValuesPattern.Array.data[3].values.Array.size

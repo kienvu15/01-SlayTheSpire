@@ -3,8 +3,18 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
+public enum Faction
+{
+    Player,
+    Enemy
+}
+
 public class Character : MonoBehaviour
 {
+    [Header("Basic Info")]
+    public Faction faction;
+    public bool isAlive = true;
+
     [Header("Stats")]
     public CharacterStats stats = new CharacterStats();
 
@@ -40,6 +50,15 @@ public class Character : MonoBehaviour
     protected virtual void Update()
     {
         Shield.SetActive(stats.shield > 0);
+    }
+
+    //======== Clear all conditions and skills (for testing) ========
+    public void ClearAllConditionsAndSkills()
+    {
+        activeConditions.Clear();
+        activeSkills.Clear();
+        conditionPanelUI?.UpdateConditions(activeConditions);
+        skillPanelUI?.ClearAll();
     }
 
     // ================== Damage & Heal ==================
@@ -94,10 +113,20 @@ public class Character : MonoBehaviour
 
     public virtual void AddShield(int amount)
     {
-        stats.shield += amount;
+        // ===== Multiplier từ Conditions =====
+        float multiplier = 1f;
+        foreach (var cond in activeConditions)
+            multiplier *= cond.GetShieldGainMultiplier();
+
+        int finalShield = Mathf.RoundToInt(amount * multiplier);
+
+        stats.shield += finalShield;
+        Debug.Log($"[AddShield] {name} gained {finalShield} shield (base {amount}, multiplier {multiplier})");
+
         UpdateUI();
     }
 
+    #region raw damage
     // Deal raw damage, bypass all checks and effects
     public bool DealRawDamage(Character target, int dmg)
     {
@@ -105,8 +134,7 @@ public class Character : MonoBehaviour
         target.TakeDamage(dmg);
         return true;
     }
-
-    
+    #endregion 
 
     // Deal damage with all checks (miss, dodge, crit, conditions, skills...)
     public bool DealDamage(Character target, int baseDamage, CardType vfxType = CardType.Mellee)

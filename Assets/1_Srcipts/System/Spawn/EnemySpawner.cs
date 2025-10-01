@@ -17,8 +17,8 @@ public class EnemySpawner : MonoBehaviour
         if (enemySystem != null)
             enemySystem.spawner = this;
 
-        // chọn encounter random ngay từ đầu
-        currentEncounter = encounterDatabase.GetRandomEncounter();
+        int count = MapUIManager.Instance != null ? MapUIManager.Instance.battleRoomCount : 0;
+        currentEncounter = encounterDatabase.GetEncounterForStage(count);
         currentWaveIndex = 0;
 
         if (currentEncounter != null)

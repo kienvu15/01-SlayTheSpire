@@ -157,6 +157,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7810826842247326027, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
+      propertyPath: faction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7810826842247326027, guid: 4f6a43bfb0a50cc4cb673542dc432366, type: 3}
       propertyPath: randomizeHP
       value: 1
       objectReference: {fileID: 0}
