@@ -155,5 +155,6 @@ public class EnemyAction : ScriptableObject
                 effect.Apply(self, target, null, null);
             }
         }
+
     }
 }
