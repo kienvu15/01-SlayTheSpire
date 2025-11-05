@@ -7,16 +7,16 @@ using TMPro;
 public class Discard : MonoBehaviour
 {
     [Header("References")]
-    public Transform discardTransform;           // Vị trí lá bài bay về discard
-    public TextMeshProUGUI discardCountText;     // UI hiển thị số lá trong discard
+    private Transform discardTransform;          
+    public TextMeshProUGUI discardCountText;     
 
     //public GameObject SystemCanvas;
     public CanvasGroup PlayerSelfCast;
 
     [Header("Animation")]
-    public float moveDuration = 0.5f;            // thời gian di chuyển
-    public float scaleDuration = 0.5f;           // thời gian scale nhỏ lại
-    public float delayBetweenCards = 0.1f;       // delay giữa các lá
+    public float moveDuration = 0.5f;            
+    public float scaleDuration = 0.5f;           
+    public float delayBetweenCards = 0.1f;       
 
     [HideInInspector]
     public List<CardData> discardPile = new List<CardData>();
