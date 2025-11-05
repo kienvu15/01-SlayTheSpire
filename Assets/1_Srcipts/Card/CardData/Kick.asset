@@ -15,8 +15,7 @@ MonoBehaviour:
   cardName: Kick
   cardType: 0
   effectOn: 1
-  artwork: {fileID: 5363091276400413055, guid: 82f05ba89c6a48b48a1bb860d71c93e2, type: 3}
-  icon: {fileID: 7440583766697795752, guid: 44f9a272d427380468df756fe0d28bff, type: 3}
+  artwork: {fileID: 1643006026915899247, guid: d3171a92166b02644979e743774525ca, type: 3}
   manaCost: 0
   description: Deal 8 damage and knocks back this target.
   effects:

@@ -15,7 +15,7 @@ MonoBehaviour:
   cardName: Carnival
   cardType: 3
   effectOn: 0
-  artwork: {fileID: -1903424281760741967, guid: b2a09cd664220d54e984ef6d72ec32d1, type: 3}
+  artwork: {fileID: 1643006026915899247, guid: d3171a92166b02644979e743774525ca, type: 3}
   manaCost: 0
   description: Applies Drunk x2 to all characters.
   effects:

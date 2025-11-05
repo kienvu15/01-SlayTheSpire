@@ -15,7 +15,7 @@ MonoBehaviour:
   cardName: Throw Axe
   cardType: 1
   effectOn: 1
-  artwork: {fileID: -3657138873779901607, guid: 82f05ba89c6a48b48a1bb860d71c93e2, type: 3}
+  artwork: {fileID: 1643006026915899247, guid: d3171a92166b02644979e743774525ca, type: 3}
   manaCost: 1
   description: Ranged. Deal 7 damage.
   effects:

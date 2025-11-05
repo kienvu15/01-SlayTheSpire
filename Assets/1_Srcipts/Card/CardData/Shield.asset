@@ -15,7 +15,7 @@ MonoBehaviour:
   cardName: Wooden Shield
   cardType: 1
   effectOn: 0
-  artwork: {fileID: 7310644113835923542, guid: b2a09cd664220d54e984ef6d72ec32d1, type: 3}
+  artwork: {fileID: 1643006026915899247, guid: d3171a92166b02644979e743774525ca, type: 3}
   manaCost: 1
   description: Gain 6 armor
   effects:

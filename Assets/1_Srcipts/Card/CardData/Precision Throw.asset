@@ -15,7 +15,7 @@ MonoBehaviour:
   cardName: Precision Throw
   cardType: 0
   effectOn: 1
-  artwork: {fileID: -2270983095469587532, guid: 841d868b52030144ab7cb545c4b4bcb2, type: 3}
+  artwork: {fileID: 1643006026915899247, guid: d3171a92166b02644979e743774525ca, type: 3}
   manaCost: 0
   description: Target any enemy, dealing 5 damage, and applies Blind x1.
   effects:

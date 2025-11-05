@@ -15,9 +15,10 @@ MonoBehaviour:
   cardName: Blind
   cardType: 0
   effectOn: 1
-  artwork: {fileID: 7692988691765373475, guid: 82f05ba89c6a48b48a1bb860d71c93e2, type: 3}
-  icon: {fileID: 0}
+  artwork: {fileID: 1643006026915899247, guid: d3171a92166b02644979e743774525ca, type: 3}
   manaCost: 0
   description: Applies Blind x1.
   effects:
-  - {fileID: 11400000, guid: 06b295dc214063544b984314701ddcc0, type: 2}
+  - effect: {fileID: 0}
+    overrideValue: 0
+    valueOverride: 0

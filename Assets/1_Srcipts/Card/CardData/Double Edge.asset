@@ -15,7 +15,7 @@ MonoBehaviour:
   cardName: Double Edge
   cardType: 0
   effectOn: 1
-  artwork: {fileID: 1917753218333449256, guid: 391b7072cb75b184b93868407d9168ec, type: 3}
+  artwork: {fileID: 1643006026915899247, guid: d3171a92166b02644979e743774525ca, type: 3}
   manaCost: 0
   description: Deals 10 damage. You lose 2 HP.
   effects:
