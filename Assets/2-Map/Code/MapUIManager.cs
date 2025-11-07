@@ -12,6 +12,7 @@ public class MapUIManager : MonoBehaviour
     [Header("Battle UI")]
     public BattleCanvasDatabase battleDatabase;
     public Transform battleCanvasHolder;
+    public GameObject handDeckCanvas;
 
     [Header("Shop UI")]
     public GameObject shopUI;
@@ -67,22 +68,24 @@ public class MapUIManager : MonoBehaviour
         Debug.Log($"Player đã vào battle room {battleRoomCount} lần.");
 
         // spawn vào holder
-        var go = Instantiate(prefab, battleCanvasHolder);
-        go.transform.localPosition = Vector3.zero;
+        var battleRoom = Instantiate(prefab, battleCanvasHolder);
+        handDeckCanvas.SetActive(true);
+
+        battleRoom.transform.localPosition = Vector3.zero;
 
         // EnemyFm
-        StartCoroutine(RegisterEnemiesNextFrame(go));
+        StartCoroutine(RegisterEnemiesNextFrame(battleRoom));
 
         //deck
-        deck.spawner = go.GetComponentInChildren<EnemySpawner>();
-        deck.discard = go.GetComponentInChildren<Discard>();
-        deck.handParent = go.transform.Find("HandPanel");
-        deck.deckTransform = go.transform.Find("Deck");
+        // deck.spawner = battleRoom.GetComponentInChildren<EnemySpawner>();
+        //deck.discard = battleRoom.GetComponentInChildren<Discard>();
+        //deck.handParent = battleRoom.transform.Find("HandPanel");
+        //deck.deckTransform = battleRoom.transform.Find("Deck");
         deck.CacheDeckCountText();
         deck.CacheDeckDiscard();
 
         //playerSeflCast
-        playerSelfCast.discard = go.GetComponentInChildren<Discard>();
+        //playerSelfCast.discard = battleRoom.GetComponentInChildren<Discard>();
         CanvasGroup PlaySelfCast = playerSelfCast.GetComponent<CanvasGroup>();
         if (PlaySelfCast != null)
         {
@@ -90,19 +93,19 @@ public class MapUIManager : MonoBehaviour
         }
 
         //match
-        match.discard = go.GetComponentInChildren<Discard>();
-        match.enemySystem = go.GetComponentInChildren<EnemySystem>();
+        //match.discard = battleRoom.GetComponentInChildren<Discard>();
+        match.enemySystem = battleRoom.GetComponentInChildren<EnemySystem>();
 
-        GameFlowManager.Instance.spawner = go.GetComponentInChildren<EnemySpawner>();
-        GameFlowManager.Instance.discard = go.GetComponentInChildren<Discard>();
+        GameFlowManager.Instance.spawner = battleRoom.GetComponentInChildren<EnemySpawner>();
+        GameFlowManager.Instance.discard = battleRoom.GetComponentInChildren<Discard>();
         GameFlowManager.Instance.player = player;
        // GameFlowManager.Instance.manasystem = manaSystem;
 
         //manaSystem + object player
-        GameObject panel = go.GetComponentInChildren<ManaPanel>().gameObject;
-        if (panel != null)
+        GameObject manaPanel = FindFirstObjectByType<ManaPanel>().gameObject;
+        if (manaPanel != null)
         {
-            manaSystem.manaContainer = panel.transform;
+            manaSystem.manaContainer = manaPanel.transform;
             manaSystem.UpdateManaUI();
 
             //player.canvas.SetActive(true);
@@ -112,7 +115,7 @@ public class MapUIManager : MonoBehaviour
             EndButton.SetActive(true);
         }
 
-        GameSystem.Instance.BattleUICanvas = go;
+        GameSystem.Instance.BattleUICanvas = battleRoom;
 
         // hide UI khác
         foreach (var obj in hideOnBattle)

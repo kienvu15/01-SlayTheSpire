@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f844772ee33dee046b230839a1acafc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  discardTransform: {fileID: 8525590174139983009}
   discardCountText: {fileID: 7501228898009686403}
   PlayerSelfCast: {fileID: 0}
   moveDuration: 0.5

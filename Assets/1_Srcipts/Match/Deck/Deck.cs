@@ -11,8 +11,8 @@ public class Deck : MonoBehaviour
     public Discard discard;
     public GameObject cardPrefab;
     public Transform handParent;
-    public Transform deckTransform;  
-    public EnemySpawner spawner;
+    public Transform pileDeckTransform;  
+    
     public Match match;
 
     [Header("UI Debug")]
@@ -69,7 +69,7 @@ public class Deck : MonoBehaviour
 
     public void CacheDeckDiscard()
     {
-        discardCountText = GameObject.Find("Discard_Count")?.GetComponent<TextMeshProUGUI>();
+        discardCountText = GetComponent<TextMeshProUGUI>();
     }
 
     public void RemoveCardFromHand(GameObject cardGO, Match matchRef)
@@ -155,7 +155,7 @@ public class Deck : MonoBehaviour
 
         // Spawn card trực tiếp vào slot
         Transform targetBox = handParent.GetChild(handIndex);
-        GameObject cardGO = Instantiate(cardPrefab, deckTransform.position, Quaternion.identity, targetBox);
+        GameObject cardGO = Instantiate(cardPrefab, pileDeckTransform.position, Quaternion.identity, targetBox);
         cardGO.GetComponent<CardDisplay>().LoadCard(drawnCard);
         currentHand.Add(cardGO);
 

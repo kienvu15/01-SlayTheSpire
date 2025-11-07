@@ -7,11 +7,11 @@ using TMPro;
 public class Discard : MonoBehaviour
 {
     [Header("References")]
-    private Transform discardTransform;          
+    public Transform discardTransform;          
     public TextMeshProUGUI discardCountText;     
 
     //public GameObject SystemCanvas;
-    public CanvasGroup PlayerSelfCast;
+    [HideInInspector] public CanvasGroup PlayerSelfCast;
 
     [Header("Animation")]
     public float moveDuration = 0.5f;            

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: BattleCanvasDatabase
   m_EditorClassIdentifier: Assembly-CSharp::BattleCanvasDatabase
   battleCanvasPrefabs:
-  - {fileID: 7172402514961706783, guid: 97f7f5c329cbcbb49a470b36becbdf2d, type: 3}
+  - {fileID: 5717044235315801246, guid: 1512185e98c96374dbdbd8456a13b6cb, type: 3}

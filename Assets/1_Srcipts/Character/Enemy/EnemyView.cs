@@ -80,7 +80,7 @@ public class EnemyView : Enemy
         RectTransform enemyRect = (RectTransform)transform;
         RectTransform enemyCanvas = enemyRect.parent as RectTransform;
 
-        float speed = 40f;
+        float speed = 1940f;
 
         // Clear slot cũ
         if (currentSlot != null && currentSlot.occupant == this)

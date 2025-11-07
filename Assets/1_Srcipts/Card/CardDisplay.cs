@@ -30,6 +30,7 @@ public class CardDisplay : MonoBehaviour
 
     public CardData cardData;
 
+    private Canvas canvas;
     private void Awake()
     {
 
@@ -98,6 +99,12 @@ public class CardDisplay : MonoBehaviour
     void Start()
     {
         if (cardData == null) return;
+
+        canvas = GetComponentInChildren<Canvas>();
+        if(canvas != null)
+        {
+            canvas.sortingLayerName = "UI";
+        }
 
         if (cardData.manaCost == 0)
         {

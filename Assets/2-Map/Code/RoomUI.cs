@@ -11,6 +11,9 @@ public class RoomUI : MonoBehaviour
     private Room room;
     public GameObject ButtonPar;
 
+    public AudioClip clickSound;
+    public AudioSource audioSource;
+
     void Start()
     {
         circleAnimator = circleHighlight.GetComponent<Animator>();
@@ -54,6 +57,8 @@ public class RoomUI : MonoBehaviour
 
         if (room.type == RoomType.Battle)
         {
+            audioSource.PlayOneShot(clickSound);
+
             MapUIManager.Instance.ShowBattleCanvas();
         }
 

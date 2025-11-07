@@ -5,10 +5,12 @@ public class Player : Character
 {
     public Animator animator;
     public GameObject canvas;
+    AudioSource audioSource;
     protected override void Start()
     {
         base.Start();
         UpdateUI();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public IEnumerator EnableCanvasAfterAnimation(string stateName)
@@ -29,6 +31,7 @@ public class Player : Character
         if (animator != null)
         {
             animator.SetTrigger("Hit");
+            audioSource.Play();
         }
     }
 
