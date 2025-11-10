@@ -18,12 +18,12 @@ MonoBehaviour:
   - type: 1
     canvasPrefab: {fileID: 8525317392265969083, guid: a280e38426f6a2048a32cf12b5ee76aa, type: 3}
   - type: 2
-    canvasPrefab: {fileID: 8525317392265969083, guid: 37854c99b38ef754abaaceb6b864cf49, type: 3}
+    canvasPrefab: {fileID: 8525317392265969083, guid: 58f662af00ceb0d4fa6c6191758666c9, type: 3}
   - type: 3
-    canvasPrefab: {fileID: 7070110590766702399, guid: c776531b8adc76a48ac6500d6d44629d, type: 3}
+    canvasPrefab: {fileID: 8525317392265969083, guid: 13fa5f0abefa0dc419409cec21032e4a, type: 3}
   - type: 4
-    canvasPrefab: {fileID: 3612134286102808583, guid: 73d556ea29dd3334981e9985a6a61310, type: 3}
+    canvasPrefab: {fileID: 8525317392265969083, guid: 5e6efd833c439f34ca11417cef5ff258, type: 3}
   - type: 5
-    canvasPrefab: {fileID: 2758172174565781850, guid: cc9596ea9a938664eb0bf4098f53a55d, type: 3}
+    canvasPrefab: {fileID: 8525317392265969083, guid: 4d48cc8fe5753fd45b1190dd0a9b2177, type: 3}
   - type: 6
     canvasPrefab: {fileID: 5109344751421707251, guid: 6906cf1df4c35ab47b1e0c177d23fd63, type: 3}

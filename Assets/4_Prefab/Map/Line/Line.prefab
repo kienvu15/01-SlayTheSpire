@@ -77,9 +77,9 @@ LineRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 1309075557
-  m_SortingLayer: 1
-  m_SortingOrder: 2
+  m_SortingLayerID: -2138878037
+  m_SortingLayer: 2
+  m_SortingOrder: 601
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}

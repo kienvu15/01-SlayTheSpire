@@ -16,7 +16,7 @@ public class MapGenerator : MonoBehaviour
     public GameObject roomPrefab;
     public RoomPalette palette;
     public Transform gridParent;
-    public GameObject connectionPrefab; // prefab để vẽ line (LineRenderer hoặc sprite)
+    public GameObject connectionPrefab;
 
     private List<List<Room>> rows = new List<List<Room>>();
     private Room bossRoom;
@@ -46,9 +46,10 @@ public class MapGenerator : MonoBehaviour
 
         // --- ROW 0: START ---
         var startRoom = CreateRoomAt(0, RoomType.Start);
+        //startRoom.gameObject.GetComponent<Canvas>().overrideSorting = true;
+        //startRoom.gameObject.GetComponent<Canvas>().sortingLayerName = "UI";
         rows.Add(new List<Room> { startRoom });
 
-        // ✅ set player ở đây
         PlayerMapController.Instance.currentRoom = startRoom;
         MapUIManager.Instance.UpdateRoomHighlights();
 
@@ -61,7 +62,6 @@ public class MapGenerator : MonoBehaviour
 
             if (r == 1)
             {
-                // startRoom kết nối tới tất cả room ở row 1
                 foreach (var room in row)
                     startRoom.ConnectTo(room);
             }
@@ -75,7 +75,6 @@ public class MapGenerator : MonoBehaviour
         bossRoom = CreateRoomAt(height - 1, RoomType.Boss);
         rows.Add(new List<Room> { bossRoom });
 
-        // tất cả room ở hàng áp chót kết nối tới boss
         var penultimate = rows[rows.Count - 2];
         foreach (var r in penultimate) r.ConnectTo(bossRoom);
 
@@ -157,7 +156,6 @@ public class MapGenerator : MonoBehaviour
 
     private void EnsureConnectionsBetween(List<Room> prevRow, List<Room> currentRow)
     {
-        // 1. Đảm bảo mỗi room ở currentRow có ít nhất 1 incoming
         foreach (var curr in currentRow)
         {
             if (curr.incoming.Count == 0)
@@ -167,7 +165,6 @@ public class MapGenerator : MonoBehaviour
             }
         }
 
-        // 2. Đảm bảo mỗi room ở prevRow có ít nhất 1 outgoing
         foreach (var prev in prevRow)
         {
             if (prev.outgoing.Count == 0)
@@ -177,7 +174,6 @@ public class MapGenerator : MonoBehaviour
             }
         }
 
-        // 3. (Optional) Thêm vài kết nối ngẫu nhiên cho đa dạng
         int extra = Random.Range(0, Mathf.Max(prevRow.Count, currentRow.Count));
         for (int i = 0; i < extra; i++)
         {
@@ -210,17 +206,15 @@ public class MapGenerator : MonoBehaviour
         var lr = line.GetComponent<LineRenderer>();
         if (lr != null)
         {
-            int points = 20; // số điểm mượt
+            int points = 20; 
             lr.positionCount = points;
 
-            // Tính mid point để uốn cong
             Vector3 mid = (a + b) / 2f;
             Vector3 dir = (b - a).normalized;
-            Vector3 perp = new Vector3(-dir.y, dir.x, 0); // vector vuông góc
-            float curveAmount = Random.Range(-1.5f, 1.5f); // chỉnh độ cong
+            Vector3 perp = new Vector3(-dir.y, dir.x, 0); 
+            float curveAmount = Random.Range(-1.5f, 1.5f); 
             mid += perp * curveAmount;
 
-            // Vẽ curve Bezier
             for (int i = 0; i < points; i++)
             {
                 float t = i / (float)(points - 1);

@@ -6,14 +6,15 @@ using System.Collections.Generic;
 public class ManaSystem : MonoBehaviour
 {
     [Header("Mana Settings")]
-    public int maxMana = 10;          // Giới hạn mana tối đa
-    public int currentMana = 0;       // Mana hiện tại
-    public int manaPerTurn = 1;       // Mỗi lượt được refill thêm
+    public int maxMana = 10;          
+    public int currentMana = 0;       
+    public int manaPerTurn = 1;
+    public TextMeshProUGUI ManaText;
 
     [Header("UI References")]
-    public Transform manaContainer;   // nơi chứa các icon mana
-    public GameObject manaImagePrefab;    // prefab icon vàng (đã có mana)
-    public GameObject hollowManaImagePrefab; // prefab icon xám (hollow)
+    public Transform manaContainer;   
+    public GameObject manaImagePrefab;    
+    public GameObject hollowManaImagePrefab; 
 
     private List<GameObject> manaIcons = new List<GameObject>();
 
@@ -53,26 +54,35 @@ public class ManaSystem : MonoBehaviour
     /// Cập nhật UI Mana bằng icon
     public void UpdateManaUI()
     {
+        ManaText.text = $"{currentMana} / {maxMana}";
+
+
         // Xóa icon cũ
-        foreach (var icon in manaIcons)
-        {
-            Destroy(icon);
-        }
-        manaIcons.Clear();
+        //foreach (var icon in manaIcons)
+        //{
+        //    Destroy(icon);
+        //}
+        //manaIcons.Clear();
 
-        // Vẽ lại mana (vàng trước)
-        for (int i = 0; i < currentMana; i++)
-        {
-            GameObject icon = Instantiate(manaImagePrefab, manaContainer);
-            manaIcons.Add(icon);
-        }
+        //// Vẽ lại mana (vàng trước)
+        //for (int i = 0; i < currentMana; i++)
+        //{
+        //    GameObject icon = Instantiate(manaImagePrefab, manaContainer);
+        //    manaIcons.Add(icon);
+        //}
 
-        // Vẽ hollow (xám) cho phần còn lại
-        for (int i = currentMana; i < maxMana; i++)
-        {
-            GameObject icon = Instantiate(hollowManaImagePrefab, manaContainer);
-            manaIcons.Add(icon);
-        }
+        //// Vẽ hollow (xám) cho phần còn lại
+        //for (int i = currentMana; i < maxMana; i++)
+        //{
+        //    GameObject icon = Instantiate(hollowManaImagePrefab, manaContainer);
+        //    manaIcons.Add(icon);
+        //}
+    }
+
+    //Update texht mana
+    public void UpdateManaText()
+    {
+        ManaText.text = $"{currentMana} / {maxMana}";
     }
 
 }

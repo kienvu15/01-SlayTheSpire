@@ -96,7 +96,7 @@ public class MapUIManager : MonoBehaviour
         //match.discard = battleRoom.GetComponentInChildren<Discard>();
         match.enemySystem = battleRoom.GetComponentInChildren<EnemySystem>();
 
-        GameFlowManager.Instance.spawner = battleRoom.GetComponentInChildren<EnemySpawner>();
+        // GameFlowManager.Instance.spawner = battleRoom.GetComponentInChildren<EnemySpawner>();
         GameFlowManager.Instance.discard = battleRoom.GetComponentInChildren<Discard>();
         GameFlowManager.Instance.player = player;
        // GameFlowManager.Instance.manasystem = manaSystem;

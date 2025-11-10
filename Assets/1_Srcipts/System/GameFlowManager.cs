@@ -6,9 +6,9 @@ public class GameFlowManager : MonoBehaviour
 {
     public static GameFlowManager Instance { get; private set; }
 
-    public EnemySpawner spawner;
+    //public EnemySpawner spawner;
     public Player player;
-    public GameObject victoryPanel;
+    //public GameObject victoryPanel;
     public Deck deck;
     public Discard discard;
     public Match match;
@@ -42,7 +42,6 @@ public class GameFlowManager : MonoBehaviour
         manasystem.ResetManaToMax();
     }
 
-    /// Hàm này được EnemySystem gọi khi sóng cuối cùng clear
     public IEnumerator OnAllEncountersCleared()
     {
         yield return new WaitForSeconds(0f);

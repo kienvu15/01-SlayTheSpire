@@ -20,7 +20,10 @@ public class Character : MonoBehaviour
 
     [Header("UI References")]
     public TextMeshProUGUI hpText;
+
     public Slider hpBar;
+    Color shieldColor = new Color32(0x34, 0x7E, 0x91, 0xFF);
+
     public TextMeshProUGUI shieldText;
     public GameObject Shield;
     
@@ -38,9 +41,9 @@ public class Character : MonoBehaviour
     public bool isStunned = false;
     public int stunDuration = 0;
     
-
     [Header("Relics")]
     public RelicManager relicManager;
+
     protected virtual void Start()
     {
         stats.currentHP = stats.maxHP;
@@ -50,6 +53,14 @@ public class Character : MonoBehaviour
     protected virtual void Update()
     {
         Shield.SetActive(stats.shield > 0);
+        if(stats.shield > 0)
+        {
+            hpBar.fillRect.GetComponent<Image>().color = shieldColor;
+        }
+        else
+        {
+            hpBar.fillRect.GetComponent<Image>().color = Color.red;
+        }
     }
 
     //======== Clear all conditions and skills (for testing) ========
@@ -406,6 +417,7 @@ public class Character : MonoBehaviour
     {
         if (hpText != null) hpText.text = $"{stats.currentHP}/{stats.maxHP}";
         if (shieldText != null) shieldText.text = $"{stats.shield}";
+
         if (hpBar != null) hpBar.value = (float)stats.currentHP / stats.maxHP;
     }
 }

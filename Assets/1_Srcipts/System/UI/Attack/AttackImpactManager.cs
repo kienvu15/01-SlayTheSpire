@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class AttackImpactManager : MonoBehaviour
 {
     public static AttackImpactManager Instance;
     public ImpactVFXDatabase database;
+
+    private Dictionary<CardType, Queue<GameObject>> poolDict = new();
 
     private void Awake()
     {
@@ -22,18 +25,46 @@ public class AttackImpactManager : MonoBehaviour
         GameObject prefab = database.GetPrefab(type);
         if (prefab == null) return;
 
-        Vector3 spawnPos = target.position + Vector3.up * 0.5f; // hơi lệch trên cho đẹp
-        GameObject vfx = Instantiate(prefab, spawnPos, Quaternion.identity, target);
+        GameObject vfx = GetFromPool(type, prefab);
+        vfx.transform.SetParent(target);
+        vfx.transform.position = target.position + Vector3.up * 0.5f;
+        vfx.transform.rotation = Quaternion.identity;
+        vfx.SetActive(true);
 
-        Destroy(vfx, 1.5f); // hủy sau khi animation chạy xong
+        StartCoroutine(DeactivateAfterDelay(vfx, type, 1.5f));
     }
 
     public void ShowConditionImpact(Transform target, CardType type)
     {
         if (target == null) return;
-
-        // mặc định condition sẽ show impact loại Special
-        ShowImpact(type, target);
+        ShowImpact(type, target); 
     }
 
+    private GameObject GetFromPool(CardType type, GameObject prefab)
+    {
+        if (!poolDict.ContainsKey(type))
+            poolDict[type] = new Queue<GameObject>();
+
+        Queue<GameObject> pool = poolDict[type];
+
+        if (pool.Count > 0)
+        {
+            GameObject obj = pool.Dequeue();
+            return obj;
+        }
+        else
+        {
+            GameObject newObj = Instantiate(prefab);
+            newObj.SetActive(false);
+            return newObj;
+        }
+    }
+
+    private System.Collections.IEnumerator DeactivateAfterDelay(GameObject obj, CardType type, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        obj.SetActive(false);
+        obj.transform.SetParent(transform); 
+        poolDict[type].Enqueue(obj);
+    }
 }
