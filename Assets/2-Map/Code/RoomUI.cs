@@ -9,19 +9,14 @@ public class RoomUI : MonoBehaviour
     private Room room;
     private GameObject ButtonPar;
 
-    [Header("Audio")]
-    public AudioClip clickSound;
-    public AudioClip buttonMove;
-    public AudioClip roomSelectSound;
-    private AudioSource audioSource;
-
     private Canvas panelCanvas;
     public Slider selectSlider;
 
     private Coroutine moveButtonCoroutine;
     private static bool hasMovedOnce = false;
 
-    
+    public bool isStartPanel = false;
+
     void OnEnable()
     {
         hasMovedOnce = false;
@@ -31,7 +26,6 @@ public class RoomUI : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         selectSlider = GetComponentInChildren<Slider>();
-        audioSource = GetComponent<AudioSource>();
 
         if (anim != null) { AnimatorStateInfo state = anim.GetCurrentAnimatorStateInfo(0); anim.Play(state.fullPathHash, 0, Random.Range(0f, 1f)); }
 
@@ -39,6 +33,10 @@ public class RoomUI : MonoBehaviour
         MapUIManager.Instance.RegisterRoomUI(this);
 
         ButtonPar = GameObject.Find("ButtonPar");
+        if(ButtonPar != null)
+        {
+            
+        }
 
         panelCanvas = GetComponent<Canvas>();
         if (panelCanvas != null)
@@ -61,14 +59,20 @@ public class RoomUI : MonoBehaviour
                 anim.Play("Hide", 0, 0f);
             }
         }
+
     }
 
     public void SetAsVisited()
     {
+
         if (goButton != null)
             goButton.gameObject.SetActive(false);
 
-        anim.Play("Stay");
+        if(isStartPanel == false)
+        {
+            anim.Play("Stay");
+        }
+        
     }
 
     public void OnRoomClicked()
@@ -77,7 +81,7 @@ public class RoomUI : MonoBehaviour
         {
             MapUIManager.Instance.SelectRoom(this);
 
-            audioSource.PlayOneShot(roomSelectSound);
+            SoundManager.Instance.Play("PencilDraw", null, 1);
             if (selectSlider != null)
                 StartCoroutine(FillSelectSlider());
 
@@ -108,7 +112,7 @@ public class RoomUI : MonoBehaviour
 
         float duration = 0.7f;
         float elapsed = 0f;
-        audioSource.PlayOneShot(buttonMove);
+        SoundManager.Instance.Play("RockMove", null, 1);
 
         while (elapsed < duration)
         {
@@ -146,7 +150,6 @@ public class RoomUI : MonoBehaviour
 
         if (room.type == RoomType.Battle)
         {
-            audioSource.PlayOneShot(clickSound);
             MapUIManager.Instance.ShowBattleCanvas();
         }
 

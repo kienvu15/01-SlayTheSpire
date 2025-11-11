@@ -11,7 +11,7 @@ public class RelicManager : MonoBehaviour
 
     // Owner character
     private Character owner;
-    public ScorechingShell scorechingShell;
+    //public ScorechingShell scorechingShell;
 
     private void Awake()
     {
@@ -19,7 +19,7 @@ public class RelicManager : MonoBehaviour
     }
     void Start()
     {
-        AddRelic(scorechingShell);
+        //AddRelic(scorechingShell);
     }
 
     public void EquipRelic(Relic relic)

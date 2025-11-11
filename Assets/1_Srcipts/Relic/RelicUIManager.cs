@@ -7,6 +7,7 @@ public class RelicUIManager : MonoBehaviour
     public RelicManager relicManager;
     public GameObject relicHolderPrefab;  // prefab có sẵn RelicDisplay
     public Transform relicPanel;          // panel có Grid Layout Group
+    public Transform relicDiscriptionTransform;
 
     public TextMeshProUGUI relicCountText; // Hiển thị số lượng relic
 
@@ -43,7 +44,11 @@ public class RelicUIManager : MonoBehaviour
         RelicDisplay display = holder.GetComponent<RelicDisplay>();
 
         if (display != null)
+        {
             display.Setup(relic, false); // false = player đang sở hữu, không phải shop
+            // if no shop mode, want set description panel parent
+            display.descriptionPanel.transform.SetParent(relicDiscriptionTransform, false);
+        }
 
         relicToUI[relic] = display;
         UpdateRelicCount();

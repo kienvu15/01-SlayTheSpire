@@ -10,10 +10,10 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - NoLight
   - Water
   - UI
-  - 
+  - Light
   - 
   - 
   - 
@@ -48,6 +48,9 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 2156089259
+    locked: 0
+  - name: NoLight
+    uniqueID: 2847281773
     locked: 0
   m_RenderingLayers:
   - Default

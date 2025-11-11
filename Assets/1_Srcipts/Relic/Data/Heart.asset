@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MaxHpRelic
   relicName: 
   description: + 12 max HP
-  icon: {fileID: -5224086435462206578, guid: ed6b11b664c42974da40f1938baba2a3, type: 3}
+  icon: {fileID: 21300000, guid: 69642a6e805c7d748a22b12daa663ce8, type: 3}
   bonusHP: 12

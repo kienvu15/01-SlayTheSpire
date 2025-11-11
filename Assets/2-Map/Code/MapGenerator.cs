@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class MapGenerator : MonoBehaviour
 {
@@ -25,8 +26,14 @@ public class MapGenerator : MonoBehaviour
     private int lastShopRow = -999;
     private int lastEliteRow = -999;
 
+    public List<GameObject> backMap;
+
+    public Vector2 originButtonAnchoredPos;
+    public RectTransform buttonPar;
+
     void Start()
     {
+        originButtonAnchoredPos = buttonPar.anchoredPosition;
         GenerateMap();
     }
 
@@ -232,5 +239,36 @@ public class MapGenerator : MonoBehaviour
         {
             DestroyImmediate(gridParent.GetChild(i).gameObject);
         }
+    }
+
+    public void PopUp()
+    {
+        SoundManager.Instance.Play("SelectButton", null, 1);
+        foreach (GameObject button in backMap)
+        {
+            button.SetActive(!button.activeSelf);
+        }
+
+        buttonPar.anchoredPosition = new Vector2(originButtonAnchoredPos.x, buttonPar.anchoredPosition.y);
+    }
+
+    public void PopUp2()
+    {
+        SoundManager.Instance.Play("SelectButton", null, 1);
+        foreach (GameObject button in backMap)
+        {
+            button.SetActive(!button.activeSelf);
+        }
+
+        if (buttonPar.position.x != 380.33)
+        {
+            Debug.Log("Move Back");
+            buttonPar.anchoredPosition = new Vector2(originButtonAnchoredPos.x, buttonPar.anchoredPosition.y);
+        }
+        else
+        {
+            buttonPar.anchoredPosition = new Vector2(380.33f, buttonPar.anchoredPosition.y);
+        }
+
     }
 }

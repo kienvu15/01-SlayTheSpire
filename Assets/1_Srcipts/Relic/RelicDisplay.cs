@@ -7,7 +7,7 @@ public class RelicDisplay : MonoBehaviour
     [Header("UI References")]
     public Image iconImage;
     public GameObject descriptionPanel;
-    public TextMeshProUGUI relicNameText;
+    public TextMeshProUGUI[] relicNameText;
     public TextMeshProUGUI relicDescText;
     public GameObject nameText;
 
@@ -19,12 +19,34 @@ public class RelicDisplay : MonoBehaviour
     private Relic relicData;
     private bool isShopMode = false;
 
-    void Start()
+    private void Start()
     {
         if (descriptionPanel != null)
             descriptionPanel.SetActive(false);
 
         nameText.SetActive(false);
+
+        // Gắn sự kiện click icon
+        if (iconButton != null)
+            iconButton.onClick.AddListener(OnClick);
+    }
+
+    private void Update()
+    {
+        // Nếu panel đang mở mà người chơi click chuột trái ra ngoài → tắt
+        if (descriptionPanel.activeSelf && Input.GetMouseButtonDown(0))
+        {
+            // Kiểm tra nếu không click lên chính panel hoặc icon
+            if (!RectTransformUtility.RectangleContainsScreenPoint(
+                    descriptionPanel.GetComponent<RectTransform>(),
+                    Input.mousePosition, null) &&
+                !RectTransformUtility.RectangleContainsScreenPoint(
+                    iconButton.GetComponent<RectTransform>(),
+                    Input.mousePosition, null))
+            {
+                descriptionPanel.SetActive(false);
+            }
+        }
     }
 
     public void Setup(Relic relic, bool shopMode)
@@ -35,28 +57,16 @@ public class RelicDisplay : MonoBehaviour
         if (iconImage != null)
             iconImage.sprite = relic.icon;
 
-        relicNameText.text = relic.relicName;
+        foreach (var txt in relicNameText)
+            txt.text = relic.relicName;
+
         relicDescText.text = relic.description;
 
         priceTXT.text = Random.Range(50, 180).ToString();
 
-        iconButton.onClick.AddListener(OnClick);
-
         shopSystem = GetComponentInParent<ShopSystem>();
         if (shopSystem == null)
             buyButton.SetActive(false);
-
-        //buyButton.gameObject.SetActive(shopMode);
-        //buyButton.onClick.RemoveAllListeners();
-        //if (shopMode)
-        //{
-        //    buyButton.onClick.AddListener(() =>
-        //    {
-        //        Debug.Log($"[Shop] Bought relic: {relic.relicName}");
-        //        descriptionPanel.SetActive(false);
-        //        // TODO: Gọi RelicManager.EquipRelic(relic)
-        //    });
-        //}
 
         descriptionPanel.SetActive(false);
     }
@@ -77,11 +87,10 @@ public class RelicDisplay : MonoBehaviour
                 btn.onClick.AddListener(() =>
                 {
                     shopSystem.BuyRelic(relicData);
-
                     Button buyButtonBB = buyButton.GetComponent<Button>();
                     buyButtonBB.onClick.RemoveAllListeners();
                     buyButtonBB.interactable = false;
-                    priceTXT.text = ("Sold Out").ToString();
+                    priceTXT.text = "Sold Out";
                 });
             }
             else
@@ -91,9 +100,9 @@ public class RelicDisplay : MonoBehaviour
         }
     }
 
-
     public void OnClick()
     {
-        descriptionPanel.SetActive(!descriptionPanel.activeSelf);
+        bool isActive = descriptionPanel.activeSelf;
+        descriptionPanel.SetActive(!isActive);
     }
 }
