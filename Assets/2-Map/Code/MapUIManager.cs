@@ -76,16 +76,10 @@ public class MapUIManager : MonoBehaviour
         // EnemyFm
         StartCoroutine(RegisterEnemiesNextFrame(battleRoom));
 
-        //deck
-        // deck.spawner = battleRoom.GetComponentInChildren<EnemySpawner>();
-        //deck.discard = battleRoom.GetComponentInChildren<Discard>();
-        //deck.handParent = battleRoom.transform.Find("HandPanel");
-        //deck.deckTransform = battleRoom.transform.Find("Deck");
         deck.CacheDeckCountText();
         deck.CacheDeckDiscard();
 
-        //playerSeflCast
-        //playerSelfCast.discard = battleRoom.GetComponentInChildren<Discard>();
+
         CanvasGroup PlaySelfCast = playerSelfCast.GetComponent<CanvasGroup>();
         if (PlaySelfCast != null)
         {
@@ -102,10 +96,8 @@ public class MapUIManager : MonoBehaviour
        // GameFlowManager.Instance.manasystem = manaSystem;
 
         //manaSystem + object player
-        GameObject manaPanel = FindFirstObjectByType<ManaPanel>().gameObject;
-        if (manaPanel != null)
-        {
-            manaSystem.manaContainer = manaPanel.transform;
+        
+            //manaSystem.manaContainer = manaPanel.transform;
             manaSystem.UpdateManaUI();
 
             //player.canvas.SetActive(true);
@@ -113,7 +105,7 @@ public class MapUIManager : MonoBehaviour
             player.StartCoroutine(player.EnableCanvasAfterAnimation("Enter"));
             PlaySelfCast.blocksRaycasts = true;
             EndButton.SetActive(true);
-        }
+        
 
         GameSystem.Instance.BattleUICanvas = battleRoom;
 

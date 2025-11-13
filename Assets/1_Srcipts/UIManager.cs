@@ -1,0 +1,136 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class UIManager : MonoBehaviour
+{
+    public static UIManager Instance;
+
+    [Header("UI MapPanel")]
+    public List<GameObject> backMap;
+    public Vector2 originEnterButtonAnchoredPos;
+    public RectTransform buttonEnterParent;
+
+    [Header("Event")]
+    public GameObject tutorialCanvas;
+
+    [Header("UI Layer")]
+    public Image transitionImage;
+    public event System.Action OnTransitionFilled;
+
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    void Start()
+    {
+        originEnterButtonAnchoredPos = buttonEnterParent.anchoredPosition;
+    }
+
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            FillOverTime();
+        }
+    }
+
+    #region MapPanel
+    public void BackButton()
+    {
+        SoundManager.Instance.Play("SelectButton", null, 1);
+        foreach (GameObject button in backMap)
+        {
+            button.SetActive(!button.activeSelf);
+        }
+
+        if (Mathf.Abs(buttonEnterParent.anchoredPosition.x - 380.33f) > 0.01f)
+        {
+            Debug.Log("Move Back");
+            buttonEnterParent.anchoredPosition = new Vector2(originEnterButtonAnchoredPos.x, buttonEnterParent.anchoredPosition.y);
+        }
+        else
+        {
+            buttonEnterParent.anchoredPosition = new Vector2(380.33f, buttonEnterParent.anchoredPosition.y);
+        }
+
+    }
+
+    public void MapIcon()
+    {
+        SoundManager.Instance.Play("SelectButton", null, 1);
+        foreach (GameObject button in backMap)
+        {
+            button.SetActive(!button.activeSelf);
+        }
+
+        buttonEnterParent.anchoredPosition = new Vector2(originEnterButtonAnchoredPos.x, buttonEnterParent.anchoredPosition.y);
+        Destroy(tutorialCanvas);
+        tutorialCanvas = null;
+
+    }
+    #endregion
+
+    #region Transition
+    public void FillOverTime()
+    {
+        transitionImage.gameObject.SetActive(true);
+        StartCoroutine(FillCoroutine());
+    }
+
+    private IEnumerator FillCoroutine()
+    {
+        float elapsed = 0f;
+        float duration = 1f;
+        transitionImage.fillAmount = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            transitionImage.fillAmount = Mathf.Clamp01(elapsed / duration);
+            yield return null;
+        }
+
+        transitionImage.fillAmount = 1f;
+        OnTransitionFilled?.Invoke();
+    }
+
+    public void FadeOutOverTime()
+    {
+        StartCoroutine(FadeOutCoroutine());
+    }
+
+    private IEnumerator FadeOutCoroutine()
+    {
+        float elapsed = 0f;
+        float duration = 1.5f;
+        Color color = transitionImage.color;
+        float startAlpha = color.a;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+            color.a = Mathf.Lerp(startAlpha, 0f, t);
+            transitionImage.color = color;
+            yield return null;
+        }
+
+        transitionImage.gameObject.SetActive(false);
+        color.a = 1f;
+        transitionImage.color = color;
+    }
+
+    #endregion
+}

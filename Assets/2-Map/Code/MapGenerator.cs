@@ -18,6 +18,7 @@ public class MapGenerator : MonoBehaviour
     public RoomPalette palette;
     public Transform gridParent;
     public GameObject connectionPrefab;
+    [SerializeField] private PanCamera panCamera;
 
     private List<List<Room>> rows = new List<List<Room>>();
     private Room bossRoom;
@@ -26,14 +27,24 @@ public class MapGenerator : MonoBehaviour
     private int lastShopRow = -999;
     private int lastEliteRow = -999;
 
-    public List<GameObject> backMap;
+    private void OnEnable()
+    {
+        if (panCamera != null)
+        {
+            panCamera.enabled = true;
+        }
+    }
 
-    public Vector2 originButtonAnchoredPos;
-    public RectTransform buttonPar;
+    void OnDisable()
+    {
+        if (panCamera != null)
+        {
+            panCamera.enabled = false;
+        }
+    }
 
     void Start()
     {
-        originButtonAnchoredPos = buttonPar.anchoredPosition;
         GenerateMap();
     }
 
@@ -53,8 +64,13 @@ public class MapGenerator : MonoBehaviour
 
         // --- ROW 0: START ---
         var startRoom = CreateRoomAt(0, RoomType.Start);
-        //startRoom.gameObject.GetComponent<Canvas>().overrideSorting = true;
-        //startRoom.gameObject.GetComponent<Canvas>().sortingLayerName = "UI";
+        var startRoomUI = startRoom.GetComponentInChildren<RoomUI>();
+        if (startRoomUI != null)
+        {
+            startRoomUI.isStartRoom = true;
+            startRoomUI.SetAsVisited(); 
+        }
+
         rows.Add(new List<Room> { startRoom });
 
         PlayerMapController.Instance.currentRoom = startRoom;
@@ -94,9 +110,8 @@ public class MapGenerator : MonoBehaviour
         PanCamera cam = Camera.main.GetComponent<PanCamera>();
         if (cam == null) return;
 
-        // Giới hạn dọc (Y)
-        float minY = -1f; // cho phép thấy Start room
-        float maxY = (height - 1) * ySpacing + 2f; // boss row + margin
+        float minY = -1f; 
+        float maxY = (height - 1) * ySpacing + 2f; 
 
         cam.minBounds = new Vector2(0, minY);
         cam.maxBounds = new Vector2(0, maxY);
@@ -131,7 +146,6 @@ public class MapGenerator : MonoBehaviour
         {
             float x = startX + i * spacing;
 
-            // random Y offset, đảm bảo < ySpacing - 2
             float yOffset = Random.Range(( 2f), (ySpacing - 2f));
 
             float y = baseY + yOffset;
@@ -241,34 +255,5 @@ public class MapGenerator : MonoBehaviour
         }
     }
 
-    public void PopUp()
-    {
-        SoundManager.Instance.Play("SelectButton", null, 1);
-        foreach (GameObject button in backMap)
-        {
-            button.SetActive(!button.activeSelf);
-        }
-
-        buttonPar.anchoredPosition = new Vector2(originButtonAnchoredPos.x, buttonPar.anchoredPosition.y);
-    }
-
-    public void PopUp2()
-    {
-        SoundManager.Instance.Play("SelectButton", null, 1);
-        foreach (GameObject button in backMap)
-        {
-            button.SetActive(!button.activeSelf);
-        }
-
-        if (buttonPar.position.x != 380.33)
-        {
-            Debug.Log("Move Back");
-            buttonPar.anchoredPosition = new Vector2(originButtonAnchoredPos.x, buttonPar.anchoredPosition.y);
-        }
-        else
-        {
-            buttonPar.anchoredPosition = new Vector2(380.33f, buttonPar.anchoredPosition.y);
-        }
-
-    }
+    
 }

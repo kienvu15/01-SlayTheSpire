@@ -26,4 +26,4 @@ MonoBehaviour:
   - type: 5
     canvasPrefab: {fileID: 8525317392265969083, guid: 4d48cc8fe5753fd45b1190dd0a9b2177, type: 3}
   - type: 6
-    canvasPrefab: {fileID: 5109344751421707251, guid: 6906cf1df4c35ab47b1e0c177d23fd63, type: 3}
+    canvasPrefab: {fileID: 8525317392265969083, guid: a280e38426f6a2048a32cf12b5ee76aa, type: 3}

@@ -1,31 +1,30 @@
 ﻿using UnityEngine;
 using TMPro;
+using System;
 using System.Collections;
 using DG.Tweening;
-using UnityEngine.UI;   // ✅ Thêm dòng này
+using UnityEngine.UI;
 
 public class DIALOGUE : MonoBehaviour
 {
+    public event Action OnItemFlyCompleted;
+
+    [SerializeField] private RelicManager relicManager;
     public TextMeshProUGUI dialogueCop;
     public string[] lines;
     public float textSpeed = 0.05f;
-
-    private int index;
-
-    [Header("Object Spawn")]
-    public GameObject object01;   // Prefab item sẽ spawn
-    public GameObject object02;   // (tuỳ nếu bạn cần spawn thêm sau)
-    public Transform spawnPoint;  // Điểm spawn (nếu null thì dùng transform.position)
-
-    private bool hasSpawnedItem = false;
-    private bool hasSpawnedSecondItem = false;
-    [SerializeField] private bool isDone = false;
-    [SerializeField] private RelicManager relicManager;
-
+    public GameObject object01;
+    public GameObject object02;
+    public Transform spawnPoint;
     public ParticleSystem effect;
     public Animator avatar;
     public Transform targetTransform;
     public GameObject mapIcon;
+
+    private int index;
+    private bool hasSpawnedItem;
+    private bool hasSpawnedSecondItem;
+    private bool isDone;
 
     void Start()
     {
@@ -38,9 +37,7 @@ public class DIALOGUE : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             if (dialogueCop.text == lines[index])
-            {
                 NextLine();
-            }
             else
             {
                 StopAllCoroutines();
@@ -54,7 +51,7 @@ public class DIALOGUE : MonoBehaviour
             SpawnAndAnimateItem(object01);
         }
 
-        if(dialogueCop.text == lines[2] && !isDone)
+        if (dialogueCop.text == lines[2] && !isDone)
         {
             effect.Play();
             StartCoroutine(endDioluge());
@@ -62,7 +59,7 @@ public class DIALOGUE : MonoBehaviour
     }
 
     IEnumerator endDioluge()
-    {         
+    {
         yield return new WaitForSeconds(1.4f);
         Image img = GetComponent<Image>();
         isDone = true;
@@ -72,18 +69,15 @@ public class DIALOGUE : MonoBehaviour
         StartCoroutine(afterAnimation());
     }
 
-    //coroutine set active false after animation
     IEnumerator afterAnimation()
     {
         yield return new WaitForSeconds(3f);
         avatar.gameObject.SetActive(false);
         effect.Stop();
+
         if (!hasSpawnedSecondItem)
         {
             SpawnAndAnimateItem(object02);
-            Item item = object02.GetComponent<Item>();
-            item.flyTarget = targetTransform;
-            item.mapIcon = mapIcon;
             hasSpawnedSecondItem = true;
         }
     }
@@ -111,50 +105,43 @@ public class DIALOGUE : MonoBehaviour
             dialogueCop.text = string.Empty;
             StartCoroutine(TypeLine());
         }
-        else
-        {
-            //gameObject.SetActive(false);
-        }
     }
 
-    void SpawnAndAnimateItem(GameObject p2refab)
+    void SpawnAndAnimateItem(GameObject prefab)
     {
         Vector3 startPos = spawnPoint ? spawnPoint.position : transform.position;
-        
-        // Tạo item
-        GameObject itemObj = Instantiate(p2refab, startPos, Quaternion.identity);
+        GameObject itemObj = Instantiate(prefab, startPos, Quaternion.identity);
 
-        // Xác định điểm đến (ví dụ, lệch sang trái và xuống dưới)
-        Vector3 endPos = startPos + new Vector3(Random.Range(-8f, -6f), -4f - startPos.y, 0f);
-
-        // Xác định điểm điều khiển (control point) cao hơn để tạo đường cong
+        Vector3 endPos = startPos + new Vector3(UnityEngine.Random.Range(-8f, -6f), -4f - startPos.y, 0f);
         Vector3 controlPoint = startPos + new Vector3((endPos.x - startPos.x) / 2f, 3f, 0f);
-
-        // t chạy từ 0 → 1
         float t = 0f;
 
-        // Dùng DOTween để tween giá trị t
-        DOTween.To(() => t, x => {
+        DOTween.To(() => t, x =>
+        {
             t = x;
-            // Nội suy theo công thức Bezier
             Vector3 pos =
                 Mathf.Pow(1 - t, 2) * startPos +
                 2 * (1 - t) * t * controlPoint +
                 Mathf.Pow(t, 2) * endPos;
 
             itemObj.transform.position = pos;
-        }, 1f, 1.2f) // thời gian 1.2s
+        }, 1f, 1.2f)
         .SetEase(Ease.InOutQuad)
         .OnComplete(() =>
         {
-            // Khi tới điểm đến, đăng ký item vào UI manager
             Item item = itemObj.GetComponent<Item>();
+            item.flyTarget = targetTransform;
+            item.mapIcon = mapIcon;
+            item.OnFlyCompleted += OnItemFlyDone;
             item.relicManager = relicManager;
+
             if (item != null && ItemUIManager.HasInstance)
-            {
                 ItemUIManager.Instance.RegisterItem(item);
-            }
         });
     }
 
+    void OnItemFlyDone()
+    {
+        OnItemFlyCompleted?.Invoke();
+    }
 }

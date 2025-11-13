@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class EnemyDropZone : MonoBehaviour, IDropHandler
 {
     [Header("References")]
-    public Enemy enemy;         // Kéo Enemy gắn vào panel
+    public Enemy enemy;     
     public Discard discard;
     public Deck deck;
     public Match match;
@@ -29,22 +30,18 @@ public class EnemyDropZone : MonoBehaviour, IDropHandler
 
         var card = cardDisplay.cardData;
 
-        // Chỉ chấp nhận card OpponentCast
         if (!card.IsOpponentCast())
         {
             Debug.LogWarning($"{card.cardName} không phải OpponentCast, không thể thả vào Enemy!");
             return;
         }
 
-        // Check mana
         if (!manaSystem.CanPlayCard(card)) return;
 
-        // Trừ mana
         manaSystem.SpendMana(card.manaCost);
 
         bool allSuccess = true;
 
-        // 👉 Apply effect (attack value, custom EffectData…)
         if (enemy != null && card.effects != null)
         {
             foreach (var wrapper in card.effects)
@@ -63,11 +60,7 @@ public class EnemyDropZone : MonoBehaviour, IDropHandler
                     success = wrapper.effect.Apply(match.player, enemy, manaSystem, deck);
                 }
 
-                if (success)
-                {
-//                    AttackImpactManager.Instance.ShowImpact(card.cardType, enemy.transform);
-                }
-                else
+                if (!success)
                 {
                     allSuccess = false;
                 }
@@ -78,20 +71,60 @@ public class EnemyDropZone : MonoBehaviour, IDropHandler
 
         if (allSuccess)
         {
-            // Bỏ card vào discard
-            discard.AddToDiscard(card);
-
-            // Xóa card khỏi tay
             deck.RemoveCardFromHand(dropped, match);
-            draggable.PlaySelfCast.blocksRaycasts  = false;
-            // ✅ Đánh dấu drop thành công → không bị revert về tay
+            draggable.PlaySelfCast.blocksRaycasts = false;
             draggable.MarkAsValidDrop();
+
+            RectTransform rect = dropped.GetComponent<RectTransform>();
+            RectTransform discardPile = discard.GetComponent<RectTransform>();
+
+            rect.SetParent(discardPile.parent, true);
+
+            Vector3 startPos = rect.position;
+            Vector3 endPos = discardPile.position;
+
+            // Cung bay nhẹ (thấp)
+            Vector3 midPos = (startPos + endPos) / 2f + Vector3.up * 9f;
+
+            float flyTime = 0.7f;
+
+            Sequence seq = DOTween.Sequence();
+
+            // 1️⃣ Bay lên mượt nửa đầu, hơi thu nhỏ
+            seq.Append(rect.DOScale(0.5f, flyTime * 0.5f).SetEase(Ease.OutSine));
+            seq.Join(rect.DOMove(midPos, flyTime * 0.5f).SetEase(Ease.OutQuad));
+
+            // 2️⃣ Rơi xuống nửa sau, xoay ngay khi bắt đầu rơi
+            Sequence fallSeq = DOTween.Sequence();
+            fallSeq.Append(rect.DOMove(endPos, flyTime * 0.5f).SetEase(Ease.InCubic));
+            fallSeq.Join(
+                rect.DORotate(new Vector3(0, 0, 720f), flyTime * 0.5f, RotateMode.FastBeyond360)
+                .SetEase(Ease.Linear) 
+            );
+            seq.Append(fallSeq);
+
+            // 3️⃣ Biến mất nhanh khi gần chạm
+            seq.Join(
+                rect.DOScale(Vector3.zero, flyTime * 0.3f)
+                .SetEase(Ease.InBack)
+                .SetDelay(flyTime * 0.7f)
+            );
+
+            seq.OnComplete(() =>
+            {
+            discard.AddToDiscard(card);
+                Destroy(dropped);
+            });
         }
         else
         {
-            // ❌ Nếu effect fail → trả card về tay
             draggable.RevertToHand();
         }
+
+
+
+
+
     }
 
 }

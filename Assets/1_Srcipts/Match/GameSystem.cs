@@ -29,6 +29,7 @@ public class GameSystem : MonoBehaviour
             if (isBattlePhase != active)
             {
                 isBattlePhase = active;
+                UIManager.Instance.FadeOutOverTime();
                 Debug.Log($"[GameSystem] BattlePhase = {isBattlePhase}");
             }
         }

@@ -79,19 +79,13 @@ public class Deck : MonoBehaviour
         if (currentHand.Contains(cardGO))
             currentHand.Remove(cardGO);
 
-        Destroy(cardGO);
+        //Destroy(cardGO);
         UpdateUI();
-
-        //if (currentHand.Count == 0)
-        //{
-        //    Debug.Log("[Deck] Hand empty. Auto EndTurn.");
-        //    matchRef?.EndTurn();
-        //}
     }
 
     IEnumerator DelayAndDraw()
     {
-        yield return null; // chờ 1 frame để Unity build layout
+        yield return null;
         yield return StartCoroutine(DrawHand(match.handSize));
     }
 
@@ -108,76 +102,69 @@ public class Deck : MonoBehaviour
     // Giữ để backward compatibility nếu nơi khác gọi
     public IEnumerator DrawHand(int count)
     {
-        // đơn giản redirect sang DrawCards (vì DrawHand rút toàn bộ hand)
         yield return StartCoroutine(DrawCards(count));
     }
 
     /// Rút count lá (nếu deck hết giữa chừng sẽ dừng và trả về)
     public IEnumerator DrawCards(int count)
     {
-        for (int k = 0; k < count; k++)
+        List<int> availableSlots = new List<int>();
+        for (int i = 0; i < handParent.childCount; i++)
         {
-            if (deck.Count == 0)
-            {
-                Debug.Log($"[Deck] Deck empty while drawing. Drawed so far: {k}/{count}");
-                yield break;
-            }
+            if (handParent.GetChild(i).childCount == 0)
+                availableSlots.Add(i);
+        }
 
-            int slotIndex = GetFirstEmptySlot();
-            if (slotIndex == -1)
-            {
-                Debug.LogWarning("No empty slot available in hand!");
-                yield break;
-            }
+        int drawCount = Mathf.Min(count, availableSlots.Count);
 
+        for (int k = 0; k < drawCount; k++)
+        {
+            int slotIndex = availableSlots[k];
             yield return StartCoroutine(DrawOneCard(slotIndex));
             UpdateUI();
         }
     }
 
+
     private IEnumerator DrawOneCard(int handIndex)
     {
-        if (handIndex >= handParent.childCount)
-        {
-            Debug.LogError($"Không đủ slot trong handParent! (Cần {handIndex + 1}, chỉ có {handParent.childCount})");
-            yield break;
-        }
+        if (deck.Count == 0) yield break;
 
-        if (deck.Count == 0)
-        {
-            Debug.LogWarning("[DrawOneCard] called but deck empty.");
-            yield break;
-        }
-
-        // Lấy top card
         CardData drawnCard = deck[0];
         deck.RemoveAt(0);
 
-        // Spawn card trực tiếp vào slot
-        Transform targetBox = handParent.GetChild(handIndex);
-        GameObject cardGO = Instantiate(cardPrefab, pileDeckTransform.position, Quaternion.identity, targetBox);
-        cardGO.GetComponent<CardDisplay>().LoadCard(drawnCard);
+        Transform targetSlot = handParent.GetChild(handIndex);
+
+        GameObject cardGO = Instantiate(cardPrefab, pileDeckTransform.position, Quaternion.identity, pileDeckTransform.parent);
         currentHand.Add(cardGO);
 
+        cardGO.GetComponent<CardDisplay>().LoadCard(drawnCard);
+
         RectTransform rect = cardGO.GetComponent<RectTransform>();
+
+        rect.position = pileDeckTransform.position;  
         rect.localScale = Vector3.zero;
-        rect.localPosition = Vector3.zero;
         rect.localRotation = Quaternion.Euler(0, 90, 0);
 
-        // Animate: bay từ deck → slot
-        Sequence seq = DOTween.Sequence();
-        seq.Append(rect.DOMove(targetBox.position, drawDuration).SetEase(Ease.OutQuad));
-        seq.Join(rect.DOScale(Vector3.one, drawDuration).SetEase(Ease.OutBack));
-        seq.Join(rect.DOLocalRotate(Vector3.zero, drawDuration));
+        Vector3 worldTargetPos = targetSlot.position;
 
-        // Đảm bảo localPosition = 0 sau anim
+        Sequence seq = DOTween.Sequence();
+        seq.Append(rect.DOMove(worldTargetPos, drawDuration).SetEase(Ease.OutQuad));    
+        seq.Join(rect.DOScale(Vector3.one, drawDuration).SetEase(Ease.OutBack));       
+        seq.Join(rect.DORotate(Vector3.zero, drawDuration, RotateMode.Fast));        
+
         seq.OnComplete(() =>
         {
-            rect.localPosition = Vector3.zero;
+            rect.SetParent(targetSlot, false);
+            rect.anchoredPosition = Vector2.zero;
+            rect.localScale = Vector3.one;
+            rect.localRotation = Quaternion.identity;
+            cardGO.GetComponent<DraggableCard>().enabled = true;
         });
 
         yield return new WaitForSeconds(drawDelay);
     }
+
 
     private int GetFirstEmptySlot()
     {

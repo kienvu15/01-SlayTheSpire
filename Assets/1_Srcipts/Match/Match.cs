@@ -12,13 +12,12 @@ public class Match : MonoBehaviour
     public PlayerSelfCast playerSelfCast;
     public Player player;
     public CanvasGroup blockPanel;
-   // public Enemy enemy;
 
     public int handSize = 5;
 
     [Header("Animation/Timing")]
     public float waitAfterDiscardAnimations = 0.5f;
-    public float waitBeforeRefill = 3f;   // thời gian chờ refill khi deck trống
+    public float waitBeforeRefill = 3f;   
 
     //private bool isBusy = false;  
 
@@ -95,7 +94,6 @@ public class Match : MonoBehaviour
         // --- Player START TURN ---
         if (player != null)
         {
-            // Trigger effect (poison, regen...) nhưng KHÔNG giảm duration
             player.TriggerConditionEffects();
         }
 

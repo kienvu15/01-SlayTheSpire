@@ -3,10 +3,10 @@ using UnityEngine.EventSystems;
 
 public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    private Canvas canvas;               // Canvas cha
-    private RectTransform rectTransform; // RectTransform của card
-    private CanvasGroup canvasGroup;     // để điều chỉnh raycast khi kéo
-    private Transform originalBox;       // box gốc chứa card
+    private Canvas canvas;               
+    private RectTransform rectTransform; 
+    private CanvasGroup canvasGroup;     
+    private Transform originalBox;       
     public DraggableCard originalCard;
     [Header("References")]
     public CardDisplay cardDisplay;

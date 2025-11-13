@@ -5,21 +5,39 @@ using UnityEngine.UI;
 public class RoomUI : MonoBehaviour
 {
     private Animator anim;
+
     public Button goButton;
     private Room room;
-    private GameObject ButtonPar;
+    private GameObject buttonEnterParent;
 
     private Canvas panelCanvas;
     public Slider selectSlider;
-
-    private Coroutine moveButtonCoroutine;
+    public Outline outline;
     private static bool hasMovedOnce = false;
 
+    [Header("Room Flags")]
     public bool isStartPanel = false;
+    public bool isStartRoom = false;  
 
     void OnEnable()
     {
+        if (isStartRoom)
+        {
+            selectSlider.value = 1f;
+            return;
+        }
+
         hasMovedOnce = false;
+        selectSlider.value = 0f;
+
+        if (anim != null)
+            anim.Play("Idle", 0, 0f);
+    }
+
+    void OnDisable()
+    {
+        if (outline != null)
+            outline.enabled = false;
     }
 
     void Start()
@@ -27,16 +45,16 @@ public class RoomUI : MonoBehaviour
         anim = GetComponent<Animator>();
         selectSlider = GetComponentInChildren<Slider>();
 
-        if (anim != null) { AnimatorStateInfo state = anim.GetCurrentAnimatorStateInfo(0); anim.Play(state.fullPathHash, 0, Random.Range(0f, 1f)); }
+        if (anim != null)
+        {
+            AnimatorStateInfo state = anim.GetCurrentAnimatorStateInfo(0);
+            anim.Play(state.fullPathHash, 0, Random.Range(0f, 1f));
+        }
 
         room = GetComponentInParent<Room>();
         MapUIManager.Instance.RegisterRoomUI(this);
 
-        ButtonPar = GameObject.Find("ButtonPar");
-        if(ButtonPar != null)
-        {
-            
-        }
+        buttonEnterParent = GameObject.Find("ButtonPar");
 
         panelCanvas = GetComponent<Canvas>();
         if (panelCanvas != null)
@@ -47,10 +65,25 @@ public class RoomUI : MonoBehaviour
         }
 
         hasMovedOnce = false;
+
+        if (isStartRoom)
+        {
+            room.visited = true;
+            selectSlider.value = 1f;
+            SetAsVisited();
+            return;
+        }
     }
 
     private void Update()
     {
+        if (isStartRoom)
+        {
+            if (anim != null)
+                anim.Play("Stay");
+            return; 
+        }
+
         if (!room.incoming.Contains(PlayerMapController.Instance.currentRoom))
         {
             if (anim != null)
@@ -59,24 +92,24 @@ public class RoomUI : MonoBehaviour
                 anim.Play("Hide", 0, 0f);
             }
         }
-
     }
 
     public void SetAsVisited()
     {
-
         if (goButton != null)
             goButton.gameObject.SetActive(false);
 
-        if(isStartPanel == false)
+        if (isStartPanel == false)
         {
-            anim.Play("Stay");
+            if (anim != null)
+                anim.Play("Stay");
         }
-        
     }
 
     public void OnRoomClicked()
     {
+        if (isStartRoom) return; 
+
         if (room.incoming.Contains(PlayerMapController.Instance.currentRoom))
         {
             MapUIManager.Instance.SelectRoom(this);
@@ -88,23 +121,25 @@ public class RoomUI : MonoBehaviour
             if (anim != null)
                 anim.SetBool("Click", true);
 
-            goButton.gameObject.SetActive(true);
-            goButton.transform.SetParent(ButtonPar.transform, false);
+            if (goButton != null)
+            {
+                goButton.gameObject.SetActive(true);
+                goButton.transform.SetParent(buttonEnterParent.transform, false);
+            }
 
             if (!hasMovedOnce)
             {
                 hasMovedOnce = true;
-                moveButtonCoroutine = StartCoroutine(MoveButtonParRight());
+                StartCoroutine(MoveButtonParRight());
             }
         }
-
     }
 
     private IEnumerator MoveButtonParRight()
     {
-        if (ButtonPar == null) yield break;
+        if (buttonEnterParent == null) yield break;
 
-        RectTransform rect = ButtonPar.GetComponent<RectTransform>();
+        RectTransform rect = buttonEnterParent.GetComponent<RectTransform>();
         if (rect == null) yield break;
 
         Vector2 startPos = rect.anchoredPosition;
@@ -144,20 +179,29 @@ public class RoomUI : MonoBehaviour
         selectSlider.value = endValue;
     }
 
-    public void OnGoClicked()
+    public void OnEnterRoomClicked()
+    {
+        if (isStartRoom) return;
+
+        UIManager.Instance.FillOverTime();
+        UIManager.Instance.OnTransitionFilled -= HandleTransitionComplete;
+        UIManager.Instance.OnTransitionFilled += HandleTransitionComplete;
+    }
+
+    private void HandleTransitionComplete()
     {
         PlayerMapController.Instance.MoveTo(room);
 
         if (room.type == RoomType.Battle)
-        {
             MapUIManager.Instance.ShowBattleCanvas();
-        }
 
         if (room.type == RoomType.Shop)
             MapUIManager.Instance.OpenShop();
 
         if (room.type == RoomType.Event)
             MapUIManager.Instance.ShowEventUI();
+
+        UIManager.Instance.OnTransitionFilled -= HandleTransitionComplete;
     }
 
     public void SetAsCurrent()
@@ -168,6 +212,12 @@ public class RoomUI : MonoBehaviour
 
     public void ResetUI()
     {
+        if (isStartRoom)
+        {
+            SetAsVisited();
+            return;
+        }
+
         if (room != null)
         {
             if (room == PlayerMapController.Instance.currentRoom)
@@ -178,13 +228,17 @@ public class RoomUI : MonoBehaviour
             else if (room.visited)
             {
                 SetAsVisited();
-                anim.SetBool("Stay", true);
+                if (anim != null)
+                    anim.SetBool("Stay", true);
                 return;
             }
         }
 
-        anim.SetBool("Click", false);
+        if (anim != null)
+            anim.SetBool("Click", false);
+
         selectSlider.value = 0f;
+
         if (goButton != null)
             goButton.gameObject.SetActive(false);
     }

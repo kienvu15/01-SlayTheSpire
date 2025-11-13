@@ -347,7 +347,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9034641708756627374}
         m_TargetAssemblyTypeName: RoomUI, Assembly-CSharp
-        m_MethodName: OnGoClicked
+        m_MethodName: OnEnterRoomClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -835,11 +835,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomUI
   goButton: {fileID: 2767369035742846751}
-  ButtonPar: {fileID: 0}
-  clickSound: {fileID: 8300000, guid: a49bed5cb8f083f45a5b1da08a1ba1f3, type: 3}
-  buttonMove: {fileID: 8300000, guid: b035f668909ed7747aa941d11e78c981, type: 3}
-  audioSource: {fileID: 8451797257448134463}
   selectSlider: {fileID: 6812696124678771418}
+  outline: {fileID: 5045616910348829671}
+  isStartPanel: 0
+  isStartRoom: 0
 --- !u!1 &9033272026751671835
 GameObject:
   m_ObjectHideFlags: 0

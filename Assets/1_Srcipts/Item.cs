@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using DG.Tweening;
+using System;
 
 public class Item : MonoBehaviour
 {
@@ -13,7 +14,9 @@ public class Item : MonoBehaviour
     public Transform flyTarget;
     public GameObject mapIcon;
     public float flyDuration = 1.2f;  
-    public float arcHeight = 2.5f;    
+    public float arcHeight = 2.5f;
+
+    public event Action OnFlyCompleted;
 
     private void Start()
     {
@@ -73,8 +76,11 @@ public class Item : MonoBehaviour
             mapIcon.SetActive(true);
             if(mapIcon.activeSelf == true)
             {
+                OnFlyCompleted?.Invoke();
                 Destroy(gameObject);
             }
         });
     }
+
+
 }

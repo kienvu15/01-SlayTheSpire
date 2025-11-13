@@ -9,9 +9,7 @@ public class Discard : MonoBehaviour
     [Header("References")]
     public Transform discardTransform;          
     public TextMeshProUGUI discardCountText;     
-
-    //public GameObject SystemCanvas;
-    [HideInInspector] public CanvasGroup PlayerSelfCast;
+    public CanvasGroup PlayerSelfCast;
 
     [Header("Animation")]
     public float moveDuration = 0.5f;            
@@ -21,23 +19,9 @@ public class Discard : MonoBehaviour
     [HideInInspector]
     public List<CardData> discardPile = new List<CardData>();
 
-
-    private void Awake()
-    {
-        PlayerSelfCast = GameObject.Find("PlayerSelfCast")?.GetComponent<CanvasGroup>();
-    }
-
-    private void Start()
-    {
-    }
-
-    private void Update()
-    {
-
-    }
+    // Đưa vào discard
     public int Count => discardPile.Count;
 
-    /// Thêm lá bài vào discardPile (chỉ dữ liệu)
     public void AddToDiscard(CardData card)
     {
         if (card != null)
@@ -46,9 +30,20 @@ public class Discard : MonoBehaviour
             Debug.Log($"[Discard] Added {card.name}, total now {discardPile.Count}");
             PlayerSelfCast.blocksRaycasts = true;
             UpdateDiscardCount();
+
+            if (discardTransform != null)
+            {
+                discardTransform.DOKill(); 
+                discardTransform.localScale = Vector3.one; 
+                discardTransform.DOScale(1.2f, 0.15f)
+                    .SetEase(Ease.OutQuad)
+                    .OnComplete(() =>
+                    {
+                        discardTransform.DOScale(1f, 0.15f).SetEase(Ease.InQuad);
+                    });
+            }
         }
     }
-
 
     /// Lấy toàn bộ bài trong discard và xóa sạch discard
     public List<CardData> TakeAllCards()
@@ -74,28 +69,33 @@ public class Discard : MonoBehaviour
             if (cardGO == null) continue;
 
             RectTransform rect = cardGO.GetComponent<RectTransform>();
-
-            // Lưu vị trí bị thả (world position)
             Vector3 droppedPos = rect.position;
 
-            // Đặt parent mới (cùng canvas với discard)
             rect.SetParent(discardTransform.parent, true);
-
-            // Reset lại world pos = chỗ thả
             rect.position = droppedPos;
 
             Sequence seq = DOTween.Sequence();
 
-            // Bay từ droppedPos -> discard
             seq.Append(rect.DOMove(discardTransform.position, moveDuration).SetEase(Ease.InOutQuad));
-
-            // scale nhỏ dần
             seq.Join(rect.DOScale(Vector3.zero, scaleDuration).SetEase(Ease.InBack));
-
-            // xoay vòng
             seq.Join(rect.DORotate(new Vector3(0, 0, 360), moveDuration, RotateMode.FastBeyond360));
 
-            seq.OnComplete(() => Destroy(cardGO));
+            seq.OnComplete(() =>
+            {
+                Destroy(cardGO);
+
+                if (discardTransform != null)
+                {
+                    discardTransform.DOKill();
+                    discardTransform.localScale = Vector3.one;
+                    discardTransform.DOScale(1.2f, 0.15f)
+                        .SetEase(Ease.OutQuad)
+                        .OnComplete(() =>
+                        {
+                            discardTransform.DOScale(1f, 0.15f).SetEase(Ease.InQuad);
+                        });
+                }
+            });
 
             yield return new WaitForSeconds(delayBetweenCards);
         }
@@ -103,10 +103,27 @@ public class Discard : MonoBehaviour
         UpdateDiscardCount();
     }
 
+
     /// Update số lá trong discard lên UI
+    private int currentDisplayCount = 0;
+
     public void UpdateDiscardCount()
     {
-        if (discardCountText != null)
-            discardCountText.text = discardPile.Count.ToString();
+        if (discardCountText == null)
+            return;
+
+        int targetCount = discardPile.Count;
+
+        DOTween.Kill(discardCountText);
+
+        DOTween.To(() => currentDisplayCount, x =>
+        {
+            currentDisplayCount = x;
+            discardCountText.text = currentDisplayCount.ToString();
+        },
+        targetCount, 0.5f) 
+        .SetEase(Ease.OutQuad)
+        .SetId(discardCountText); 
     }
+
 }
