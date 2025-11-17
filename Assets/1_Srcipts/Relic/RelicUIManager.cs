@@ -5,22 +5,18 @@ using UnityEngine;
 public class RelicUIManager : MonoBehaviour
 {
     public RelicManager relicManager;
-    public GameObject relicHolderPrefab;  // prefab có sẵn RelicDisplay
-    public Transform relicPanel;          // panel có Grid Layout Group
+    public GameObject relicHolderPrefab;  
+    public Transform relicPanel;         
     public Transform relicDiscriptionTransform;
-
-    public TextMeshProUGUI relicCountText; // Hiển thị số lượng relic
 
     private Dictionary<Relic, RelicDisplay> relicToUI = new Dictionary<Relic, RelicDisplay>();
 
     private void Start()
     {
-        // Khởi tạo UI cho relic hiện có
         foreach (var relic in relicManager.equippedRelics)
         {
             AddRelicUI(relic);
         }
-        UpdateRelicCount();
     }
 
     private void OnEnable()
@@ -51,7 +47,6 @@ public class RelicUIManager : MonoBehaviour
         }
 
         relicToUI[relic] = display;
-        UpdateRelicCount();
     }
 
     private void RemoveRelicUI(Relic relic)
@@ -63,12 +58,6 @@ public class RelicUIManager : MonoBehaviour
             Destroy(display.gameObject);
 
         relicToUI.Remove(relic);
-        UpdateRelicCount();
     }
 
-    public void UpdateRelicCount()
-    {
-        int count = relicManager.equippedRelics.Count;
-        relicCountText.text = $"Relic{count}/6";
-    }
 }

@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2718480152303692192}
   - component: {fileID: 790842404815575841}
+  - component: {fileID: 8401374977105915342}
   m_Layer: 0
-  m_Name: Slash_0
+  m_Name: Slash_Pre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90,3 +91,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8401374977105915342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5177545885000378034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea65c1a0e509bff4bb22f289d1b885db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ImpactFadeOut

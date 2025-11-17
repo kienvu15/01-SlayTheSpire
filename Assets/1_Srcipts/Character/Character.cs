@@ -20,13 +20,21 @@ public class Character : MonoBehaviour
 
     [Header("UI References")]
     public TextMeshProUGUI hpText;
-
     public Slider hpBar;
+    public Slider hpChipBar;
+
     Color shieldColor = new Color32(0x34, 0x7E, 0x91, 0xFF);
 
     public TextMeshProUGUI shieldText;
     public GameObject Shield;
-    
+
+    [Header("HP Chip Effect")]
+    [SerializeField] private float chipDelay = 0.5f;
+    [SerializeField] private float chipSpeed = 0.5f;
+
+    private float targetFill;      
+    private float chipTimer;       
+
     [Header("Conditions")]
     public int maxConditions = 2;
     public ConditionPanelUI conditionPanelUI;
@@ -48,7 +56,14 @@ public class Character : MonoBehaviour
     {
         stats.currentHP = stats.maxHP;
         UpdateUI();
+
+        if (hpChipBar != null)
+        {
+            hpChipBar.maxValue = 1f;
+            hpChipBar.value = 1f;
+        }
     }
+
 
     protected virtual void Update()
     {
@@ -60,6 +75,30 @@ public class Character : MonoBehaviour
         else
         {
             hpBar.fillRect.GetComponent<Image>().color = Color.red;
+        }
+
+        // ==== CHIP EFFECT ====
+        if (hpChipBar != null && hpBar != null)
+        {
+            float currentValue = hpBar.value;
+            if (hpChipBar.value > currentValue)
+            {
+                chipTimer += Time.deltaTime;
+                if (chipTimer >= chipDelay)
+                {
+                    hpChipBar.value = Mathf.MoveTowards(
+                        hpChipBar.value,
+                        currentValue,
+                        Time.deltaTime * chipSpeed
+                    );
+                }
+            }
+            else
+            {
+                // Nếu heal hoặc chip thấp hơn máu thật → theo kịp luôn
+                hpChipBar.value = currentValue;
+                chipTimer = 0f;
+            }
         }
     }
 
@@ -418,6 +457,19 @@ public class Character : MonoBehaviour
         if (hpText != null) hpText.text = $"{stats.currentHP}/{stats.maxHP}";
         if (shieldText != null) shieldText.text = $"{stats.shield}";
 
-        if (hpBar != null) hpBar.value = (float)stats.currentHP / stats.maxHP;
+        if (hpBar != null)
+        {
+            float newValue = (float)stats.currentHP / stats.maxHP;
+            hpBar.value = newValue;
+
+            // reset timer khi thay đổi máu
+            chipTimer = 0f;
+            targetFill = newValue;
+
+            // nếu chip chưa có giá trị ban đầu → đồng bộ
+            if (hpChipBar != null && hpChipBar.value <= 0)
+                hpChipBar.value = newValue;
+        }
     }
+
 }

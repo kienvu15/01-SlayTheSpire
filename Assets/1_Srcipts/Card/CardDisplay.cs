@@ -56,12 +56,12 @@ public class CardDisplay : MonoBehaviour
            // HideBlocker(); // ẩn ngay từ đầu
         }
 
-        BGHold bghold = GetComponentInParent<BGHold>();
-        if (bghold == null)
-        {
-            Transform TG = GameObject.Find("PositionShowDiscription")?.transform;
-            descriptionPanel.transform.SetParent(TG, false);
-        }
+        //BGHold bghold = GetComponentInParent<BGHold>();
+        //if (bghold == null)
+        //{
+        //    Transform TG = GameObject.Find("PositionShowDiscription")?.transform;
+        //    descriptionPanel.transform.SetParent(TG, false);
+        //}
     }
 
     public void Init(CardData data, ShopSystem shop)

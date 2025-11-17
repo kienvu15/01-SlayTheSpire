@@ -12,6 +12,9 @@ public class UIManager : MonoBehaviour
     public Vector2 originEnterButtonAnchoredPos;
     public RectTransform buttonEnterParent;
 
+    [Header("Deck")]
+    public GameObject deckUI;
+
     [Header("Event")]
     public GameObject tutorialCanvas;
 
@@ -36,14 +39,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         originEnterButtonAnchoredPos = buttonEnterParent.anchoredPosition;
-    }
 
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            FillOverTime();
-        }
     }
 
     #region MapPanel
@@ -70,6 +66,9 @@ public class UIManager : MonoBehaviour
     public void MapIcon()
     {
         SoundManager.Instance.Play("SelectButton", null, 1);
+
+        deckUI.SetActive(false);
+
         foreach (GameObject button in backMap)
         {
             button.SetActive(!button.activeSelf);
@@ -79,6 +78,27 @@ public class UIManager : MonoBehaviour
         Destroy(tutorialCanvas);
         tutorialCanvas = null;
 
+    }
+    #endregion
+
+    #region DeckButton
+    public void DeckButton()
+    {
+        SoundManager.Instance.Play("SelectButton", null, 1);
+        foreach (GameObject button in backMap)
+        {
+            button.SetActive(false);
+        }
+        deckUI.SetActive(true);
+    }
+    public void BackDeckButton()
+    {
+        SoundManager.Instance.Play("SelectButton", null, 1);
+        foreach (GameObject button in backMap)
+        {
+            button.SetActive(false);
+        }
+        deckUI.SetActive(false);
     }
     #endregion
 

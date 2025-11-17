@@ -12,7 +12,7 @@ public class AttackEffect_Weakened : EffectData, IOverrideValue
     {
         if (target == null)
         {
-            Debug.LogWarning("[AttackEffect_Weakened] Target = null!");
+            //Debug.LogWarning("[AttackEffect_Weakened] Target = null!");
             return false;
         }
 
@@ -20,7 +20,6 @@ public class AttackEffect_Weakened : EffectData, IOverrideValue
 
         if (hit)
         {
-            // Apply Weakened condition x1
             Condition weakened = new Condition
             {
                 type = ConditionType.Weakened,
@@ -30,7 +29,7 @@ public class AttackEffect_Weakened : EffectData, IOverrideValue
 
             bool isFromPlayer = self is Player;
             target.AddCondition(weakened, isFromPlayer, CardType.Special);
-            Debug.Log($"[AttackEffect_Weakened] Applied Weakened x{weakened.level} to {target.name}");
+            //Debug.Log($"[AttackEffect_Weakened] Applied Weakened x{weakened.level} to {target.name}");
         }
 
         return hit;
@@ -66,7 +65,7 @@ public class AttackEffect_Weakened : EffectData, IOverrideValue
 
             bool isFromPlayer = self is Player;
             target.AddCondition(weakened, isFromPlayer, CardType.Special);
-            Debug.Log($"[AttackEffect_Weakened] Applied Weakened x{weakened.level} to {target.name} (override)");
+            //Debug.Log($"[AttackEffect_Weakened] Applied Weakened x{weakened.level} to {target.name} (override)");
         }
 
         damage = old;

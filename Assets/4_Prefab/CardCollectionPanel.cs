@@ -12,17 +12,13 @@ public class CardCollectionPanel : MonoBehaviour
     private List<GameObject> spawnedCards = new List<GameObject>();
 
     [Header("UI")]
-    public Button removeButton; // kéo nút Remove vào từ Inspector
+    public Button removeButton; 
 
     private CardDisplay selectedCard;
     private bool isRemoveMode = false;
 
     public Deck deck;
-   // public GameObject PostionShow;
-    void Start()
-    {
-        deck = FindFirstObjectByType<Deck>();
-    }
+
     private void OnEnable()
     {
         RefreshPanel();

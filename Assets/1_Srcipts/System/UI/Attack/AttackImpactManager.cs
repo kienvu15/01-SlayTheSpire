@@ -26,13 +26,27 @@ public class AttackImpactManager : MonoBehaviour
         if (prefab == null) return;
 
         GameObject vfx = GetFromPool(type, prefab);
-        vfx.transform.SetParent(target);
-        vfx.transform.position = target.position + Vector3.up * 0.5f;
+        //vfx.transform.SetParent(target);
+        Transform avatar = target.Find("Animator/Avatar");
+        //vfx.transform.SetParent(avatar, false);
+        vfx.transform.position = avatar.position;
         vfx.transform.rotation = Quaternion.identity;
         vfx.SetActive(true);
 
-        StartCoroutine(DeactivateAfterDelay(vfx, type, 1.5f));
+        ImpactFadeOut fade = vfx.GetComponent<ImpactFadeOut>();
+        fade.PlayFadeOut(obj => ReturnToPool(type, obj));
+
+        //StartCoroutine(DeactivateAfterDelay(vfx, type, 0.5f));
     }
+
+    private void ReturnToPool(CardType type, GameObject obj)
+    {
+        obj.SetActive(false);
+        obj.transform.SetParent(transform);
+        poolDict[type].Enqueue(obj);
+
+    }
+
 
     public void ShowConditionImpact(Transform target, CardType type)
     {

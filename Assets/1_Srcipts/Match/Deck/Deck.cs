@@ -79,7 +79,6 @@ public class Deck : MonoBehaviour
         if (currentHand.Contains(cardGO))
             currentHand.Remove(cardGO);
 
-        //Destroy(cardGO);
         UpdateUI();
     }
 
