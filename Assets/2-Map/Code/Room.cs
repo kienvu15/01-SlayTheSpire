@@ -7,7 +7,7 @@ public class Room : MonoBehaviour
 {
     [Header("Runtime")]
     public RoomType type;
-    public Vector2Int gridPos; // x = column index, y = row index (0 = bottom)
+    public Vector2Int gridPos; 
 
     [HideInInspector]
     public List<Room> outgoing = new List<Room>();

@@ -3,7 +3,7 @@
 public class PlayerMapController : MonoBehaviour
 {
     public static PlayerMapController Instance;
-    public Room currentRoom;   // room hiện tại player đang ở
+    public Room currentRoom;  
 
     private void Awake()
     {
@@ -16,13 +16,8 @@ public class PlayerMapController : MonoBehaviour
 
         if (targetRoom.incoming.Contains(currentRoom))
         {
-            // đánh dấu phòng cũ là visited
             currentRoom.visited = true;
-
-            // cập nhật currentRoom
             currentRoom = targetRoom;
-
-            // update UI
             MapUIManager.Instance.UpdateRoomHighlights();
         }
     }

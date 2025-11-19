@@ -835,6 +835,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomUI
   goButton: {fileID: 2767369035742846751}
+  onRoomClick: {fileID: 4373293052698851916}
   selectSlider: {fileID: 6812696124678771418}
   outline: {fileID: 5045616910348829671}
   isStartPanel: 0

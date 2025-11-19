@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,8 +9,9 @@ public class UIManager : MonoBehaviour
 
     [Header("UI MapPanel")]
     public List<GameObject> backMap;
-    public Vector2 originEnterButtonAnchoredPos;
-    public RectTransform buttonEnterParent;
+    [SerializeField] private RectTransform buttonEnterParent;
+    [SerializeField] private PanCamera panCamera;
+    private Vector2 originEnterButtonAnchoredPos;
 
     [Header("Deck")]
     public GameObject deckUI;
@@ -21,7 +22,6 @@ public class UIManager : MonoBehaviour
     [Header("UI Layer")]
     public Image transitionImage;
     public event System.Action OnTransitionFilled;
-
 
     private void Awake()
     {
@@ -36,16 +36,21 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+
+    }
+
     void Start()
     {
         originEnterButtonAnchoredPos = buttonEnterParent.anchoredPosition;
-
     }
 
     #region MapPanel
     public void BackButton()
     {
         SoundManager.Instance.Play("SelectButton", null, 1);
+
         foreach (GameObject button in backMap)
         {
             button.SetActive(!button.activeSelf);
@@ -53,7 +58,6 @@ public class UIManager : MonoBehaviour
 
         if (Mathf.Abs(buttonEnterParent.anchoredPosition.x - 380.33f) > 0.01f)
         {
-            Debug.Log("Move Back");
             buttonEnterParent.anchoredPosition = new Vector2(originEnterButtonAnchoredPos.x, buttonEnterParent.anchoredPosition.y);
         }
         else
@@ -61,6 +65,10 @@ public class UIManager : MonoBehaviour
             buttonEnterParent.anchoredPosition = new Vector2(380.33f, buttonEnterParent.anchoredPosition.y);
         }
 
+        if (GameFlowManager.Instance.isOnBattle == true)
+        {
+            buttonEnterParent.gameObject.SetActive(false);
+        }
     }
 
     public void MapIcon()
@@ -74,10 +82,22 @@ public class UIManager : MonoBehaviour
             button.SetActive(!button.activeSelf);
         }
 
-        buttonEnterParent.anchoredPosition = new Vector2(originEnterButtonAnchoredPos.x, buttonEnterParent.anchoredPosition.y);
-        Destroy(tutorialCanvas);
-        tutorialCanvas = null;
+        if (GameFlowManager.Instance.isOnBattle == true)
+        {
+            buttonEnterParent.gameObject.SetActive(false);
+        }
+        else
+        {
+            buttonEnterParent.gameObject.SetActive(true);
+        }
 
+        buttonEnterParent.anchoredPosition = new Vector2(originEnterButtonAnchoredPos.x, buttonEnterParent.anchoredPosition.y);
+
+        if (tutorialCanvas != null)
+        {
+            Destroy(tutorialCanvas);
+            tutorialCanvas = null;
+        }
     }
     #endregion
 

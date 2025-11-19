@@ -112,7 +112,8 @@ public class EnemySpawner : MonoBehaviour
     private void EndBattle()
     {
         isOver = true;
-        FindFirstObjectByType<GameFlowManager>()?.HideAllG();
+        GameFlowManager.Instance.isOnBattle = false;
+        GameFlowManager.Instance.HideAllG();
         MapUIManager.Instance?.HideBattleCanvas();
     }
 }

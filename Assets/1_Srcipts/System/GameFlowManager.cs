@@ -6,15 +6,15 @@ public class GameFlowManager : MonoBehaviour
 {
     public static GameFlowManager Instance { get; private set; }
 
-    //public EnemySpawner spawner;
     public Player player;
-    //public GameObject victoryPanel;
     public Deck deck;
     public Discard discard;
     public Match match;
     public CoinManager coinManager;
     public ManaSystem manasystem;
     public List<GameObject> hideOnBattle;
+
+    public bool isOnBattle;
 
     private void Awake()
     {
@@ -37,9 +37,10 @@ public class GameFlowManager : MonoBehaviour
     public void HideAllG()
     {
         StartCoroutine(OnAllEncountersCleared());
+
         player.ClearAllConditionsAndSkills();
-        coinManager.AddCoins(Random.Range(14, 17));
         manasystem.ResetManaToMax();
+        coinManager.AddCoins(Random.Range(14, 17));
     }
 
     public IEnumerator OnAllEncountersCleared()

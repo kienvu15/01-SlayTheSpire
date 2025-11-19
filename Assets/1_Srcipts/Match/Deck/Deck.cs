@@ -38,6 +38,7 @@ public class Deck : MonoBehaviour
     
     private void Update()
     {
+
         if (GameSystem.Instance != null && GameSystem.Instance.isBattlePhase == true && hasDrawFisrtRow == false)
         {
             hasDrawFisrtRow = true;

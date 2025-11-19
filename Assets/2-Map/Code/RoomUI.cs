@@ -7,6 +7,7 @@ public class RoomUI : MonoBehaviour
     private Animator anim;
 
     public Button goButton;
+    public GameObject onRoomClick;
     private Room room;
     private GameObject buttonEnterParent;
 
@@ -17,10 +18,26 @@ public class RoomUI : MonoBehaviour
 
     [Header("Room Flags")]
     public bool isStartPanel = false;
-    public bool isStartRoom = false;  
+    public bool isStartRoom = false;
 
+    private void Awake()
+    {
+        room = GetComponentInParent<Room>();
+
+        anim = GetComponent<Animator>();
+        selectSlider = GetComponentInChildren<Slider>();
+        panelCanvas = GetComponent<Canvas>();
+
+        if (panelCanvas != null)
+        {
+            panelCanvas.overrideSorting = true;
+            panelCanvas.sortingLayerName = "UI";
+            panelCanvas.sortingOrder = 602;
+        }
+    }
     void OnEnable()
     {
+        if (room.visited == true) return;
         if (isStartRoom)
         {
             selectSlider.value = 1f;
@@ -32,37 +49,33 @@ public class RoomUI : MonoBehaviour
 
         if (anim != null)
             anim.Play("Idle", 0, 0f);
+
+        if (GameFlowManager.Instance.isOnBattle)
+        {
+            anim.Play("Hide", 0, 0f);
+            onRoomClick.SetActive(false);
+        }
     }
 
     void OnDisable()
     {
+        if (room.visited == true) return;
+
         if (outline != null)
             outline.enabled = false;
     }
 
     void Start()
     {
-        anim = GetComponent<Animator>();
-        selectSlider = GetComponentInChildren<Slider>();
 
         if (anim != null)
         {
             AnimatorStateInfo state = anim.GetCurrentAnimatorStateInfo(0);
             anim.Play(state.fullPathHash, 0, Random.Range(0f, 1f));
         }
-
-        room = GetComponentInParent<Room>();
         MapUIManager.Instance.RegisterRoomUI(this);
 
         buttonEnterParent = GameObject.Find("ButtonPar");
-
-        panelCanvas = GetComponent<Canvas>();
-        if (panelCanvas != null)
-        {
-            panelCanvas.overrideSorting = true;
-            panelCanvas.sortingLayerName = "UI";
-            panelCanvas.sortingOrder = 602;
-        }
 
         hasMovedOnce = false;
 
@@ -159,6 +172,31 @@ public class RoomUI : MonoBehaviour
         rect.anchoredPosition = targetPos;
     }
 
+
+    private IEnumerator MoveButtonParLeft()
+    {
+        if (buttonEnterParent == null) yield break;
+
+        RectTransform rect = buttonEnterParent.GetComponent<RectTransform>();
+        if (rect == null) yield break;
+
+        Vector2 startPos = rect.anchoredPosition;
+        Vector2 targetPos = startPos - new Vector2(250f, 0f);
+
+        float duration = 0.7f;
+        float elapsed = 0f;
+        SoundManager.Instance.Play("RockMove", null, 1);
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / duration;
+            rect.anchoredPosition = Vector2.Lerp(startPos, targetPos, t);
+            yield return null;
+        }
+        rect.anchoredPosition = targetPos;
+
+    }
     private IEnumerator FillSelectSlider()
     {
         float duration = 0.5f;
@@ -182,7 +220,8 @@ public class RoomUI : MonoBehaviour
     public void OnEnterRoomClicked()
     {
         if (isStartRoom) return;
-
+        StartCoroutine(MoveButtonParLeft());
+        //UIManager.Instance.buttonEnterParent.anchoredPosition = new Vector2(UIManager.Instance.originEnterButtonAnchoredPos.x, UIManager.Instance.buttonEnterParent.anchoredPosition.y);
         UIManager.Instance.FillOverTime();
         UIManager.Instance.OnTransitionFilled -= HandleTransitionComplete;
         UIManager.Instance.OnTransitionFilled += HandleTransitionComplete;
@@ -193,7 +232,11 @@ public class RoomUI : MonoBehaviour
         PlayerMapController.Instance.MoveTo(room);
 
         if (room.type == RoomType.Battle)
+        {
+            room.visited = true; 
+            SetAsVisited();     
             MapUIManager.Instance.ShowBattleCanvas();
+        }
 
         if (room.type == RoomType.Shop)
             MapUIManager.Instance.OpenShop();

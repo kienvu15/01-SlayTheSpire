@@ -109,6 +109,7 @@ public class Character : MonoBehaviour
         activeSkills.Clear();
         conditionPanelUI?.UpdateConditions(activeConditions);
         skillPanelUI?.ClearAll();
+        stats.shield = 0;
     }
 
 

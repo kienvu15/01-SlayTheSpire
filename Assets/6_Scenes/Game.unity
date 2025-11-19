@@ -17777,7 +17777,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   player: {fileID: 0}
   deck: {fileID: 6872667435211596292}
-  discard: {fileID: 0}
+  discard: {fileID: 6032198204815869227}
   match: {fileID: 6358677466195852800}
   coinManager: {fileID: 1642090240}
   manasystem: {fileID: 6159427469020352549}
@@ -17785,6 +17785,7 @@ MonoBehaviour:
   - {fileID: 2128453522978283010}
   - {fileID: 6944691849628013505}
   - {fileID: 1371926833394092618}
+  isOnBattle: 0
 --- !u!224 &1033097754 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5285271798738180835, guid: 923e9541190a40d4d81b7f61d24e6d98, type: 3}
@@ -28277,11 +28278,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
   backMap:
   - {fileID: 1420731165}
-  - {fileID: 1013554217}
   - {fileID: 1121752965}
   - {fileID: 64441743}
   - {fileID: 1465343562}
   - {fileID: 1973410232}
+  - {fileID: 1013554217}
   originEnterButtonAnchoredPos: {x: 0, y: 0}
   buttonEnterParent: {fileID: 1013554218}
   deckUI: {fileID: 1906441875}
@@ -28694,10 +28695,12 @@ MonoBehaviour:
   shopUI: {fileID: 756322470}
   eventUI: {fileID: 667151153}
   hideOnBattle:
-  - {fileID: 941943233}
   - {fileID: 1420731165}
   - {fileID: 1121752965}
   - {fileID: 1973410232}
+  - {fileID: 64441743}
+  - {fileID: 1013554217}
+  - {fileID: 1465343562}
   hideOnShop:
   - {fileID: 2121254555}
   - {fileID: 851573324}
@@ -29050,7 +29053,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: -2138878037
-  m_SortingOrder: 700
+  m_SortingOrder: 500
   m_TargetDisplay: 0
 --- !u!114 &1836789574
 MonoBehaviour:

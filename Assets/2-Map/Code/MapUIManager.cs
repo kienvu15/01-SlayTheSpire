@@ -91,7 +91,6 @@ public class MapUIManager : MonoBehaviour
         match.enemySystem = battleRoom.GetComponentInChildren<EnemySystem>();
 
         // GameFlowManager.Instance.spawner = battleRoom.GetComponentInChildren<EnemySpawner>();
-        GameFlowManager.Instance.discard = battleRoom.GetComponentInChildren<Discard>();
         GameFlowManager.Instance.player = player;
        // GameFlowManager.Instance.manasystem = manaSystem;
 
@@ -108,6 +107,7 @@ public class MapUIManager : MonoBehaviour
         
 
         GameSystem.Instance.BattleUICanvas = battleRoom;
+        GameFlowManager.Instance.isOnBattle = true;
 
         // hide UI khác
         foreach (var obj in hideOnBattle)
@@ -135,6 +135,7 @@ public class MapUIManager : MonoBehaviour
             if (obj != null) obj.SetActive(false);
         }
     }
+
     public void HideBattleCanvas()
     {
         // clear all children trong holder
@@ -149,7 +150,7 @@ public class MapUIManager : MonoBehaviour
             if (obj != null) obj.SetActive(true);
         }
 
-        // CLEAR ENEMIES TRONG BATTLE MANAGER
+        //// CLEAR ENEMIES TRONG BATTLE MANAGER
         if (BattleManager.Instance != null)
         {
             BattleManager.Instance.enemies.Clear();

@@ -6,8 +6,8 @@ public class GameSystem : MonoBehaviour
     
     [SerializeField] public GameObject BattleUICanvas;
     [SerializeField] private PanCamera panCamera;
-    [SerializeField] public GameObject gameCanvas
-        ;
+    [SerializeField] public GameObject gameCanvas;
+
     void Awake()
     {
         if (Instance == null)
@@ -57,6 +57,6 @@ public class GameSystem : MonoBehaviour
 
     public bool IsGamePaused { get; private set; } = false;
 
-    [SerializeField] public bool isBattlePhase = false;   // hiện trong Inspector
+    [SerializeField] public bool isBattlePhase = false;   
 
 }
