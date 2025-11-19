@@ -9,6 +9,13 @@ public class ImpactFadeOut : MonoBehaviour
     private SpriteRenderer sr;
     private CanvasGroup cg;
 
+    public ParticleSystem effect;
+
+    private void OnEnable()
+    {
+        effect.Play();
+    }
+
     private void Awake()
     {
         sr = GetComponentInChildren<SpriteRenderer>();

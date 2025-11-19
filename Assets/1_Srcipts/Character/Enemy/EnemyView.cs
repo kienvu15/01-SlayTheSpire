@@ -139,10 +139,7 @@ public class EnemyView : Enemy
         }
     }
 
-    public override void AddShield(int amount)
-    {
-        base.AddShield(amount);
-    }
+    
 
     public void PerformAction(Character target)
     {

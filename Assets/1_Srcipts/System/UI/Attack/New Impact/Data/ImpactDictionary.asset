@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2baa522aabafd9499989aa5f7613d77, type: 3}
+  m_Name: ImpactDictionary
+  m_EditorClassIdentifier: Assembly-CSharp::ImpactDictionaryAsset
+  entries:
+  - cardType: 4
+    effectKind: 5
+    prefab: {fileID: 5235513956208861579, guid: f254f5527c25b0a47a6428d3e690d392, type: 3}
+  - cardType: 0
+    effectKind: 0
+    prefab: {fileID: 5235513956208861579, guid: ce2bd48d327c6124c9826445719eb0f6, type: 3}

@@ -111,6 +111,7 @@ public class Character : MonoBehaviour
         skillPanelUI?.ClearAll();
     }
 
+
     // ================== Damage & Heal ==================
     public virtual void TakeDamage(int amount)
     {
@@ -155,14 +156,28 @@ public class Character : MonoBehaviour
         UpdateUI();
     }
 
-    public virtual void Heal(int amount)
+    public virtual void Heal(int amount, CardType vfxType = CardType.Mellee)
     {
+        // Chỉ heal nếu máu chưa đầy hoặc muốn hiển thị effect
+        if (amount <= 0) return;
+
         stats.currentHP = Mathf.Min(stats.currentHP + amount, stats.maxHP);
         UpdateUI();
+
+        // ▶ PLAY VFX HEAL
+        // Target là chính mình (this), EffectKind là Heal
+        PlayImpact(this, vfxType, ImpactEffectKind.Heal);
+
+        Debug.Log($"[Heal] {name} healed {amount} HP");
+
+        // (Optional) Nếu bạn có popup cho máu, gọi ở đây:
+        // DamagePopupManager.Instance.ShowPopup(transform.position, -amount, false); // Ví dụ số âm là màu xanh
     }
 
-    public virtual void AddShield(int amount)
+    // Cập nhật Method AddShield
+    public virtual void AddShield(int amount, CardType vfxType = CardType.Special)
     {
+        SoundManager.Instance.Play("ShieldActivate");
         // ===== Multiplier từ Conditions =====
         float multiplier = 1f;
         foreach (var cond in activeConditions)
@@ -170,10 +185,17 @@ public class Character : MonoBehaviour
 
         int finalShield = Mathf.RoundToInt(amount * multiplier);
 
-        stats.shield += finalShield;
-        Debug.Log($"[AddShield] {name} gained {finalShield} shield (base {amount}, multiplier {multiplier})");
+        if (finalShield > 0)
+        {
+            stats.shield += finalShield;
+            Debug.Log($"[AddShield] {name} gained {finalShield} shield (base {amount}, multiplier {multiplier})");
 
-        UpdateUI();
+            UpdateUI();
+
+            // ▶ PLAY VFX SHIELD
+            // Target là chính mình (this), EffectKind là Shield
+            PlayImpact(this, vfxType, ImpactEffectKind.Shield);
+        }
     }
 
     #region raw damage
@@ -185,11 +207,21 @@ public class Character : MonoBehaviour
         return true;
     }
     #endregion 
+    private ImpactEffectKind GetImpactForHit(bool isMiss, bool isDodge, bool isCrit, bool hitArmor)
+    {
+        if (isMiss) return ImpactEffectKind.Miss;
+        if (isDodge) return ImpactEffectKind.Dodge;
+        if (isCrit) return ImpactEffectKind.Crit;
+        if (hitArmor) return ImpactEffectKind.HitArmor;
+
+        return ImpactEffectKind.Damage;
+    }
 
     // Deal damage with all checks (miss, dodge, crit, conditions, skills...)
     public bool DealDamage(Character target, int baseDamage, CardType vfxType = CardType.Mellee)
     {
-        // ===== Check attacker self-miss (Blind, Drunk, etc) =====
+        SoundManager.Instance.Play("Slash");  
+        // ===== Check attacker miss =====
         float selfMissChance = 0f;
         foreach (var cond in activeConditions)
             selfMissChance = Mathf.Max(selfMissChance, cond.GetAttackerMissChance());
@@ -198,9 +230,10 @@ public class Character : MonoBehaviour
         {
             Debug.Log($"[DealDamage] {name} missed due to self condition!");
             DamagePopupManager.Instance.ShowPopup(target.transform.position, 0, true);
-            AttackImpactManager.Instance.ShowImpact(vfxType, target.transform);
 
-            return false; // ❌ miss
+            // Impact VFX cho Miss
+            PlayImpact(target, vfxType, ImpactEffectKind.Miss);
+            return false;
         }
 
         // ===== Check target dodge =====
@@ -211,24 +244,27 @@ public class Character : MonoBehaviour
             {
                 Debug.Log($"[DealDamage] {target.name} dodged!");
                 DamagePopupManager.Instance.ShowPopup(target.transform.position, 0, true);
-                AttackImpactManager.Instance.ShowImpact(vfxType, target.transform);
-                return false; // ❌ miss
+
+                // Impact VFX cho Dodge
+                PlayImpact(target, vfxType, ImpactEffectKind.Dodge);
+                return false;
             }
         }
 
-        // ===== Damage multiplier, crit, etc =====
+        // ===== Damage multiplier =====
         float multiplier = 1f;
         foreach (var cond in activeConditions)
             multiplier *= cond.GetDamageDealtMultiplier();
 
         int dmg = Mathf.RoundToInt(baseDamage * multiplier);
 
-        // 🟢 Relic hook: modify damage trước khi tính crit
+        // Relic BEFORE
         if (relicManager != null)
             dmg = relicManager.ApplyOnBeforeDealDamage(this, target, dmg);
 
-
+        // ===== Crit =====
         bool isCrit = false;
+
         foreach (var cond in activeConditions)
             if (cond.ForceCritical()) { isCrit = true; break; }
 
@@ -239,36 +275,52 @@ public class Character : MonoBehaviour
             dmg = Mathf.RoundToInt(dmg * stats.critDamage);
 
         // ===== Apply damage =====
+        int beforeHP = target.stats.currentHP;
         target.TakeDamage(dmg);
+        int afterHP = target.stats.currentHP;
 
-        // 🟢 Relic hook: sau khi gây damage
+        // Nếu damage bị giảm ⇒ armor/shield absorb
+        bool hitArmor = (afterHP - beforeHP) != -dmg;
+
+        // Relic AFTER
         if (relicManager != null)
             relicManager.ApplyOnAfterDealDamage(this, target, dmg);
 
-        // ===== VFX + Popup cho mỗi lần hit =====
-        AttackImpactManager.Instance.ShowImpact(vfxType, target.transform);
-        DamagePopupManager.Instance.ShowPopup(target.transform.position, dmg, false /*isMiss*/);
+        // ===== NEW: gọi ImpactEffectKind đúng chuẩn =====
+        ImpactEffectKind finalImpact =
+            GetImpactForHit(
+                isMiss: false,
+                isDodge: false,
+                isCrit: isCrit,
+                hitArmor: hitArmor
+            );
 
-        // ===== Post-hit hooks (skills...) =====
+        PlayImpact(target, vfxType, finalImpact);
+
+        // ===== Damage popup =====
+        DamagePopupManager.Instance.ShowPopup(target.transform.position, dmg, isCrit);
+
+        // ===== Skills hook =====
         foreach (var skill in activeSkills.ToArray())
         {
             skill.OnHit(this, target, dmg);
-            if (skillPanelUI != null)
-                skillPanelUI.UpdateStacks(skill.type, skill.stacks);
+            skillPanelUI?.UpdateStacks(skill.type, skill.stacks);
         }
 
-        foreach (var skill in activeSkills.ToArray())
+        // Cleanup skills
+        for (int i = activeSkills.Count - 1; i >= 0; i--)
         {
-            if (skill.stacks <= 0)
+            if (activeSkills[i].stacks <= 0)
             {
-                if (skillPanelUI != null)
-                    skillPanelUI.RemoveSkill(skill.type);
-                activeSkills.Remove(skill);
+                skillPanelUI?.RemoveSkill(activeSkills[i].type);
+                activeSkills.RemoveAt(i);
             }
         }
 
-        return true; // ✅ hit
+        return true;
     }
+
+
 
     public void AddCondition(Condition newCondition, bool isFromPlayer, CardType vfxType = CardType.Special)
     {
@@ -470,6 +522,38 @@ public class Character : MonoBehaviour
             if (hpChipBar != null && hpChipBar.value <= 0)
                 hpChipBar.value = newValue;
         }
+    }
+
+    // IMPACT CALL
+    // ----------------------------
+    private void PlayImpact(Character target, CardType cardType, ImpactEffectKind effect)
+    {
+        HitContext ctx = new HitContext
+        {
+            cardType = cardType,
+            effectKind = effect,
+            target = target.transform,
+            position = target.transform.position,
+            rotation = Quaternion.identity
+        };
+
+        NewAttackImpactManager.Instance.PlayImpact(ctx);
+    }
+
+    // ----------------------------
+    // RANDOM MINI SYSTEM
+    // ----------------------------
+    private bool RollMiss() => Random.value < 0.05f;
+    private bool RollDodge() => Random.value < 0.05f;
+
+    private bool RollCrit(ref int dmg)
+    {
+        if (Random.value < 0.1f)
+        {
+            dmg = Mathf.RoundToInt(dmg * 1.5f);
+            return true;
+        }
+        return false;
     }
 
 }

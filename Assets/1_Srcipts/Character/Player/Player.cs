@@ -35,7 +35,7 @@ public class Player : Character
         }
     }
 
-    public override void AddShield(int amount)
+    public override void AddShield(int amount, CardType vfxType = CardType.Special)
     {
         base.AddShield(amount);
 

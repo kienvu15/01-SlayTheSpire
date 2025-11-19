@@ -103,3 +103,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea65c1a0e509bff4bb22f289d1b885db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ImpactFadeOut
+  fadeDuration: 0.5
