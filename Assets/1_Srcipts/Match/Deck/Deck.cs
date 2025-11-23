@@ -38,6 +38,8 @@ public class Deck : MonoBehaviour
     
     private void Update()
     {
+        if (GameFlowManager.Instance.isOnBattle == false)
+            return;
 
         if (GameSystem.Instance != null && GameSystem.Instance.isBattlePhase == true && hasDrawFisrtRow == false)
         {
@@ -186,6 +188,22 @@ public class Deck : MonoBehaviour
         currentHand.Clear();
     }
 
+    public IEnumerator AnimateClearHand()
+    {
+        // 1. Clean list trước (xoá null nếu có)
+        currentHand.RemoveAll(card => card == null);
+
+        // 2. Animate bay về discard
+        yield return StartCoroutine(discard.AnimateDiscardHand(currentHand));
+
+        // 3. Khi animation xong, clear list
+        currentHand.Clear();
+
+        // 4. Cập nhật UI
+        UpdateUI();
+    }
+
+
     // CHỈ xóa tham chiếu trong deck (dùng khi objects đã bị destroy bởi animation khác)
     public void ClearHandReferencesOnly()
     {
@@ -194,7 +212,14 @@ public class Deck : MonoBehaviour
 
     public List<GameObject> GetCurrentHandObjects()
     {
-        return currentHand;
+        // Bước 1: Dọn dẹp chính cái list gốc (xóa hết những thằng đã chết/null)
+        // Lệnh này rất mạnh: Nó duyệt cả list và xóa sạch phần tử null
+        currentHand.RemoveAll(card => card == null);
+
+        // Bước 2: Trả về một bản COPY của danh sách đã sạch
+        // Việc tạo "new List" giúp đảm bảo nếu bên ngoài có sửa list này 
+        // thì cũng không làm hỏng list gốc trong Deck.
+        return new List<GameObject>(currentHand);
     }
 
     public int GetDeckCount()

@@ -3,12 +3,27 @@ using TMPro;
 
 public class CoinManager : MonoBehaviour
 {
+    public static CoinManager Instance; // Singleton
+
     [Header("UI")]
-    public TMP_Text coinText;   // UI hiển thị số coin
+    public TMP_Text coinText;
 
     [Header("Data")]
-    public int startCoins = 100; // coin ban đầu
+    public int startCoins = 100;
     private int currentCoins;
+
+    private void Awake()
+    {
+        // Setup Singleton
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
@@ -24,22 +39,15 @@ public class CoinManager : MonoBehaviour
             UpdateUI();
             return true;
         }
-        else
-        {
-            Debug.Log("Không đủ coin!");
-            return false;
-        }
+        Debug.Log("Không đủ coin!");
+        return false;
     }
 
     public void AddCoins(int amount)
     {
         currentCoins += amount;
         UpdateUI();
-    }
-
-    public int GetCoins()
-    {
-        return currentCoins;
+        Debug.Log("Added " + amount + " coins. Total: " + currentCoins);
     }
 
     private void UpdateUI()

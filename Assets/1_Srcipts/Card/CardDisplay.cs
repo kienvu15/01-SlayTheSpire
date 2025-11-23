@@ -1,9 +1,21 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
+using NUnit.Framework;
+
+public enum CardMode
+{
+    Shop,       
+    Reward,     
+    ViewOnly    
+}
 
 public class CardDisplay : MonoBehaviour
 {
+    [Header("Mode")]
+    public CardMode currentMode = CardMode.ViewOnly;
+
     [Header("UI References")]
     public TMP_Text titleText;
 
@@ -20,24 +32,28 @@ public class CardDisplay : MonoBehaviour
     public Image artworkImage;
 
     [Header("Description Panel")]
-    public GameObject descriptionPanel;   // Panel con
-    public TMP_Text descriptionText;      // Text trong panel
     public GameObject buyButton;
+    public GameObject descriptionPanel;   
+    public TMP_Text descriptionText;    
+
+    [Header("Animation Settings")]
+    public bool useScaleAnimation = false; 
+    public float scaleMultiplier = 1.15f;
+    public float animDuration = 0.2f;
 
     private static CardDisplay currentlyOpen;
     private CanvasGroup blockerGroup;
     public  ShopSystem shopSystem;
+    public CardHolder cardholder;
 
     public CardData cardData;
 
     private Canvas canvas;
+    private Vector3 originalScale;
+
     private void Awake()
     {
-
-        //button = GetComponentInChildren<Button>();
-        //if (button != null)
-        //    button.onClick.AddListener(OnCardClick);
-
+        originalScale = transform.localScale;
         shopSystem = GetComponentInParent<ShopSystem>();
         if(shopSystem == null)
             buyButton.SetActive(false);
@@ -45,25 +61,18 @@ public class CardDisplay : MonoBehaviour
         if (descriptionPanel != null)
             descriptionPanel.SetActive(false);
 
-        // Tìm Block-Panel trong scene
         GameObject blocker = GameObject.Find("Block-Panel");
         if (blocker != null)
         {
             blockerGroup = blocker.GetComponent<CanvasGroup>();
             if (blockerGroup == null)
                 blockerGroup = blocker.AddComponent<CanvasGroup>();
-
-           // HideBlocker(); // ẩn ngay từ đầu
         }
 
-        //BGHold bghold = GetComponentInParent<BGHold>();
-        //if (bghold == null)
-        //{
-        //    Transform TG = GameObject.Find("PositionShowDiscription")?.transform;
-        //    descriptionPanel.transform.SetParent(TG, false);
-        //}
+        cardholder = FindFirstObjectByType<CardHolder>();
     }
 
+    //SHOP
     public void Init(CardData data, ShopSystem shop)
     {
         cardData = data;
@@ -94,6 +103,23 @@ public class CardDisplay : MonoBehaviour
                 buyButton.SetActive(false);
             }
         }
+    }
+
+    //Reward
+    public void Init(CardData data, CardHolder holder)
+    {
+        currentMode = CardMode.Reward; // Đặt chế độ Reward
+        cardData = data;
+        cardholder = holder;
+
+        LoadCard(data);
+
+        // Trong chế độ Reward thì ẩn nút Mua đi
+        if (buyButton != null)
+            buyButton.SetActive(false);
+
+        // Bật animation scale cho đẹp
+        useScaleAnimation = true;
     }
 
     void Start()
@@ -149,6 +175,8 @@ public class CardDisplay : MonoBehaviour
             statsBG.SetActive(false);
             statsContainer.SetActive(false);
         }
+
+        descriptionPanel.GetComponent<Canvas>().sortingLayerName = "UI";
     }
 
     public void LoadCard(CardData data)
@@ -222,34 +250,91 @@ public class CardDisplay : MonoBehaviour
             descriptionText.text = data.description;
     }
 
+    private void ConfirmPickReward()
+    {
+        if (cardholder != null)
+        {
+            cardholder.AddCard(cardData);
+
+            if (RandomCardSystem.Instance != null)
+            {
+            }
+
+            RectTransform target = UIManager.Instance.deckIcon; 
+
+            UIManager.Instance.AnimateCardFly(
+                this.GetComponent<RectTransform>(),
+                target,
+                () => {
+                    RandomCardSystem.Instance.StartCoroutine(RandomCardSystem.Instance.OnCardSelected(this));
+
+                }
+            );
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                transform.GetChild(i).gameObject.SetActive(false);
+            }
+
+            HideDescription();
+        }
+    }
 
     public CardData GetCardData()
     {
         return cardData;
     }
 
-    public void OnCardClick()
+    private void ToggleDescription()
     {
         if (descriptionPanel == null) return;
 
-        // Nếu đang có card khác mở → đóng nó
+        // Đóng card khác
         if (currentlyOpen != null && currentlyOpen != this)
             currentlyOpen.HideDescription();
 
-        bool newState = !descriptionPanel.activeSelf;
-        descriptionPanel.SetActive(newState);
+        bool isOpening = !descriptionPanel.activeSelf;
+        descriptionPanel.SetActive(isOpening);
 
-        if (newState)
+        if (isOpening)
         {
             currentlyOpen = this;
             ShowBlocker();
+
+            // Hiệu ứng Scale (áp dụng cho cả Shop lẫn Reward nếu muốn)
+            if (useScaleAnimation)
+            {
+                transform.DOKill();
+                transform.DOScale(originalScale * scaleMultiplier, animDuration).SetEase(Ease.OutBack);
+                if (canvas != null) canvas.sortingOrder = 10;
+            }
         }
         else
         {
+            // Đóng lại
             currentlyOpen = null;
             HideBlocker();
+            ResetScaleAnim();
         }
     }
+
+    public void OnCardClick()
+    {
+        SoundManager.Instance.Play("SelectButton");
+        if (currentMode == CardMode.Reward)
+        {
+            // Nếu đang mở (đang scale to) mà bấm tiếp -> LẤY BÀI
+            if (currentlyOpen == this && descriptionPanel.activeSelf)
+            {
+                ConfirmPickReward();
+                return;
+            }
+        }
+
+        ToggleDescription();
+    
+    }
+
+
 
     public void HideDescription()
     {
@@ -260,7 +345,22 @@ public class CardDisplay : MonoBehaviour
             currentlyOpen = null;
 
         HideBlocker();
+        ResetScaleAnim();
     }
+
+    private void ResetScaleAnim()
+    {
+        if (useScaleAnimation)
+        {
+            transform.DOKill();
+            // Scale về kích thước gốc
+            transform.DOScale(originalScale, animDuration).SetEase(Ease.OutQuad);
+
+            // Trả lại sorting order (nếu cần)
+            if (canvas != null) canvas.sortingOrder = 0;
+        }
+    }
+
 
     private void ShowBlocker()
     {

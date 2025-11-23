@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class RelicManager : MonoBehaviour
 {
+    public static RelicManager Instance;
     public List<Relic> equippedRelics = new List<Relic>();
 
     // UI events
@@ -11,12 +12,27 @@ public class RelicManager : MonoBehaviour
 
     // Owner character
     private Character owner;
-    //public ScorechingShell scorechingShell;
 
     private void Awake()
     {
-        owner = GameObject.FindWithTag("Player").GetComponent<Character>();
+        if (Instance == null)
+        {
+            Instance = this;
+            // Nếu RelicManager tồn tại suốt game: DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        // Tìm Character Owner
+        GameObject playerObj = GameObject.FindWithTag("Player");
+        if (playerObj != null)
+        {
+            owner = playerObj.GetComponent<Character>();
+        }
     }
+
     void Start()
     {
         //AddRelic(scorechingShell);
@@ -42,7 +58,7 @@ public class RelicManager : MonoBehaviour
         }
     }
 
-    // Cho Shop gọi
+
     public void AddRelic(Relic relic)
     {
         EquipRelic(relic);

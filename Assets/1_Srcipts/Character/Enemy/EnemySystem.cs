@@ -53,13 +53,16 @@ public class EnemySystem : MonoBehaviour
 
     public void OnEnemyDied(EnemyView enemy)
     {
-        if (enemies.Contains(enemy))
+        if (enemy.currentSlot != null)
         {
-            enemies.Remove(enemy);   // bỏ khỏi list liền tay
+            enemy.currentSlot.isOccupied = false;
+            enemy.currentSlot.occupant = null;
         }
 
+        enemies.Remove(enemy);
         StartCoroutine(CheckWaveClear());
     }
+
 
     private IEnumerator CheckWaveClear()
     {

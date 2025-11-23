@@ -195,8 +195,8 @@ public class RoomUI : MonoBehaviour
             yield return null;
         }
         rect.anchoredPosition = targetPos;
-
     }
+
     private IEnumerator FillSelectSlider()
     {
         float duration = 0.5f;
@@ -221,7 +221,6 @@ public class RoomUI : MonoBehaviour
     {
         if (isStartRoom) return;
         StartCoroutine(MoveButtonParLeft());
-        //UIManager.Instance.buttonEnterParent.anchoredPosition = new Vector2(UIManager.Instance.originEnterButtonAnchoredPos.x, UIManager.Instance.buttonEnterParent.anchoredPosition.y);
         UIManager.Instance.FillOverTime();
         UIManager.Instance.OnTransitionFilled -= HandleTransitionComplete;
         UIManager.Instance.OnTransitionFilled += HandleTransitionComplete;

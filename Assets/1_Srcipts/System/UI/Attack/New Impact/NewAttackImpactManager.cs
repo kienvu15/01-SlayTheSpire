@@ -29,7 +29,7 @@ public class NewAttackImpactManager : MonoBehaviour
         if (dictionary.TryGetImpact(ctx, out var prefab))
         {
             GameObject vfxInstance = GetFromPool(prefab);
-
+            vfxInstance.transform.SetParent(null);
             // Position
             vfxInstance.transform.position = ctx.position;
             vfxInstance.transform.rotation = ctx.rotation;

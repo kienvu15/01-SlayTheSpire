@@ -20,5 +20,5 @@ MonoBehaviour:
   description: Deal 7 damage to an enemy
   effects:
   - effect: {fileID: 11400000, guid: 8c16c3fa9234edb489c2df4f788fe946, type: 2}
-    overrideValue: 0
-    valueOverride: 0
+    overrideValue: 1
+    valueOverride: 45

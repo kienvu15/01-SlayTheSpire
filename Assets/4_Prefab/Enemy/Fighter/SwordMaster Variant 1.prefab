@@ -487,6 +487,7 @@ GameObject:
   - component: {fileID: 8883895481325847471}
   - component: {fileID: 8146824234252356619}
   - component: {fileID: 478765328441785479}
+  - component: {fileID: 7332816246809147059}
   m_Layer: 0
   m_Name: SwordMaster Variant 1
   m_TagString: Untagged
@@ -558,6 +559,8 @@ MonoBehaviour:
   typeIcons: {fileID: 11400000, guid: 58df069efe116de41af94ce326a2e0c4, type: 2}
   intentUI: {fileID: 6997128767036073160}
   currentSlot: {fileID: 0}
+  canvas: {fileID: 2244076747701047186}
+  canvasGroup: {fileID: 7332816246809147059}
   isBoss: 1
   enemyType: 0
   actionPatternAssets:
@@ -609,6 +612,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!225 &7332816246809147059
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2434284148866587820}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &2840877772177639203
 GameObject:
   m_ObjectHideFlags: 0

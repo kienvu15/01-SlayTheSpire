@@ -12,16 +12,19 @@ public class EnemyView : Enemy
     public EnemyActionTypeIcon typeIcons;
     public EnemyIntentUI intentUI;
     public Spot currentSlot;
+    public GameObject canvas;
+    public CanvasGroup canvasGroup;
 
     [Header("Enemy Type")]
     public bool isBoss = false;
-    private int nextActionIndex = 0; // lưu action sẽ thực hiện ở turn tới
+    private bool isActive = true;
+    private int nextActionIndex = 0; 
     public EnemyType enemyType;
 
     [Header("EnemyView Specific")]
-    public List<EnemyAction> actionPatternAssets; // kéo thả trong Inspector
+    public List<EnemyAction> actionPatternAssets; 
     public List<OverrideValues> overrideValuesPattern;
-    private List<EnemyActionInstance> actionPattern; // runtime copy
+    private List<EnemyActionInstance> actionPattern; 
 
     private int currentActionIndex = 0;
 
@@ -29,13 +32,11 @@ public class EnemyView : Enemy
     {
         base.Start();
 
-        // Tạo instance runtime cho từng enemy → cooldown tách biệt
         actionPattern = new List<EnemyActionInstance>();
         for (int i = 0; i < actionPatternAssets.Count; i++)
         {
             int? cdOverride = null;
 
-            // Nếu có override cooldown
             if (overrideValuesPattern != null && i < overrideValuesPattern.Count)
             {
                 int cd = overrideValuesPattern[i].overrideCooldown;
@@ -50,28 +51,41 @@ public class EnemyView : Enemy
         ShowNextIntent();
     }
 
-
     protected override void Update()
     {
         base.Update();
 
-        if (stats.currentHP <= 0)
+        if (stats.currentHP <= 0 && isActive)
         {
+            canvas.SetActive(false);
             EnemySystem system = FindFirstObjectByType<EnemySystem>();
             if (system != null)
             {
                 system.OnEnemyDied(this);
             }
-
+            isActive = false;
             StartCoroutine(Die());
         }
     }
 
     private IEnumerator Die()
     {
-        yield return new WaitForSeconds(1f);
+        float duration = 0.8f;
+        float t = 0f;
+
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            float alpha = Mathf.Lerp(1f, 0f, t / duration);
+            canvasGroup.alpha = alpha;
+            yield return null;
+        }
+
+        canvasGroup.alpha = 0f;
+
         Destroy(gameObject);
     }
+
 
     public IEnumerator Move2Slot(Spot targetSlot)
     {
@@ -89,10 +103,8 @@ public class EnemyView : Enemy
             currentSlot.occupant = null;
         }
 
-        // Convert world position của Slot sang local pos trong canvas
         Vector2 targetPos = WorldToLocalPos(targetSlot.transform.position, enemyCanvas);
 
-        // Di chuyển dần
         while (Vector2.Distance(enemyRect.anchoredPosition, targetPos) > 1f)
         {
             enemyRect.anchoredPosition = Vector2.MoveTowards(
@@ -104,11 +116,9 @@ public class EnemyView : Enemy
             yield return null;
         }
 
-        // Snap cuối cùng
         enemyRect.anchoredPosition = targetPos;
         enemyRect.localPosition = new Vector3(enemyRect.localPosition.x, enemyRect.localPosition.y, 0f);
 
-        // Gán slot
         AssginToSlot(targetSlot);
     }
 
@@ -298,14 +308,12 @@ public class EnemyView : Enemy
     {
         if (slot == null) return;
 
-        // clear slot cũ
         if (currentSlot != null && currentSlot.occupant == this)
         {
             currentSlot.isOccupied = false;
             currentSlot.occupant = null;
         }
 
-        // gán slot mới
         currentSlot = slot;
         currentSlot.isOccupied = true;
         currentSlot.occupant = this;

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,6 +17,9 @@ public class GameFlowManager : MonoBehaviour
 
     public bool isOnBattle;
 
+    //===== Event =====//
+    public event Action OnBattleEnded;
+
     private void Awake()
     {
         if(Instance == null)
@@ -29,18 +33,14 @@ public class GameFlowManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        
-    }
 
     public void HideAllG()
     {
-        StartCoroutine(OnAllEncountersCleared());
+        //StartCoroutine(OnAllEncountersCleared());
 
-        player.ClearAllConditionsAndSkills();
-        manasystem.ResetManaToMax();
-        coinManager.AddCoins(Random.Range(14, 17));
+        //player.ClearAllConditionsAndSkills();
+        //manasystem.ResetManaToMax();
+        coinManager.AddCoins(UnityEngine.Random.Range(14, 17));
     }
 
     public IEnumerator OnAllEncountersCleared()
@@ -54,4 +54,26 @@ public class GameFlowManager : MonoBehaviour
         discard.Clear();
         deck.hasDrawFisrtRow = false;
     }
+
+    public IEnumerator AfterBattleEvent()
+    {
+        player.canvas.SetActive(false);
+        GameStage.Instance.SetBusy(true);
+        deck.StartCoroutine(deck.AnimateClearHand());
+        player.ClearAllConditionsAndSkills();
+        manasystem.ResetManaToMax();
+
+        yield return new WaitForSeconds(1f);
+        UIManager.Instance.StartCoroutine(UIManager.Instance.MoveHandToBottom());
+        GameStage.Instance.SetBusy(false);
+        UIManager.Instance.PlayPartical();
+        OnBattleEnded?.Invoke();
+        GameSystem.Instance.BattleUICanvas = null;
+
+        discard.Clear();
+        deck.BuildDeck();
+        deck.hasDrawFisrtRow = false;
+
+    }
+
 }

@@ -280,20 +280,20 @@ public class Character : MonoBehaviour
         target.TakeDamage(dmg);
         int afterHP = target.stats.currentHP;
 
-        // Nếu damage bị giảm ⇒ armor/shield absorb
-        bool hitArmor = (afterHP - beforeHP) != -dmg;
+        bool isDead = target.stats.currentHP <= 0;
+
+        bool hitArmor = !isDead && ((afterHP - beforeHP) != -dmg);
 
         // Relic AFTER
         if (relicManager != null)
             relicManager.ApplyOnAfterDealDamage(this, target, dmg);
 
-        // ===== NEW: gọi ImpactEffectKind đúng chuẩn =====
         ImpactEffectKind finalImpact =
             GetImpactForHit(
                 isMiss: false,
                 isDodge: false,
                 isCrit: isCrit,
-                hitArmor: hitArmor
+                hitArmor: hitArmor 
             );
 
         PlayImpact(target, vfxType, finalImpact);

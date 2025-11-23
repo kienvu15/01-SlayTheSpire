@@ -8,7 +8,6 @@ public class Match : MonoBehaviour
     public Discard discard;
     public ManaSystem manaSystem;
     public EnemySystem enemySystem;
-    public GameSystem gameSystem;
     public PlayerSelfCast playerSelfCast;
     public Player player;
     public CanvasGroup blockPanel;
@@ -19,27 +18,13 @@ public class Match : MonoBehaviour
     public float waitAfterDiscardAnimations = 0.5f;
     public float waitBeforeRefill = 3f;   
 
-    //private bool isBusy = false;  
-
-    private void Start()
-    {
-        if(deck == null)
-        {
-            deck = FindFirstObjectByType<Deck>();
-        }
-        
-    }
 
     public void EndTurn()
     {
         if (GameStage.Instance.isBusy) return;
-
-        // Player endturn thì giảm duration của condition do ENEMY cast lên player
         if (player != null)
         {
             player.DecreaseEnemyConditions();
-
-            
         }
 
         blockPanel.blocksRaycasts = true;

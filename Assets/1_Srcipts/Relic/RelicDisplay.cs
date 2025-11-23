@@ -26,17 +26,14 @@ public class RelicDisplay : MonoBehaviour
 
         nameText.SetActive(false);
 
-        // Gắn sự kiện click icon
         if (iconButton != null)
             iconButton.onClick.AddListener(OnClick);
     }
 
     private void Update()
     {
-        // Nếu panel đang mở mà người chơi click chuột trái ra ngoài → tắt
         if (descriptionPanel.activeSelf && Input.GetMouseButtonDown(0))
         {
-            // Kiểm tra nếu không click lên chính panel hoặc icon
             if (!RectTransformUtility.RectangleContainsScreenPoint(
                     descriptionPanel.GetComponent<RectTransform>(),
                     Input.mousePosition, null) &&

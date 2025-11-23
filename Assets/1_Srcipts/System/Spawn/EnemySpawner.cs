@@ -10,7 +10,7 @@ public class EnemySpawner : MonoBehaviour
 
     private EncounterData currentEncounter;
     private int currentWaveIndex = 0;
-    public bool isOver = false;
+   // public bool isOver = false;
 
     private void Start()
     {
@@ -66,6 +66,9 @@ public class EnemySpawner : MonoBehaviour
             if (prefab == null) continue;
 
             GameObject enemyGO = Instantiate(prefab, systemCanvas.transform);
+            EnemyDropZone dropZone = enemyGO.GetComponentInChildren<EnemyDropZone>();
+            dropZone.deck = UIManager.Instance.deck;
+            dropZone.discard = UIManager.Instance.discardScript;
             RectTransform enemyRect = enemyGO.GetComponent<RectTransform>();
 
             Vector3 localPos = enemyRect.localPosition;
@@ -111,9 +114,11 @@ public class EnemySpawner : MonoBehaviour
 
     private void EndBattle()
     {
-        isOver = true;
         GameFlowManager.Instance.isOnBattle = false;
-        GameFlowManager.Instance.HideAllG();
+        UIManager.Instance.StartCoroutine(UIManager.Instance.AnimationButtonMoveAfterBattle());
+
+        GameFlowManager.Instance.StartCoroutine(GameFlowManager.Instance.AfterBattleEvent());
         MapUIManager.Instance?.HideBattleCanvas();
+        UIManager.Instance.lootPanel.SetActive(true);
     }
 }
