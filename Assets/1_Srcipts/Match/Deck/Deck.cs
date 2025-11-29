@@ -19,6 +19,7 @@ public class Deck : MonoBehaviour
     public bool hasDrawFisrtRow = false;
     public TextMeshProUGUI[] deckCountText;
     public TextMeshProUGUI discardCountText;
+    public TextMeshProUGUI allCardCount;
 
     [Header("Animation Settings")]
     public float drawDuration = 0.6f;   
@@ -57,17 +58,17 @@ public class Deck : MonoBehaviour
 
     public void CacheDeckCountText()
     {
-        GameObject[] gos = GameObject.FindGameObjectsWithTag("DeckCount");
+        GameObject[] DeckCount = GameObject.FindGameObjectsWithTag("DeckCount");
         List<TextMeshProUGUI> foundTexts = new List<TextMeshProUGUI>();
 
-        foreach (var go in gos)
+        foreach (var go in DeckCount)
         {
             var tmp = go.GetComponent<TextMeshProUGUI>();
             if (tmp != null) foundTexts.Add(tmp);
         }
 
         deckCountText = foundTexts.ToArray();
-        UpdateUI(); // cập nhật ngay số bài
+        UpdateUI(); 
     }
 
     public void CacheDeckDiscard()
@@ -257,6 +258,18 @@ public class Deck : MonoBehaviour
         if (deck.Contains(data))
             deck.Remove(data);
         UpdateUI();
+    }
+
+    public void AddCard(CardData cardData)
+    {
+        deck.Add(cardData);
+        UpdateUI();
+    }
+
+    public void UpdateAllCardCount()
+    {
+        Debug.Log("Updating all card count UI");
+        allCardCount.text = cardHolder.allCardData.Count.ToString();
     }
 
     public void UpdateUI()

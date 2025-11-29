@@ -4,7 +4,7 @@
 public class AttackEffectData : EffectData, IOverrideValue
 {
     public int damage = 5;
-    public CardType vfxType = CardType.Mellee; // set trong inspector
+    public CardType vfxType = CardType.Mellee;
 
     public override bool Apply(Character self, Character target, ManaSystem manaSystem, Deck deck)
     {

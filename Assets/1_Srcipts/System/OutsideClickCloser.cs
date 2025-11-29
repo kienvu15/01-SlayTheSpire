@@ -1,8 +1,11 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class OutsideClickCloser : MonoBehaviour, IPointerClickHandler
 {
+    public bool isShopMode = false;
+
     void Start()
     {
         //gameObject.SetActive(false);

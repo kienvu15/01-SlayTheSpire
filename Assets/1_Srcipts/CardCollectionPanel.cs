@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -37,7 +38,7 @@ public class CardCollectionPanel : MonoBehaviour
         {
             GameObject newCard = Instantiate(cardDisplayPrefab, contentParent);
             CardDisplay display = newCard.GetComponent<CardDisplay>();
-
+            display.useScaleAnimation = true;
             if (display != null)
             {
                 display.LoadCard(data);
@@ -55,10 +56,6 @@ public class CardCollectionPanel : MonoBehaviour
 
             spawnedCards.Add(newCard);
         }
-
-        // ẩn/hiện nút Remove theo mode
-        if (removeButton != null)
-            removeButton.gameObject.SetActive(isRemoveMode);
     }
 
     // Mở panel theo mode
@@ -79,19 +76,63 @@ public class CardCollectionPanel : MonoBehaviour
     {
         if (selectedCard != null && cardHolder != null)
         {
-            cardHolder.RemoveCard(selectedCard.cardData);
-            deck.RemoveFromDeck(selectedCard.cardData); // xóa luôn trong Deck
-            CardDisplay di = selectedCard.GetComponent<CardDisplay>();
-            if (di.descriptionPanel != null)
-            {
-                if (di.descriptionPanel.activeSelf)
-                {
-                    Destroy(di.descriptionPanel);
-                }
-            }
-            RefreshPanel();
+            ConfirmPickReward();
+            
         }
     }
 
+
+    private void ConfirmPickReward()
+    {
+        if (selectedCard != null)
+        {
+
+            if (RandomCardSystem.Instance != null)
+            {
+            }
+
+            RectTransform target = UIManager.Instance.deckIcon;
+
+                UIManager.Instance.AnimateCardFly(
+                    selectedCard.GetComponent<RectTransform>(),
+                    target,
+                    () => {
+                        StartCoroutine(OnCardSelected(selectedCard));
+
+                }
+            );
+            for (int i = 0; i < selectedCard.transform.childCount; i++)
+            {
+                selectedCard.transform.GetChild(i).gameObject.SetActive(false);
+            }
+
+            selectedCard.HideDescription();
+        }
+    }
+    public IEnumerator OnCardSelected(CardDisplay pickedCard)
+    {
+        selectedCard.goldContainer.SetActive(false);
+        UIManager.Instance.AnimateCardFly(
+           pickedCard.GetComponent<RectTransform>(),
+           UIManager.Instance.deckIcon,
+           () =>
+           {
+               selectedCard = null;
+
+           });
+        yield return new WaitForSeconds(0.3f);
+
+        cardHolder.RemoveCard(selectedCard.cardData);
+        deck.RemoveFromDeck(selectedCard.cardData);
+        CardDisplay di = selectedCard.GetComponent<CardDisplay>();
+        if (di.descriptionPanel != null)
+        {
+            if (di.descriptionPanel.activeSelf)
+            {
+                Destroy(di.descriptionPanel);
+            }
+        }
+        RefreshPanel();
+    }
 
 }

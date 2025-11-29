@@ -1,0 +1,1066 @@
+fileFormatVersion: 2
+guid: a2115d84f7586204599e098fb1d67ea3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 101721160540873357
+    second: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_0
+  - first:
+      213: -7236166917675346540
+    second: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_1
+  - first:
+      213: 2326928957567637146
+    second: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_2
+  - first:
+      213: 261019637599388683
+    second: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_3
+  - first:
+      213: -1685154854445368080
+    second: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_4
+  - first:
+      213: -1310816492869740701
+    second: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_5
+  - first:
+      213: 4045606159554126267
+    second: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_6
+  - first:
+      213: 2788592601238103318
+    second: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_7
+  - first:
+      213: -8249435212903230786
+    second: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_8
+  - first:
+      213: 7723134838780153504
+    second: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_9
+  - first:
+      213: 4068447455312349586
+    second: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_10
+  - first:
+      213: 3469997698741665124
+    second: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_11
+  - first:
+      213: 2292525866700278842
+    second: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_12
+  - first:
+      213: 5615962722604395992
+    second: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_13
+  - first:
+      213: 194013370710167987
+    second: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_14
+  - first:
+      213: 680277334756694528
+    second: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_15
+  - first:
+      213: -7713222091539342597
+    second: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_16
+  - first:
+      213: -3231220902182228106
+    second: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_17
+  - first:
+      213: 2729991156416750463
+    second: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_18
+  - first:
+      213: -123707129962622206
+    second: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_19
+  - first:
+      213: -7178438592277083982
+    second: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_20
+  - first:
+      213: 6646607722904223470
+    second: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_21
+  - first:
+      213: 4563835109441769932
+    second: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_22
+  - first:
+      213: -57154350323574502
+    second: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_23
+  - first:
+      213: -680088244545507035
+    second: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_24
+  - first:
+      213: 7366655687377506761
+    second: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_25
+  - first:
+      213: -21063270647168970
+    second: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_26
+  - first:
+      213: 3423038987107329044
+    second: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_27
+  - first:
+      213: -4759436634602819011
+    second: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_28
+  - first:
+      213: 8689510279676324319
+    second: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_29
+  - first:
+      213: 2067675493301325569
+    second: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_30
+  - first:
+      213: -4455546174247481564
+    second: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_31
+  - first:
+      213: -4304794781889319357
+    second: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_32
+  - first:
+      213: -3347326687035056841
+    second: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_33
+  - first:
+      213: -2042477121245804886
+    second: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_34
+  - first:
+      213: -4137984042430141033
+    second: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_35
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 0
+        width: 903
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d82ed284bd2696100800000000000000
+      internalID: 101721160540873357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_1
+      rect:
+        serializedVersion: 2
+        x: 902
+        y: 864
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4951788f688f39b90800000000000000
+      internalID: -7236166917675346540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_2
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 0
+        width: 620
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a96936dee89ea4020800000000000000
+      internalID: 2326928957567637146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_3
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 734
+        width: 67
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b04438a3af35f9300800000000000000
+      internalID: 261019637599388683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_4
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 798
+        width: 22
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fc324596902d98e0800000000000000
+      internalID: -1685154854445368080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_5
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 801
+        width: 19
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36796c0485b0fcde0800000000000000
+      internalID: -1310816492869740701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_6
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 639
+        width: 291
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb12b591e51e42830800000000000000
+      internalID: 4045606159554126267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_7
+      rect:
+        serializedVersion: 2
+        x: 602
+        y: 752
+        width: 25
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 615641c323213b620800000000000000
+      internalID: 2788592601238103318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_8
+      rect:
+        serializedVersion: 2
+        x: 628
+        y: 673
+        width: 227
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb2dd49916e148d80800000000000000
+      internalID: -8249435212903230786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_9
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 576
+        width: 202
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ae4fe987361e2b60800000000000000
+      internalID: 7723134838780153504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_10
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 398
+        width: 205
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2990c31b767067830800000000000000
+      internalID: 4068447455312349586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_11
+      rect:
+        serializedVersion: 2
+        x: 646
+        y: 533
+        width: 67
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46d7beca588e72030800000000000000
+      internalID: 3469997698741665124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_12
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 567
+        width: 47
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3c80132120b0df10800000000000000
+      internalID: 2292525866700278842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_13
+      rect:
+        serializedVersion: 2
+        x: 795
+        y: 632
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ddaba07758efed40800000000000000
+      internalID: 5615962722604395992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_14
+      rect:
+        serializedVersion: 2
+        x: 811
+        y: 145
+        width: 94
+        height: 499
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b11bdaf12641b200800000000000000
+      internalID: 194013370710167987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_15
+      rect:
+        serializedVersion: 2
+        x: 839
+        y: 622
+        width: 42
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00a1ce6b1a4d07900800000000000000
+      internalID: 680277334756694528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_16
+      rect:
+        serializedVersion: 2
+        x: 855
+        y: 423
+        width: 92
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfa1a18cf5125f490800000000000000
+      internalID: -7713222091539342597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_17
+      rect:
+        serializedVersion: 2
+        x: 903
+        y: 600
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67f6c9e85b56823d0800000000000000
+      internalID: -3231220902182228106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_18
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 93
+        width: 201
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f73ad2e1e70e2e520800000000000000
+      internalID: 2729991156416750463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_19
+      rect:
+        serializedVersion: 2
+        x: 498
+        y: 339
+        width: 121
+        height: 259
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 203156e4501884ef0800000000000000
+      internalID: -123707129962622206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_20
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 212
+        width: 108
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b88e512220116c90800000000000000
+      internalID: -7178438592277083982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_21
+      rect:
+        serializedVersion: 2
+        x: 718
+        y: 239
+        width: 135
+        height: 306
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eeef21d328e7d3c50800000000000000
+      internalID: 6646607722904223470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_22
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 247
+        width: 15
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc19bbf0adff55f30800000000000000
+      internalID: 4563835109441769932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_23
+      rect:
+        serializedVersion: 2
+        x: 759
+        y: 203
+        width: 82
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a195893db62f43ff0800000000000000
+      internalID: -57154350323574502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_24
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 220
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52132f74857df86f0800000000000000
+      internalID: -680088244545507035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_25
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 178
+        width: 29
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c15fb4415e9b3660800000000000000
+      internalID: 7366655687377506761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_26
+      rect:
+        serializedVersion: 2
+        x: 673
+        y: 150
+        width: 33
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6308443211b25bff0800000000000000
+      internalID: -21063270647168970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_27
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 119
+        width: 65
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41468de92d3118f20800000000000000
+      internalID: 3423038987107329044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_28
+      rect:
+        serializedVersion: 2
+        x: 994
+        y: 200
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d32b48fe89513fdb0800000000000000
+      internalID: -4759436634602819011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_29
+      rect:
+        serializedVersion: 2
+        x: 740
+        y: 167
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd966347f87579870800000000000000
+      internalID: 8689510279676324319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_30
+      rect:
+        serializedVersion: 2
+        x: 787
+        y: 94
+        width: 39
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10f8109f7ebd1bc10800000000000000
+      internalID: 2067675493301325569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_31
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 69
+        width: 84
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42fc0ab6c58ba22c0800000000000000
+      internalID: -4455546174247481564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_32
+      rect:
+        serializedVersion: 2
+        x: 861
+        y: 103
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34e288224fb4244c0800000000000000
+      internalID: -4304794781889319357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_33
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 95
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73d1710fc18eb81d0800000000000000
+      internalID: -3347326687035056841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_34
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 47
+        width: 69
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa6084631e9a7a3e0800000000000000
+      internalID: -2042477121245804886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_35
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 40
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79d67b8ff6de296c0800000000000000
+      internalID: -4137984042430141033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_0: 101721160540873357
+      20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_1: -7236166917675346540
+      20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_10: 4068447455312349586
+      20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_11: 3469997698741665124
+      20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_12: 2292525866700278842
+      20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_13: 5615962722604395992
+      20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_14: 194013370710167987
+      20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_15: 680277334756694528
+      20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_16: -7713222091539342597
+      20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_17: -3231220902182228106
+      20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_18: 2729991156416750463
+      20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_19: -123707129962622206
+      20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_2: 2326928957567637146
+      20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_20: -7178438592277083982
+      20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_21: 6646607722904223470
+      20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_22: 4563835109441769932
+      20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_23: -57154350323574502
+      20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_24: -680088244545507035
+      20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_25: 7366655687377506761
+      20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_26: -21063270647168970
+      20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_27: 3423038987107329044
+      20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_28: -4759436634602819011
+      20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_29: 8689510279676324319
+      20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_3: 261019637599388683
+      20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_30: 2067675493301325569
+      20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_31: -4455546174247481564
+      20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_32: -4304794781889319357
+      20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_33: -3347326687035056841
+      20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_34: -2042477121245804886
+      20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_35: -4137984042430141033
+      20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_4: -1685154854445368080
+      20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_5: -1310816492869740701
+      20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_6: 4045606159554126267
+      20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_7: 2788592601238103318
+      20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_8: -8249435212903230786
+      20251124_2114_Gothic Pixel Shopkeeper_remix_01kav3cm9rezjvshjb1ze77deh_9: 7723134838780153504
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

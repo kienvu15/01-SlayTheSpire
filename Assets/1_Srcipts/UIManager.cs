@@ -8,6 +8,8 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
+    public GameObject Map;
+
     [Header("UI MapPanel")]
     public List<GameObject> backMap;
     [SerializeField] private RectTransform buttonEnterParent;
@@ -32,6 +34,14 @@ public class UIManager : MonoBehaviour
     public GameObject lootHolder;
     public GameObject lootPanel;
     [SerializeField] private GameObject pickMeCardPanel;
+
+    [Header("Shop")]
+    public GameObject Shop;
+    public GameObject ShopDialogue;
+    public RectTransform serviceButton;
+    public GameObject leaveShopButton;
+    public GameObject removeService;
+    public NewShopSystem newShopSystem;
 
     [Header("Event")]
     public GameObject tutorialCanvas;
@@ -240,6 +250,8 @@ public class UIManager : MonoBehaviour
         discardParticle.Stop();
         pileDeck.SetActive(false);
         discard.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+        lootPanel.SetActive(true);
     }
 
     public IEnumerator AnimationButtonMoveAfterBattle()
@@ -300,16 +312,13 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    // Hàm được gọi sau khi FinalizeLooting (Card loot)
     public void CheckAndCloseLootPanel(Transform holder)
     {
-        // Dùng Invoke để đảm bảo Destroy đã có hiệu lực
         StartCoroutine(CheckAndCloseLootPanelCoroutine(holder));
     }
 
     private IEnumerator CheckAndCloseLootPanelCoroutine(Transform holder)
     {
-        // Đợi 1 frame để lệnh Destroy() hoàn thành
         yield return null;
 
         if (holder != null && holder.childCount <= 0)
@@ -369,5 +378,93 @@ public class UIManager : MonoBehaviour
                 goldIcon.DOScale(1f, 0.15f).SetEase(Ease.InQuad);
             });
     }
+    #endregion
+
+    #region Shop
+    public void EnterShop()
+    {
+        Shop.SetActive(true);
+    }
+
+    public void LevaveShop()
+    {
+        newShopSystem.DeselectCurrentCard();
+        if (serviceButton.anchoredPosition != newShopSystem.buyButtonOriginalPos)
+        {
+            newShopSystem.StartCoroutine(newShopSystem.ButtonMovetoLeft());
+        }
+        StartCoroutine(LeaveDialugue());
+        StartCoroutine(LeaveButton());
+        StartCoroutine(LeaveShopBGImage());
+
+    }
+
+    public IEnumerator LeaveButton()
+    {
+        Vector2 startPos = newShopSystem.leaveButtonRect.anchoredPosition;
+        Vector2 targetPos = startPos - new Vector2(325f, 0f);
+
+        float duration = 0.4f;
+        float elapsed = 0f;
+
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / duration;
+            newShopSystem.leaveButtonRect.anchoredPosition = Vector2.Lerp(startPos, targetPos, t);
+            yield return null;
+        }
+
+        newShopSystem.leaveButtonRect.anchoredPosition = targetPos;
+    }
+
+    public IEnumerator LeaveDialugue()
+    {
+        Vector2 startPos = newShopSystem.dialogBoxRect.anchoredPosition;
+        Vector2 targetPos = startPos - new Vector2(0f, 300f);
+
+        float duration = 0.4f;
+        float elapsed = 0f;
+
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / duration;
+            newShopSystem.dialogBoxRect.anchoredPosition = Vector2.Lerp(startPos, targetPos, t);
+            yield return null;
+        }
+
+        newShopSystem.dialogBoxRect.anchoredPosition = targetPos;
+    }
+
+    public IEnumerator LeaveShopBGImage()
+    {
+        Vector2 startPos = newShopSystem.bgImageRect.anchoredPosition;
+        Vector2 targetPos = startPos + new Vector2(0f, 1100f);
+
+        float duration = 0.4f;
+        float elapsed = 0f;
+
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / duration;
+            newShopSystem.bgImageRect.anchoredPosition = Vector2.Lerp(startPos, targetPos, t);
+            yield return null;
+        }
+
+        newShopSystem.bgImageRect.anchoredPosition = targetPos;
+        Shop.SetActive(false);
+    }
+
+    public void RemoveCardService()
+    {
+        LevaveShop();
+        removeService.SetActive(true);
+    }
+
     #endregion
 }

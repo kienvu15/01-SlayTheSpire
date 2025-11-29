@@ -4,7 +4,10 @@ public abstract class Relic : ScriptableObject
 {
     public string relicName;
     [TextArea] public string description;
-    public Sprite icon;   // để show trong UI
+    public Sprite icon;
+
+    [Header("Shop")]
+    public int goldCost = 10;
 
     // Hook events để các relic override tuỳ ý
     public virtual int OnBeforeDealDamage(Character attacker, Character target, int baseDamage) => baseDamage;

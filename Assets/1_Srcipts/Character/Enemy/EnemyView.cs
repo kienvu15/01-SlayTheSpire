@@ -54,18 +54,6 @@ public class EnemyView : Enemy
     protected override void Update()
     {
         base.Update();
-
-        if (stats.currentHP <= 0 && isActive)
-        {
-            canvas.SetActive(false);
-            EnemySystem system = FindFirstObjectByType<EnemySystem>();
-            if (system != null)
-            {
-                system.OnEnemyDied(this);
-            }
-            isActive = false;
-            StartCoroutine(Die());
-        }
     }
 
     private IEnumerator Die()
@@ -146,6 +134,17 @@ public class EnemyView : Enemy
         if (animator != null)
         {
             animator.SetTrigger("Hit");
+        }
+        if (stats.currentHP <= 0 && isActive)
+        {
+            canvas.SetActive(false);
+            EnemySystem system = FindFirstObjectByType<EnemySystem>();
+            if (system != null)
+            {
+                system.OnEnemyDied(this);
+            }
+            isActive = false;
+            StartCoroutine(Die());
         }
     }
 

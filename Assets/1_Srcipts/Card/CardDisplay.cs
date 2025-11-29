@@ -11,7 +11,7 @@ public enum CardMode
     ViewOnly    
 }
 
-public class CardDisplay : MonoBehaviour
+public class CardDisplay : MonoBehaviour, IHasDescriptionPanel
 {
     [Header("Mode")]
     public CardMode currentMode = CardMode.ViewOnly;
@@ -32,9 +32,13 @@ public class CardDisplay : MonoBehaviour
     public Image artworkImage;
 
     [Header("Description Panel")]
-    public GameObject buyButton;
     public GameObject descriptionPanel;   
-    public TMP_Text descriptionText;    
+    public TMP_Text descriptionText;
+
+    [Header("Shop UI")]
+    public GameObject goldContainer;
+    public TMP_Text goldText;
+    public NewShopSystem newShopSystem;
 
     [Header("Animation Settings")]
     public bool useScaleAnimation = false; 
@@ -42,8 +46,7 @@ public class CardDisplay : MonoBehaviour
     public float animDuration = 0.2f;
 
     private static CardDisplay currentlyOpen;
-    private CanvasGroup blockerGroup;
-    public  ShopSystem shopSystem;
+    [HideInInspector] public CanvasGroup blockerGroup;
     public CardHolder cardholder;
 
     public CardData cardData;
@@ -51,58 +54,46 @@ public class CardDisplay : MonoBehaviour
     private Canvas canvas;
     private Vector3 originalScale;
 
+    void OnEnable() => DescriptionPanelManager.Instance.Register(this);
+    void OnDisable() => DescriptionPanelManager.Instance.Unregister(this);
+
+    public GameObject GetDescriptionPanel() => descriptionPanel;
+    public GameObject GetRootObject() => gameObject;
+    public void vHideDescription() => HideDescription();
+
     private void Awake()
     {
         originalScale = transform.localScale;
-        shopSystem = GetComponentInParent<ShopSystem>();
-        if(shopSystem == null)
-            buyButton.SetActive(false);
 
         if (descriptionPanel != null)
             descriptionPanel.SetActive(false);
 
-        GameObject blocker = GameObject.Find("Block-Panel");
-        if (blocker != null)
-        {
-            blockerGroup = blocker.GetComponent<CanvasGroup>();
-            if (blockerGroup == null)
-                blockerGroup = blocker.AddComponent<CanvasGroup>();
-        }
+        //GameObject blocker = GameObject.Find("Block-Panel");
+        //if (blocker != null)
+        //{
+        //    blockerGroup = blocker.GetComponent<CanvasGroup>();
+        //    if (blockerGroup == null)
+        //        blockerGroup = blocker.AddComponent<CanvasGroup>();
+        //}
 
         cardholder = FindFirstObjectByType<CardHolder>();
+        goldContainer.SetActive(false);
+        blockerGroup = DescriptionPanelManager.Instance.blockerGroup;
     }
 
     //SHOP
-    public void Init(CardData data, ShopSystem shop)
+    public void InitShop(CardData data, NewShopSystem shop)
     {
+        currentMode = CardMode.Shop;
         cardData = data;
-        shopSystem = shop;
+        newShopSystem = shop;
         LoadCard(data);
-
-        if (buyButton != null)
+        if (goldContainer != null)
         {
-            if (shopSystem != null)
-            {
-                buyButton.SetActive(true);
-                buyButton.GetComponentInChildren<Button>().onClick.RemoveAllListeners();
-
-                buyButton.GetComponentInChildren<Button>().onClick.AddListener(
-                    () =>
-                    {
-                        shopSystem.BuyCard(cardData);
-
-                        Button buyButtonBB = buyButton.GetComponent<Button>();
-                        buyButtonBB.onClick.RemoveAllListeners();
-                        buyButtonBB.interactable = false;
-                        buyButtonBB.GetComponentInChildren<TMP_Text>().text = "SOLD";
-                    }
-                );
-            }
-            else
-            {
-                buyButton.SetActive(false);
-            }
+            goldContainer.SetActive(true);
+            goldText.text = data.goldCost.ToString();
         }
+        useScaleAnimation = true;
     }
 
     //Reward
@@ -113,10 +104,6 @@ public class CardDisplay : MonoBehaviour
         cardholder = holder;
 
         LoadCard(data);
-
-        // Trong chế độ Reward thì ẩn nút Mua đi
-        if (buyButton != null)
-            buyButton.SetActive(false);
 
         // Bật animation scale cho đẹp
         useScaleAnimation = true;
@@ -254,8 +241,7 @@ public class CardDisplay : MonoBehaviour
     {
         if (cardholder != null)
         {
-            cardholder.AddCard(cardData);
-
+           
             if (RandomCardSystem.Instance != null)
             {
             }
@@ -284,7 +270,7 @@ public class CardDisplay : MonoBehaviour
         return cardData;
     }
 
-    private void ToggleDescription()
+    public void ToggleDescription()
     {
         if (descriptionPanel == null) return;
 
@@ -320,21 +306,27 @@ public class CardDisplay : MonoBehaviour
     public void OnCardClick()
     {
         SoundManager.Instance.Play("SelectButton");
+
+        if (currentMode == CardMode.Shop)
+        {
+            if (newShopSystem != null)
+            {
+                newShopSystem.SelectCard(this);
+                return;
+            }
+        }
+
         if (currentMode == CardMode.Reward)
         {
-            // Nếu đang mở (đang scale to) mà bấm tiếp -> LẤY BÀI
             if (currentlyOpen == this && descriptionPanel.activeSelf)
             {
                 ConfirmPickReward();
                 return;
             }
         }
-
         ToggleDescription();
     
     }
-
-
 
     public void HideDescription()
     {
@@ -353,10 +345,7 @@ public class CardDisplay : MonoBehaviour
         if (useScaleAnimation)
         {
             transform.DOKill();
-            // Scale về kích thước gốc
             transform.DOScale(originalScale, animDuration).SetEase(Ease.OutQuad);
-
-            // Trả lại sorting order (nếu cần)
             if (canvas != null) canvas.sortingOrder = 0;
         }
     }
@@ -366,8 +355,8 @@ public class CardDisplay : MonoBehaviour
     {
         if (blockerGroup != null)
         {
-            blockerGroup.alpha = 0; // vẫn trong suốt
-            blockerGroup.blocksRaycasts = true;  // chặn click
+            blockerGroup.alpha = 0; 
+            blockerGroup.blocksRaycasts = true; 
             blockerGroup.interactable = true;
         }
     }

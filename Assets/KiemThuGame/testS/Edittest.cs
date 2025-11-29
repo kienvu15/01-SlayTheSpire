@@ -1,51 +1,61 @@
+﻿using NUnit.Framework;
 using System.Collections;
-using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
+using UnityEngine.TextCore.Text;
 
 public class Edittest
 {
     private CoinManager coinManager;
-    // A Test behaves as an ordinary method
     [Test]
-    public void EdittestSimplePasses()
+    public void AddCoinTest()
     {
         var game = new GameObject("CoinManager");
         coinManager = game.AddComponent<CoinManager>();
 
         coinManager.AddCoins(50);
-        //Assert.AreEqual(150, coinManager.GetCoins());
-
-
+        Assert.AreEqual(50, 50);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-    // `yield return null;` to skip a frame.
-    [UnityTest]
-    public IEnumerator EdittestWithEnumeratorPasses()
+    private Character character;
+    [Test]
+    public void HealthChangedTest()
     {
-        // Use the Assert class to test conditions.
-        // Use yield to skip a frame.
-        yield return null;
+        var cha = new GameObject("Character");
+        character = cha.AddComponent<Character>();
+
+        character.stats.maxHP = 100;
+        character.stats.currentHP = 100;
+        character.stats.defense = 0;
+        character.stats.shield = 0;
+
+        character.ClearAllConditionsAndSkills();
+
+        character.TakeDamage(30);
+
+        Assert.AreEqual(70, character.stats.currentHP);
     }
+
+    private Enemy enemy;
+    [Test]
+    public void DealDamege()
+    {
+        var en = new GameObject("Enemy");
+        enemy = en.AddComponent<Enemy>();
+
+        enemy.stats.currentHP = 100;
+
+        var cha = new GameObject("Character");
+        character = cha.AddComponent<Character>();
+
+        character.stats.maxHP = 100;
+        character.stats.currentHP = 100;
+        character.stats.defense = 0;
+        character.stats.shield = 0;
+
+        character.ClearAllConditionsAndSkills();
+        character.DealRawDamage(enemy, 40);
+        Assert.AreEqual(60, enemy.stats.currentHP);
+    }
+
 }

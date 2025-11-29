@@ -1,0 +1,1014 @@
+fileFormatVersion: 2
+guid: 4efa528b15bc7e8428ac12c86b86da39
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4025721413793191184
+    second: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_0
+  - first:
+      213: 7133693899839983577
+    second: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_1
+  - first:
+      213: -137304627304853847
+    second: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_2
+  - first:
+      213: -4239078412024472855
+    second: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_3
+  - first:
+      213: -3512465987773538619
+    second: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_4
+  - first:
+      213: 5384230016973829213
+    second: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_5
+  - first:
+      213: 6817836116813008348
+    second: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_6
+  - first:
+      213: -7674642553542750109
+    second: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_7
+  - first:
+      213: -1792100574043642731
+    second: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_8
+  - first:
+      213: 7493288264938493036
+    second: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_9
+  - first:
+      213: -632966090480012839
+    second: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_10
+  - first:
+      213: -1232667060770107441
+    second: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_11
+  - first:
+      213: 2529853106004404849
+    second: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_12
+  - first:
+      213: 3291849720633276399
+    second: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_13
+  - first:
+      213: 5518532463231948990
+    second: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_14
+  - first:
+      213: 8359891807935045395
+    second: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_15
+  - first:
+      213: -8082872044917923599
+    second: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_16
+  - first:
+      213: 1643834395482016116
+    second: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_17
+  - first:
+      213: -2930847201044205327
+    second: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_18
+  - first:
+      213: -7590412008984592243
+    second: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_19
+  - first:
+      213: 8693428349769124645
+    second: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_20
+  - first:
+      213: -7196397672430078291
+    second: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_21
+  - first:
+      213: -1986094161002477784
+    second: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_22
+  - first:
+      213: -5573223712130031599
+    second: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_23
+  - first:
+      213: 3822012776981828581
+    second: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_24
+  - first:
+      213: 3314485228687902072
+    second: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_25
+  - first:
+      213: -6421637357968066572
+    second: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_26
+  - first:
+      213: -9093624054469115964
+    second: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_27
+  - first:
+      213: 2256067849283821461
+    second: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_28
+  - first:
+      213: -22424515032242066
+    second: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_29
+  - first:
+      213: -3165976050374025807
+    second: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_30
+  - first:
+      213: -2795956632316812801
+    second: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_31
+  - first:
+      213: -1778592280374544534
+    second: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_32
+  - first:
+      213: 8361009722159999571
+    second: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_33
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1536
+        height: 1024
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01593d1fb4c3ed730800000000000000
+      internalID: 4025721413793191184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_1
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 1016
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9df45545ec8fff260800000000000000
+      internalID: 7133693899839983577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_2
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 983
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ae0a7f3b22381ef0800000000000000
+      internalID: -137304627304853847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_3
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 975
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ea1144d4a4cb25c0800000000000000
+      internalID: -4239078412024472855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_4
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 895
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cedd114bc6314fc0800000000000000
+      internalID: -3512465987773538619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_5
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 875
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5478be6ca0a8ba40800000000000000
+      internalID: 5384230016973829213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_6
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 871
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cddc77763d1dd9e50800000000000000
+      internalID: 6817836116813008348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_7
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 854
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 360dcf172413e7590800000000000000
+      internalID: -7674642553542750109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_8
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 822
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 594ea5ad50e2127e0800000000000000
+      internalID: -1792100574043642731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_9
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 815
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c64134fc9f18df760800000000000000
+      internalID: 7493288264938493036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_10
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 807
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d1321eb1b04737f0800000000000000
+      internalID: -632966090480012839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_11
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 798
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcf0974d6dfa4eee0800000000000000
+      internalID: -1232667060770107441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_12
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 791
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17aaf450ff7db1320800000000000000
+      internalID: 2529853106004404849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_13
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 750
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe7b05441effead20800000000000000
+      internalID: 3291849720633276399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_14
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 742
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb8d6607904c59c40800000000000000
+      internalID: 5518532463231948990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_15
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 735
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31f9aa48e4d440470800000000000000
+      internalID: 8359891807935045395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_16
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 727
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f06bb533bed3df80800000000000000
+      internalID: -8082872044917923599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_17
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 719
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 479464c5ca210d610800000000000000
+      internalID: 1643834395482016116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_18
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 710
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f0ffcabff98357d0800000000000000
+      internalID: -2930847201044205327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_19
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 671
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d804d995e7079a690800000000000000
+      internalID: -7590412008984592243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_20
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 654
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52b8c4c360345a870800000000000000
+      internalID: 8693428349769124645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_21
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 638
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da67b50f172412c90800000000000000
+      internalID: -7196397672430078291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_22
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 622
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82748f222e9ff64e0800000000000000
+      internalID: -1986094161002477784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_23
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 534
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 110a4b0ef8ee7a2b0800000000000000
+      internalID: -5573223712130031599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_24
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 543
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e3910bee548a0530800000000000000
+      internalID: 3822012776981828581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_25
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 526
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 875c83d21ca6ffd20800000000000000
+      internalID: 3314485228687902072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_26
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 520
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f77fe1a8d2c1e6a0800000000000000
+      internalID: -6421637357968066572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_27
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 487
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4cfbb604a15fcc180800000000000000
+      internalID: -9093624054469115964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_28
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 438
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59fddb971c92f4f10800000000000000
+      internalID: 2256067849283821461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_29
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 430
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e682e3bb50550bff0800000000000000
+      internalID: -22424515032242066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_30
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 399
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bddf066e813014d0800000000000000
+      internalID: -3165976050374025807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_31
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 390
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff1eb5ba144c239d0800000000000000
+      internalID: -2795956632316812801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_32
+      rect:
+        serializedVersion: 2
+        x: 994
+        y: 125
+        width: 20
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a67f5009ebb2157e0800000000000000
+      internalID: -1778592280374544534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_33
+      rect:
+        serializedVersion: 2
+        x: 994
+        y: 96
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35a2fe43b06480470800000000000000
+      internalID: 8361009722159999571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: af2500f6b22cb9941aaa129e4879efb5
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_0: 4025721413793191184
+      20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_1: 7133693899839983577
+      20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_10: -632966090480012839
+      20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_11: -1232667060770107441
+      20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_12: 2529853106004404849
+      20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_13: 3291849720633276399
+      20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_14: 5518532463231948990
+      20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_15: 8359891807935045395
+      20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_16: -8082872044917923599
+      20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_17: 1643834395482016116
+      20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_18: -2930847201044205327
+      20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_19: -7590412008984592243
+      20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_2: -137304627304853847
+      20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_20: 8693428349769124645
+      20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_21: -7196397672430078291
+      20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_22: -1986094161002477784
+      20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_23: -5573223712130031599
+      20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_24: 3822012776981828581
+      20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_25: 3314485228687902072
+      20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_26: -6421637357968066572
+      20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_27: -9093624054469115964
+      20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_28: 2256067849283821461
+      20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_29: -22424515032242066
+      20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_3: -4239078412024472855
+      20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_30: -3165976050374025807
+      20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_31: -2795956632316812801
+      20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_32: -1778592280374544534
+      20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_33: 8361009722159999571
+      20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_4: -3512465987773538619
+      20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_5: 5384230016973829213
+      20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_6: 6817836116813008348
+      20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_7: -7674642553542750109
+      20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_8: -1792100574043642731
+      20251126_1942_Patterned Green Texture_remix_01kb02wapsegqtgz5wzd0gra6k_9: 7493288264938493036
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -32,7 +32,7 @@ public class CardData : ScriptableObject
     public EffectOn effectOn;
 
     [Header("Visuals")]
-    public Sprite artwork; // Hình ảnh chính
+    public Sprite artwork; 
 
     [Header("Cost & Description")]
     public int manaCost;
@@ -40,6 +40,10 @@ public class CardData : ScriptableObject
 
     [Header("Effects")]
     public EffectWrapper[] effects;
+
+    [Header("Shop")]
+    public int goldCost = 10;   
+
 
     public bool IsSpecial() => cardType == CardType.Special;
     public bool IsSelfCast() => effectOn == EffectOn.Self;

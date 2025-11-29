@@ -37,68 +37,68 @@ public class ShopSystem : MonoBehaviour
 
     void Start()
     {
-        GenerateShop();
-        GenerateRelicShop();
+        //GenerateShop();
+       // GenerateRelicShop();
     }
 
-    public void GenerateShop()
-    {
-        // Xoá shop cũ
-        foreach (Transform child in shopSlotsParent)
-            Destroy(child.gameObject);
+    //public void GenerateShop()
+    //{
+    //    // Xoá shop cũ
+    //    foreach (Transform child in shopSlotsParent)
+    //        Destroy(child.gameObject);
 
-        shopCards.Clear();
+    //    shopCards.Clear();
 
-        // Random 3 lá
-        for (int i = 0; i < 3; i++)
-        {
-            CardData randomCard = allCardDatabase.GetRandomCard();
-            if (randomCard == null) continue;
+    //    // Random 3 lá
+    //    for (int i = 0; i < 3; i++)
+    //    {
+    //        CardData randomCard = allCardDatabase.GetRandomCard();
+    //        if (randomCard == null) continue;
 
-            shopCards.Add(randomCard);
+    //        shopCards.Add(randomCard);
 
-            GameObject slot = Instantiate(cardDisplayPrefab, shopSlotsParent);
-            CardDisplay display = slot.GetComponent<CardDisplay>();
-            display.LoadCard(randomCard);
+    //        GameObject slot = Instantiate(cardDisplayPrefab, shopSlotsParent);
+    //        CardDisplay display = slot.GetComponent<CardDisplay>();
+    //        display.LoadCard(randomCard);
 
-            display.Init(randomCard, this);
-        }
-    }
+    //        display.Init(randomCard, this);
+    //    }
+    //}
 
-    public void GenerateRelicShop()
-    {
-        // Xoá relic shop cũ
-        foreach (Transform child in relicSlotsParent)
-            Destroy(child.gameObject);
+    //public void GenerateRelicShop()
+    //{
+    //    // Xoá relic shop cũ
+    //    foreach (Transform child in relicSlotsParent)
+    //        Destroy(child.gameObject);
 
-        shopRelics.Clear();
+    //    shopRelics.Clear();
 
-        // Lấy toàn bộ relic có thể bán
-        List<Relic> availableRelics = new List<Relic>(allRelicDatabase.allRelics);
+    //    // Lấy toàn bộ relic có thể bán
+    //    List<Relic> availableRelics = new List<Relic>(allRelicDatabase.allRelics);
 
-        // Loại bỏ relic đã trang bị
-        foreach (var equipped in relicManager.equippedRelics)
-            availableRelics.Remove(equipped);
+    //    // Loại bỏ relic đã trang bị
+    //    foreach (var equipped in relicManager.equippedRelics)
+    //        availableRelics.Remove(equipped);
 
-        // Random tối đa 2 relic từ danh sách available (không trùng)
-        for (int i = 0; i < 2; i++)
-        {
-            if (availableRelics.Count == 0) break;
+    //    // Random tối đa 2 relic từ danh sách available (không trùng)
+    //    for (int i = 0; i < 2; i++)
+    //    {
+    //        if (availableRelics.Count == 0) break;
 
-            int index = Random.Range(0, availableRelics.Count);
-            Relic randomRelic = availableRelics[index];
+    //        int index = Random.Range(0, availableRelics.Count);
+    //        Relic randomRelic = availableRelics[index];
 
-            shopRelics.Add(randomRelic);
+    //        shopRelics.Add(randomRelic);
 
-            // Bỏ relic này khỏi danh sách để không trùng
-            availableRelics.RemoveAt(index);
+    //        // Bỏ relic này khỏi danh sách để không trùng
+    //        availableRelics.RemoveAt(index);
 
-            // Tạo UI slot
-            GameObject slot = Instantiate(relicDisplayPrefab, relicSlotsParent);
-            RelicDisplay display = slot.GetComponent<RelicDisplay>();
-            display.Init(randomRelic, this); // shopMode = true
-        }
-    }
+    //        // Tạo UI slot
+    //        GameObject slot = Instantiate(relicDisplayPrefab, relicSlotsParent);
+    //        RelicDisplay display = slot.GetComponent<RelicDisplay>();
+    //        display.Init(randomRelic, this); // shopMode = true
+    //    }
+    //}
 
 
     public void BuyCard(CardData card) 

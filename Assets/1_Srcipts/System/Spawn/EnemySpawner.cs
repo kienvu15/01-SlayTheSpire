@@ -119,6 +119,5 @@ public class EnemySpawner : MonoBehaviour
 
         GameFlowManager.Instance.StartCoroutine(GameFlowManager.Instance.AfterBattleEvent());
         MapUIManager.Instance?.HideBattleCanvas();
-        UIManager.Instance.lootPanel.SetActive(true);
     }
 }

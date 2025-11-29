@@ -3,18 +3,17 @@ using TMPro;
 
 public class CoinManager : MonoBehaviour
 {
-    public static CoinManager Instance; // Singleton
+    public static CoinManager Instance; 
 
     [Header("UI")]
     public TMP_Text coinText;
 
     [Header("Data")]
     public int startCoins = 100;
-    private int currentCoins;
+    public int currentCoins;
 
     private void Awake()
     {
-        // Setup Singleton
         if (Instance == null)
         {
             Instance = this;
