@@ -11,8 +11,12 @@ public class MapUIManager : MonoBehaviour
 
     [Header("Battle UI")]
     public BattleCanvasDatabase battleDatabase;
-    public Transform battleCanvasHolder;
+    public Transform roomCanvasHolder;
     public GameObject handDeckCanvas;
+
+    [Header("Shop UI")]
+    public ShopRoomDatabase shopDatabase;
+
 
     [Header("Shop UI")]
     public GameObject shopUI;
@@ -68,7 +72,7 @@ public class MapUIManager : MonoBehaviour
         Debug.Log($"Player đã vào battle room {battleRoomCount} lần.");
 
         // spawn vào holder
-        var battleRoom = Instantiate(prefab, battleCanvasHolder);
+        var battleRoom = Instantiate(prefab, roomCanvasHolder);
         handDeckCanvas.SetActive(true);
 
         battleRoom.transform.localPosition = Vector3.zero;
@@ -115,11 +119,15 @@ public class MapUIManager : MonoBehaviour
 
     public void OpenShop()
     {
-        shopUI.SetActive(true);
-        foreach (var obj in hideOnShop)
-        {
-            if (obj != null) obj.SetActive(false);
-        }
+        if (shopDatabase == null) return;
+
+        var prefab = shopDatabase.GetRandomShopRoom();
+        if (prefab == null) return;
+
+        // spawn vào holder
+        var shopRoom = Instantiate(prefab, roomCanvasHolder);
+
+        shopRoom.transform.localPosition = Vector3.zero;
     }
 
     public void ShowEventUI()
@@ -133,9 +141,9 @@ public class MapUIManager : MonoBehaviour
 
     public void HideBattleCanvas()
     {
-        for (int i = battleCanvasHolder.childCount - 1; i >= 0; --i)
+        for (int i = roomCanvasHolder.childCount - 1; i >= 0; --i)
         {
-            Destroy(battleCanvasHolder.GetChild(i).gameObject);
+            Destroy(roomCanvasHolder.GetChild(i).gameObject);
         }
 
         //foreach (var obj in hideOnBattle)

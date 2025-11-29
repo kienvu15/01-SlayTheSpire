@@ -118,6 +118,6 @@ public class EnemySpawner : MonoBehaviour
         UIManager.Instance.StartCoroutine(UIManager.Instance.AnimationButtonMoveAfterBattle());
 
         GameFlowManager.Instance.StartCoroutine(GameFlowManager.Instance.AfterBattleEvent());
-        MapUIManager.Instance?.HideBattleCanvas();
+        //MapUIManager.Instance?.HideBattleCanvas();
     }
 }

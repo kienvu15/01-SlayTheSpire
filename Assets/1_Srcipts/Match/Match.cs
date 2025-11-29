@@ -10,7 +10,6 @@ public class Match : MonoBehaviour
     public EnemySystem enemySystem;
     public PlayerSelfCast playerSelfCast;
     public Player player;
-    public CanvasGroup blockPanel;
 
     public int handSize = 5;
 
@@ -27,7 +26,6 @@ public class Match : MonoBehaviour
             player.DecreaseEnemyConditions();
         }
 
-        blockPanel.blocksRaycasts = true;
         StartCoroutine(EndTurnRoutine());
 
         if (manaSystem != null)
@@ -89,7 +87,6 @@ public class Match : MonoBehaviour
         if (discard != null) discard.UpdateDiscardCount();
 
         GameStage.Instance.SetBusy(false);
-        blockPanel.blocksRaycasts = false;
     }
 
 

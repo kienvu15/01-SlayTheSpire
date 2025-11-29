@@ -10,6 +10,9 @@ public class UIManager : MonoBehaviour
 
     public GameObject Map;
 
+    [Header("UI Panels")]
+    public GameObject battleHolder;
+
     [Header("UI MapPanel")]
     public List<GameObject> backMap;
     [SerializeField] private RectTransform buttonEnterParent;
@@ -466,5 +469,12 @@ public class UIManager : MonoBehaviour
         removeService.SetActive(true);
     }
 
+    #endregion
+
+    #region
+    public void removeBattleCanvas()
+    {
+
+    }
     #endregion
 }
