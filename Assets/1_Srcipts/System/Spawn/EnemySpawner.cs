@@ -115,9 +115,13 @@ public class EnemySpawner : MonoBehaviour
     private void EndBattle()
     {
         GameFlowManager.Instance.isOnBattle = false;
+        if(GameFlowManager.Instance.isOnBattle == false)
+        {
+            Debug.Log("Go go");
+        }
         UIManager.Instance.StartCoroutine(UIManager.Instance.AnimationButtonMoveAfterBattle());
 
         GameFlowManager.Instance.StartCoroutine(GameFlowManager.Instance.AfterBattleEvent());
-        //MapUIManager.Instance?.HideBattleCanvas();
+        MapUIManager.Instance?.HideBattleCanvas();
     }
 }

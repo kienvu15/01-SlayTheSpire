@@ -44,6 +44,14 @@ public class RelicUIManager : MonoBehaviour
             display.Setup(relic, false); // false = player đang sở hữu, không phải shop
             // if no shop mode, want set description panel parent
             display.descriptionPanel.transform.SetParent(relicDiscriptionTransform, false);
+
+            var rt = display.descriptionPanel.GetComponent<RectTransform>();
+            rt.SetParent(relicDiscriptionTransform, false);
+
+            rt.anchoredPosition = Vector2.zero;
+            rt.localRotation = Quaternion.identity;
+            rt.localScale = Vector3.one;
+
         }
 
         relicToUI[relic] = display;

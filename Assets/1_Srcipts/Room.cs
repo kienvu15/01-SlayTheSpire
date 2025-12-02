@@ -1,6 +1,4 @@
-﻿
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Room : MonoBehaviour
@@ -15,13 +13,13 @@ public class Room : MonoBehaviour
     public List<Room> incoming = new List<Room>();
 
     [Header("References")]
-    public Transform canvasHolder; // child transform where canvas prefab will be instantiated
+    public Transform canvasHolder; 
 
     [Header("Connection Anchor")]
-    public Transform connectionAnchor; // gán trong prefab
-    public bool visited = false; // ✅ đã đi qua hay chưa
+    public Transform connectionAnchor; 
+    public bool visited = false; 
 
-    // call to instantiate canvas prefab for this room based on palette
+
     public void SetCanvas(GameObject canvasPrefab)
     {
         if (canvasHolder == null) canvasHolder = transform;

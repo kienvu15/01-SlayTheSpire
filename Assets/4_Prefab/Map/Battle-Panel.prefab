@@ -834,12 +834,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de7cb08df38797749809344559685162, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomUI
+  anim: {fileID: 3467469338606120614}
   goButton: {fileID: 2767369035742846751}
   onRoomClick: {fileID: 4373293052698851916}
+  room: {fileID: 0}
   selectSlider: {fileID: 6812696124678771418}
   outline: {fileID: 5045616910348829671}
   isStartPanel: 0
   isStartRoom: 0
+  canBeSelected: 0
 --- !u!1 &9033272026751671835
 GameObject:
   m_ObjectHideFlags: 0

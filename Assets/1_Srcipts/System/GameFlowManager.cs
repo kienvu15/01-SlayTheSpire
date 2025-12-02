@@ -16,6 +16,7 @@ public class GameFlowManager : MonoBehaviour
     public List<GameObject> hideOnBattle;
 
     public bool isOnBattle;
+    public bool isFirstBattle = true;
 
     //===== Event =====//
     public event Action OnBattleEnded;
@@ -31,16 +32,6 @@ public class GameFlowManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-
-    public void HideAllG()
-    {
-        //StartCoroutine(OnAllEncountersCleared());
-
-        //player.ClearAllConditionsAndSkills();
-        //manasystem.ResetManaToMax();
-        coinManager.AddCoins(UnityEngine.Random.Range(14, 17));
     }
 
     public IEnumerator OnAllEncountersCleared()

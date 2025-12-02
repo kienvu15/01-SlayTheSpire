@@ -135,6 +135,10 @@ public class RelicDisplay : MonoBehaviour, IHasDescriptionPanel
         {
             shopSystem.SelectRelic(this);
         }
+        else
+        {
+            ToggleDescription();
+        }
     }
 
     public void ToggleDescription()

@@ -16274,7 +16274,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -41.537476}
+  m_AnchoredPosition: {x: 0, y: -41.53749}
   m_SizeDelta: {x: 0, y: -83.07498}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &736436719
@@ -16747,7 +16747,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0.000030517578}
-  m_SizeDelta: {x: 0, y: 1}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &789134749
 MonoBehaviour:
@@ -24604,7 +24604,6 @@ GameObject:
   - component: {fileID: 1275211049}
   - component: {fileID: 1275211051}
   - component: {fileID: 1275211052}
-  - component: {fileID: 1275211053}
   m_Layer: 5
   m_Name: Shop
   m_TagString: Untagged
@@ -24632,7 +24631,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -43.359985}
+  m_AnchoredPosition: {x: 0, y: -43.36}
   m_SizeDelta: {x: 0, y: -86.71997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1275211051
@@ -24674,36 +24673,6 @@ MonoBehaviour:
   shopOusideBlocker: {fileID: 0}
   buyButton: {fileID: 1706848408}
   spawnedRelicDisplays: []
---- !u!114 &1275211053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1275211048}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.9647059}
-  m_RaycastTarget: 0
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 0
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &1286057591
 GameObject:
   m_ObjectHideFlags: 0
@@ -36320,7 +36289,7 @@ RectTransform:
   m_Father: {fileID: 1386576167}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -39292,10 +39261,6 @@ MonoBehaviour:
   - {fileID: 1465343562}
   - {fileID: 1973410232}
   - {fileID: 1013554217}
-  MapOBB: {fileID: 1420731165}
-  MapStuffs: {fileID: 286883182}
-  ToolImage: {fileID: 1121752965}
-  blackPanel: {fileID: 1973410232}
   buttonEnterParent: {fileID: 1013554218}
   panCamera: {fileID: 519420033}
   mapUiManager: {fileID: 1812988899}
@@ -39316,7 +39281,6 @@ MonoBehaviour:
   leaveShopButton: {fileID: 772662360}
   removeService: {fileID: 1811651444}
   newShopSystem: {fileID: 1275211052}
-  PlaySelftCast: {fileID: 7563728533681363188}
   tutorialCanvas: {fileID: 104912270}
   HandPlayerBottom: {fileID: 277841574}
   endButton: {fileID: 6848115429041500703}
@@ -40935,7 +40899,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -41.5}
+  m_AnchoredPosition: {x: 0, y: -41.500015}
   m_SizeDelta: {x: 0, y: -83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1973410234

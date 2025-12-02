@@ -77,7 +77,6 @@ public class CardCollectionPanel : MonoBehaviour
         if (selectedCard != null && cardHolder != null)
         {
             ConfirmPickReward();
-            
         }
     }
 

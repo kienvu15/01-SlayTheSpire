@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MapUIManager : MonoBehaviour
 {
@@ -48,6 +49,10 @@ public class MapUIManager : MonoBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+    }
+
     private IEnumerator RegisterEnemiesNextFrame(GameObject go)
     {
         yield return null;
@@ -71,13 +76,11 @@ public class MapUIManager : MonoBehaviour
         battleRoomCount++;
         Debug.Log($"Player đã vào battle room {battleRoomCount} lần.");
 
-        // spawn vào holder
         var battleRoom = Instantiate(prefab, roomCanvasHolder);
         handDeckCanvas.SetActive(true);
 
         battleRoom.transform.localPosition = Vector3.zero;
 
-        // EnemyFm
         StartCoroutine(RegisterEnemiesNextFrame(battleRoom));
 
         deck.CacheDeckCountText();
@@ -90,13 +93,10 @@ public class MapUIManager : MonoBehaviour
             PlaySelfCast.blocksRaycasts = false; 
         }
 
-        //match
         match.enemySystem = battleRoom.GetComponentInChildren<EnemySystem>();
 
         GameFlowManager.Instance.player = player;
         
-
-
         manaSystem.UpdateManaUI();
 
         player.canvas.SetActive(true);
@@ -110,7 +110,6 @@ public class MapUIManager : MonoBehaviour
         GameSystem.Instance.BattleUICanvas = battleRoom;
         GameFlowManager.Instance.isOnBattle = true;
 
-        // hide UI khác
         foreach (var obj in hideOnBattle)
         {
             if (obj != null) obj.SetActive(false);
@@ -126,8 +125,23 @@ public class MapUIManager : MonoBehaviour
 
         // spawn vào holder
         var shopRoom = Instantiate(prefab, roomCanvasHolder);
-
         shopRoom.transform.localPosition = Vector3.zero;
+        
+        UIManager.Instance.HandPlayerBottom.SetActive(false);
+        UIManager.Instance.MapOBB.SetActive(false);
+        UIManager.Instance.ToolImage.SetActive(false);
+        UIManager.Instance.blackPanel.SetActive(false);
+        UIManager.Instance.PlaySelftCast.SetActive(false);
+
+        foreach (var obj in hideOnBattle)
+        {
+            if (obj != null) obj.SetActive(false);
+        }
+
+        Button enterbutton = shopRoom.GetComponent<TextType>().EnterButton.GetComponent<Button>();
+        enterbutton.onClick.AddListener(() => UIManager.Instance.EnterShop());
+
+        GameSystem.Instance.BattleUICanvas = shopRoom;
     }
 
     public void ShowEventUI()
@@ -141,20 +155,16 @@ public class MapUIManager : MonoBehaviour
 
     public void HideBattleCanvas()
     {
-        for (int i = roomCanvasHolder.childCount - 1; i >= 0; --i)
-        {
-            Destroy(roomCanvasHolder.GetChild(i).gameObject);
-        }
-
-        //foreach (var obj in hideOnBattle)
+        //for (int i = roomCanvasHolder.childCount - 1; i >= 0; --i)
         //{
-        //    if (obj != null) obj.SetActive(true);
+        //    Destroy(roomCanvasHolder.GetChild(i).gameObject);
         //}
 
         if (BattleManager.Instance != null)
         {
             BattleManager.Instance.enemies.Clear();
         }
+        MapAfterBattle();
     }
 
     public void RegisterRoomUI(RoomUI ui)
@@ -164,14 +174,31 @@ public class MapUIManager : MonoBehaviour
 
     public void UpdateRoomHighlights()
     {
-        foreach (var ui in roomUIs)
-            ui.ResetUI();
+        Room current = PlayerMapController.Instance.currentRoom;
 
-        if (PlayerMapController.Instance.currentRoom != null)
+        foreach (RoomUI ui in roomUIs)
         {
-            var currentUI = PlayerMapController.Instance.currentRoom.GetComponentInChildren<RoomUI>();
-            if (currentUI != null) currentUI.SetAsCurrent();
+            bool isNextRoom = ui.room.incoming.Contains(current);
+
+            if (isNextRoom)
+            {
+                ui.PlayIdleHighlight();
+            }
+            else
+            {
+                ui.ResetUI();
+            }
         }
+
+        RoomUI currentUI = current.GetComponentInChildren<RoomUI>();
+        if (currentUI != null)
+           currentUI.SetAsCurrent();
+    }
+
+    public IEnumerator UpdateHighlightsNextFrame()
+    {
+        yield return null;
+        MapUIManager.Instance.UpdateRoomHighlights();
     }
 
     public void SelectRoom(RoomUI ui)
@@ -182,6 +209,24 @@ public class MapUIManager : MonoBehaviour
         }
 
         selectedRoom = ui;
+    }
+
+    public void MapInBattleScene()
+    {
+        for (int i = 0;  i < roomUIs.Count; i++)
+        {
+            roomUIs[i].anim.Play("Hide", 0, 0);
+            roomUIs[i].onRoomClick.SetActive(false);
+        }
+    }
+
+    public void MapAfterBattle()
+    {
+        for (int i = 0; i < roomUIs.Count; i++)
+        {
+            roomUIs[i].ResetUI();
+            roomUIs[i].onRoomClick.gameObject.SetActive(true);
+        }
     }
 
     public void ClearSelection()

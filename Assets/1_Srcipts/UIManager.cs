@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,12 +13,25 @@ public class UIManager : MonoBehaviour
 
     [Header("UI Panels")]
     public GameObject battleHolder;
+    public GameObject Bg;
+    public GameFlowManager GameFlowManager;
+
+    [Header("Floor")]
+    private int floor;
+    public TextMeshProUGUI floorCount;
+    public GameObject BG;
+    public GameObject BattlleUIHolder;
 
     [Header("UI MapPanel")]
     public List<GameObject> backMap;
+    public GameObject MapOBB;
+    public GameObject MapStuffs;
+    public GameObject ToolImage;
+    public GameObject blackPanel;
     [SerializeField] private RectTransform buttonEnterParent;
     [SerializeField] private PanCamera panCamera;
     private Vector2 originEnterButtonAnchoredPos;
+    public MapUIManager mapUiManager;
 
     [Header("Deck")]
     public GameObject deckUI;
@@ -45,6 +59,7 @@ public class UIManager : MonoBehaviour
     public GameObject leaveShopButton;
     public GameObject removeService;
     public NewShopSystem newShopSystem;
+    public GameObject PlaySelftCast;
 
     [Header("Event")]
     public GameObject tutorialCanvas;
@@ -118,38 +133,36 @@ public class UIManager : MonoBehaviour
 
     public void MapIcon()
     {
+        if (GameFlowManager.Instance.isOnBattle)
+        {
+            mapUiManager.MapInBattleScene();
+        }
         SoundManager.Instance.Play("SelectButton", null, 1);
 
         deckUI.SetActive(false);
 
-        // Toggle trạng thái map
-        bool isMapOpening = !backMap[0].activeSelf; // dùng cái đầu tiên làm state chung
+        bool isMapOpening = !backMap[0].activeSelf; 
 
         foreach (GameObject button in backMap)
         {
-            button.SetActive(isMapOpening); // bật/tắt đồng loạt
+            button.SetActive(isMapOpening); 
         }
 
-        // Xử lý buttonEnterParent theo state map
         if (GameFlowManager.Instance.isOnBattle)
         {
-            // Battle thì luôn ẩn
             buttonEnterParent.gameObject.SetActive(false);
         }
         else
         {
-            // Không battle → chỉ hiện khi map đang mở
             buttonEnterParent.gameObject.SetActive(isMapOpening);
 
             if (isMapOpening)
             {
-                // reset vị trí nếu mở map
                 buttonEnterParent.anchoredPosition =
                     new Vector2(originEnterButtonAnchoredPos.x, buttonEnterParent.anchoredPosition.y);
             }
         }
 
-        // Xóa tutorial nếu có
         if (tutorialCanvas != null)
         {
             Destroy(tutorialCanvas);
@@ -157,6 +170,10 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void mapAfterBattle()
+    {
+
+    }
 
     #endregion
 
@@ -202,7 +219,17 @@ public class UIManager : MonoBehaviour
         }
 
         transitionImage.fillAmount = 1f;
-        OnTransitionFilled?.Invoke();
+        if (GameFlowManager.Instance.isFirstBattle == true)
+        {
+            UIManager.Instance.removeBattleCanvas();
+            GameFlowManager.Instance.isFirstBattle = false;
+        }
+        else
+        {
+            Destroy(
+            BattlleUIHolder.transform.GetChild(0).gameObject);
+        }
+            OnTransitionFilled?.Invoke();
     }
 
     public void FadeOutOverTime()
@@ -386,6 +413,7 @@ public class UIManager : MonoBehaviour
     #region Shop
     public void EnterShop()
     {
+        PlaySelftCast.SetActive(true);
         Shop.SetActive(true);
     }
 
@@ -471,10 +499,18 @@ public class UIManager : MonoBehaviour
 
     #endregion
 
-    #region
+    #region BattleBg
     public void removeBattleCanvas()
     {
+        BG.SetActive(false);
+    }
+    #endregion
 
+    #region Floor
+    public void CrawlerFloor()
+    {
+        floor++;
+        floorCount.text = floor + "th Floor";
     }
     #endregion
 }

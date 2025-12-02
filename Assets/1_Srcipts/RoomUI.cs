@@ -4,11 +4,11 @@ using UnityEngine.UI;
 
 public class RoomUI : MonoBehaviour
 {
-    private Animator anim;
+    public Animator anim;
 
     public Button goButton;
     public GameObject onRoomClick;
-    private Room room;
+    public Room room;
     private GameObject buttonEnterParent;
 
     private Canvas panelCanvas;
@@ -35,25 +35,43 @@ public class RoomUI : MonoBehaviour
             panelCanvas.sortingOrder = 602;
         }
     }
+
     void OnEnable()
     {
-        if (room.visited == true) return;
-        if (isStartRoom)
+        if (isStartRoom) { SetAsVisited(); return;  } 
+
+        if(room.visited == true)
         {
-            selectSlider.value = 1f;
             return;
         }
 
         hasMovedOnce = false;
         selectSlider.value = 0f;
 
-        if (anim != null)
-            anim.Play("Idle", 0, 0f);
-
         if (GameFlowManager.Instance.isOnBattle)
         {
-            anim.Play("Hide", 0, 0f);
-            onRoomClick.SetActive(false);
+           return;
+        }
+
+        if (PlayerMapController.Instance != null && room.incoming.Contains(PlayerMapController.Instance.currentRoom))
+        {
+            PlayIdleHighlight();
+        }
+    }
+
+    public void PlayIdleHighlight()
+    {
+        if (anim != null)
+        {
+            anim.Play("Idle");   
+        }
+    }
+
+    public void RsesetUI()
+    {
+        if (anim != null)
+        {
+            anim.Play("Hide", 0, 0);   // Ẩn mọi thứ
         }
     }
 
@@ -67,7 +85,6 @@ public class RoomUI : MonoBehaviour
 
     void Start()
     {
-
         if (anim != null)
         {
             AnimatorStateInfo state = anim.GetCurrentAnimatorStateInfo(0);
@@ -78,45 +95,15 @@ public class RoomUI : MonoBehaviour
         buttonEnterParent = GameObject.Find("ButtonPar");
 
         hasMovedOnce = false;
-
-        if (isStartRoom)
-        {
-            room.visited = true;
-            selectSlider.value = 1f;
-            SetAsVisited();
-            return;
-        }
-    }
-
-    private void Update()
-    {
-        if (isStartRoom)
-        {
-            if (anim != null)
-                anim.Play("Stay");
-            return; 
-        }
-
-        if (!room.incoming.Contains(PlayerMapController.Instance.currentRoom))
-        {
-            if (anim != null)
-            {
-                anim.SetBool("Click", false);
-                anim.Play("Hide", 0, 0f);
-            }
-        }
     }
 
     public void SetAsVisited()
     {
         if (goButton != null)
             goButton.gameObject.SetActive(false);
-
-        if (isStartPanel == false)
-        {
-            if (anim != null)
-                anim.Play("Stay");
-        }
+        if (anim != null)
+            anim.SetBool("Stay", true);
+        selectSlider.value = 1f;
     }
 
     public void OnRoomClicked()
@@ -171,7 +158,6 @@ public class RoomUI : MonoBehaviour
         }
         rect.anchoredPosition = targetPos;
     }
-
 
     private IEnumerator MoveButtonParLeft()
     {
@@ -229,7 +215,6 @@ public class RoomUI : MonoBehaviour
     private void HandleTransitionComplete()
     {
         PlayerMapController.Instance.MoveTo(room);
-
         if (room.type == RoomType.Battle)
         {
             room.visited = true; 
@@ -238,7 +223,11 @@ public class RoomUI : MonoBehaviour
         }
 
         if (room.type == RoomType.Shop)
+        {
+            room.visited = true;
+            SetAsVisited();
             MapUIManager.Instance.OpenShop();
+        }
 
         if (room.type == RoomType.Event)
             MapUIManager.Instance.ShowEventUI();
@@ -270,8 +259,6 @@ public class RoomUI : MonoBehaviour
             else if (room.visited)
             {
                 SetAsVisited();
-                if (anim != null)
-                    anim.SetBool("Stay", true);
                 return;
             }
         }

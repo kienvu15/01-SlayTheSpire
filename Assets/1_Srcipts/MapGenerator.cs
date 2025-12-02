@@ -101,6 +101,8 @@ public class MapGenerator : MonoBehaviour
         var penultimate = rows[rows.Count - 2];
         foreach (var r in penultimate) r.ConnectTo(bossRoom);
 
+        MapUIManager.Instance.StartCoroutine(MapUIManager.Instance.UpdateHighlightsNextFrame());
+
         DrawAllConnections();
         SetCameraBounds();
     }

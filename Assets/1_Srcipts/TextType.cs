@@ -5,37 +5,30 @@ using UnityEngine;
 
 public class TextType : MonoBehaviour
 {
+    public GameObject EnterButton;
+    public GameObject dialogueButton;
+
     public TextMeshProUGUI dialogueCop;
     public string[] lines;
     public float textSpeed = 0.05f;
     private int index;
     private bool isDone;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         dialogueCop.text = string.Empty;
         StartDialogue();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ButtonDialugue()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (dialogueCop.text == lines[index])
+            NextLine();
+        else
         {
-            if (dialogueCop.text == lines[index])
-                NextLine();
-            else
-            {
-                StopAllCoroutines();
-                dialogueCop.text = lines[index];
-            }
+            StopAllCoroutines();
+            dialogueCop.text = lines[index];
         }
-
-        //if (dialogueCop.text == lines[1] && !isDone)
-        //{
-        //    StartCoroutine(endDioluge());
-        //}
     }
 
     void StartDialogue()
@@ -60,6 +53,11 @@ public class TextType : MonoBehaviour
             index++;
             dialogueCop.text = string.Empty;
             StartCoroutine(TypeLine());
+        }
+        else
+        {
+            dialogueButton.SetActive(false);
+            EnterButton.SetActive(true);
         }
     }
 
