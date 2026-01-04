@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using System.Collections;
+using System.Net.WebSockets;
 using UnityEngine;
 using UnityEngine.TestTools;
 using UnityEngine.TextCore.Text;
@@ -34,6 +35,22 @@ public class Edittest
         character.TakeDamage(30);
 
         Assert.AreEqual(70, character.stats.currentHP);
+    }
+
+    [Test]
+    public void MoveTest()
+    {
+        var pl = new GameObject().AddComponent<CharacterController>();
+        Vector3 speed = pl.MoveCharacter(5f, Vector3.right);
+        Assert.AreEqual(new Vector3(5,0,0), speed);
+    }
+
+    [Test]
+    public void MoveTest2()
+    {
+        var pl = new GameObject().AddComponent<CharacterController>();
+        Vector3 speed = pl.MoveCharacter(3f, Vector3.up);
+        Assert.AreEqual(new Vector3(0,3,0), speed);
     }
 
     private Enemy enemy;

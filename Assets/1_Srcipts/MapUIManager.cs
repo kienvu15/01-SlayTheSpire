@@ -24,6 +24,8 @@ public class MapUIManager : MonoBehaviour
 
     [Header("Event UI")]
     public GameObject eventUI;
+    public GameObject restEnventUI;
+    public GameObject RoomEventCanvas;
 
     [Header("Hide On")]
     public List<GameObject> hideOnBattle;
@@ -73,7 +75,7 @@ public class MapUIManager : MonoBehaviour
         var prefab = battleDatabase.GetRandomBattleCanvas();
         if (prefab == null) return;
 
-        battleRoomCount++;
+        // battleRoomCount++;
         Debug.Log($"Player đã vào battle room {battleRoomCount} lần.");
 
         var battleRoom = Instantiate(prefab, roomCanvasHolder);
@@ -82,10 +84,6 @@ public class MapUIManager : MonoBehaviour
         battleRoom.transform.localPosition = Vector3.zero;
 
         StartCoroutine(RegisterEnemiesNextFrame(battleRoom));
-
-        deck.CacheDeckCountText();
-        deck.CacheDeckDiscard();
-
 
         CanvasGroup PlaySelfCast = playerSelfCast.GetComponent<CanvasGroup>();
         if (PlaySelfCast != null)
@@ -106,6 +104,7 @@ public class MapUIManager : MonoBehaviour
         EndButton.SetActive(true);
         
         UIManager.Instance.HandPlayerBottom.SetActive(true);
+        UIManager.Instance.PlaySelftCast.SetActive(true);
 
         GameSystem.Instance.BattleUICanvas = battleRoom;
         GameFlowManager.Instance.isOnBattle = true;
@@ -141,6 +140,9 @@ public class MapUIManager : MonoBehaviour
         Button enterbutton = shopRoom.GetComponent<TextType>().EnterButton.GetComponent<Button>();
         enterbutton.onClick.AddListener(() => UIManager.Instance.EnterShop());
 
+        Button skipButton = shopRoom.GetComponent<TextType>().SkipShopButton.GetComponentInChildren<Button>();
+        skipButton.onClick.AddListener(() => UIManager.Instance.SkipShop());
+
         GameSystem.Instance.BattleUICanvas = shopRoom;
     }
 
@@ -151,8 +153,17 @@ public class MapUIManager : MonoBehaviour
         {
             if (obj != null) obj.SetActive(false);
         }
+        GameSystem.Instance.BattleUICanvas = eventUI;
     }
 
+    public void ShowRestUI()
+    {
+        var restEvent = Instantiate(restEnventUI, RoomEventCanvas.transform);
+        restEvent.transform.localPosition = Vector3.zero;
+
+        UIManager.Instance.MapOBB.SetActive(false);
+        GameSystem.Instance.BattleUICanvas = restEvent;
+    }
     public void HideBattleCanvas()
     {
         //for (int i = roomCanvasHolder.childCount - 1; i >= 0; --i)

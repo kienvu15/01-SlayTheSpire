@@ -15,8 +15,13 @@ public class Match : MonoBehaviour
 
     [Header("Animation/Timing")]
     public float waitAfterDiscardAnimations = 0.5f;
-    public float waitBeforeRefill = 3f;   
+    public float waitBeforeRefill = 3f;
 
+    public static Match instance;
+    private void Awake()
+    {
+        instance = this;
+    }
 
     public void EndTurn()
     {

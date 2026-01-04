@@ -12,12 +12,12 @@ public class ShieldEffectData : EffectData, IOverrideValue
         if (realTarget == null)
         {
             Debug.LogWarning("[ShieldEffect] No valid target to apply shield!");
-            return false; // ❌ fail
+            return false; // fail
         }
 
         realTarget.AddShield(baseShield);
         Debug.Log($"[ShieldEffect] {self.name} added {baseShield} shield to {realTarget.name}");
-        return true; // ✅ success
+        return true; //  success
     }
 
     public override int GetIntentValue()

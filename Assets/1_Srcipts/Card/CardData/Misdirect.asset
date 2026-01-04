@@ -15,10 +15,11 @@ MonoBehaviour:
   cardName: Misdirect
   cardType: 0
   effectOn: 1
-  artwork: {fileID: 1643006026915899247, guid: d3171a92166b02644979e743774525ca, type: 3}
+  artwork: {fileID: 3040205253013168821, guid: 078ca25c2433cd94fa691c30bdef5934, type: 3}
   manaCost: 0
   description: Deals 5 damage and critical hit to enemy behind target
   effects:
   - effect: {fileID: 11400000, guid: e81070099ce428a45866a34af0111db6, type: 2}
     overrideValue: 0
     valueOverride: 0
+  goldCost: 10

@@ -15,10 +15,11 @@ MonoBehaviour:
   cardName: Agility
   cardType: 3
   effectOn: 0
-  artwork: {fileID: 1643006026915899247, guid: d3171a92166b02644979e743774525ca, type: 3}
+  artwork: {fileID: -842748779033256923, guid: de3f0983978587a40b4d82ca3a25f149, type: 3}
   manaCost: 1
   description: Gian Dodge x1
   effects:
   - effect: {fileID: 11400000, guid: 658b19441ab3c6e4494a27e2d34c6a99, type: 2}
     overrideValue: 0
     valueOverride: 0
+  goldCost: 10

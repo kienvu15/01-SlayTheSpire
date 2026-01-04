@@ -19,3 +19,6 @@ MonoBehaviour:
   - cardType: 0
     effectKind: 0
     prefab: {fileID: 5235513956208861579, guid: ce2bd48d327c6124c9826445719eb0f6, type: 3}
+  - cardType: 4
+    effectKind: 3
+    prefab: {fileID: 5235513956208861579, guid: ce2bd48d327c6124c9826445719eb0f6, type: 3}

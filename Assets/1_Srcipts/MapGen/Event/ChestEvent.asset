@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoomEventData
   eventTitle: There's a chest!?
   description: What you gonna do?
-  eventImage: {fileID: 7863668928567222943, guid: 4062011332f407243997b0f5d848cc52, type: 3}
-  BackgroundImage: {fileID: -7992452208110515111, guid: 0b899b4e157b28b4aa2b6b0764deaa08, type: 3}
+  eventImage: {fileID: 3577442055994129116, guid: 5c0efc5bc172026488a900d4080b3345, type: 3}
+  BackgroundImage: {fileID: 21300000, guid: f2df6de75ab856046b1af20e93eba7ed, type: 3}
   choices:
   - choiceText: Open
-    choiceImage: {fileID: -5366053918321049083, guid: 4062011332f407243997b0f5d848cc52, type: 3}
+    choiceImage: {fileID: 6135714591942646338, guid: e833e4f5042ef9c44a4704a181cdfebe, type: 3}
     nextEvent: {fileID: 11400000, guid: 44bbbbc42ea8e1240b8f1301dfe93db3, type: 2}
     outcomes:
     - resultText: 

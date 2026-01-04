@@ -15,10 +15,11 @@ MonoBehaviour:
   cardName: Knee Spike
   cardType: 0
   effectOn: 1
-  artwork: {fileID: 1643006026915899247, guid: d3171a92166b02644979e743774525ca, type: 3}
+  artwork: {fileID: 21300000, guid: b6401d8088ddc5d4484ffbd9b25033a9, type: 3}
   manaCost: 0
   description: Deals 7 damage. Draw a card if your hand is emty
   effects:
   - effect: {fileID: 11400000, guid: 95b499c955322c849833cffa205243ae, type: 2}
     overrideValue: 0
     valueOverride: 0
+  goldCost: 10

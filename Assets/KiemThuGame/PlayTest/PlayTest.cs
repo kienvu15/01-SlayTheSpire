@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class PlayTest
 {
@@ -19,7 +20,7 @@ public class PlayTest
 
         Assert.AreEqual(homeScene, SceneManager.GetActiveScene().name);
 
-        Button playButton = GameObject.Find("PlayButton").GetComponent<Button>();
+        UnityEngine.UI.Button playButton = GameObject.Find("PlayButton").GetComponent<UnityEngine.UI.Button>();
 
         playButton.onClick.Invoke();
 
@@ -47,7 +48,7 @@ public class PlayTest
 
         GameObject icon = GameObject.Find("MapIcon");
 
-        Button mapButton = icon.GetComponentInChildren<Button>();
+        UnityEngine.UI.Button mapButton = icon.GetComponentInChildren<UnityEngine.UI.Button>();
 
         // Click
         mapButton.onClick.Invoke();
@@ -72,7 +73,7 @@ public class PlayTest
 
         GameObject MyDeck = ui.deckUI;
 
-        Button Deck = GameObject.Find("Deck").GetComponentInChildren<Button>();
+        UnityEngine.UI.Button Deck = GameObject.Find("Deck").GetComponentInChildren<UnityEngine.UI.Button>();
 
         Deck.onClick.Invoke();
         
@@ -119,4 +120,41 @@ public class PlayTest
             Assert.Fail("SoundTest failed.");
         }
     }
+
+    [UnityTest]
+    public IEnumerator MoveTest()
+    {
+        yield return SceneManager.LoadSceneAsync(gameScene);
+        // 1. Thiết lập Scene giả lập
+        GameObject player = new GameObject("Player");
+        var playerMove = player.AddComponent<CharacterController>();
+        var sp = playerMove.MoveCharacter(5f, Vector3.right);
+
+
+        // 3. Chờ 1 frame để simulation diễn ra (nếu cần)
+        yield return null;
+
+        // 4. Kiểm tra kết quả
+        Assert.AreNotEqual(new Vector3(0,0,0), sp);
+
+    }
+
+
+    private string Scene = "Test";
+    [UnityTest]
+    public IEnumerator ShootTest()
+    {
+        yield return SceneManager.LoadSceneAsync(Scene);
+        GameObject player = GameObject.Find("Player");
+        GameObject box = GameObject.Find("Box");
+
+        
+
+        yield return new WaitForSeconds(5f);
+
+
+        Assert.IsTrue(!box.activeSelf, "Box should be destroy after take damage");
+
+    }
+
 }

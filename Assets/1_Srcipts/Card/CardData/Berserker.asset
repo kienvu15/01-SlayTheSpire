@@ -15,10 +15,11 @@ MonoBehaviour:
   cardName: Berserker
   cardType: 3
   effectOn: 0
-  artwork: {fileID: 1643006026915899247, guid: d3171a92166b02644979e743774525ca, type: 3}
+  artwork: {fileID: 21300000, guid: 23919396fa4f98a45bb4d50e892e2272, type: 3}
   manaCost: 2
   description: Next attack card gain 100% Lifesteal.
   effects:
   - effect: {fileID: 11400000, guid: c26664e9d8aa8214996db3c2b3488a7f, type: 2}
     overrideValue: 0
     valueOverride: 0
+  goldCost: 10

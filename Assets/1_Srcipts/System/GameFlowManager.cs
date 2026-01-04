@@ -64,7 +64,6 @@ public class GameFlowManager : MonoBehaviour
         discard.Clear();
         deck.BuildDeck();
         deck.hasDrawFisrtRow = false;
-
     }
 
 }

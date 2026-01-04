@@ -361,7 +361,8 @@ public class Character : MonoBehaviour
                 clone.owner = (this is EnemyView) ? ConditionOwner.EnemyOnSelf : ConditionOwner.Enemy;
 
             activeConditions.Add(clone);
-            AttackImpactManager.Instance.ShowConditionImpact(transform, vfxType);
+            PlayImpact(this, vfxType, ImpactEffectKind.Dodge);
+            // AttackImpactManager.Instance.ShowConditionImpact(transform, vfxType);
 
             Debug.Log($"[Condition] Added {clone.type} ({clone.duration} turns) from {clone.owner}");
         }
@@ -526,7 +527,6 @@ public class Character : MonoBehaviour
     }
 
     // IMPACT CALL
-    // ----------------------------
     private void PlayImpact(Character target, CardType cardType, ImpactEffectKind effect)
     {
         HitContext ctx = new HitContext
@@ -541,9 +541,7 @@ public class Character : MonoBehaviour
         NewAttackImpactManager.Instance.PlayImpact(ctx);
     }
 
-    // ----------------------------
     // RANDOM MINI SYSTEM
-    // ----------------------------
     private bool RollMiss() => Random.value < 0.05f;
     private bool RollDodge() => Random.value < 0.05f;
 

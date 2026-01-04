@@ -215,23 +215,61 @@ public class RoomUI : MonoBehaviour
     private void HandleTransitionComplete()
     {
         PlayerMapController.Instance.MoveTo(room);
-        if (room.type == RoomType.Battle)
-        {
-            room.visited = true; 
-            SetAsVisited();     
-            MapUIManager.Instance.ShowBattleCanvas();
-        }
 
-        if (room.type == RoomType.Shop)
+        if (room.type == RoomType.Battle)
         {
             room.visited = true;
             SetAsVisited();
+            GameSystem.Instance.isBattlePhase = true;
+            UIManager.Instance.FadeOutOverTime();
+
+            bool sysExists = GameSystem.Instance != null;
+            bool isBattle = sysExists && GameSystem.Instance.isBattlePhase;
+            bool deckExists = Deck.instance != null;
+            bool needDraw = deckExists && !Deck.instance.hasDrawFisrtRow;
+
+            if (sysExists && isBattle && needDraw)
+            {
+                Deck.instance.hasDrawFisrtRow = true;
+                StartCoroutine(Deck.instance.DrawHand(Match.instance.handSize));
+            }
+            MapUIManager.Instance.ShowBattleCanvas();
+        }
+        else if (room.type == RoomType.Shop)
+        {
+            GameSystem.Instance.isBattlePhase = true;
+            room.visited = true;
+            SetAsVisited();
+            UIManager.Instance.FadeOutOverTime();
             MapUIManager.Instance.OpenShop();
         }
+        else if (room.type == RoomType.Event)
+        {
+            room.visited = true;
+            SetAsVisited();
+            UIManager.Instance.HandPlayerBottom.SetActive(false);
+            UIManager.Instance.ToolImage.SetActive(false);
+            UIManager.Instance.MapOBB.SetActive(false);
+            UIManager.Instance.MapStuffs.SetActive(false);
 
-        if (room.type == RoomType.Event)
+            UIManager.Instance.FadeOutOverTime();
             MapUIManager.Instance.ShowEventUI();
+        }
+        else if (room.type == RoomType.Rest)
+        {
+            room.visited = true;
+            SetAsVisited();
 
+            GameSystem.Instance.isBattlePhase = false;
+
+            UIManager.Instance.HandPlayerBottom.SetActive(false);
+            UIManager.Instance.MapStuffs.SetActive(false);
+            UIManager.Instance.ToolImage.SetActive(false);
+            UIManager.Instance.FadeOutOverTime();
+            MapUIManager.Instance.ShowRestUI();
+        }
+
+        UIManager.Instance.CrawlerFloor();
         UIManager.Instance.OnTransitionFilled -= HandleTransitionComplete;
     }
 

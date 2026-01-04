@@ -224,10 +224,10 @@ public class UIManager : MonoBehaviour
             UIManager.Instance.removeBattleCanvas();
             GameFlowManager.Instance.isFirstBattle = false;
         }
-        else
+        else if (GameFlowManager.Instance.isFirstBattle == false 
+            && GameSystem.Instance.isBattlePhase == true)
         {
-            Destroy(
-            BattlleUIHolder.transform.GetChild(0).gameObject);
+            Destroy(BattlleUIHolder.transform.GetChild(0).gameObject);
         }
             OnTransitionFilled?.Invoke();
     }
@@ -333,6 +333,11 @@ public class UIManager : MonoBehaviour
     {
         SoundManager.Instance.Play("SelectButton");
         lootPanel.SetActive(false);
+        MapOBB.SetActive(true);
+        foreach(var obj in backMap)
+        {
+            obj.gameObject.SetActive(true);
+        }
     }
     public void DeactiveLootPanel()
     {
@@ -411,6 +416,15 @@ public class UIManager : MonoBehaviour
     #endregion
 
     #region Shop
+
+    public void SkipShop()
+    {
+        for(int i = 0; i< backMap.Count; i++)
+        {
+            backMap[i].SetActive(true);
+        }
+    }
+
     public void EnterShop()
     {
         PlaySelftCast.SetActive(true);
@@ -497,6 +511,11 @@ public class UIManager : MonoBehaviour
         removeService.SetActive(true);
     }
 
+    public void LeaveRemoveService()
+    {
+        removeService.SetActive(false);
+    }
+
     #endregion
 
     #region BattleBg
@@ -512,5 +531,9 @@ public class UIManager : MonoBehaviour
         floor++;
         floorCount.text = floor + "th Floor";
     }
+    #endregion
+
+    #region RestEvent
+
     #endregion
 }

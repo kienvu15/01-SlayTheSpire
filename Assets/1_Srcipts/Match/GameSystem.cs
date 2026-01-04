@@ -21,40 +21,6 @@ public class GameSystem : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        if (BattleUICanvas != null)
-        {
-            bool active = BattleUICanvas.activeSelf;
-            if (isBattlePhase != active)
-            {
-                isBattlePhase = active;
-                UIManager.Instance.FadeOutOverTime();
-                Debug.Log($"[GameSystem] BattlePhase = {isBattlePhase}");
-            }
-        }
-        else
-        {
-            isBattlePhase = false;
-        }
-
-        if(gameCanvas.activeSelf == false)
-        {
-            if (panCamera != null)
-            {
-                panCamera.enabled = false;
-            }
-        }
-        else
-        {
-            if (panCamera != null)
-            {
-                panCamera.enabled = true;
-            }
-        }
-
-    }
-
     public bool IsGamePaused { get; private set; } = false;
 
     [SerializeField] public bool isBattlePhase = false;   

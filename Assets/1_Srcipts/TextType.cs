@@ -7,6 +7,7 @@ public class TextType : MonoBehaviour
 {
     public GameObject EnterButton;
     public GameObject dialogueButton;
+    public GameObject SkipShopButton;
 
     public TextMeshProUGUI dialogueCop;
     public string[] lines;
@@ -57,6 +58,7 @@ public class TextType : MonoBehaviour
         else
         {
             dialogueButton.SetActive(false);
+            SkipShopButton.SetActive(true);
             EnterButton.SetActive(true);
         }
     }

@@ -29,6 +29,10 @@ public class EventManager : MonoBehaviour
         Instance = this;
     }
 
+    private void OnEnable()
+    {
+        ShowRandomEvent();
+    }
     private void Start()
     {
         ShowRandomEvent();
@@ -93,10 +97,15 @@ public class EventManager : MonoBehaviour
             {
                 case EventResultType.Leave:
                     gameObject.SetActive(false);
+                    UIManager.Instance.ToolImage.SetActive(true);
+                    GameSystem.Instance.isBattlePhase = false;
+                    GameSystem.Instance.BattleUICanvas = null;
                     break;
 
                 case EventResultType.Gold:
                     coinManager.AddCoins(outcome.value);
+                    SoundManager.Instance.Play("Coin");
+                    UIManager.Instance.AnimationGold();
                     break;
 
                 case EventResultType.Damage:
@@ -130,6 +139,13 @@ public class EventManager : MonoBehaviour
         {
             ShowEvent(choice.nextEvent);
             return;
+        }
+        else
+        {
+            eventPanel.SetActive(false);
+            UIManager.Instance.MapOBB.SetActive(true);
+            UIManager.Instance.MapStuffs.SetActive(true);
+            Debug.Log("Call here, dumb ass");
         }
 
         // Nếu không có outcome và không có nextEvent thì đóng panel

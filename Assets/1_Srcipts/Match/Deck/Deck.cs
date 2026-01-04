@@ -29,24 +29,17 @@ public class Deck : MonoBehaviour
     private List<CardData> deck = new List<CardData>();
     private List<GameObject> currentHand = new List<GameObject>();
 
+    public static Deck instance;
+    private void Awake()
+    {
+        instance = this;
+    }
+
     void Start()
     {
         BuildDeck();
         UpdateUI();
-        cardHolder = FindFirstObjectByType<CardHolder>();
-    }
-
-    
-    private void Update()
-    {
-        if (GameFlowManager.Instance.isOnBattle == false)
-            return;
-
-        if (GameSystem.Instance != null && GameSystem.Instance.isBattlePhase == true && hasDrawFisrtRow == false)
-        {
-            hasDrawFisrtRow = true;
-            StartCoroutine(DelayAndDraw());
-        }
+        UpdateAllCardCount();
     }
 
     public void DrawFirstHand(int count)
@@ -54,7 +47,6 @@ public class Deck : MonoBehaviour
         hasDrawFisrtRow = true;
         StartCoroutine(DrawHand(count));
     }
-
 
     public void CacheDeckCountText()
     {
@@ -86,7 +78,7 @@ public class Deck : MonoBehaviour
         UpdateUI();
     }
 
-    IEnumerator DelayAndDraw()
+    public IEnumerator DelayAndDraw()
     {
         yield return null;
         yield return StartCoroutine(DrawHand(match.handSize));
@@ -105,6 +97,7 @@ public class Deck : MonoBehaviour
     // Giữ để backward compatibility nếu nơi khác gọi
     public IEnumerator DrawHand(int count)
     {
+        SoundManager.Instance.Play("FirstHandDraw");
         yield return StartCoroutine(DrawCards(count));
     }
 

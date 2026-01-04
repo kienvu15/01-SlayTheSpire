@@ -3,7 +3,7 @@
 [CreateAssetMenu(fileName = "DodgeEffect", menuName = "Cards/Effects/Dodge")]
 public class DodgeEffectData : EffectData, IOverrideValue
 {
-    public int duration = 1;  // số lượt tồn tại mặc định
+    public int duration = 1; 
 
     public override bool Apply(Character self, Character target, ManaSystem manaSystem, Deck deck)
     {
@@ -24,7 +24,7 @@ public class DodgeEffectData : EffectData, IOverrideValue
 
     public override int GetIntentValue()
     {
-        return duration; // hiển thị số lượt Dodge
+        return duration; 
     }
 
     // --- IOverrideValue ---
