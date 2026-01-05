@@ -21,6 +21,15 @@ public class GroupAnimManager : MonoBehaviour
     public bool disableAfter = true;
 
     //Click
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            PlayGroupByName("StartButton");
+        }
+    }
+
     public IEnumerator PlayModeDisappear()
     {
         PlayGroupByName("PlayMode");

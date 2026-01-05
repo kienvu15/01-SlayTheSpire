@@ -38,21 +38,6 @@ public class GroupAppearAnimManager : MonoBehaviour
         }
     }
 
-    public void PlayModeAppear()
-    {
-        PlayGroupByName("Mode");
-        PlayGroupByName("BackButton");
-        PlayGroupByName("SkinSelect");
-    }
-
-    public void MenuModeAppear()
-    {
-        PlayGroupByName("Logo");
-        PlayGroupByName("MenuButton");
-        PlayGroupByName("PlayerData");
-
-    }
-
     public void PlayGroupByName(string groupName)
     {
         var g = groups.Find(x => x.groupName == groupName);
