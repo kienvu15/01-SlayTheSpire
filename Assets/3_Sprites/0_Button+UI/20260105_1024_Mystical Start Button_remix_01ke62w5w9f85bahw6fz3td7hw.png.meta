@@ -1,10 +1,31 @@
 fileFormatVersion: 2
-guid: 035cdb84db30479428c05eb01649b04d
+guid: 0733fd3de78c8c240b74788f42c63b8a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5473486081840896990
-    second: dreamina-2026-01-05-5631-remix this image_0
+      213: 3974712702154885674
+    second: 20260105_1024_Mystical Start Button_remix_01ke62w5w9f85bahw6fz3td7hw_0
+  - first:
+      213: 2522047706487963787
+    second: 20260105_1024_Mystical Start Button_remix_01ke62w5w9f85bahw6fz3td7hw_1
+  - first:
+      213: 4976456583905834613
+    second: 20260105_1024_Mystical Start Button_remix_01ke62w5w9f85bahw6fz3td7hw_2
+  - first:
+      213: 329223304109772539
+    second: 20260105_1024_Mystical Start Button_remix_01ke62w5w9f85bahw6fz3td7hw_3
+  - first:
+      213: -1040555432792253611
+    second: 20260105_1024_Mystical Start Button_remix_01ke62w5w9f85bahw6fz3td7hw_4
+  - first:
+      213: 932675473838052879
+    second: 20260105_1024_Mystical Start Button_remix_01ke62w5w9f85bahw6fz3td7hw_5
+  - first:
+      213: -7877042541199936217
+    second: 20260105_1024_Mystical Start Button_remix_01ke62w5w9f85bahw6fz3td7hw_6
+  - first:
+      213: -1707631815740607530
+    second: 20260105_1024_Mystical Start Button_remix_01ke62w5w9f85bahw6fz3td7hw_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +72,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 200
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,23 +134,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dreamina-2026-01-05-5631-remix this image_0
+      name: 20260105_1024_Mystical Start Button_remix_01ke62w5w9f85bahw6fz3td7hw_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1344
-        height: 768
+        x: 230
+        y: 305
+        width: 1076
+        height: 615
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: edbdb27779ab5fb40800000000000000
-      internalID: 5473486081840896990
+      spriteID: a2acc28c424092730800000000000000
+      internalID: 3974712702154885674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 20260105_1024_Mystical Start Button_remix_01ke62w5w9f85bahw6fz3td7hw_4
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 297
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55b9053d8543f81f0800000000000000
+      internalID: -1040555432792253611
       vertices: []
       indices: 
       edges: []
@@ -138,7 +181,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -146,9 +189,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      dreamina-2026-01-05-5631-remix this image_0: 5473486081840896990
+      20260105_1024_Mystical Start Button_remix_01ke62w5w9f85bahw6fz3td7hw_0: 3974712702154885674
+      20260105_1024_Mystical Start Button_remix_01ke62w5w9f85bahw6fz3td7hw_1: 2522047706487963787
+      20260105_1024_Mystical Start Button_remix_01ke62w5w9f85bahw6fz3td7hw_2: 4976456583905834613
+      20260105_1024_Mystical Start Button_remix_01ke62w5w9f85bahw6fz3td7hw_3: 329223304109772539
+      20260105_1024_Mystical Start Button_remix_01ke62w5w9f85bahw6fz3td7hw_4: -1040555432792253611
+      20260105_1024_Mystical Start Button_remix_01ke62w5w9f85bahw6fz3td7hw_5: 932675473838052879
+      20260105_1024_Mystical Start Button_remix_01ke62w5w9f85bahw6fz3td7hw_6: -7877042541199936217
+      20260105_1024_Mystical Start Button_remix_01ke62w5w9f85bahw6fz3td7hw_7: -1707631815740607530
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
