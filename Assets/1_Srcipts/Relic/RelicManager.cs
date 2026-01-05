@@ -4,6 +4,7 @@ using UnityEngine;
 public class RelicManager : MonoBehaviour
 {
     public static RelicManager Instance;
+
     public List<Relic> equippedRelics = new List<Relic>();
 
     // UI events

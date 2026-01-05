@@ -6,6 +6,7 @@ public class Player : Character
     public Animator animator;
     public GameObject canvas;
     AudioSource audioSource;
+
     protected override void Start()
     {
         base.Start();
