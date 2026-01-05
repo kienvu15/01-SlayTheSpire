@@ -29,6 +29,15 @@ public class GroupAppearAnimManager : MonoBehaviour
                 if (t) Cache(t);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            PlayGroupByName("Button");
+            PlayGroupByName("Logo");
+        }
+    }
+
     public void PlayModeAppear()
     {
         PlayGroupByName("Mode");
@@ -106,10 +115,8 @@ public class GroupAppearAnimManager : MonoBehaviour
 
             // Luôn đảm bảo Alpha chạy song song
             seq.Join(
-    c.canvasGroup
-        .DOFade(1f, group.duration)
-        .SetEase(group.ease)
-);
+            DOTween.To(() => c.canvasGroup.alpha, x => c.canvasGroup.alpha = x, 1f, group.duration)
+        .SetEase(group.ease));
 
 
             // Bật lại tương tác khi hoàn thành Sequence
@@ -132,7 +139,7 @@ public class GroupAppearAnimManager : MonoBehaviour
             rect.anchoredPosition = c.anchoredPos + dir * g.moveDistance;
 
             seq.Append(
-                rect.DOAnchorPos(c.anchoredPos, g.duration)
+                rect.transform.DOLocalMove(c.anchoredPos, g.duration)
                     .SetEase(g.ease)
             );
         }

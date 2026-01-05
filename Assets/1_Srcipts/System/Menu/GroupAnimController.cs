@@ -1,7 +1,7 @@
-﻿using DG.Tweening;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public enum GroupAnimType
 {
@@ -124,7 +124,7 @@ public class GroupAnimManager : MonoBehaviour
         if (rect != null)
         {
             Vector2 target = rect.anchoredPosition + dir * g.moveDistance;
-            seq.Append(rect.DOAnchorPos(target, g.duration).SetEase(g.ease));
+            seq.Append(rect.transform.DOLocalMove(target, g.duration).SetEase(g.ease));
         }
         else
         {
