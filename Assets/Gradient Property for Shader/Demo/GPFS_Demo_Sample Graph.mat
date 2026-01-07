@@ -1,0 +1,100 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!28 &-6799623501694223542
+Texture2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: _Gradient_gradienttexture Texture{"mode":0,"colorKeys":[{"color":{"r":0.9056603908538818,"g":0.15037386119365693,"b":0.15037386119365693,"a":1.0},"time":0.0},{"color":{"r":1.0,"g":1.0,"b":1.0,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":1.0,"time":1.0}]}
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 4
+  m_Width: 256
+  m_Height: 1
+  m_CompleteImageSize: 1024
+  m_MipsStripped: 0
+  m_TextureFormat: 5
+  m_MipCount: 1
+  m_IsReadable: 1
+  m_IsPreProcessed: 0
+  m_IgnoreMipmapLimit: 1
+  m_MipmapLimitGroupName: 
+  m_StreamingMipmaps: 0
+  m_StreamingMipmapsPriority: 0
+  m_VTOnly: 0
+  m_AlphaIsTransparency: 0
+  m_ImageCount: 1
+  m_TextureDimension: 2
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_LightmapFormat: 0
+  m_ColorSpace: 1
+  m_PlatformBlob: 
+  image data: 1024
+  _typelessdata: ffe72626ffe72727ffe72828ffe72929ffe72a2affe72b2bffe82b2bffe82c2cffe82d2dffe82e2effe82f2fffe83030ffe83131ffe83131ffe83232ffe83333ffe83434ffe93535ffe93636ffe93636ffe93737ffe93838ffe93939ffe93a3affe93b3bffe93c3cffe93c3cffe93d3dffea3e3effea3f3fffea4040ffea4141ffea4242ffea4242ffea4343ffea4444ffea4545ffea4646ffeb4747ffeb4747ffeb4848ffeb4949ffeb4a4affeb4b4bffeb4c4cffeb4d4dffeb4d4dffeb4e4effeb4f4fffec5050ffec5151ffec5252ffec5353ffec5353ffec5454ffec5555ffec5656ffec5757ffec5858ffed5858ffed5959ffed5a5affed5b5bffed5c5cffed5d5dffed5e5effed5e5effed5f5fffed6060ffed6161ffee6262ffee6363ffee6464ffee6464ffee6565ffee6666ffee6767ffee6868ffee6969ffee6969ffee6a6affef6b6bffef6c6cffef6d6dffef6e6effef6f6fffef6f6fffef7070ffef7171ffef7272ffef7373fff07474fff07575fff07575fff07676fff07777fff07878fff07979fff07a7afff07a7afff07b7bfff07c7cfff17d7dfff17e7efff17f7ffff18080fff18080fff18181fff18282fff18383fff18484fff18585fff28686fff28686fff28787fff28888fff28989fff28a8afff28b8bfff28b8bfff28c8cfff28d8dfff28e8efff38f8ffff39090fff39191fff39191fff39292fff39393fff39494fff39595fff39696fff39696fff39797fff49898fff49999fff49a9afff49b9bfff49c9cfff49c9cfff49d9dfff49e9efff49f9ffff4a0a0fff5a1a1fff5a2a2fff5a2a2fff5a3a3fff5a4a4fff5a5a5fff5a6a6fff5a7a7fff5a7a7fff5a8a8fff5a9a9fff6aaaafff6ababfff6acacfff6adadfff6adadfff6aeaefff6afaffff6b0b0fff6b1b1fff6b2b2fff7b3b3fff7b3b3fff7b4b4fff7b5b5fff7b6b6fff7b7b7fff7b8b8fff7b8b8fff7b9b9fff7babafff7bbbbfff8bcbcfff8bdbdfff8bebefff8bebefff8bfbffff8c0c0fff8c1c1fff8c2c2fff8c3c3fff8c4c4fff8c4c4fff9c5c5fff9c6c6fff9c7c7fff9c8c8fff9c9c9fff9c9c9fff9cacafff9cbcbfff9ccccfff9cdcdfffacecefffacfcffffacfcffffad0d0fffad1d1fffad2d2fffad3d3fffad4d4fffad5d5fffad5d5fffad6d6fffbd7d7fffbd8d8fffbd9d9fffbdadafffbdadafffbdbdbfffbdcdcfffbddddfffbdedefffbdfdffffce0e0fffce0e0fffce1e1fffce2e2fffce3e3fffce4e4fffce5e5fffce6e6fffce6e6fffce7e7fffce8e8fffde9e9fffdeaeafffdebebfffdebebfffdececfffdededfffdeeeefffdefeffffdf0f0fffdf1f1fffdf1f1fffef2f2fffef3f3fffef4f4fffef5f5fffef6f6fffef7f7fffef7f7fffef8f8fffef9f9fffefafafffffbfbfffffcfcfffffcfcfffffdfdfffffefeffffffff
+  m_StreamData:
+    serializedVersion: 2
+    offset: 0
+    size: 0
+    path: 
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: GPFS_Demo_Sample Graph
+  m_Shader: {fileID: 4800000, guid: bf409ee77b4a72f498922a61a96f649c, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Gradient_gradienttexture:
+        m_Texture: {fileID: -6799623501694223542}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _BUILTIN_QueueControl: 0
+    - _BUILTIN_QueueOffset: 0
+    - __dirty: 1
+    m_Colors: []
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
+--- !u!114 &5988834755665242992
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 639247ca83abc874e893eb93af2b5e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.ShaderGraph.Editor::UnityEditor.Rendering.BuiltIn.AssetVersion
+  version: 0
