@@ -11,6 +11,7 @@ public class PlayerData : ScriptableObject
 
     [Header("Stats")]
     public int maxHP;
+    public int startGold;
 
     [Header("Start Relic")]
     public Relic startRelic;

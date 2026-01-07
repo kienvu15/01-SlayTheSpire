@@ -12,8 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ae41bb881ef0d64d83ddf872ac04819, type: 3}
   m_Name: Jack
   m_EditorClassIdentifier: Test::PlayerData
-  playerName: Jack
-  lore: 
+  playerName: The Blood Plague Doctor
+  playerSplashArt: {fileID: 21300000, guid: bee5db376accfcb4482fd385f9f90c63, type: 3}
+  lore: 'A physician who abandoned cures for control.
+
+    He wields disease as a
+    tool.'
   maxHP: 50
-  startRelic: {fileID: 11400000, guid: e31d5f7f53a294e459e62df013ba7cd4, type: 2}
+  startGold: 90
+  startRelic: {fileID: 11400000, guid: 660e2ef9173aa114e99d7b9def708b50, type: 2}
   playerPrefab: {fileID: 5309036203830762836, guid: 104a82e6845f5904896b4bc8c447c984, type: 3}

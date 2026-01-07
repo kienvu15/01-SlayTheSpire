@@ -41748,6 +41748,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 523062843}
     m_Modifications:
+    - target: {fileID: 162479451796416234, guid: 104a82e6845f5904896b4bc8c447c984, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2163431783498287571, guid: 104a82e6845f5904896b4bc8c447c984, type: 3}
       propertyPath: ManaText
       value: 

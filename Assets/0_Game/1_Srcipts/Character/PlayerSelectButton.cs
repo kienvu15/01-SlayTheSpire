@@ -7,11 +7,21 @@ public class PlayerSelectButton : MonoBehaviour
     public PlayerSelectionUI selectionUI;
 
     private Button button;
+    public bool startCharacter = false;
 
     void Awake()
     {
         button = GetComponent<Button>();
         button.onClick.AddListener(OnClick);
+    }
+
+    private void Start()
+    {
+        if (startCharacter) 
+        {
+            selectionUI.Show(playerData);
+            PlayerSelectionManager.Instance.SelectPlayer(playerData);
+        }
     }
 
     void OnClick()

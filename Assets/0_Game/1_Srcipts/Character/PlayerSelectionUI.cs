@@ -7,10 +7,15 @@ public class PlayerSelectionUI : MonoBehaviour
     [Header("UI")]
     public TextMeshProUGUI nameText;
     public Image playerImage;
+
     public TextMeshProUGUI hpText;
+    public TextMeshProUGUI goldText;
+
     public TextMeshProUGUI loreText;
+
     public Image relicIcon;
     public TextMeshProUGUI relicName;
+    public TextMeshProUGUI relicDescription;
 
     private PlayerData currentData;
 
@@ -20,13 +25,16 @@ public class PlayerSelectionUI : MonoBehaviour
 
         nameText.text = data.playerName;
         playerImage.sprite = data.playerSplashArt;
-        hpText.text = $"HP: {data.maxHP}";
+        hpText.text = $"{data.maxHP}/{data.maxHP}";
+        goldText.text = $"{data.startGold}";
         loreText.text = data.lore;
 
         if (data.startRelic != null)
         {
             relicIcon.sprite = data.startRelic.icon;
             relicName.text = data.startRelic.relicName;
+            relicDescription.text = data.startRelic.description;
+
         }
         else
         {

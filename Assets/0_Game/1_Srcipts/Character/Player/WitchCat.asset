@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Test::PlayerData
   playerName: The Cat Witch
   playerSplashArt: {fileID: 21300000, guid: c349bb2cc7446664e8d44fa4264525de, type: 3}
-  lore: 
+  lore: 'Small hands, vast magic.
+
+    A witch, a cat, and the end of an age.'
   maxHP: 50
+  startGold: 99
   startRelic: {fileID: 11400000, guid: e31d5f7f53a294e459e62df013ba7cd4, type: 2}
   playerPrefab: {fileID: 5309036203830762836, guid: 104a82e6845f5904896b4bc8c447c984, type: 3}
