@@ -37,7 +37,7 @@ public class PlayerSelectButton : MonoBehaviour
 
     void Select()
     {
-        PlayerSelectionUI.Instance.SelectButton(this);
+        PlayerSelectionManager.Instance.SelectButton(this);
 
         selectionUI.Show(playerData);
         PlayerSelectionManager.Instance.SelectPlayer(playerData);

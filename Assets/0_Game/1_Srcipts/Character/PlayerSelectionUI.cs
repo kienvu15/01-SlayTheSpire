@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class PlayerSelectionUI : MonoBehaviour
 {
-    public static PlayerSelectionUI Instance;
     [Header("UI")]
     public TextMeshProUGUI nameText;
     public Image playerImage;
@@ -20,28 +19,7 @@ public class PlayerSelectionUI : MonoBehaviour
 
     private PlayerData currentData;
 
-    private PlayerSelectButton currentButton;
-    private PlayerData currentPlayer;
-
-    private void Awake()
-    {
-        Instance = this;
-    }
-
-    public void SelectButton(PlayerSelectButton button)
-    {
-        if (currentButton != null)
-            currentButton.SetSelected(false);
-
-        currentButton = button;
-        currentButton.SetSelected(true);
-    }
-
-    public void SelectPlayer(PlayerData data)
-    {
-        currentPlayer = data;
-    }
-
+   
     public void Show(PlayerData data)
     {
         currentData = data;
