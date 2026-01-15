@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class KGameMenuManager : MonoBehaviour
 {
@@ -24,5 +25,10 @@ public class KGameMenuManager : MonoBehaviour
     {
         groupAnimManager.StartButtonClick();
         groupAppearAnimManager.PlayGroupByName("CharacterS");
+    }
+
+    public void Embark() 
+    {
+        SceneManager.LoadScene(1);
     }
 }

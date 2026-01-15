@@ -14,7 +14,7 @@ public class UIManager : MonoBehaviour
     [Header("UI Panels")]
     public GameObject battleHolder;
     public GameObject Bg;
-    public GameFlowManager GameFlowManager;
+//    public GameFlowManager GameFlowManager;
 
     [Header("Floor")]
     private int floor;

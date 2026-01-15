@@ -7,7 +7,6 @@ public class PlayerSelectionManager : MonoBehaviour
 
     private PlayerData selectedPlayer;
     private PlayerSelectButton currentButton;
-    private PlayerData currentPlayer;
 
     void Awake()
     {
@@ -32,7 +31,7 @@ public class PlayerSelectionManager : MonoBehaviour
 
     public void SelectPlayer(PlayerData data)
     {
-        currentPlayer = data;
+        selectedPlayer = data;
     }
 
     public PlayerData GetSelectedPlayer()
