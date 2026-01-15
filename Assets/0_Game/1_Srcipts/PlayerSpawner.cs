@@ -7,6 +7,9 @@ public class PlayerSpawner : MonoBehaviour
     [SerializeField] RelicUIManager relicUIManager;
     [SerializeField] Deck deckBuilder;
     [SerializeField] MapUIManager mapUIManager;
+    [SerializeField] PlayerSelfCast playerSelfCast;
+    [SerializeField] Match match;
+
 
     [SerializeField] TextMeshProUGUI manaText;
 
@@ -41,6 +44,11 @@ public class PlayerSpawner : MonoBehaviour
 
         mapUIManager.manaSystem = manaSystem;
         mapUIManager.player = player.GetComponent<Player>();
+
+        playerSelfCast.manaSystem = manaSystem;
+
+        match.player = player.GetComponent<Player>();
+        match.manaSystem = manaSystem;
 
         // Init stats
         Player p = player.GetComponent<Player>();
