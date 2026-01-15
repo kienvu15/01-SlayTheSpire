@@ -6,9 +6,12 @@ public class PlayerSpawner : MonoBehaviour
 {
     [SerializeField] RelicUIManager relicUIManager;
     [SerializeField] Deck deckBuilder;
+    [SerializeField] CardCollectionPanel cardCollectionPanel;
     [SerializeField] MapUIManager mapUIManager;
     [SerializeField] PlayerSelfCast playerSelfCast;
     [SerializeField] Match match;
+    [SerializeField] GameFlowManager gameFlowManager;
+    [SerializeField] InfoHeader infoHeader;
 
 
     [SerializeField] TextMeshProUGUI manaText;
@@ -32,6 +35,8 @@ public class PlayerSpawner : MonoBehaviour
         player.transform.parent = this.transform;
         RectTransform rect = player.GetComponent<RectTransform>();
         rect.anchoredPosition = Vector2.zero;
+        rect.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+
 
         CardHolder cardHolder = player.GetComponentInChildren<CardHolder>();
         deckBuilder.cardHolder = cardHolder;
@@ -49,6 +54,13 @@ public class PlayerSpawner : MonoBehaviour
 
         match.player = player.GetComponent<Player>();
         match.manaSystem = manaSystem;
+
+        gameFlowManager.player = player.GetComponent<Player>();
+        gameFlowManager.manasystem = manaSystem;
+
+        infoHeader.player = player.GetComponent<Player>();
+
+        cardCollectionPanel.cardHolder = cardHolder;
 
         // Init stats
         Player p = player.GetComponent<Player>();

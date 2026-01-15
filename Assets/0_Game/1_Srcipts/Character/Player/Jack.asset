@@ -21,4 +21,4 @@ MonoBehaviour:
   maxHP: 50
   startGold: 90
   startRelic: {fileID: 11400000, guid: 660e2ef9173aa114e99d7b9def708b50, type: 2}
-  playerPrefab: {fileID: 5309036203830762836, guid: 104a82e6845f5904896b4bc8c447c984, type: 3}
+  playerPrefab: {fileID: 7563029445038218248, guid: 6a41a6f076e4f404382497efc9b3942f, type: 3}
