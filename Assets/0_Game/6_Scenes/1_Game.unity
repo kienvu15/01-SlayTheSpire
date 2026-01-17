@@ -41882,34 +41882,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3369467771031009561, guid: cac0176cce024ff4d9cb04f37abfd9c1, type: 3}
-      propertyPath: actionPatternAssets.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3369467771031009561, guid: cac0176cce024ff4d9cb04f37abfd9c1, type: 3}
-      propertyPath: overrideValuesPattern.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3369467771031009561, guid: cac0176cce024ff4d9cb04f37abfd9c1, type: 3}
-      propertyPath: 'actionPatternAssets.Array.data[4]'
-      value: 
-      objectReference: {fileID: 11400000, guid: c40a86c9a5ae2d1488095756cc96070b, type: 2}
-    - target: {fileID: 3369467771031009561, guid: cac0176cce024ff4d9cb04f37abfd9c1, type: 3}
-      propertyPath: overrideValuesPattern.Array.data[1].overrideCooldown
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3369467771031009561, guid: cac0176cce024ff4d9cb04f37abfd9c1, type: 3}
-      propertyPath: overrideValuesPattern.Array.data[4].overrideCooldown
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3369467771031009561, guid: cac0176cce024ff4d9cb04f37abfd9c1, type: 3}
-      propertyPath: overrideValuesPattern.Array.data[4].values.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3369467771031009561, guid: cac0176cce024ff4d9cb04f37abfd9c1, type: 3}
-      propertyPath: 'overrideValuesPattern.Array.data[4].values.Array.data[0]'
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 4097009833910594952, guid: cac0176cce024ff4d9cb04f37abfd9c1, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -41977,10 +41949,6 @@ PrefabInstance:
     - target: {fileID: 9080880719605492158, guid: cac0176cce024ff4d9cb04f37abfd9c1, type: 3}
       propertyPath: m_Name
       value: SwordMaster Variant 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9080880719605492158, guid: cac0176cce024ff4d9cb04f37abfd9c1, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
