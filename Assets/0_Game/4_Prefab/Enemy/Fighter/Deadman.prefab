@@ -190,7 +190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9080880719605492158, guid: cac0176cce024ff4d9cb04f37abfd9c1, type: 3}
       propertyPath: m_Name
-      value: SwordMaster Variant 1 Variant 1
+      value: Deadman
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

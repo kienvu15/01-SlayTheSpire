@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1084350737422788825, guid: 2a5752b98cc6b614397bfd8b099c2690, type: 3}
       propertyPath: m_Name
-      value: SwordMaster Variant 1 Variant
+      value: BearTank
       objectReference: {fileID: 0}
     - target: {fileID: 2088065369218655899, guid: 2a5752b98cc6b614397bfd8b099c2690, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -98,7 +98,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5504624672234616146, guid: 2a5752b98cc6b614397bfd8b099c2690, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -0.05
       objectReference: {fileID: 0}
     - target: {fileID: 5504624672234616146, guid: 2a5752b98cc6b614397bfd8b099c2690, type: 3}
       propertyPath: m_AnchoredPosition.y

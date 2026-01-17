@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2434284148866587820, guid: a155980eb007f914c8fe5742f8c2fb29, type: 3}
       propertyPath: m_Name
-      value: SwordMaster Variant 1 Variant
+      value: Mumny-01
       objectReference: {fileID: 0}
     - target: {fileID: 3057295237881659916, guid: a155980eb007f914c8fe5742f8c2fb29, type: 3}
       propertyPath: m_AnchorMax.x
