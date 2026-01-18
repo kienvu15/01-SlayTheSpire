@@ -60,7 +60,6 @@ public class EnemyView : Enemy
     {
         float duration = 0.8f;
         float t = 0f;
-
         while (t < duration)
         {
             t += Time.deltaTime;
@@ -68,13 +67,11 @@ public class EnemyView : Enemy
             canvasGroup.alpha = alpha;
             yield return null;
         }
-
         canvasGroup.alpha = 0f;
-
         Destroy(gameObject);
     }
 
-
+    #region Movement
     public IEnumerator Move2Slot(Spot targetSlot)
     {
         if (targetSlot == null) yield break;
@@ -83,16 +80,12 @@ public class EnemyView : Enemy
         RectTransform enemyCanvas = enemyRect.parent as RectTransform;
 
         float speed = 1940f;
-
-        // Clear slot cũ
         if (currentSlot != null && currentSlot.occupant == this)
         {
             currentSlot.isOccupied = false;
             currentSlot.occupant = null;
         }
-
         Vector2 targetPos = WorldToLocalPos(targetSlot.transform.position, enemyCanvas);
-
         while (Vector2.Distance(enemyRect.anchoredPosition, targetPos) > 1f)
         {
             enemyRect.anchoredPosition = Vector2.MoveTowards(
@@ -103,13 +96,22 @@ public class EnemyView : Enemy
             enemyRect.localPosition = new Vector3(enemyRect.localPosition.x, enemyRect.localPosition.y, 0f);
             yield return null;
         }
-
         enemyRect.anchoredPosition = targetPos;
         enemyRect.localPosition = new Vector3(enemyRect.localPosition.x, enemyRect.localPosition.y, 0f);
-
         AssginToSlot(targetSlot);
     }
-
+    public void AssginToSlot(Spot slot)
+    {
+        if (slot == null) return;
+        if (currentSlot != null && currentSlot.occupant == this)
+        {
+            currentSlot.isOccupied = false;
+            currentSlot.occupant = null;
+        }
+        currentSlot = slot;
+        currentSlot.isOccupied = true;
+        currentSlot.occupant = this;
+    }
     private Vector2 WorldToLocalPos(Vector3 worldPos, RectTransform canvas)
     {
         Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(null, worldPos);
@@ -117,6 +119,7 @@ public class EnemyView : Enemy
         RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas, screenPoint, null, out localPoint);
         return localPoint;
     }
+    #endregion
 
     private void OnDestroy()
     {
@@ -148,8 +151,6 @@ public class EnemyView : Enemy
         }
     }
 
-    
-
     public void PerformAction(Character target)
     {
         if (actionPattern.Count == 0) return;
@@ -168,22 +169,17 @@ public class EnemyView : Enemy
 
                 if (action.currentCooldown <= 0)
                 {
-                    // Dùng action
                     action.Apply(this, target, overrides);
 
                     if (animator != null && (action.Type == Type.Attack || action.Type == Type.BadBuff))
                         animator.SetTrigger("Attack");
 
-
-                    // Giảm cooldown tất cả action khác (ngoại trừ action vừa dùng)
                     for (int i = 0; i < actionPattern.Count; i++)
                     {
                         if (i != currentActionIndex && actionPattern[i].currentCooldown > 0)
                             actionPattern[i].currentCooldown--;
                     }
-
                     currentActionIndex = (currentActionIndex + 1) % actionPattern.Count;
-
                     ShowNextIntent();
                     break;
                 }
@@ -191,20 +187,16 @@ public class EnemyView : Enemy
                 {
                     currentActionIndex = (currentActionIndex + 1) % actionPattern.Count;
                 }
-
             } while (currentActionIndex != startIndex);
         }
         else
         {
             if (nextActionIndex < 0 || nextActionIndex >= actionPattern.Count)
             {
-                ShowNextIntent(); // random lại cho turn sau
+                ShowNextIntent();
                 return;
             }
-
             EnemyActionInstance action = actionPattern[nextActionIndex];
-
-            // Dùng action
             List<int> overrides = null;
             if (overrideValuesPattern != null && nextActionIndex < overrideValuesPattern.Count)
                 overrides = overrideValuesPattern[nextActionIndex].values;
@@ -216,15 +208,11 @@ public class EnemyView : Enemy
 
             if (animator != null && (action.Type == Type.Buff))
                 animator.SetTrigger("Up");
-
-            // Giảm cooldown tất cả action khác
             for (int i = 0; i < actionPattern.Count; i++)
             {
                 if (i != nextActionIndex && actionPattern[i].currentCooldown > 0)
                     actionPattern[i].currentCooldown--;
             }
-
-            // Random intent cho turn tiếp
             ShowNextIntent();
         }
     }
@@ -242,45 +230,35 @@ public class EnemyView : Enemy
             List<int> availableIndices = new List<int>();
             for (int i = 0; i < actionPattern.Count; i++)
             {
-                if (actionPattern[i].currentCooldown == 0) // chỉ lấy action hồi xong
+                if (actionPattern[i].currentCooldown == 0)
                     availableIndices.Add(i);
             }
 
             if (availableIndices.Count == 0)
             {
-                nextActionIndex = -1; // không có action khả dụng
+                nextActionIndex = -1;
             }
             else
             {
                 nextActionIndex = availableIndices[Random.Range(0, availableIndices.Count)];
             }
         }
-
         if (nextActionIndex < 0 || nextActionIndex >= actionPattern.Count) return;
-
         EnemyActionInstance nextAction = actionPattern[nextActionIndex];
-
-        // Lấy overrideValues (nếu có)
         List<int> overrides = null;
         if (overrideValuesPattern != null && nextActionIndex < overrideValuesPattern.Count)
             overrides = overrideValuesPattern[nextActionIndex].values;
-
-        // Tính value hiển thị
         int displayValue = 0;
         for (int i = 0; i < nextAction.Effects.Count; i++)
         {
             var effect = nextAction.Effects[i];
             if (effect == null) continue;
-
             int overrideValue = (overrides != null && i < overrides.Count) ? overrides[i] : -1;
-
             if (effect is IOverrideValue o)
                 displayValue += (overrideValue > -1) ? overrideValue : o.GetIntentValue();
             else
                 displayValue += effect.GetIntentValue();
         }
-
-        // Icon dựa vào Type
         Sprite icon = typeIcons != null ? typeIcons.GetIcon(nextAction.Type) : null;
         intentUI.SetIntent(icon, displayValue);
     }
@@ -289,7 +267,6 @@ public class EnemyView : Enemy
     {
         int index = currentActionIndex;
         int start = index;
-
         do
         {
             EnemyActionInstance action = actionPattern[index];
@@ -297,24 +274,8 @@ public class EnemyView : Enemy
                 return index;
             else
                 index = (index + 1) % actionPattern.Count;
-
         } while (index != start);
-
         return currentActionIndex;
     }
 
-    public void AssginToSlot(Spot slot)
-    {
-        if (slot == null) return;
-
-        if (currentSlot != null && currentSlot.occupant == this)
-        {
-            currentSlot.isOccupied = false;
-            currentSlot.occupant = null;
-        }
-
-        currentSlot = slot;
-        currentSlot.isOccupied = true;
-        currentSlot.occupant = this;
-    }
 }

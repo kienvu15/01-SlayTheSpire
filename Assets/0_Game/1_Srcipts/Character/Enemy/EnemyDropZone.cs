@@ -13,7 +13,6 @@ public class EnemyDropZone : MonoBehaviour, IDropHandler
 
     void Start()
     {
-        
         match = FindFirstObjectByType<Match>();
         manaSystem = FindFirstObjectByType<ManaSystem>();
     }

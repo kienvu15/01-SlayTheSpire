@@ -14,28 +14,25 @@ public enum Type
 
 public enum BuffTargetMode
 {
-    SelfOnly,       // luôn buff bản thân
-    SelfOrAlly,     // random bản thân hoặc ally
-    AllyOnly        // random ally khác (không buff bản thân)
+    None,
+    SelfOnly,       
+    SelfOrAlly,     
+    AllyOnly  
 }
 
 [CreateAssetMenu(fileName = "NewEnemyAction", menuName = "Enemy/Action")]
 public class EnemyAction : ScriptableObject
 {
     public Type type;
-    public BuffTargetMode buffTargetMode; // chỉ dùng khi type = Buff   
+    public BuffTargetMode buffTargetMode; 
     public string actionName;
-    public int cooldown; // số lượt chờ trước khi dùng
-
+    public int cooldown; 
     [HideInInspector]
     public int currentCooldown;
-
-    // List các effect của action
     public List<EffectData> effects;
 
     public void Apply(Character self, Character target = null, List<int> overrideValues = null)
     {
-        // ====== Determine default target ======
         switch (type)
         {
             case Type.Buff:
@@ -64,7 +61,6 @@ public class EnemyAction : ScriptableObject
                     }
                 }
                 break;
-
             case Type.Heal:
                 if (target == null || target.faction == Faction.Player)
                 {
@@ -91,7 +87,6 @@ public class EnemyAction : ScriptableObject
                     }
                 }
                 break;
-
             case Type.AddShield:
                 if (target == null || target.faction == Faction.Player)
                 {
@@ -118,7 +113,6 @@ public class EnemyAction : ScriptableObject
                     }
                 }
                 break;
-
             case Type.Attack:
             case Type.BadBuff:
             case Type.Charge:
@@ -136,7 +130,6 @@ public class EnemyAction : ScriptableObject
                 break;
         }
 
-        // ====== Apply effects ======
         for (int i = 0; i < effects.Count; i++)
         {
             var effect = effects[i];
