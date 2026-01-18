@@ -13,6 +13,6 @@ public class CharacterStats
     public int shield = 0;
 
     [Header("Attack")]
-    public float critChance = 0f;   // 0%
-    public float critDamage = 1.5f;   // 150%
+    public float critChance = 0f;   
+    public float critDamage = 1.5f;   
 }

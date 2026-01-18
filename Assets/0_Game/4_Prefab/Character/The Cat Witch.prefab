@@ -1048,8 +1048,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5951504276371253655}
-  - component: {fileID: 4773524019372551203}
   - component: {fileID: 65494828125430185}
+  - component: {fileID: 4773524019372551203}
   m_Layer: 0
   m_Name: The Cat Witch
   m_TagString: Player
@@ -1081,44 +1081,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 4, y: 6}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &4773524019372551203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5309036203830762836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 955aeae31e7680e4a8b8bab6306580a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  faction: 0
-  isAlive: 1
-  stats:
-    maxHP: 60
-    currentHP: 60
-    defense: 0
-    shield: 0
-    critChance: 0
-    critDamage: 1.5
-  hpText: {fileID: 6036965960075959072}
-  hpBar: {fileID: 4017804567822006800}
-  hpChipBar: {fileID: 3238222156331595132}
-  shieldText: {fileID: 7085696743534464478}
-  Shield: {fileID: 4747297558809641108}
-  chipDelay: 0.45
-  chipSpeed: 0.5
-  maxConditions: 2
-  conditionPanelUI: {fileID: 8144614442717022221}
-  activeSkills: []
-  skillPanelUI: {fileID: 6682288572701205687}
-  forceCritNextAttack: 0
-  isStunned: 0
-  stunDuration: 0
-  relicManager: {fileID: 5388856843972863350}
-  animator: {fileID: 6509121551040840855}
-  canvas: {fileID: 4049020617558030925}
 --- !u!82 &65494828125430185
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1216,6 +1178,44 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4773524019372551203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5309036203830762836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 955aeae31e7680e4a8b8bab6306580a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  faction: 0
+  isAlive: 1
+  stats:
+    maxHP: 60
+    currentHP: 60
+    defense: 0
+    shield: 0
+    critChance: 0
+    critDamage: 1.5
+  hpText: {fileID: 6036965960075959072}
+  hpBar: {fileID: 4017804567822006800}
+  hpChipBar: {fileID: 3238222156331595132}
+  shieldText: {fileID: 7085696743534464478}
+  Shield: {fileID: 4747297558809641108}
+  chipDelay: 0.45
+  chipSpeed: 0.5
+  maxConditions: 2
+  conditionPanelUI: {fileID: 8144614442717022221}
+  activeSkills: []
+  skillPanelUI: {fileID: 6682288572701205687}
+  forceCritNextAttack: 0
+  isStunned: 0
+  stunDuration: 0
+  relicManager: {fileID: 5388856843972863350}
+  animator: {fileID: 6509121551040840855}
+  canvas: {fileID: 4049020617558030925}
 --- !u!1 &5501873939469043042
 GameObject:
   m_ObjectHideFlags: 0
