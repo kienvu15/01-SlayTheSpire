@@ -10,7 +10,6 @@ public class EnemySpawner : MonoBehaviour
 
     private EncounterData currentEncounter;
     private int currentWaveIndex = 0;
-   // public bool isOver = false;
 
     private void Start()
     {
@@ -27,7 +26,6 @@ public class EnemySpawner : MonoBehaviour
             Debug.LogError("[EnemySpawner] Không có Encounter hợp lệ!");
     }
 
-    /// Spawn 1 wave theo index trong currentEncounter
     public void SpawnWave(int waveIndex)
     {
         if (currentEncounter == null ||
