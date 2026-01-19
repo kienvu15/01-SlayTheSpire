@@ -29,7 +29,6 @@ public class EnemySystem : MonoBehaviour
         yield return StartCoroutine(EnemyTurn(player));
     }
 
-
     public IEnumerator EnemyTurn(Player player)
     {
         Debug.Log("[EnemySystem] Enemy turn start");
@@ -62,7 +61,6 @@ public class EnemySystem : MonoBehaviour
         enemies.Remove(enemy);
         StartCoroutine(CheckWaveClear());
     }
-
 
     private IEnumerator CheckWaveClear()
     {
