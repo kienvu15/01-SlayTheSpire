@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2434284148866587820, guid: a155980eb007f914c8fe5742f8c2fb29, type: 3}
       propertyPath: m_Name
-      value: DeadWicth Variant
+      value: DeadWolfman
       objectReference: {fileID: 0}
     - target: {fileID: 3057295237881659916, guid: a155980eb007f914c8fe5742f8c2fb29, type: 3}
       propertyPath: m_AnchorMax.x
@@ -31,22 +31,10 @@ PrefabInstance:
     - target: {fileID: 5604540573635089747, guid: a155980eb007f914c8fe5742f8c2fb29, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 1a72710766eb02b42a394e4b8198322e, type: 3}
-    - target: {fileID: 7106795869318349095, guid: a155980eb007f914c8fe5742f8c2fb29, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 3.608771
-      objectReference: {fileID: 0}
-    - target: {fileID: 7106795869318349095, guid: a155980eb007f914c8fe5742f8c2fb29, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 5.413042
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: a7a95f6b427b9cf4cb254e1e1ac9e4ef, type: 3}
     - target: {fileID: 7106795869318349095, guid: a155980eb007f914c8fe5742f8c2fb29, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7106795869318349095, guid: a155980eb007f914c8fe5742f8c2fb29, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 2.05
+      value: -0.14
       objectReference: {fileID: 0}
     - target: {fileID: 7293918330842951704, guid: a155980eb007f914c8fe5742f8c2fb29, type: 3}
       propertyPath: m_AnchorMax.y
@@ -106,11 +94,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8146824234252356619, guid: a155980eb007f914c8fe5742f8c2fb29, type: 3}
       propertyPath: actionPatternAssets.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8146824234252356619, guid: a155980eb007f914c8fe5742f8c2fb29, type: 3}
       propertyPath: overrideValuesPattern.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8146824234252356619, guid: a155980eb007f914c8fe5742f8c2fb29, type: 3}
       propertyPath: 'actionPatternAssets.Array.data[0]'
@@ -119,11 +107,11 @@ PrefabInstance:
     - target: {fileID: 8146824234252356619, guid: a155980eb007f914c8fe5742f8c2fb29, type: 3}
       propertyPath: 'actionPatternAssets.Array.data[1]'
       value: 
-      objectReference: {fileID: 11400000, guid: 00e46c75b28dcb84ea002cd380841693, type: 2}
+      objectReference: {fileID: 11400000, guid: c18a02e23fa5a094c815886dc1549e7b, type: 2}
     - target: {fileID: 8146824234252356619, guid: a155980eb007f914c8fe5742f8c2fb29, type: 3}
       propertyPath: 'actionPatternAssets.Array.data[2]'
       value: 
-      objectReference: {fileID: 11400000, guid: 22dc4f22a0a9bae4eb1b0f6dbb9a88c8, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 8146824234252356619, guid: a155980eb007f914c8fe5742f8c2fb29, type: 3}
       propertyPath: overrideValuesPattern.Array.data[1].overrideCooldown
       value: 1
@@ -133,12 +121,16 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8146824234252356619, guid: a155980eb007f914c8fe5742f8c2fb29, type: 3}
+      propertyPath: overrideValuesPattern.Array.data[2].values.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8146824234252356619, guid: a155980eb007f914c8fe5742f8c2fb29, type: 3}
       propertyPath: 'overrideValuesPattern.Array.data[0].values.Array.data[0]'
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8146824234252356619, guid: a155980eb007f914c8fe5742f8c2fb29, type: 3}
       propertyPath: 'overrideValuesPattern.Array.data[1].values.Array.data[0]'
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8146824234252356619, guid: a155980eb007f914c8fe5742f8c2fb29, type: 3}
       propertyPath: 'overrideValuesPattern.Array.data[2].values.Array.data[0]'
