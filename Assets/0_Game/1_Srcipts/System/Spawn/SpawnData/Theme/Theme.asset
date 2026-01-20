@@ -13,8 +13,14 @@ MonoBehaviour:
   m_Name: Theme
   m_EditorClassIdentifier: 
   enemyPrefabs:
+  - {fileID: 9080880719605492158, guid: 0b9b59c327594c646a01dbf287361f5f, type: 3}
+  - {fileID: 9080880719605492158, guid: 05921b5a498c24349bec4c542752d7fe, type: 3}
   - {fileID: 1084350737422788825, guid: 2a5752b98cc6b614397bfd8b099c2690, type: 3}
-  - {fileID: 2434284148866587820, guid: a155980eb007f914c8fe5742f8c2fb29, type: 3}
+  - {fileID: 1084350737422788825, guid: 61cb9166356876d4fa7b1acf94772196, type: 3}
   - {fileID: 9080880719605492158, guid: cac0176cce024ff4d9cb04f37abfd9c1, type: 3}
   - {fileID: 9080880719605492158, guid: aa37eae129fc6104cab153e8b8a34550, type: 3}
   - {fileID: 9080880719605492158, guid: 9e4604b840c3b3949ba91c9eee72b3aa, type: 3}
+  - {fileID: 2434284148866587820, guid: a155980eb007f914c8fe5742f8c2fb29, type: 3}
+  - {fileID: 5306804174952932245, guid: 6e742ed0c4243004391a3f5114d00ed2, type: 3}
+  - {fileID: 5306804174952932245, guid: 0dc2dac20da37c44386beef2730a8202, type: 3}
+  - {fileID: 8144563448071181430, guid: 6ca574683f4bfd2408b35a83065db339, type: 3}
