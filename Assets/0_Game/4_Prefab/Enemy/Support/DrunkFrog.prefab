@@ -131,7 +131,7 @@ PrefabInstance:
     - target: {fileID: 8146824234252356619, guid: a155980eb007f914c8fe5742f8c2fb29, type: 3}
       propertyPath: 'actionPatternAssets.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: 9faa333789b6c7f4eb21e8b56b6e127c, type: 2}
+      objectReference: {fileID: 11400000, guid: 8a10971112893294aa271dc4233b11fa, type: 2}
     - target: {fileID: 8146824234252356619, guid: a155980eb007f914c8fe5742f8c2fb29, type: 3}
       propertyPath: 'actionPatternAssets.Array.data[1]'
       value: 
