@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ae41bb881ef0d64d83ddf872ac04819, type: 3}
+  m_Name: JackCrown
+  m_EditorClassIdentifier: Test::PlayerData
+  playerName: JackCrown
+  playerSplashArt: {fileID: -3518316158687720030, guid: afd7116216e269a4f8dc7a35b411e5cd, type: 3}
+  lore: 'Small hands, vast magic.
+
+    A witch, a cat, and the end of an age.'
+  maxHP: 50
+  startGold: 99
+  startRelic: {fileID: 11400000, guid: e31d5f7f53a294e459e62df013ba7cd4, type: 2}
+  playerPrefab: {fileID: 7563029445038218248, guid: 90d137c0aacff31488f641d1001bde6b, type: 3}

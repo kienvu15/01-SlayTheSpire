@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ae41bb881ef0d64d83ddf872ac04819, type: 3}
-  m_Name: Jack
+  m_Name: Plague Doctor
   m_EditorClassIdentifier: Test::PlayerData
   playerName: The Blood Plague Doctor
   playerSplashArt: {fileID: 21300000, guid: bee5db376accfcb4482fd385f9f90c63, type: 3}
