@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
-using NUnit.Framework;
 
 public enum CardMode
 {
@@ -17,19 +16,18 @@ public class CardDisplay : MonoBehaviour, IHasDescriptionPanel
     public CardMode currentMode = CardMode.ViewOnly;
 
     [Header("UI References")]
-    public TMP_Text titleText;
+    public TMP_Text card_Name;
+    public GameObject mana_Container;
+    public TMP_Text mana_ConsumeText;
 
-    public GameObject manaContainer;
-    public TMP_Text manaText;
+    //public GameObject statsBG;
+    //public GameObject statsContainer;
+    //public TMP_Text statsText;
 
-    public GameObject statsBG;
-    public GameObject statsContainer;
-    public TMP_Text statsText;
-
-    [Header("Icon Database")]
-    public CardTypeIconDatabase typeIconDatabase;
-    public Image iconImage;
-    public Image artworkImage;
+    //[Header("Icon Database")]
+    //public CardTypeIconDatabase typeIconDatabase;
+    //public Image iconImage;
+    //public Image artworkImage;
 
     [Header("Description Panel")]
     public GameObject descriptionPanel;   
@@ -65,8 +63,8 @@ public class CardDisplay : MonoBehaviour, IHasDescriptionPanel
     {
         originalScale = transform.localScale;
 
-        if (descriptionPanel != null)
-            descriptionPanel.SetActive(false);
+        //if (descriptionPanel != null)
+            //descriptionPanel.SetActive(false);
 
         //GameObject blocker = GameObject.Find("Block-Panel");
         //if (blocker != null)
@@ -76,7 +74,7 @@ public class CardDisplay : MonoBehaviour, IHasDescriptionPanel
         //        blockerGroup = blocker.AddComponent<CanvasGroup>();
         //}
 
-        cardholder = FindFirstObjectByType<CardHolder>();
+        cardholder = FindAnyObjectByType<CardHolder>();
         goldContainer.SetActive(false);
         blockerGroup = DescriptionPanelManager.Instance.blockerGroup;
     }
@@ -119,16 +117,16 @@ public class CardDisplay : MonoBehaviour, IHasDescriptionPanel
             canvas.sortingLayerName = "UI";
         }
 
-        if (cardData.manaCost == 0)
-        {
-            manaContainer.SetActive(false);
-        }
+        //if (cardData.manaCost == 0)
+        //{
+        //    mana_Container.SetActive(false);
+        //}
 
-        else
-        {
-            manaContainer.SetActive(true);
-            manaText.text = cardData.manaCost.ToString();
-        }
+        //else
+        //{
+            //mana_Container.SetActive(true);
+            mana_ConsumeText.text = cardData.manaCost.ToString();
+        //}
 
         // Tính tổng intent từ EffectData
         int intentSum = 0;
@@ -151,19 +149,19 @@ public class CardDisplay : MonoBehaviour, IHasDescriptionPanel
         }
 
         // Nếu có giá trị thì hiện stats, không thì ẩn
-        if (intentSum > 0)
-        {
-            statsBG.SetActive(true);
-            statsContainer.SetActive(true);
-            statsText.text = intentSum.ToString();
-        }
-        else
-        {
-            statsBG.SetActive(false);
-            statsContainer.SetActive(false);
-        }
+        //if (intentSum > 0)
+        //{
+        //    statsBG.SetActive(true);
+        //    statsContainer.SetActive(true);
+        //    statsText.text = intentSum.ToString();
+        //}
+        //else
+        //{
+        //    statsBG.SetActive(false);
+        //    statsContainer.SetActive(false);
+        //}
 
-        descriptionPanel.GetComponent<Canvas>().sortingLayerName = "UI";
+        //descriptionPanel.GetComponent<Canvas>().sortingLayerName = "UI";
     }
 
     public void LoadCard(CardData data)
@@ -171,30 +169,30 @@ public class CardDisplay : MonoBehaviour, IHasDescriptionPanel
         cardData = data;
 
         // Tên và mana
-        titleText.text = data.cardName;
-        manaText.text = data.manaCost.ToString();
+        card_Name.text = data.cardName;
+        mana_ConsumeText.text = data.manaCost.ToString();
 
         // Artwork
-        artworkImage.sprite = data.artwork;
+        //artworkImage.sprite = data.artwork;
 
         // Icon: tự động lấy từ database
-        if (typeIconDatabase != null)
-        {
-            Sprite typeIcon = typeIconDatabase.GetIcon(data.cardType);
-            if (typeIcon != null)
-            {
-                iconImage.sprite = typeIcon;
-                iconImage.enabled = true;
-            }
-            else
-            {
-                iconImage.enabled = false;
-            }
-        }
-        else
-        {
-            iconImage.enabled = false;
-        }
+        //if (typeIconDatabase != null)
+        //{
+        //    Sprite typeIcon = typeIconDatabase.GetIcon(data.cardType);
+        //    if (typeIcon != null)
+        //    {
+        //        iconImage.sprite = typeIcon;
+        //        iconImage.enabled = true;
+        //    }
+        //    else
+        //    {
+        //        iconImage.enabled = false;
+        //    }
+        //}
+        //else
+        //{
+        //    iconImage.enabled = false;
+        //}
 
         // Stats
         string stats = "";
@@ -218,19 +216,19 @@ public class CardDisplay : MonoBehaviour, IHasDescriptionPanel
 
         }
 
-        if (intentSum > 0)
-        {
-            statsBG.SetActive(true);
-            statsContainer.SetActive(true);
-            statsText.text = intentSum.ToString();
-        }
-        else
-        {
-            statsBG.SetActive(false);
-            statsContainer.SetActive(false);
-        }
+        //if (intentSum > 0)
+        //{
+        //    statsBG.SetActive(true);
+        //    statsContainer.SetActive(true);
+        //    statsText.text = intentSum.ToString();
+        //}
+        //else
+        //{
+        //    statsBG.SetActive(false);
+        //    statsContainer.SetActive(false);
+        //}
 
-        statsText.text = stats.Trim();
+        //statsText.text = stats.Trim();
 
         // Description text (panel riêng)
         if (descriptionText != null)
@@ -272,35 +270,35 @@ public class CardDisplay : MonoBehaviour, IHasDescriptionPanel
 
     public void ToggleDescription()
     {
-        if (descriptionPanel == null) return;
+        //if (descriptionPanel == null) return;
 
         // Đóng card khác
         if (currentlyOpen != null && currentlyOpen != this)
             currentlyOpen.HideDescription();
 
-        bool isOpening = !descriptionPanel.activeSelf;
-        descriptionPanel.SetActive(isOpening);
+        //bool isOpening = !descriptionPanel.activeSelf;
+        //descriptionPanel.SetActive(isOpening);
 
-        if (isOpening)
-        {
-            currentlyOpen = this;
-            ShowBlocker();
+        //if (isOpening)
+        //{
+        //    currentlyOpen = this;
+        //    ShowBlocker();
 
-            // Hiệu ứng Scale (áp dụng cho cả Shop lẫn Reward nếu muốn)
-            if (useScaleAnimation)
-            {
-                transform.DOKill();
-                transform.DOScale(originalScale * scaleMultiplier, animDuration).SetEase(Ease.OutBack);
-                if (canvas != null) canvas.sortingOrder = 10;
-            }
-        }
-        else
-        {
-            // Đóng lại
-            currentlyOpen = null;
-            HideBlocker();
-            ResetScaleAnim();
-        }
+        //    // Hiệu ứng Scale (áp dụng cho cả Shop lẫn Reward nếu muốn)
+        //    if (useScaleAnimation)
+        //    {
+        //        transform.DOKill();
+        //        transform.DOScale(originalScale * scaleMultiplier, animDuration).SetEase(Ease.OutBack);
+        //        if (canvas != null) canvas.sortingOrder = 10;
+        //    }
+        //}
+        //else
+        //{
+        //    // Đóng lại
+        //    currentlyOpen = null;
+        //    HideBlocker();
+        //    ResetScaleAnim();
+        //}
     }
 
     public void OnCardClick()
@@ -318,11 +316,11 @@ public class CardDisplay : MonoBehaviour, IHasDescriptionPanel
 
         if (currentMode == CardMode.Reward)
         {
-            if (currentlyOpen == this && descriptionPanel.activeSelf)
-            {
-                ConfirmPickReward();
-                return;
-            }
+            //if (currentlyOpen == this && descriptionPanel.activeSelf)
+            //{
+            //    ConfirmPickReward();
+            //    return;
+            //}
         }
         ToggleDescription();
     
@@ -330,8 +328,8 @@ public class CardDisplay : MonoBehaviour, IHasDescriptionPanel
 
     public void HideDescription()
     {
-        if (descriptionPanel != null)
-            descriptionPanel.SetActive(false);
+        //if (descriptionPanel != null)
+        //    descriptionPanel.SetActive(false);
 
         if (currentlyOpen == this)
             currentlyOpen = null;

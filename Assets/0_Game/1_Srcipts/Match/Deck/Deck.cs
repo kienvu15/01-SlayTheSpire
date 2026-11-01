@@ -3,6 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using NaughtyAttributes;
+public enum DrawAnimationType
+{
+    Straight,   // Đường thẳng
+    Arc         // Đường cong
+}
 
 public class Deck : MonoBehaviour
 {
@@ -24,12 +30,22 @@ public class Deck : MonoBehaviour
     [Header("Animation Settings")]
     public float drawDuration = 0.6f;   
     public float drawDelay = 0.15f;     
-    public float refillDelay = 3f;      
+    public float refillDelay = 3f;
+
+    [Header("Draw Fly Animation")]
+    public int spinTurns = 1;            
+    public float arcHeightRatio = 0.25f;
+    public float startScale = 0.5f;
+    public float peakScale = 1.2f;      
 
     private List<CardData> deck = new List<CardData>();
     private List<GameObject> currentHand = new List<GameObject>();
 
     public static Deck instance;
+
+    [Header("NewSystem")]
+    public HandLayout handLayout;
+    
     private void Awake()
     {
         instance = this;
@@ -84,7 +100,6 @@ public class Deck : MonoBehaviour
         yield return StartCoroutine(DrawHand(match.handSize));
     }
 
-    // Copy collection vào deck và shuffle
     public void BuildDeck()
     {
         deck.Clear();
@@ -94,72 +109,176 @@ public class Deck : MonoBehaviour
         UpdateUI();
     }
 
-    // Giữ để backward compatibility nếu nơi khác gọi
     public IEnumerator DrawHand(int count)
     {
         SoundManager.Instance.Play("FirstHandDraw");
         yield return StartCoroutine(DrawCards(count));
     }
 
-    /// Rút count lá (nếu deck hết giữa chừng sẽ dừng và trả về)
     public IEnumerator DrawCards(int count)
     {
-        List<int> availableSlots = new List<int>();
-        for (int i = 0; i < handParent.childCount; i++)
-        {
-            if (handParent.GetChild(i).childCount == 0)
-                availableSlots.Add(i);
-        }
+        if (handParent == null || handLayout == null) yield break;
 
-        int drawCount = Mathf.Min(count, availableSlots.Count);
-
-        for (int k = 0; k < drawCount; k++)
+        int drawCount = Mathf.Min(count, deck.Count);
+        for (int i = 0; i < drawCount; i++)
         {
-            int slotIndex = availableSlots[k];
-            yield return StartCoroutine(DrawOneCard(slotIndex));
+            yield return StartCoroutine(DrawOneCard(currentHand.Count));
             UpdateUI();
         }
     }
 
-
     private IEnumerator DrawOneCard(int handIndex)
     {
-        if (deck.Count == 0) yield break;
+        yield return DrawOneCard(handIndex, DrawAnimationType.Straight);
+    }
+
+    private IEnumerator DrawOneCard(int handIndex, DrawAnimationType animationType)
+    {
+        if (deck.Count == 0 || handParent == null ||
+            pileDeckTransform == null || handLayout == null)
+            yield break;
 
         CardData drawnCard = deck[0];
         deck.RemoveAt(0);
 
-        Transform targetSlot = handParent.GetChild(handIndex);
-
-        GameObject cardGO = Instantiate(cardPrefab, pileDeckTransform.position, Quaternion.identity, pileDeckTransform.parent);
+        GameObject cardGO = Instantiate(cardPrefab, handParent, false);
         currentHand.Add(cardGO);
 
-        cardGO.GetComponent<CardDisplay>().LoadCard(drawnCard);
+        CardDisplay display = cardGO.GetComponent<CardDisplay>();
+        if (display != null)
+            display.LoadCard(drawnCard);
 
         RectTransform rect = cardGO.GetComponent<RectTransform>();
-
-        rect.position = pileDeckTransform.position;  
-        rect.localScale = Vector3.zero;
-        rect.localRotation = Quaternion.Euler(0, 90, 0);
-
-        Vector3 worldTargetPos = targetSlot.position;
-
-        Sequence seq = DOTween.Sequence();
-        seq.Append(rect.DOMove(worldTargetPos, drawDuration).SetEase(Ease.OutQuad));    
-        seq.Join(rect.DOScale(Vector3.one, drawDuration).SetEase(Ease.OutBack));       
-        seq.Join(rect.DORotate(Vector3.zero, drawDuration, RotateMode.Fast));        
-
-        seq.OnComplete(() =>
+        if (rect == null)
         {
-            rect.SetParent(targetSlot, false);
-            rect.anchoredPosition = Vector2.zero;
-            rect.localScale = Vector3.one;
-            rect.localRotation = Quaternion.identity;
-            cardGO.GetComponent<DraggableCard>().enabled = true;
-        });
+            currentHand.Remove(cardGO);
+            Destroy(cardGO);
+            yield break;
+        }
 
-        yield return new WaitForSeconds(drawDelay);
+        DraggableCard draggable = cardGO.GetComponent<DraggableCard>();
+        if (draggable != null)
+            draggable.enabled = false;
+
+        int cardIndex = currentHand.IndexOf(cardGO);
+
+        if (!handLayout.TryGetCardTarget(currentHand, cardIndex,
+            out Vector2 targetPosition, out Quaternion targetRotation))
+        {
+            currentHand.Remove(cardGO);
+            Destroy(cardGO);
+            yield break;
+        }
+
+        handLayout.ArrangeCards(currentHand, true);
+
+        Vector3 startPosition = pileDeckTransform.position;
+        Vector3 targetWorld = handParent.TransformPoint(targetPosition);
+
+        float targetZ = targetRotation.eulerAngles.z;
+        if (targetZ > 180f) targetZ -= 360f;
+
+        rect.DOKill();
+        rect.position = startPosition;
+        rect.localScale = Vector3.zero;
+        rect.localRotation = Quaternion.identity;
+
+        float duration = Mathf.Max(0.1f, drawDuration);
+
+        Sequence sequence = DOTween.Sequence().SetLink(cardGO);
+
+        // Chọn kiểu đường bay
+        if (animationType == DrawAnimationType.Straight)
+        {
+            // Đường thẳng
+            sequence.Append(
+                rect.DOMove(targetWorld, duration)
+                    .SetEase(Ease.InOutQuad)
+            );
+        }
+        else
+        {
+            // Đường cong như animation cũ
+            Vector3 midpoint = Vector3.Lerp(
+                startPosition, targetWorld, 0.5f);
+
+            midpoint.y += Vector3.Distance(
+                startPosition, targetWorld) * arcHeightRatio;
+
+            sequence.Append(
+                rect.DOPath(
+                    new[] { startPosition, midpoint, targetWorld },
+                    duration,
+                    PathType.CatmullRom,
+                    PathMode.Full3D
+                ).SetEase(Ease.OutCubic)
+            );
+        }
+
+        // Xoay lá bài
+        sequence.Join(
+            rect.DOLocalRotate(
+                new Vector3(0f, 0f, targetZ + 360f * spinTurns),
+                duration,
+                RotateMode.FastBeyond360
+            ).SetEase(Ease.OutQuad)
+        );
+
+        // Phóng to khi bay vào Hand
+        sequence.Join(
+            rect.DOScale(Vector3.one, duration)
+                .SetEase(Ease.OutBack)
+        );
+
+        yield return sequence.WaitForCompletion();
+
+        if (cardGO == null) yield break;
+
+        handLayout.ArrangeCards(currentHand, false);
+
+        if (draggable != null)
+            draggable.enabled = true;
     }
+
+
+    //private IEnumerator DrawOneCard(int handIndex)
+    //{
+    //    if (deck.Count == 0) yield break;
+
+    //    CardData drawnCard = deck[0];
+    //    deck.RemoveAt(0);
+
+    //    Transform targetSlot = handParent.GetChild(handIndex);
+
+    //    GameObject cardGO = Instantiate(cardPrefab, pileDeckTransform.position, Quaternion.identity, pileDeckTransform.parent);
+    //    currentHand.Add(cardGO);
+
+    //    cardGO.GetComponent<CardDisplay>().LoadCard(drawnCard);
+
+    //    RectTransform rect = cardGO.GetComponent<RectTransform>();
+
+    //    rect.position = pileDeckTransform.position;  
+    //    rect.localScale = Vector3.zero;
+    //    rect.localRotation = Quaternion.Euler(0, 90, 0);
+
+    //    Vector3 worldTargetPos = targetSlot.position;
+
+    //    Sequence seq = DOTween.Sequence();
+    //    seq.Append(rect.DOMove(worldTargetPos, drawDuration).SetEase(Ease.OutQuad));    
+    //    seq.Join(rect.DOScale(Vector3.one, drawDuration).SetEase(Ease.OutBack));       
+    //    seq.Join(rect.DORotate(Vector3.zero, drawDuration, RotateMode.Fast));        
+
+    //    seq.OnComplete(() =>
+    //    {
+    //        rect.SetParent(targetSlot, false);
+    //        rect.anchoredPosition = Vector2.zero;
+    //        rect.localScale = Vector3.one;
+    //        rect.localRotation = Quaternion.identity;
+    //        cardGO.GetComponent<DraggableCard>().enabled = true;
+    //    });
+
+    //    yield return new WaitForSeconds(drawDelay);
+    //}
 
 
     private int GetFirstEmptySlot()
@@ -270,10 +389,10 @@ public class Deck : MonoBehaviour
         if (deckCountText != null)
             foreach (var deckCountText in deckCountText)
                 if (deckCountText != null)
-                    deckCountText.text = deck.Count.ToString();
+                    deckCountText.text = "Draw Pile - " + deck.Count.ToString();
 
         if (discardCountText != null && discard != null)
-            discardCountText.text = discard.Count.ToString();
+            discardCountText.text = "Discard Pile - " + discard.Count.ToString();
     }
 
 

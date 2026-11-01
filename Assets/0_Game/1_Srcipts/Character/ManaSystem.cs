@@ -67,14 +67,14 @@ public class ManaSystem : MonoBehaviour
         //// Vẽ lại mana (vàng trước)
         //for (int i = 0; i < currentMana; i++)
         //{
-        //    GameObject icon = Instantiate(manaImagePrefab, manaContainer);
+        //    GameObject icon = Instantiate(manaImagePrefab, mana_Container);
         //    manaIcons.Add(icon);
         //}
 
         //// Vẽ hollow (xám) cho phần còn lại
         //for (int i = currentMana; i < maxMana; i++)
         //{
-        //    GameObject icon = Instantiate(hollowManaImagePrefab, manaContainer);
+        //    GameObject icon = Instantiate(hollowManaImagePrefab, mana_Container);
         //    manaIcons.Add(icon);
         //}
     }

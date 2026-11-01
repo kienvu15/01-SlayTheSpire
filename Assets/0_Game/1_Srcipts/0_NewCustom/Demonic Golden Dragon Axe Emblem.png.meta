@@ -1,0 +1,1040 @@
+fileFormatVersion: 2
+guid: d77f9723fdd8b1748a186d616dd1eeab
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2540576958508486739
+    second: Demonic Golden Dragon Axe Emblem_0
+  - first:
+      213: 3562161883114361517
+    second: Demonic Golden Dragon Axe Emblem_1
+  - first:
+      213: -3196762398524721475
+    second: Demonic Golden Dragon Axe Emblem_2
+  - first:
+      213: 7940150867323532162
+    second: Demonic Golden Dragon Axe Emblem_3
+  - first:
+      213: 547050977710880376
+    second: Demonic Golden Dragon Axe Emblem_4
+  - first:
+      213: -1119795283686458770
+    second: Demonic Golden Dragon Axe Emblem_5
+  - first:
+      213: 3074279477471949411
+    second: Demonic Golden Dragon Axe Emblem_6
+  - first:
+      213: 7054608359813792908
+    second: Demonic Golden Dragon Axe Emblem_7
+  - first:
+      213: 6928649782029895975
+    second: Demonic Golden Dragon Axe Emblem_8
+  - first:
+      213: 8175780911626848715
+    second: Demonic Golden Dragon Axe Emblem_9
+  - first:
+      213: -1498145903932711132
+    second: Demonic Golden Dragon Axe Emblem_10
+  - first:
+      213: 2815601190890696782
+    second: Demonic Golden Dragon Axe Emblem_11
+  - first:
+      213: -339176799882958928
+    second: Demonic Golden Dragon Axe Emblem_12
+  - first:
+      213: -2467753711449818385
+    second: Demonic Golden Dragon Axe Emblem_13
+  - first:
+      213: -9198943315118883564
+    second: Demonic Golden Dragon Axe Emblem_14
+  - first:
+      213: 6316007227927077221
+    second: Demonic Golden Dragon Axe Emblem_15
+  - first:
+      213: 6479712327951616584
+    second: Demonic Golden Dragon Axe Emblem_16
+  - first:
+      213: 7547647460003376058
+    second: Demonic Golden Dragon Axe Emblem_17
+  - first:
+      213: 5947727634158900287
+    second: Demonic Golden Dragon Axe Emblem_18
+  - first:
+      213: -2117010411844224979
+    second: Demonic Golden Dragon Axe Emblem_19
+  - first:
+      213: 8817783154695343775
+    second: Demonic Golden Dragon Axe Emblem_20
+  - first:
+      213: -4037841764894380069
+    second: Demonic Golden Dragon Axe Emblem_21
+  - first:
+      213: 4953516249987027915
+    second: Demonic Golden Dragon Axe Emblem_22
+  - first:
+      213: 4292968876782958190
+    second: Demonic Golden Dragon Axe Emblem_23
+  - first:
+      213: 7661176972813828064
+    second: Demonic Golden Dragon Axe Emblem_24
+  - first:
+      213: -7781863085193933570
+    second: Demonic Golden Dragon Axe Emblem_25
+  - first:
+      213: -3698025484478816237
+    second: Demonic Golden Dragon Axe Emblem_26
+  - first:
+      213: 6766509331488985902
+    second: Demonic Golden Dragon Axe Emblem_27
+  - first:
+      213: 645513672245664049
+    second: Demonic Golden Dragon Axe Emblem_28
+  - first:
+      213: -4634886457914353
+    second: Demonic Golden Dragon Axe Emblem_29
+  - first:
+      213: -5764153039607884133
+    second: Demonic Golden Dragon Axe Emblem_30
+  - first:
+      213: -4398406882637636224
+    second: Demonic Golden Dragon Axe Emblem_31
+  - first:
+      213: -6823815959743576478
+    second: Demonic Golden Dragon Axe Emblem_32
+  - first:
+      213: -1090482403340132840
+    second: Demonic Golden Dragon Axe Emblem_33
+  - first:
+      213: 3137709908843564786
+    second: Demonic Golden Dragon Axe Emblem_34
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Demonic Golden Dragon Axe Emblem_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1254
+        height: 1254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 350d0708841f14320800000000000000
+      internalID: 2540576958508486739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demonic Golden Dragon Axe Emblem_1
+      rect:
+        serializedVersion: 2
+        x: 1194
+        y: 1173
+        width: 60
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da2d77b0c575f6130800000000000000
+      internalID: 3562161883114361517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demonic Golden Dragon Axe Emblem_2
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 1134
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db6bb942981d2a3d0800000000000000
+      internalID: -3196762398524721475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demonic Golden Dragon Axe Emblem_3
+      rect:
+        serializedVersion: 2
+        x: 1172
+        y: 1141
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28334d52525113e60800000000000000
+      internalID: 7940150867323532162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demonic Golden Dragon Axe Emblem_4
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 1090
+        width: 20
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 876bc7047f3879700800000000000000
+      internalID: 547050977710880376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demonic Golden Dragon Axe Emblem_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1034
+        width: 5
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6af5b65f10b570f0800000000000000
+      internalID: -1119795283686458770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demonic Golden Dragon Axe Emblem_6
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 1050
+        width: 17
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3623df285e80aaa20800000000000000
+      internalID: 3074279477471949411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demonic Golden Dragon Axe Emblem_7
+      rect:
+        serializedVersion: 2
+        x: 1186
+        y: 1030
+        width: 49
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c84c3342de007e160800000000000000
+      internalID: 7054608359813792908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demonic Golden Dragon Axe Emblem_8
+      rect:
+        serializedVersion: 2
+        x: 1172
+        y: 972
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 729caf66442872060800000000000000
+      internalID: 6928649782029895975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demonic Golden Dragon Axe Emblem_9
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 931
+        width: 13
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc900f60c65367170800000000000000
+      internalID: 8175780911626848715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demonic Golden Dragon Axe Emblem_10
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 953
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42f5266ec34853be0800000000000000
+      internalID: -1498145903932711132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demonic Golden Dragon Axe Emblem_11
+      rect:
+        serializedVersion: 2
+        x: 1153
+        y: 879
+        width: 28
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e40f43c8d56031720800000000000000
+      internalID: 2815601190890696782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demonic Golden Dragon Axe Emblem_12
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 811
+        width: 12
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b72cee5f700b4bf0800000000000000
+      internalID: -339176799882958928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demonic Golden Dragon Axe Emblem_13
+      rect:
+        serializedVersion: 2
+        x: 1171
+        y: 829
+        width: 22
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: feab1ebf217c0cdd0800000000000000
+      internalID: -2467753711449818385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demonic Golden Dragon Axe Emblem_14
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 757
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41d72610bc9c65080800000000000000
+      internalID: -9198943315118883564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demonic Golden Dragon Axe Emblem_15
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 747
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 561a4633c17f6a750800000000000000
+      internalID: 6316007227927077221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demonic Golden Dragon Axe Emblem_16
+      rect:
+        serializedVersion: 2
+        x: 1206
+        y: 723
+        width: 15
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84a864208009ce950800000000000000
+      internalID: 6479712327951616584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demonic Golden Dragon Axe Emblem_17
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 666
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abb616f2061aeb860800000000000000
+      internalID: 7547647460003376058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demonic Golden Dragon Axe Emblem_18
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 628
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f34d0d655c29a8250800000000000000
+      internalID: 5947727634158900287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demonic Golden Dragon Axe Emblem_19
+      rect:
+        serializedVersion: 2
+        x: 1207
+        y: 628
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d28b8303f3ede92e0800000000000000
+      internalID: -2117010411844224979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demonic Golden Dragon Axe Emblem_20
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 604
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9e0a028f0f0f5a70800000000000000
+      internalID: 8817783154695343775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demonic Golden Dragon Axe Emblem_21
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 516
+        width: 15
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdfeb38ee44b6f7c0800000000000000
+      internalID: -4037841764894380069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demonic Golden Dragon Axe Emblem_22
+      rect:
+        serializedVersion: 2
+        x: 1222
+        y: 489
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc31a95d8cc6eb440800000000000000
+      internalID: 4953516249987027915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demonic Golden Dragon Axe Emblem_23
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 441
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e66b474c270b39b30800000000000000
+      internalID: 4292968876782958190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demonic Golden Dragon Axe Emblem_24
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 359
+        width: 30
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ef78f9bdd7f15a60800000000000000
+      internalID: 7661176972813828064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demonic Golden Dragon Axe Emblem_25
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 379
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efc4a4c01c4410490800000000000000
+      internalID: -7781863085193933570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demonic Golden Dragon Axe Emblem_26
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 345
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3106c433a69fdacc0800000000000000
+      internalID: -3698025484478816237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demonic Golden Dragon Axe Emblem_27
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 317
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2354c0f26877ed50800000000000000
+      internalID: 6766509331488985902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demonic Golden Dragon Axe Emblem_28
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 319
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1395cdbc34355f800800000000000000
+      internalID: 645513672245664049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demonic Golden Dragon Axe Emblem_29
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 294
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0c0a1768988feff0800000000000000
+      internalID: -4634886457914353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demonic Golden Dragon Axe Emblem_30
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 304
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b961f2ba95d9100b0800000000000000
+      internalID: -5764153039607884133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demonic Golden Dragon Axe Emblem_31
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 296
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08d10c67e38b5f2c0800000000000000
+      internalID: -4398406882637636224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demonic Golden Dragon Axe Emblem_32
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 248
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 266c7dae98fec41a0800000000000000
+      internalID: -6823815959743576478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demonic Golden Dragon Axe Emblem_33
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 91
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81ed8132804ddd0f0800000000000000
+      internalID: -1090482403340132840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demonic Golden Dragon Axe Emblem_34
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 56
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fe08dca9826b8b20800000000000000
+      internalID: 3137709908843564786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Demonic Golden Dragon Axe Emblem_0: 2540576958508486739
+      Demonic Golden Dragon Axe Emblem_1: 3562161883114361517
+      Demonic Golden Dragon Axe Emblem_10: -1498145903932711132
+      Demonic Golden Dragon Axe Emblem_11: 2815601190890696782
+      Demonic Golden Dragon Axe Emblem_12: -339176799882958928
+      Demonic Golden Dragon Axe Emblem_13: -2467753711449818385
+      Demonic Golden Dragon Axe Emblem_14: -9198943315118883564
+      Demonic Golden Dragon Axe Emblem_15: 6316007227927077221
+      Demonic Golden Dragon Axe Emblem_16: 6479712327951616584
+      Demonic Golden Dragon Axe Emblem_17: 7547647460003376058
+      Demonic Golden Dragon Axe Emblem_18: 5947727634158900287
+      Demonic Golden Dragon Axe Emblem_19: -2117010411844224979
+      Demonic Golden Dragon Axe Emblem_2: -3196762398524721475
+      Demonic Golden Dragon Axe Emblem_20: 8817783154695343775
+      Demonic Golden Dragon Axe Emblem_21: -4037841764894380069
+      Demonic Golden Dragon Axe Emblem_22: 4953516249987027915
+      Demonic Golden Dragon Axe Emblem_23: 4292968876782958190
+      Demonic Golden Dragon Axe Emblem_24: 7661176972813828064
+      Demonic Golden Dragon Axe Emblem_25: -7781863085193933570
+      Demonic Golden Dragon Axe Emblem_26: -3698025484478816237
+      Demonic Golden Dragon Axe Emblem_27: 6766509331488985902
+      Demonic Golden Dragon Axe Emblem_28: 645513672245664049
+      Demonic Golden Dragon Axe Emblem_29: -4634886457914353
+      Demonic Golden Dragon Axe Emblem_3: 7940150867323532162
+      Demonic Golden Dragon Axe Emblem_30: -5764153039607884133
+      Demonic Golden Dragon Axe Emblem_31: -4398406882637636224
+      Demonic Golden Dragon Axe Emblem_32: -6823815959743576478
+      Demonic Golden Dragon Axe Emblem_33: -1090482403340132840
+      Demonic Golden Dragon Axe Emblem_34: 3137709908843564786
+      Demonic Golden Dragon Axe Emblem_4: 547050977710880376
+      Demonic Golden Dragon Axe Emblem_5: -1119795283686458770
+      Demonic Golden Dragon Axe Emblem_6: 3074279477471949411
+      Demonic Golden Dragon Axe Emblem_7: 7054608359813792908
+      Demonic Golden Dragon Axe Emblem_8: 6928649782029895975
+      Demonic Golden Dragon Axe Emblem_9: 8175780911626848715
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

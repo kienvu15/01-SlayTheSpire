@@ -1,6 +1,5 @@
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerSpawner : MonoBehaviour
 {
@@ -16,13 +15,28 @@ public class PlayerSpawner : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI manaText;
 
+    [Header("ToolTest")]
+    [SerializeField] PlayerData defaultPlayerData;
+
     void Start()
     {
-        var data = PlayerSelectionManager.Instance.GetSelectedPlayer();
+        PlayerData data = null;
+
+        // Ưu tiên lấy Player được chọn từ Menu
+        if (PlayerSelectionManager.Instance != null)
+        {
+            data = PlayerSelectionManager.Instance.GetSelectedPlayer();
+        }
+
+        // Nếu không có dữ liệu từ Menu thì sử dụng Player mặc định
+        if (data == null)
+        {
+            data = defaultPlayerData;
+        }
 
         if (data == null)
         {
-            Debug.LogError("No player selected!");
+            Debug.LogError("No player data available!");
             return;
         }
 
