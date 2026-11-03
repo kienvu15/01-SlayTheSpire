@@ -1,16 +1,18 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : Character
 {
+    public Image avatarImage;
     public Animator animator;
     public GameObject canvas;
     AudioSource audioSource;
 
     protected override void Start()
     {
-        base.Start();
-        UpdateUI();
+        //base.Start();
+        //UpdateUI();
         audioSource = GetComponent<AudioSource>();
     }
 

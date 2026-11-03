@@ -8,12 +8,12 @@ public class EnemyDropZone : MonoBehaviour, IDropHandler
     public Enemy enemy;     
     public Discard discard;
     public Deck deck;
-    public Match match;
+    public MidMatch_Manager match;
     public ManaSystem manaSystem;
 
     void Start()
     {
-        match = FindFirstObjectByType<Match>();
+        match = FindFirstObjectByType<MidMatch_Manager>();
         manaSystem = FindFirstObjectByType<ManaSystem>();
     }
 

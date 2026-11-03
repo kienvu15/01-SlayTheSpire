@@ -31,31 +31,31 @@ public class CardCollectionPanel : MonoBehaviour
             Destroy(obj);
         spawnedCards.Clear();
 
-        if (cardHolder == null || cardHolder.allCardData.Count == 0)
-            return;
+        //if (cardHolder == null || cardHolder.allCardData.Count == 0)
+        //    return;
 
-        foreach (CardData data in cardHolder.allCardData)
-        {
-            GameObject newCard = Instantiate(cardDisplayPrefab, contentParent);
-            CardDisplay display = newCard.GetComponent<CardDisplay>();
-            display.useScaleAnimation = true;
-            if (display != null)
-            {
-                display.LoadCard(data);
+        //foreach (CardData data in cardHolder.allCardData)
+        //{
+        //    GameObject newCard = Instantiate(cardDisplayPrefab, contentParent);
+        //    CardDisplay display = newCard.GetComponent<CardDisplay>();
+        //    display.useScaleAnimation = true;
+        //    if (display != null)
+        //    {
+        //        display.LoadCard(data);
 
-                // Gán callback chọn card
-                Button btn = newCard.GetComponentInChildren<Button>();
-                if (btn != null)
-                {
-                    btn.onClick.AddListener(() =>
-                    {
-                        selectedCard = display;
-                    });
-                }
-            }
+        //        // Gán callback chọn card
+        //        Button btn = newCard.GetComponentInChildren<Button>();
+        //        if (btn != null)
+        //        {
+        //            btn.onClick.AddListener(() =>
+        //            {
+        //                selectedCard = display;
+        //            });
+        //        }
+        //    }
 
-            spawnedCards.Add(newCard);
-        }
+        //    spawnedCards.Add(newCard);
+        //}
     }
 
     // Mở panel theo mode

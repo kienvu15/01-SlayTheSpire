@@ -2351,7 +2351,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1886975538877379116
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2476,6 +2476,9 @@ GameObject:
   - component: {fileID: 3299151988815580798}
   - component: {fileID: 1334775138586945828}
   - component: {fileID: 5501083533387985433}
+  - component: {fileID: 7101333476334197516}
+  - component: {fileID: 6266490599182259517}
+  - component: {fileID: 5863129530589360182}
   m_Layer: 5
   m_Name: Card_Holder
   m_TagString: Untagged
@@ -2500,13 +2503,13 @@ RectTransform:
   - {fileID: 7754008424995541908}
   - {fileID: 8333773300969880697}
   - {fileID: 1279048787449751755}
-  - {fileID: 5448899005613907170}
   - {fileID: 4073091020636314959}
   - {fileID: 1886975538877379116}
+  - {fileID: 4107801443202704173}
   - {fileID: 4818078002387944906}
   - {fileID: 4290975272097012907}
-  - {fileID: 4107801443202704173}
   - {fileID: 8736054075889322766}
+  - {fileID: 5448899005613907170}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2556,6 +2559,59 @@ MonoBehaviour:
   originalCard: {fileID: 5501083533387985433}
   cardDisplay: {fileID: 1334775138586945828}
   PlaySelfCast: {fileID: 0}
+--- !u!223 &7101333476334197516
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7997727750710912170}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 1
+  m_UseReflectionProbes: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 573
+  m_TargetDisplay: 0
+--- !u!114 &6266490599182259517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7997727750710912170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GraphicRaycaster
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!225 &5863129530589360182
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7997727750710912170}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &8356597933539717312
 GameObject:
   m_ObjectHideFlags: 0

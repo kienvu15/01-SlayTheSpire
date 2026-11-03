@@ -579,6 +579,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
+  m_UseReflectionProbes: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: -1447685523
@@ -755,6 +756,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -927,6 +929,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1098,11 +1101,8 @@ MonoBehaviour:
     shield: 0
     critChance: 0
     critDamage: 1.5
-  hpText: {fileID: 4235954444901934788}
   hpBar: {fileID: 5330796017386249587}
   hpChipBar: {fileID: 4465070276862698792}
-  shieldText: {fileID: 4119533005473463307}
-  Shield: {fileID: 6957589251484598984}
   chipDelay: 0.45
   chipSpeed: 0.5
   maxConditions: 2

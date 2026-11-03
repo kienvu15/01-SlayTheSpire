@@ -3,14 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameFlowManager : MonoBehaviour
+public class GameStage_Manager : MonoBehaviour
 {
-    public static GameFlowManager Instance { get; private set; }
+    public static GameStage_Manager Instance { get; private set; }
 
     public Player player;
     public Deck deck;
     public Discard discard;
-    public Match match;
+    public MidMatch_Manager match;
     public CoinManager coinManager;
     public ManaSystem manasystem;
     public List<GameObject> hideOnBattle;
@@ -41,7 +41,7 @@ public class GameFlowManager : MonoBehaviour
         {
             if (obj != null) obj.SetActive(false);
         }
-        deck.BuildDeck();
+        //deck.BuildDeck();
         discard.Clear();
         deck.hasDrawFisrtRow = false;
     }
@@ -62,7 +62,7 @@ public class GameFlowManager : MonoBehaviour
         GameSystem.Instance.BattleUICanvas = null;
 
         discard.Clear();
-        deck.BuildDeck();
+        //deck.BuildDeck();
         deck.hasDrawFisrtRow = false;
     }
 

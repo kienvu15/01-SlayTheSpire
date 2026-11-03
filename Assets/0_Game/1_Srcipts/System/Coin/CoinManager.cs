@@ -9,7 +9,6 @@ public class CoinManager : MonoBehaviour
     public TMP_Text coinText;
 
     [Header("Data")]
-    public int startCoins = 100;
     public int currentCoins;
 
     private void Awake()
@@ -24,9 +23,9 @@ public class CoinManager : MonoBehaviour
         }
     }
 
-    void Start()
+    public void InitCoin(CharacterData playerData)
     {
-        currentCoins = startCoins;
+        currentCoins = playerData.startCoin;
         UpdateUI();
     }
 
@@ -49,9 +48,10 @@ public class CoinManager : MonoBehaviour
         Debug.Log("Added " + amount + " coins. Total: " + currentCoins);
     }
 
-    private void UpdateUI()
+    public void UpdateUI()
     {
         if (coinText != null)
             coinText.text = currentCoins.ToString();
     }
+
 }

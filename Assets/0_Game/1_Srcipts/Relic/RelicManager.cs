@@ -12,31 +12,18 @@ public class RelicManager : MonoBehaviour
     public System.Action<Relic> onRelicRemoved;
 
     // Owner character
-    private Character owner;
+    public Character owner;
 
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            // Nếu RelicManager tồn tại suốt game: DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
-
-        // Tìm Character Owner
-        GameObject playerObj = GameObject.FindWithTag("Player");
-        if (playerObj != null)
-        {
-            owner = playerObj.GetComponent<Character>();
-        }
-    }
-
-    void Start()
-    {
-        //AddRelic(scorechingShell);
     }
 
     public void EquipRelic(Relic relic)
@@ -59,11 +46,10 @@ public class RelicManager : MonoBehaviour
         }
     }
 
-
     public void AddRelic(Relic relic)
     {
         EquipRelic(relic);
-        Debug.Log("Đã thêm relic: " + relic.relicName);
+        //Debug.Log("Đã thêm relic: " + relic.relicName);
     }
 
     // ===== Bridge hooks để Character gọi =====
@@ -92,4 +78,5 @@ public class RelicManager : MonoBehaviour
         foreach (var relic in equippedRelics)
             relic.OnAddShield(self, ref amount);
     }
+
 }

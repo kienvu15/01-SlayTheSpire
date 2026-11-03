@@ -17,17 +17,17 @@ public class PlayerSelectionUI : MonoBehaviour
     public TextMeshProUGUI relicName;
     public TextMeshProUGUI relicDescription;
 
-    private PlayerData currentData;
+    private CharacterData currentData;
 
    
-    public void Show(PlayerData data)
+    public void Show(CharacterData data)
     {
         currentData = data;
 
         nameText.text = data.playerName;
         playerImage.sprite = data.playerSplashArt;
         hpText.text = $"{data.maxHP}/{data.maxHP}";
-        goldText.text = $"{data.startGold}";
+        goldText.text = $"{data.startCoin}";
         loreText.text = data.lore;
 
         if (data.startRelic != null)
@@ -44,5 +44,5 @@ public class PlayerSelectionUI : MonoBehaviour
         }
     }
 
-    public PlayerData GetSelected() => currentData;
+    public CharacterData GetSelected() => currentData;
 }

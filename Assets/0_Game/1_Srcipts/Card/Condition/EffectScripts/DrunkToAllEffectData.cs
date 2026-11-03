@@ -9,7 +9,7 @@ public class DrunkToAllEffectData : EffectData
     public override bool Apply(Character self, Character target, ManaSystem manaSystem, Deck deck)
     {
         // tìm player và enemy trong scene
-        Match match = GameObject.FindFirstObjectByType<Match>();
+        MidMatch_Manager match = GameObject.FindFirstObjectByType<MidMatch_Manager>();
         if (match == null) return false;
 
         bool applied = false;

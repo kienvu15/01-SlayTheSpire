@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class PlayerSelectButton : MonoBehaviour
 {
-    public PlayerData playerData;
+    public CharacterData playerData;
     public PlayerSelectionUI selectionUI;
 
     [Header("Visual")]

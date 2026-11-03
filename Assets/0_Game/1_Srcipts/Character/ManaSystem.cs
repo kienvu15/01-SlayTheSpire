@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 
@@ -11,15 +10,19 @@ public class ManaSystem : MonoBehaviour
     public int manaPerTurn = 1;
     public TextMeshProUGUI ManaText;
 
-    [Header("UI References")]
-    public Transform manaContainer;   
-    public GameObject manaImagePrefab;    
-    public GameObject hollowManaImagePrefab; 
+    //[Header("UI References")]
+    //public Transform manaContainer;   
+    //public GameObject manaImagePrefab;    
+    //public GameObject hollowManaImagePrefab; 
 
     private List<GameObject> manaIcons = new List<GameObject>();
 
-    void Start()
+    public void InitMana(CharacterData playerData)
     {
+        maxMana = playerData.maxMana;
+        currentMana = playerData.startMana;
+        manaPerTurn = playerData.manaPerTurn;
+        UpdateManaUI();
     }
 
     /// Reset mana mỗi lượt (gọi khi End Turn)
@@ -56,7 +59,6 @@ public class ManaSystem : MonoBehaviour
     {
         ManaText.text = $"{currentMana} / {maxMana}";
 
-
         // Xóa icon cũ
         //foreach (var icon in manaIcons)
         //{
@@ -77,12 +79,6 @@ public class ManaSystem : MonoBehaviour
         //    GameObject icon = Instantiate(hollowManaImagePrefab, mana_Container);
         //    manaIcons.Add(icon);
         //}
-    }
-
-    //Update texht mana
-    public void UpdateManaText()
-    {
-        ManaText.text = $"{currentMana} / {maxMana}";
     }
 
 }

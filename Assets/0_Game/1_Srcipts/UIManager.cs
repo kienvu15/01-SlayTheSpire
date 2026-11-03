@@ -14,7 +14,7 @@ public class UIManager : MonoBehaviour
     [Header("UI Panels")]
     public GameObject battleHolder;
     public GameObject Bg;
-//    public GameFlowManager GameFlowManager;
+//    public GameStage_Manager GameStage_Manager;
 
     [Header("Floor")]
     private int floor;
@@ -125,7 +125,7 @@ public class UIManager : MonoBehaviour
             buttonEnterParent.anchoredPosition = new Vector2(380.33f, buttonEnterParent.anchoredPosition.y);
         }
 
-        if (GameFlowManager.Instance.isOnBattle == true)
+        if (GameStage_Manager.Instance.isOnBattle == true)
         {
             buttonEnterParent.gameObject.SetActive(false);
         }
@@ -133,7 +133,7 @@ public class UIManager : MonoBehaviour
 
     public void MapIcon()
     {
-        if (GameFlowManager.Instance.isOnBattle)
+        if (GameStage_Manager.Instance.isOnBattle)
         {
             mapUiManager.MapInBattleScene();
         }
@@ -148,7 +148,7 @@ public class UIManager : MonoBehaviour
             button.SetActive(isMapOpening); 
         }
 
-        if (GameFlowManager.Instance.isOnBattle)
+        if (GameStage_Manager.Instance.isOnBattle)
         {
             buttonEnterParent.gameObject.SetActive(false);
         }
@@ -219,12 +219,12 @@ public class UIManager : MonoBehaviour
         }
 
         transitionImage.fillAmount = 1f;
-        if (GameFlowManager.Instance.isFirstBattle == true)
+        if (GameStage_Manager.Instance.isFirstBattle == true)
         {
             UIManager.Instance.removeBattleCanvas();
-            GameFlowManager.Instance.isFirstBattle = false;
+            GameStage_Manager.Instance.isFirstBattle = false;
         }
-        else if (GameFlowManager.Instance.isFirstBattle == false 
+        else if (GameStage_Manager.Instance.isFirstBattle == false 
             && GameSystem.Instance.isBattlePhase == true)
         {
             Destroy(BattlleUIHolder.transform.GetChild(0).gameObject);

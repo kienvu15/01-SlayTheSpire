@@ -1,24 +1,45 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CardHolder : MonoBehaviour
 {
+    [Header("Card_Deck")]
     public Deck deck;
 
-    [Header("Player Collection (có thể thay đổi khi chơi)")]
-    public List<CardData> allCardData = new List<CardData>();
+    private CharacterData playerData;
 
-    // Thêm 1 card vào collection
+    public void Initialize(CharacterData data)
+    {
+        playerData = data;
+
+        if (playerData == null)
+        {
+            Debug.LogError("CharacterData is null!");
+            return;
+        }
+
+        if (playerData.startDeck == null)
+        {
+            Debug.LogError("Starting Deck is not assigned!");
+            return;
+        }
+
+        deck.BuildDeck(playerData.startDeck.allCardData);
+    }
+
+    // Thêm card vào Draw Pile
     public void AddCard(CardData card)
     {
-        allCardData.Add(card);
-        deck.ReceiveCards(new List<CardData> { card });
-        deck.UpdateUI();
+        if (card == null) return;
+
+        deck.AddCard(card);
     }
 
-    // Xoá 1 card khỏi collection
+    // Xóa card khỏi Draw Pile
     public void RemoveCard(CardData card)
     {
-        allCardData.Remove(card);
+        if (card == null) return;
+
+        deck.RemoveFromDeck(card);
     }
+
 }

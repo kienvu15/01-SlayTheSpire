@@ -5,7 +5,7 @@ public class PlayerSelectionManager : MonoBehaviour
 {
     public static PlayerSelectionManager Instance;
 
-    private PlayerData selectedPlayer;
+    private CharacterData selectedPlayer;
     private PlayerSelectButton currentButton;
 
     void Awake()
@@ -29,12 +29,12 @@ public class PlayerSelectionManager : MonoBehaviour
         currentButton.SetSelected(true);
     }
 
-    public void SelectPlayer(PlayerData data)
+    public void SelectPlayer(CharacterData data)
     {
         selectedPlayer = data;
     }
 
-    public PlayerData GetSelectedPlayer()
+    public CharacterData GetSelectedPlayer()
     {
         return selectedPlayer;
     }

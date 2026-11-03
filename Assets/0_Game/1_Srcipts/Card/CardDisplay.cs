@@ -1,6 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using System.Collections.Generic;
 using DG.Tweening;
 
 public enum CardMode
@@ -43,6 +43,9 @@ public class CardDisplay : MonoBehaviour, IHasDescriptionPanel
     public float scaleMultiplier = 1.15f;
     public float animDuration = 0.2f;
 
+    [Header("Hand Selection")]
+    private HandCardManager handManager;
+
     private static CardDisplay currentlyOpen;
     [HideInInspector] public CanvasGroup blockerGroup;
     public CardHolder cardholder;
@@ -64,7 +67,7 @@ public class CardDisplay : MonoBehaviour, IHasDescriptionPanel
         originalScale = transform.localScale;
 
         //if (descriptionPanel != null)
-            //descriptionPanel.SetActive(false);
+        //descriptionPanel.SetActive(false);
 
         //GameObject blocker = GameObject.Find("Block-Panel");
         //if (blocker != null)
@@ -74,6 +77,7 @@ public class CardDisplay : MonoBehaviour, IHasDescriptionPanel
         //        blockerGroup = blocker.AddComponent<CanvasGroup>();
         //}
 
+        handManager = GetComponentInParent<HandCardManager>();
         cardholder = FindAnyObjectByType<CardHolder>();
         goldContainer.SetActive(false);
         blockerGroup = DescriptionPanelManager.Instance.blockerGroup;
@@ -195,7 +199,7 @@ public class CardDisplay : MonoBehaviour, IHasDescriptionPanel
         //}
 
         // Stats
-        string stats = "";
+        //string stats = "";
 
         int intentSum = 0;
         if (data.effects != null)
@@ -322,8 +326,14 @@ public class CardDisplay : MonoBehaviour, IHasDescriptionPanel
             //    return;
             //}
         }
-        ToggleDescription();
-    
+
+        if (handManager != null)
+        {
+            handManager.SelectCard(gameObject);
+        }
+
+        //ToggleDescription();
+        //Debug.Log("Card clicked: " + cardData.cardName);
     }
 
     public void HideDescription()

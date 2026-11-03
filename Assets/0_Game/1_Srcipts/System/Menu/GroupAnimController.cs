@@ -38,7 +38,7 @@ public class GroupAnimManager : MonoBehaviour
     {
         PlayGroupByName("MenuButton");
         PlayGroupByName("Logo");
-        PlayGroupByName("PlayerData");
+        PlayGroupByName("CharacterData");
     }
 
     //BUTTON

@@ -36,7 +36,7 @@ public class MapUIManager : MonoBehaviour
     public GameObject enemyFM;
     public BattleManager battleManager;
     public Deck deck;
-    public Match match;
+    public MidMatch_Manager match;
     public ManaSystem manaSystem;
     public PlayerSelfCast playerSelfCast;
     public Player player;
@@ -93,7 +93,7 @@ public class MapUIManager : MonoBehaviour
 
         match.enemySystem = battleRoom.GetComponentInChildren<EnemySystem>();
 
-        GameFlowManager.Instance.player = player;
+        GameStage_Manager.Instance.player = player;
         
         manaSystem.UpdateManaUI();
 
@@ -107,7 +107,7 @@ public class MapUIManager : MonoBehaviour
         UIManager.Instance.PlaySelftCast.SetActive(true);
 
         GameSystem.Instance.BattleUICanvas = battleRoom;
-        GameFlowManager.Instance.isOnBattle = true;
+        GameStage_Manager.Instance.isOnBattle = true;
 
         foreach (var obj in hideOnBattle)
         {

@@ -40,4 +40,5 @@ public class ShieldEffectData : EffectData, IOverrideValue
         Apply(self, realTarget, null, null);
         baseShield = old;
     }
+
 }

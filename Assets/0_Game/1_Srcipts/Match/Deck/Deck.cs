@@ -19,7 +19,7 @@ public class Deck : MonoBehaviour
     public Transform handParent;
     public Transform pileDeckTransform;  
     
-    public Match match;
+    public MidMatch_Manager match;
 
     [Header("UI Debug")]
     public bool hasDrawFisrtRow = false;
@@ -53,7 +53,7 @@ public class Deck : MonoBehaviour
 
     void Start()
     {
-        BuildDeck();
+        //BuildDeck();
         UpdateUI();
         UpdateAllCardCount();
     }
@@ -84,13 +84,14 @@ public class Deck : MonoBehaviour
         discardCountText = GetComponent<TextMeshProUGUI>();
     }
 
-    public void RemoveCardFromHand(GameObject cardGO, Match matchRef)
+    public void RemoveCardFromHand(GameObject cardGO, MidMatch_Manager matchRef)
     {
         if (cardGO == null) return;
 
         if (currentHand.Contains(cardGO))
             currentHand.Remove(cardGO);
 
+        handLayout.ArrangeCards(currentHand, true);
         UpdateUI();
     }
 
@@ -100,13 +101,24 @@ public class Deck : MonoBehaviour
         yield return StartCoroutine(DrawHand(match.handSize));
     }
 
-    public void BuildDeck()
+    public void BuildDeck(List<CardData> startingCards)
     {
         deck.Clear();
-        foreach (CardData data in cardHolder.allCardData)
-            deck.Add(data);
+
+        if (startingCards == null || startingCards.Count == 0)
+        {
+            Debug.LogWarning("Starting Deck is empty!");
+            UpdateUI();
+            return;
+        }
+
+        // Copy dữ liệu từ Character_Deck_Setup
+        deck.AddRange(startingCards);
+
         Shuffle(deck);
+
         UpdateUI();
+        UpdateAllCardCount();
     }
 
     public IEnumerator DrawHand(int count)
@@ -380,20 +392,31 @@ public class Deck : MonoBehaviour
 
     public void UpdateAllCardCount()
     {
-        Debug.Log("Updating all card count UI");
-        allCardCount.text = cardHolder.allCardData.Count.ToString();
+        if (allCardCount == null) return;
+
+        int total = deck.Count + currentHand.Count;
+
+        if (discard != null)
+            total += discard.Count;
+
+        allCardCount.text = total.ToString();
     }
 
     public void UpdateUI()
     {
         if (deckCountText != null)
-            foreach (var deckCountText in deckCountText)
-                if (deckCountText != null)
-                    deckCountText.text = "Draw Pile - " + deck.Count.ToString();
+        {
+            foreach (var text in deckCountText)
+            {
+                if (text != null)
+                    text.text = "Draw Pile - " + deck.Count;
+            }
+        }
 
         if (discardCountText != null && discard != null)
-            discardCountText.text = "Discard Pile - " + discard.Count.ToString();
-    }
+            discardCountText.text = "Discard Pile - " + discard.Count;
 
+        UpdateAllCardCount();
+    }
 
 }

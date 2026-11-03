@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 using UnityEngine.UI;
 
 public enum Faction
@@ -19,12 +18,9 @@ public class Character : MonoBehaviour
     public CharacterStats stats = new CharacterStats();
 
     [Header("UI References")]
-    public TextMeshProUGUI hpText;
     public Slider hpBar;
+    public Slider shieldBar;
     public Slider hpChipBar;
-    Color shieldColor = new Color32(0x34, 0x7E, 0x91, 0xFF);
-    public TextMeshProUGUI shieldText;
-    public GameObject Shield;
 
     [Header("HP Chip Effect")]
     [SerializeField] private float chipDelay = 0.5f;
@@ -33,7 +29,7 @@ public class Character : MonoBehaviour
     private float chipTimer;       
 
     [Header("Conditions")]
-    public int maxConditions = 2;
+    //public int maxConditions;
     public ConditionPanelUI conditionPanelUI;
     private List<Condition> activeConditions = new List<Condition>();
 
@@ -49,31 +45,19 @@ public class Character : MonoBehaviour
     [Header("Relics")]
     public RelicManager relicManager;
 
-    protected virtual void Start()
-    {
-        stats.currentHP = stats.maxHP;
-        UpdateUI();
-
-        if (hpChipBar != null)
-        {
-            hpChipBar.maxValue = 1f;
-            hpChipBar.value = 1f;
-        }
-    }
-
+    protected virtual void Start(){  }
 
     protected virtual void Update()
     {
-        Shield.SetActive(stats.shield > 0);
-        if(stats.shield > 0)
-        {
-            hpBar.fillRect.GetComponent<Image>().color = shieldColor;
-        }
-        else
-        {
-            hpBar.fillRect.GetComponent<Image>().color = Color.red;
-        }
-
+        //Shield.SetActive(stats.shield > 0);
+        //if(stats.shield > 0)
+        //{
+        //    hpBar.fillRect.GetComponent<Image>().color = shieldColor;
+        //}
+        //else
+        //{
+        //    hpBar.fillRect.GetComponent<Image>().color = Color.red;
+        //}
         // ==== CHIP EFFECT ====
         if (hpChipBar != null && hpBar != null)
         {
@@ -98,7 +82,46 @@ public class Character : MonoBehaviour
         }
     }
 
-    //======== Clear all conditions and skills (for testing) ========
+    public void Init_HP_UI()
+    {
+        if (hpBar != null)
+        {
+            float hpValue = (float)stats.currentHP / stats.maxHP;
+            hpBar.value = hpValue;
+        }
+        if (hpChipBar != null)
+        {
+            hpChipBar.maxValue = 1f;
+            hpChipBar.value = 1f;
+        }
+    }
+
+    public void UpdateUI()
+    {
+        if (hpBar != null)
+        {
+            float newValue = (float)stats.currentHP / stats.maxHP;
+            hpBar.value = newValue;
+            chipTimer = 0f;
+            targetFill = newValue;
+            if (hpChipBar != null && hpChipBar.value <= 0)
+                hpChipBar.value = newValue;
+        }
+    }
+
+    public void UpdateShieldUI()
+    {
+        if (shieldBar == null) return;
+
+        shieldBar.minValue = 0f;
+        shieldBar.maxValue = 1f;
+
+        float shieldValue = (float)stats.shield / stats.maxHP;
+
+        shieldBar.value = Mathf.Clamp01(shieldValue);
+    }
+
+    // Clear all conditions and skills
     public void ClearAllConditionsAndSkills()
     {
         activeConditions.Clear();
@@ -181,16 +204,11 @@ public class Character : MonoBehaviour
             multiplier *= cond.GetShieldGainMultiplier();
 
         int finalShield = Mathf.RoundToInt(amount * multiplier);
-
         if (finalShield > 0)
         {
             stats.shield += finalShield;
-            Debug.Log($"[AddShield] {name} gained {finalShield} shield (base {amount}, multiplier {multiplier})");
-
+            //Debug.Log($"[AddShield] {name} gained {finalShield} shield (base {amount}, multiplier {multiplier})");
             UpdateUI();
-
-            // ▶ PLAY VFX SHIELD
-            // Target là chính mình (this), EffectKind là Shield
             PlayImpact(this, vfxType, ImpactEffectKind.Shield);
         }
     }
@@ -493,23 +511,7 @@ public class Character : MonoBehaviour
                 Debug.Log($"{name} recovered from stun!");
             }
         }
-    }
-
-    // ================== UI ==================
-    public void UpdateUI()
-    {
-        if (hpText != null) hpText.text = $"{stats.currentHP}/{stats.maxHP}";
-        if (shieldText != null) shieldText.text = $"{stats.shield}";
-        if (hpBar != null)
-        {
-            float newValue = (float)stats.currentHP / stats.maxHP;
-            hpBar.value = newValue;
-            chipTimer = 0f;
-            targetFill = newValue;
-            if (hpChipBar != null && hpChipBar.value <= 0)
-                hpChipBar.value = newValue;
-        }
-    }
+    }    
 
     // IMPACT CALL
     private void PlayImpact(Character target, CardType cardType, ImpactEffectKind effect)

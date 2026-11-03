@@ -2,27 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Match : MonoBehaviour
+public class MidMatch_Manager : MonoBehaviour
 {
+    public static MidMatch_Manager instance;
+
+    [Header("References")]
     public Deck deck;
     public Discard discard;
     public ManaSystem manaSystem;
-    public EnemySystem enemySystem;
     public PlayerSelfCast playerSelfCast;
+
+    [Header("Ref Later in game")]
+    public EnemySystem enemySystem;
     public Player player;
 
-    public int handSize = 5;
+    [HideInInspector]   public int handSize;
 
     [Header("Animation/Timing")]
     public float waitAfterDiscardAnimations = 0.5f;
     public float waitBeforeRefill = 3f;
 
-    public static Match instance;
     private void Awake()
     {
         instance = this;
     }
 
+    // Button END TURN được gọi từ UI
     public void EndTurn()
     {
         if (GameStage.Instance.isBusy) return;
@@ -94,8 +99,6 @@ public class Match : MonoBehaviour
         GameStage.Instance.SetBusy(false);
     }
 
-
-
     private IEnumerator TryDrawNextHand()
     {
         int need = handSize;
@@ -107,27 +110,27 @@ public class Match : MonoBehaviour
             if (available > 0)
             {
                 int drawNow = Mathf.Min(available, need);
-                Debug.Log($"[Match] Drawing {drawNow} cards (need left {need})");
+                Debug.Log($"[MidMatch_Manager] Drawing {drawNow} cards (need left {need})");
                 yield return StartCoroutine(deck.DrawCards(drawNow));
                 need -= drawNow;
             }
             else
             {
                 // Deck hết -> chờ trước khi refill
-                Debug.Log($"[Match] Deck empty. Waiting {waitBeforeRefill}s before refill...");
+                Debug.Log($"[MidMatch_Manager] Deck empty. Waiting {waitBeforeRefill}s before refill...");
                 yield return new WaitForSeconds(waitBeforeRefill);
 
                 // Refill từ discard
                 List<CardData> taken = discard.TakeAllCards();
                 if (taken.Count > 0)
                 {
-                    Debug.Log($"[Match] Taken {taken.Count} cards from discard to deck.");
+                    Debug.Log($"[MidMatch_Manager] Taken {taken.Count} cards from discard to deck.");
                     deck.ReceiveCards(taken);
                     deck.ShuffleDeck();
                 }
                 else
                 {
-                    Debug.Log("[Match] Discard also empty. Cannot draw more cards.");
+                    Debug.Log("[MidMatch_Manager] Discard also empty. Cannot draw more cards.");
                     break;
                 }
             }

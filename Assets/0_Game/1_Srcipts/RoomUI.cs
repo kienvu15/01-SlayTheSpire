@@ -48,7 +48,7 @@ public class RoomUI : MonoBehaviour
         hasMovedOnce = false;
         selectSlider.value = 0f;
 
-        if (GameFlowManager.Instance.isOnBattle)
+        if (GameStage_Manager.Instance.isOnBattle)
         {
            return;
         }
@@ -231,7 +231,7 @@ public class RoomUI : MonoBehaviour
             if (sysExists && isBattle && needDraw)
             {
                 Deck.instance.hasDrawFisrtRow = true;
-                StartCoroutine(Deck.instance.DrawHand(Match.instance.handSize));
+                StartCoroutine(Deck.instance.DrawHand(MidMatch_Manager.instance.handSize));
             }
             MapUIManager.Instance.ShowBattleCanvas();
         }
