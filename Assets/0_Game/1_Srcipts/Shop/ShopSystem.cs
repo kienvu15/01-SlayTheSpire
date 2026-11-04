@@ -20,7 +20,7 @@ public class ShopSystem : MonoBehaviour
 
     [Header("FF")]
     public ToggleUI deckToggleUI;
-    public CardCollectionPanel cardCollection;
+    public CardCollection_OnRun cardCollection;
 
     public void OnClickMyDeck()
     {

@@ -42,7 +42,7 @@ public class EnemySystem : MonoBehaviour
             {
                 EnemyView enemy = slot.occupant;
                 enemy.PerformAction(player);
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.8f);
             }
         }
 

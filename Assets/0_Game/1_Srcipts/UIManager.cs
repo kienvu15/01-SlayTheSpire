@@ -9,7 +9,24 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
-    public GameObject Map;
+    [Header("LeftHand_Content")]
+    [SerializeField] private Button endTurn_Button;
+    [SerializeField] private GameObject drawPile_Button;
+    [SerializeField] private GameObject discardPile_Button;
+    [SerializeField] private Button enterRoom_Button;
+    [SerializeField] private Button backMap_Button;
+
+    [Header("CardInfo_Help")]
+    [SerializeField] private GameObject card_Name;
+    [SerializeField] private GameObject manaObject;
+    [SerializeField] private GameObject manaText;
+    [SerializeField] private GameObject default_Disciption;
+    [SerializeField] private GameObject upgrade_Disciption;
+
+    [Header("Context Visual")]
+    [SerializeField] private GameObject Map_Visual_GameObject;
+
+    //public GameObject Map;
 
     [Header("UI Panels")]
     public GameObject battleHolder;
@@ -95,41 +112,75 @@ public class UIManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        if (animationLayer == null) animationLayer = transform;
+        //if (animationLayer == null) animationLayer = transform;
     }
 
     void Start()
     {
-        originEnterButtonAnchoredPos = buttonEnterParent.anchoredPosition;
-        originalHandPos = hand.anchoredPosition;
-        originalEndButtonPos = endButton.anchoredPosition;
-        originalManaHolderPos = manaHolder.anchoredPosition;
+        //originEnterButtonAnchoredPos = buttonEnterParent.anchoredPosition;
+        //originalHandPos = hand.anchoredPosition;
+        //originalEndButtonPos = endButton.anchoredPosition;
+        //originalManaHolderPos = manaHolder.anchoredPosition;
+
+        backMap_Button.onClick.AddListener(BackButton);
     }
 
-    #region MapPanel
+    #region LeftHand_Content
+    public void LeftHand_Content(bool group1, bool group2)
+    {
+        endTurn_Button.gameObject.SetActive(group1);
+        drawPile_Button.SetActive(group1);
+        discardPile_Button.SetActive(group1);
+
+        enterRoom_Button.gameObject.SetActive(group2);
+        backMap_Button.gameObject.SetActive(group2);
+    }
+
+    public void Enter_Room_Button_Helper(bool interact)
+    {
+        enterRoom_Button.interactable = interact;
+        TextMeshProUGUI buttonText = enterRoom_Button.GetComponentInChildren<TextMeshProUGUI>();
+
+        buttonText.alpha = interact ? 1f : 0.5f;
+    }
+
+    //Button Call
     public void BackButton()
     {
-        SoundManager.Instance.Play("SelectButton", null, 1);
-
-        foreach (GameObject button in backMap)
-        {
-            button.SetActive(!button.activeSelf);
-        }
-
-        if (Mathf.Abs(buttonEnterParent.anchoredPosition.x - 380.33f) > 0.01f)
-        {
-            buttonEnterParent.anchoredPosition = new Vector2(originEnterButtonAnchoredPos.x, buttonEnterParent.anchoredPosition.y);
-        }
-        else
-        {
-            buttonEnterParent.anchoredPosition = new Vector2(380.33f, buttonEnterParent.anchoredPosition.y);
-        }
-
-        if (GameStage_Manager.Instance.isOnBattle == true)
-        {
-            buttonEnterParent.gameObject.SetActive(false);
-        }
+        LeftHand_Content(true, false);
+        Enter_Room_Button_Helper(false);
+        Map_Visual_GameObject.SetActive(false);
     }
+    #endregion
+
+    #region CardInfo_Help
+
+    #endregion
+
+    #region MapPanel
+    //public void BackButton()
+    //{
+    //    SoundManager.Instance.Play("SelectButton", null, 1);
+
+    //    foreach (GameObject button in backMap)
+    //    {
+    //        button.SetActive(!button.activeSelf);
+    //    }
+
+    //    if (Mathf.Abs(buttonEnterParent.anchoredPosition.x - 380.33f) > 0.01f)
+    //    {
+    //        buttonEnterParent.anchoredPosition = new Vector2(originEnterButtonAnchoredPos.x, buttonEnterParent.anchoredPosition.y);
+    //    }
+    //    else
+    //    {
+    //        buttonEnterParent.anchoredPosition = new Vector2(380.33f, buttonEnterParent.anchoredPosition.y);
+    //    }
+
+    //    if (GameStage_Manager.Instance.isOnBattle == true)
+    //    {
+    //        buttonEnterParent.gameObject.SetActive(false);
+    //    }
+    //}
 
     public void MapIcon()
     {
@@ -168,11 +219,6 @@ public class UIManager : MonoBehaviour
             Destroy(tutorialCanvas);
             tutorialCanvas = null;
         }
-    }
-
-    public void mapAfterBattle()
-    {
-
     }
 
     #endregion

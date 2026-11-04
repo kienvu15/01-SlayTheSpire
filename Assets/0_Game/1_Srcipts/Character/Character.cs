@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public enum Faction
 {
@@ -29,7 +30,7 @@ public class Character : MonoBehaviour
     private float chipTimer;       
 
     [Header("Conditions")]
-    //public int maxConditions;
+    public int maxConditions;
     public ConditionPanelUI conditionPanelUI;
     private List<Condition> activeConditions = new List<Condition>();
 
@@ -45,43 +46,10 @@ public class Character : MonoBehaviour
     [Header("Relics")]
     public RelicManager relicManager;
 
+    //Helper
+    private Coroutine chipCoroutine;
+
     protected virtual void Start(){  }
-
-    protected virtual void Update()
-    {
-        //Shield.SetActive(stats.shield > 0);
-        //if(stats.shield > 0)
-        //{
-        //    hpBar.fillRect.GetComponent<Image>().color = shieldColor;
-        //}
-        //else
-        //{
-        //    hpBar.fillRect.GetComponent<Image>().color = Color.red;
-        //}
-        // ==== CHIP EFFECT ====
-        if (hpChipBar != null && hpBar != null)
-        {
-            float currentValue = hpBar.value;
-            if (hpChipBar.value > currentValue)
-            {
-                chipTimer += Time.deltaTime;
-                if (chipTimer >= chipDelay)
-                {
-                    hpChipBar.value = Mathf.MoveTowards(
-                        hpChipBar.value,
-                        currentValue,
-                        Time.deltaTime * chipSpeed
-                    );
-                }
-            }
-            else
-            {
-                hpChipBar.value = currentValue;
-                chipTimer = 0f;
-            }
-        }
-    }
-
     public void Init_HP_UI()
     {
         if (hpBar != null)
@@ -96,16 +64,61 @@ public class Character : MonoBehaviour
         }
     }
 
+    //protected virtual void Update()
+    //{
+    //    // ==== CHIP EFFECT ====
+    //    if (hpChipBar != null && hpBar != null)
+    //    {
+    //        float currentValue = hpBar.value;
+    //        if (hpChipBar.value > currentValue)
+    //        {
+    //            chipTimer += Time.deltaTime;
+    //            if (chipTimer >= chipDelay)
+    //            {
+    //                hpChipBar.value = Mathf.MoveTowards(
+    //                    hpChipBar.value,
+    //                    currentValue,
+    //                    Time.deltaTime * chipSpeed
+    //                );
+    //            }
+    //        }
+    //        else
+    //        {
+    //            hpChipBar.value = currentValue;
+    //            chipTimer = 0f;
+    //        }
+    //    }
+    //}
+
     public void UpdateUI()
     {
-        if (hpBar != null)
+        if (hpBar == null) return;
+
+        float newValue = (float)stats.currentHP / stats.maxHP;
+        hpBar.value = newValue;
+
+        if (hpChipBar != null)
         {
-            float newValue = (float)stats.currentHP / stats.maxHP;
-            hpBar.value = newValue;
-            chipTimer = 0f;
-            targetFill = newValue;
-            if (hpChipBar != null && hpChipBar.value <= 0)
+            if (hpChipBar.value <= 0)
+            {
                 hpChipBar.value = newValue;
+                return;
+            }
+            if (hpChipBar.value > newValue)
+            {
+                if (chipCoroutine != null)
+                    StopCoroutine(chipCoroutine);
+                chipCoroutine = StartCoroutine(AnimateChip());
+            }
+            else
+            {
+                if (chipCoroutine != null)
+                {
+                    StopCoroutine(chipCoroutine);
+                    chipCoroutine = null;
+                }
+                hpChipBar.value = newValue;
+            }
         }
     }
 
@@ -119,6 +132,25 @@ public class Character : MonoBehaviour
         float shieldValue = (float)stats.shield / stats.maxHP;
 
         shieldBar.value = Mathf.Clamp01(shieldValue);
+    }
+
+    private IEnumerator AnimateChip()
+    {
+        yield return new WaitForSeconds(chipDelay);
+
+        while (hpChipBar.value > hpBar.value)
+        {
+            hpChipBar.value = Mathf.MoveTowards(
+                hpChipBar.value,
+                hpBar.value,
+                Time.deltaTime * chipSpeed
+            );
+
+            yield return null;
+        }
+
+        hpChipBar.value = hpBar.value;
+        chipCoroutine = null;
     }
 
     // Clear all conditions and skills

@@ -38,7 +38,7 @@ public class RoomUI : MonoBehaviour
 
     void OnEnable()
     {
-        if (isStartRoom) { SetAsVisited(); return;  } 
+        //if (isStartRoom) { SetAsVisited(); return;  } 
 
         if(room.visited == true)
         {
@@ -55,25 +55,25 @@ public class RoomUI : MonoBehaviour
 
         if (PlayerMapController.Instance != null && room.incoming.Contains(PlayerMapController.Instance.currentRoom))
         {
-            PlayIdleHighlight();
+           // PlayIdleHighlight();
         }
     }
 
-    public void PlayIdleHighlight()
-    {
-        if (anim != null)
-        {
-            anim.Play("Idle");   
-        }
-    }
+    //public void PlayIdleHighlight()
+    //{
+    //    if (anim != null)
+    //    {
+    //        anim.Play("Idle");   
+    //    }
+    //}
 
-    public void RsesetUI()
-    {
-        if (anim != null)
-        {
-            anim.Play("Hide", 0, 0);   // Ẩn mọi thứ
-        }
-    }
+    //public void RsesetUI()
+    //{
+    //    if (anim != null)
+    //    {
+    //        anim.Play("Hide", 0, 0);   // Ẩn mọi thứ
+    //    }
+    //}
 
     void OnDisable()
     {
@@ -85,228 +85,228 @@ public class RoomUI : MonoBehaviour
 
     void Start()
     {
-        if (anim != null)
-        {
-            AnimatorStateInfo state = anim.GetCurrentAnimatorStateInfo(0);
-            anim.Play(state.fullPathHash, 0, Random.Range(0f, 1f));
-        }
-        MapUIManager.Instance.RegisterRoomUI(this);
+        //if (anim != null)
+        //{
+        //    AnimatorStateInfo state = anim.GetCurrentAnimatorStateInfo(0);
+        //    anim.Play(state.fullPathHash, 0, Random.Range(0f, 1f));
+        //}
+        //MapUIManager.Instance.RegisterRoomUI(this);
 
-        buttonEnterParent = GameObject.Find("ButtonPar");
+        //buttonEnterParent = GameObject.Find("ButtonPar");
 
-        hasMovedOnce = false;
+        //hasMovedOnce = false;
     }
 
-    public void SetAsVisited()
-    {
-        if (goButton != null)
-            goButton.gameObject.SetActive(false);
-        if (anim != null)
-            anim.SetBool("Stay", true);
-        selectSlider.value = 1f;
-    }
+    //public void SetAsVisited()
+    //{
+    //    if (goButton != null)
+    //        goButton.gameObject.SetActive(false);
+    //    if (anim != null)
+    //        anim.SetBool("Stay", true);
+    //    selectSlider.value = 1f;
+    //}
 
-    public void OnRoomClicked()
-    {
-        if (isStartRoom) return; 
+    //public void OnRoomClicked()
+    //{
+    //    if (isStartRoom) return; 
 
-        if (room.incoming.Contains(PlayerMapController.Instance.currentRoom))
-        {
-            MapUIManager.Instance.SelectRoom(this);
+    //    if (room.incoming.Contains(PlayerMapController.Instance.currentRoom))
+    //    {
+    //        MapUIManager.Instance.SelectRoom(this);
 
-            SoundManager.Instance.Play("PencilDraw", null, 1);
-            if (selectSlider != null)
-                StartCoroutine(FillSelectSlider());
+    //        SoundManager.Instance.Play("PencilDraw", null, 1);
+    //        if (selectSlider != null)
+    //            StartCoroutine(FillSelectSlider());
 
-            if (anim != null)
-                anim.SetBool("Click", true);
+    //        if (anim != null)
+    //            anim.SetBool("Click", true);
 
-            if (goButton != null)
-            {
-                goButton.gameObject.SetActive(true);
-                goButton.transform.SetParent(buttonEnterParent.transform, false);
-            }
+    //        if (goButton != null)
+    //        {
+    //            goButton.gameObject.SetActive(true);
+    //            goButton.transform.SetParent(buttonEnterParent.transform, false);
+    //        }
 
-            if (!hasMovedOnce)
-            {
-                hasMovedOnce = true;
-                StartCoroutine(MoveButtonParRight());
-            }
-        }
-    }
+    //        if (!hasMovedOnce)
+    //        {
+    //            hasMovedOnce = true;
+    //            StartCoroutine(MoveButtonParRight());
+    //        }
+    //    }
+    //}
 
-    private IEnumerator MoveButtonParRight()
-    {
-        if (buttonEnterParent == null) yield break;
+    //private IEnumerator MoveButtonParRight()
+    //{
+    //    if (buttonEnterParent == null) yield break;
 
-        RectTransform rect = buttonEnterParent.GetComponent<RectTransform>();
-        if (rect == null) yield break;
+    //    RectTransform rect = buttonEnterParent.GetComponent<RectTransform>();
+    //    if (rect == null) yield break;
 
-        Vector2 startPos = rect.anchoredPosition;
-        Vector2 targetPos = startPos + new Vector2(250f, 0f);
+    //    Vector2 startPos = rect.anchoredPosition;
+    //    Vector2 targetPos = startPos + new Vector2(250f, 0f);
 
-        float duration = 0.7f;
-        float elapsed = 0f;
-        SoundManager.Instance.Play("RockMove", null, 1);
+    //    float duration = 0.7f;
+    //    float elapsed = 0f;
+    //    SoundManager.Instance.Play("RockMove", null, 1);
 
-        while (elapsed < duration)
-        {
-            elapsed += Time.deltaTime;
-            float t = elapsed / duration;
-            rect.anchoredPosition = Vector2.Lerp(startPos, targetPos, t);
-            yield return null;
-        }
-        rect.anchoredPosition = targetPos;
-    }
+    //    while (elapsed < duration)
+    //    {
+    //        elapsed += Time.deltaTime;
+    //        float t = elapsed / duration;
+    //        rect.anchoredPosition = Vector2.Lerp(startPos, targetPos, t);
+    //        yield return null;
+    //    }
+    //    rect.anchoredPosition = targetPos;
+    //}
 
-    private IEnumerator MoveButtonParLeft()
-    {
-        if (buttonEnterParent == null) yield break;
+    //private IEnumerator MoveButtonParLeft()
+    //{
+    //    if (buttonEnterParent == null) yield break;
 
-        RectTransform rect = buttonEnterParent.GetComponent<RectTransform>();
-        if (rect == null) yield break;
+    //    RectTransform rect = buttonEnterParent.GetComponent<RectTransform>();
+    //    if (rect == null) yield break;
 
-        Vector2 startPos = rect.anchoredPosition;
-        Vector2 targetPos = startPos - new Vector2(250f, 0f);
+    //    Vector2 startPos = rect.anchoredPosition;
+    //    Vector2 targetPos = startPos - new Vector2(250f, 0f);
 
-        float duration = 0.7f;
-        float elapsed = 0f;
-        SoundManager.Instance.Play("RockMove", null, 1);
+    //    float duration = 0.7f;
+    //    float elapsed = 0f;
+    //    SoundManager.Instance.Play("RockMove", null, 1);
 
-        while (elapsed < duration)
-        {
-            elapsed += Time.deltaTime;
-            float t = elapsed / duration;
-            rect.anchoredPosition = Vector2.Lerp(startPos, targetPos, t);
-            yield return null;
-        }
-        rect.anchoredPosition = targetPos;
-    }
+    //    while (elapsed < duration)
+    //    {
+    //        elapsed += Time.deltaTime;
+    //        float t = elapsed / duration;
+    //        rect.anchoredPosition = Vector2.Lerp(startPos, targetPos, t);
+    //        yield return null;
+    //    }
+    //    rect.anchoredPosition = targetPos;
+    //}
 
-    private IEnumerator FillSelectSlider()
-    {
-        float duration = 0.5f;
-        float elapsed = 0f;
+    //private IEnumerator FillSelectSlider()
+    //{
+    //    float duration = 0.5f;
+    //    float elapsed = 0f;
 
-        float startValue = 0f;
-        float endValue = 1f;
+    //    float startValue = 0f;
+    //    float endValue = 1f;
 
-        selectSlider.value = startValue;
-        while (elapsed < duration)
-        {
-            elapsed += Time.deltaTime;
-            float t = elapsed / duration;
-            selectSlider.value = Mathf.Lerp(startValue, endValue, t);
-            yield return null;
-        }
+    //    selectSlider.value = startValue;
+    //    while (elapsed < duration)
+    //    {
+    //        elapsed += Time.deltaTime;
+    //        float t = elapsed / duration;
+    //        selectSlider.value = Mathf.Lerp(startValue, endValue, t);
+    //        yield return null;
+    //    }
 
-        selectSlider.value = endValue;
-    }
+    //    selectSlider.value = endValue;
+    //}
 
-    public void OnEnterRoomClicked()
-    {
-        if (isStartRoom) return;
-        StartCoroutine(MoveButtonParLeft());
-        UIManager.Instance.FillOverTime();
-        UIManager.Instance.OnTransitionFilled -= HandleTransitionComplete;
-        UIManager.Instance.OnTransitionFilled += HandleTransitionComplete;
-    }
+    //public void OnEnterRoomClicked()
+    //{
+    //    if (isStartRoom) return;
+    //    StartCoroutine(MoveButtonParLeft());
+    //    UIManager.Instance.FillOverTime();
+    //    UIManager.Instance.OnTransitionFilled -= HandleTransitionComplete;
+    //    UIManager.Instance.OnTransitionFilled += HandleTransitionComplete;
+    //}
 
-    private void HandleTransitionComplete()
-    {
-        PlayerMapController.Instance.MoveTo(room);
+    //private void HandleTransitionComplete()
+    //{
+    //    PlayerMapController.Instance.MoveTo(room);
 
-        if (room.type == RoomType.Battle)
-        {
-            room.visited = true;
-            SetAsVisited();
-            GameSystem.Instance.isBattlePhase = true;
-            UIManager.Instance.FadeOutOverTime();
+    //    if (room.type == RoomType.Battle)
+    //    {
+    //        room.visited = true;
+    //        SetAsVisited();
+    //        GameSystem.Instance.isBattlePhase = true;
+    //        UIManager.Instance.FadeOutOverTime();
 
-            bool sysExists = GameSystem.Instance != null;
-            bool isBattle = sysExists && GameSystem.Instance.isBattlePhase;
-            bool deckExists = Deck.instance != null;
-            bool needDraw = deckExists && !Deck.instance.hasDrawFisrtRow;
+    //        bool sysExists = GameSystem.Instance != null;
+    //        bool isBattle = sysExists && GameSystem.Instance.isBattlePhase;
+    //        bool deckExists = Deck.instance != null;
+    //        bool needDraw = deckExists && !Deck.instance.hasDrawFisrtRow;
 
-            if (sysExists && isBattle && needDraw)
-            {
-                Deck.instance.hasDrawFisrtRow = true;
-                StartCoroutine(Deck.instance.DrawHand(MidMatch_Manager.instance.handSize));
-            }
-            MapUIManager.Instance.ShowBattleCanvas();
-        }
-        else if (room.type == RoomType.Shop)
-        {
-            GameSystem.Instance.isBattlePhase = true;
-            room.visited = true;
-            SetAsVisited();
-            UIManager.Instance.FadeOutOverTime();
-            MapUIManager.Instance.OpenShop();
-        }
-        else if (room.type == RoomType.Event)
-        {
-            room.visited = true;
-            SetAsVisited();
-            UIManager.Instance.HandPlayerBottom.SetActive(false);
-            UIManager.Instance.ToolImage.SetActive(false);
-            UIManager.Instance.MapOBB.SetActive(false);
-            UIManager.Instance.MapStuffs.SetActive(false);
+    //        if (sysExists && isBattle && needDraw)
+    //        {
+    //            Deck.instance.hasDrawFisrtRow = true;
+    //            StartCoroutine(Deck.instance.DrawHand(MidMatch_Manager.instance.handSize));
+    //        }
+    //        MapUIManager.Instance.ShowBattleCanvas();
+    //    }
+    //    else if (room.type == RoomType.Shop)
+    //    {
+    //        GameSystem.Instance.isBattlePhase = true;
+    //        room.visited = true;
+    //        SetAsVisited();
+    //        UIManager.Instance.FadeOutOverTime();
+    //        MapUIManager.Instance.OpenShop();
+    //    }
+    //    else if (room.type == RoomType.Event)
+    //    {
+    //        room.visited = true;
+    //        SetAsVisited();
+    //        UIManager.Instance.HandPlayerBottom.SetActive(false);
+    //        UIManager.Instance.ToolImage.SetActive(false);
+    //        UIManager.Instance.MapOBB.SetActive(false);
+    //        UIManager.Instance.MapStuffs.SetActive(false);
 
-            UIManager.Instance.FadeOutOverTime();
-            MapUIManager.Instance.ShowEventUI();
-        }
-        else if (room.type == RoomType.Rest)
-        {
-            room.visited = true;
-            SetAsVisited();
+    //        UIManager.Instance.FadeOutOverTime();
+    //        MapUIManager.Instance.ShowEventUI();
+    //    }
+    //    else if (room.type == RoomType.Rest)
+    //    {
+    //        room.visited = true;
+    //        SetAsVisited();
 
-            GameSystem.Instance.isBattlePhase = false;
+    //        GameSystem.Instance.isBattlePhase = false;
 
-            UIManager.Instance.HandPlayerBottom.SetActive(false);
-            UIManager.Instance.MapStuffs.SetActive(false);
-            UIManager.Instance.ToolImage.SetActive(false);
-            UIManager.Instance.FadeOutOverTime();
-            MapUIManager.Instance.ShowRestUI();
-        }
+    //        UIManager.Instance.HandPlayerBottom.SetActive(false);
+    //        UIManager.Instance.MapStuffs.SetActive(false);
+    //        UIManager.Instance.ToolImage.SetActive(false);
+    //        UIManager.Instance.FadeOutOverTime();
+    //        MapUIManager.Instance.ShowRestUI();
+    //    }
 
-        UIManager.Instance.CrawlerFloor();
-        UIManager.Instance.OnTransitionFilled -= HandleTransitionComplete;
-    }
+    //    UIManager.Instance.CrawlerFloor();
+    //    UIManager.Instance.OnTransitionFilled -= HandleTransitionComplete;
+    //}
 
-    public void SetAsCurrent()
-    {
-        if (goButton != null)
-            goButton.gameObject.SetActive(false);
-    }
+    //public void SetAsCurrent()
+    //{
+    //    if (goButton != null)
+    //        goButton.gameObject.SetActive(false);
+    //}
 
-    public void ResetUI()
-    {
-        if (isStartRoom)
-        {
-            SetAsVisited();
-            return;
-        }
+    //public void ResetUI()
+    //{
+    //    if (isStartRoom)
+    //    {
+    //        SetAsVisited();
+    //        return;
+    //    }
 
-        if (room != null)
-        {
-            if (room == PlayerMapController.Instance.currentRoom)
-            {
-                SetAsCurrent();
-                return;
-            }
-            else if (room.visited)
-            {
-                SetAsVisited();
-                return;
-            }
-        }
+    //    if (room != null)
+    //    {
+    //        if (room == PlayerMapController.Instance.currentRoom)
+    //        {
+    //            SetAsCurrent();
+    //            return;
+    //        }
+    //        else if (room.visited)
+    //        {
+    //            SetAsVisited();
+    //            return;
+    //        }
+    //    }
 
-        if (anim != null)
-            anim.SetBool("Click", false);
+    //    if (anim != null)
+    //        anim.SetBool("Click", false);
 
-        selectSlider.value = 0f;
+    //    selectSlider.value = 0f;
 
-        if (goButton != null)
-            goButton.gameObject.SetActive(false);
-    }
+    //    if (goButton != null)
+    //        goButton.gameObject.SetActive(false);
+    //}
 }

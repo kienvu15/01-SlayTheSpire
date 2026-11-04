@@ -18,21 +18,21 @@ public class OutsideClickCloser : MonoBehaviour, IPointerClickHandler
         // Tìm tất cả CardDisplay trong scene
         CardDisplay[] cards = FindObjectsByType<CardDisplay>(FindObjectsSortMode.None);
 
-        foreach (var card in cards)
-        {
-            if (card.descriptionPanel == null) continue;
-            if (!card.descriptionPanel.activeSelf) continue;
+        //foreach (var card in cards)
+        //{
+        //    if (card.descriptionPanel == null) continue;
+        //    if (!card.descriptionPanel.activeSelf) continue;
 
-            // Nếu click vào chính panel hoặc card → bỏ qua
-            if (clickedObj != null)
-            {
-                if (clickedObj.transform.IsChildOf(card.descriptionPanel.transform)) continue;
-                if (clickedObj.transform.IsChildOf(card.transform)) continue;
-            }
+        //    // Nếu click vào chính panel hoặc card → bỏ qua
+        //    if (clickedObj != null)
+        //    {
+        //        if (clickedObj.transform.IsChildOf(card.descriptionPanel.transform)) continue;
+        //        if (clickedObj.transform.IsChildOf(card.transform)) continue;
+        //    }
 
-            // Ngược lại → click ngoài → ẩn
-            card.HideDescription();
-        }
+        //    // Ngược lại → click ngoài → ẩn
+        //    card.HideDescription();
+        //}
 
         ConditionIconUI[] condIcons = FindObjectsByType<ConditionIconUI>(FindObjectsSortMode.None);
         foreach (var condIcon in condIcons)

@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public enum CardMode
 {
@@ -10,7 +11,7 @@ public enum CardMode
     ViewOnly    
 }
 
-public class CardDisplay : MonoBehaviour, IHasDescriptionPanel
+public class CardDisplay : MonoBehaviour
 {
     [Header("Mode")]
     public CardMode currentMode = CardMode.ViewOnly;
@@ -18,20 +19,11 @@ public class CardDisplay : MonoBehaviour, IHasDescriptionPanel
     [Header("UI References")]
     public TMP_Text card_Name;
     public GameObject mana_Container;
-    public TMP_Text mana_ConsumeText;
-
-    //public GameObject statsBG;
-    //public GameObject statsContainer;
-    //public TMP_Text statsText;
-
-    //[Header("Icon Database")]
-    //public CardTypeIconDatabase typeIconDatabase;
-    //public Image iconImage;
-    //public Image artworkImage;
-
-    [Header("Description Panel")]
-    public GameObject descriptionPanel;   
+    public TMP_Text mana_ConsumeText;  
     public TMP_Text descriptionText;
+
+    [Header("Button")]
+    public Button card_Button;
 
     [Header("Shop UI")]
     public GameObject goldContainer;
@@ -55,10 +47,10 @@ public class CardDisplay : MonoBehaviour, IHasDescriptionPanel
     private Canvas canvas;
     private Vector3 originalScale;
 
-    void OnEnable() => DescriptionPanelManager.Instance.Register(this);
-    void OnDisable() => DescriptionPanelManager.Instance.Unregister(this);
+    //void OnEnable() => DescriptionPanelManager.Instance.Register(this);
+    //void OnDisable() => DescriptionPanelManager.Instance.Unregister(this);
 
-    public GameObject GetDescriptionPanel() => descriptionPanel;
+    //public GameObject GetDescriptionPanel() => descriptionPanel;
     public GameObject GetRootObject() => gameObject;
     public void vHideDescription() => HideDescription();
 

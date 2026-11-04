@@ -16,7 +16,7 @@ public class MidMatch_Manager : MonoBehaviour
     public EnemySystem enemySystem;
     public Player player;
 
-    [HideInInspector]   public int handSize;
+    [HideInInspector] public int handSize;
 
     [Header("Animation/Timing")]
     public float waitAfterDiscardAnimations = 0.5f;
@@ -76,11 +76,11 @@ public class MidMatch_Manager : MonoBehaviour
             foreach (var enemy in enemySystem.enemies)
                 enemy.DecreasePlayerConditions();
 
-            // 🟢 giảm luôn condition mà Enemy tự cast lên Enemy
+            // giảm luôn condition mà Enemy tự cast lên Enemy
             foreach (var enemy in enemySystem.enemies)
                 enemy.DecreaseEnemySelfConditions();
 
-            // 🟢 giảm luôn condition mà Player tự cast lên Player
+            // giảm luôn condition mà Player tự cast lên Player
             player.DecreasePlayerSelfConditions();
         }
 
@@ -91,6 +91,7 @@ public class MidMatch_Manager : MonoBehaviour
         }
 
         // --- Draw hand ---
+        yield return new WaitForSeconds(0.5f);
         yield return StartCoroutine(TryDrawNextHand());
 
         deck.UpdateUI();

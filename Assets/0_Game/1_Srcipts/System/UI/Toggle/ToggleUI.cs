@@ -10,7 +10,7 @@ public class ToggleUI : MonoBehaviour
     // public PanCamera panCamera;
 
     [Header("Card Deck (Optional)")]
-    // public CardCollectionPanel cardCollectionPanel; // kéo vào nếu panel này là deck
+    // public CardCollection_OnRun cardCollectionPanel; // kéo vào nếu panel này là deck
     public bool openInRemoveMode = false;           // gắn từ Inspector hoặc set bằng code trước khi PopUp
 
     public void PopUp()
@@ -21,7 +21,7 @@ public class ToggleUI : MonoBehaviour
         //    bool newState = !PPobject.activeSelf;
         //    PPobject.SetActive(newState);
 
-        //    // Nếu có CardCollectionPanel thì set mode trước khi mở
+        //    // Nếu có CardCollection_OnRun thì set mode trước khi mở
         //    if (newState && cardCollectionPanel != null)
         //    {
         //        cardCollectionPanel.Open(openInRemoveMode);

@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CardCollectionPanel : MonoBehaviour
+public class CardCollection_OnRun : MonoBehaviour
 {
     [Header("References")]
-    public CardHolder cardHolder;          
+    //public CardHolder cardHolder;
+    public Deck deck;
     public GameObject cardDisplayPrefab;   
     public Transform contentParent;       
 
@@ -18,7 +19,6 @@ public class CardCollectionPanel : MonoBehaviour
     private CardDisplay selectedCard;
     private bool isRemoveMode = false;
 
-    public Deck deck;
 
     private void OnEnable()
     {
@@ -28,34 +28,46 @@ public class CardCollectionPanel : MonoBehaviour
     public void RefreshPanel()
     {
         foreach (var obj in spawnedCards)
-            Destroy(obj);
+        {
+            if (obj != null)
+                Destroy(obj);
+        }
+
         spawnedCards.Clear();
 
-        //if (cardHolder == null || cardHolder.allCardData.Count == 0)
-        //    return;
+        if (deck == null) return;
 
-        //foreach (CardData data in cardHolder.allCardData)
-        //{
-        //    GameObject newCard = Instantiate(cardDisplayPrefab, contentParent);
-        //    CardDisplay display = newCard.GetComponent<CardDisplay>();
-        //    display.useScaleAnimation = true;
-        //    if (display != null)
-        //    {
-        //        display.LoadCard(data);
+        List<CardData> allCards = deck.GetAllCards();
 
-        //        // Gán callback chọn card
-        //        Button btn = newCard.GetComponentInChildren<Button>();
-        //        if (btn != null)
-        //        {
-        //            btn.onClick.AddListener(() =>
-        //            {
-        //                selectedCard = display;
-        //            });
-        //        }
-        //    }
+        foreach (CardData data in allCards)
+        {
+            GameObject newCard = Instantiate(cardDisplayPrefab, contentParent);
+            CardDisplay display = newCard.GetComponent<CardDisplay>();
 
-        //    spawnedCards.Add(newCard);
-        //}
+            Canvas canvas = newCard.GetComponent<Canvas>();
+            canvas.overrideSorting = false;
+
+            if (display == null) continue;
+            display.useScaleAnimation = true;
+            display.LoadCard(data);
+            Button btn = newCard.GetComponentInChildren<Button>();
+            if (btn != null)
+            {
+                CardDisplay capturedDisplay = display;
+                btn.onClick.AddListener(() =>
+                {
+                    selectedCard = capturedDisplay;
+                });
+            }
+            spawnedCards.Add(newCard);
+        }
+    }
+
+    public void OnCard_Clicked(CardDisplay pickedCard)
+    {
+        string Name = pickedCard.cardData.cardName;
+        string Description = pickedCard.cardData.description;
+        string manaCost = pickedCard.cardData.manaCost.ToString();
     }
 
     // Mở panel theo mode
@@ -74,12 +86,11 @@ public class CardCollectionPanel : MonoBehaviour
     // Gọi khi bấm nút Remove
     public void OnClickRemove()
     {
-        if (selectedCard != null && cardHolder != null)
-        {
-            ConfirmPickReward();
-        }
+        //if (selectedCard != null && cardHolder != null)
+        //{
+        //    ConfirmPickReward();
+        //}
     }
-
 
     private void ConfirmPickReward()
     {
@@ -108,6 +119,7 @@ public class CardCollectionPanel : MonoBehaviour
             selectedCard.HideDescription();
         }
     }
+
     public IEnumerator OnCardSelected(CardDisplay pickedCard)
     {
         selectedCard.goldContainer.SetActive(false);
@@ -121,16 +133,16 @@ public class CardCollectionPanel : MonoBehaviour
            });
         yield return new WaitForSeconds(0.3f);
 
-        cardHolder.RemoveCard(selectedCard.cardData);
+        //cardHolder.RemoveCard(selectedCard.cardData);
         deck.RemoveFromDeck(selectedCard.cardData);
         CardDisplay di = selectedCard.GetComponent<CardDisplay>();
-        if (di.descriptionPanel != null)
-        {
-            if (di.descriptionPanel.activeSelf)
-            {
-                Destroy(di.descriptionPanel);
-            }
-        }
+        //if (di.descriptionPanel != null)
+        //{
+        //    if (di.descriptionPanel.activeSelf)
+        //    {
+        //        Destroy(di.descriptionPanel);
+        //    }
+        //}
         RefreshPanel();
     }
 

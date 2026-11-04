@@ -8,16 +8,17 @@ public class MapUIManager : MonoBehaviour
     public static MapUIManager Instance;
     private List<RoomUI> roomUIs = new List<RoomUI>();
 
-    private RoomUI selectedRoom;
+    // private reference
+    private Room selectedRoom;
+    public bool FirstTimeSelectedRoom = false;
 
     [Header("Battle UI")]
     public BattleCanvasDatabase battleDatabase;
     public Transform roomCanvasHolder;
     public GameObject handDeckCanvas;
-
+     
     [Header("Shop UI")]
     public ShopRoomDatabase shopDatabase;
-
 
     [Header("Shop UI")]
     public GameObject shopUI;
@@ -51,10 +52,7 @@ public class MapUIManager : MonoBehaviour
         Instance = this;
     }
 
-    private void Start()
-    {
-    }
-
+    #region DROP
     private IEnumerator RegisterEnemiesNextFrame(GameObject go)
     {
         yield return null;
@@ -182,7 +180,8 @@ public class MapUIManager : MonoBehaviour
     {
         if (!roomUIs.Contains(ui)) roomUIs.Add(ui);
     }
-
+    #endregion
+    #region Drop 2
     public void UpdateRoomHighlights()
     {
         Room current = PlayerMapController.Instance.currentRoom;
@@ -193,17 +192,17 @@ public class MapUIManager : MonoBehaviour
 
             if (isNextRoom)
             {
-                ui.PlayIdleHighlight();
+                //ui.PlayIdleHighlight();
             }
             else
             {
-                ui.ResetUI();
+                //ui.ResetUI();
             }
         }
 
         RoomUI currentUI = current.GetComponentInChildren<RoomUI>();
-        if (currentUI != null)
-           currentUI.SetAsCurrent();
+        //if (currentUI != null)
+          // currentUI.SetAsCurrent();
     }
 
     public IEnumerator UpdateHighlightsNextFrame()
@@ -212,15 +211,7 @@ public class MapUIManager : MonoBehaviour
         MapUIManager.Instance.UpdateRoomHighlights();
     }
 
-    public void SelectRoom(RoomUI ui)
-    {
-        foreach (var r in roomUIs)
-        {
-            if (r != ui) r.ResetUI();
-        }
 
-        selectedRoom = ui;
-    }
 
     public void MapInBattleScene()
     {
@@ -235,8 +226,28 @@ public class MapUIManager : MonoBehaviour
     {
         for (int i = 0; i < roomUIs.Count; i++)
         {
-            roomUIs[i].ResetUI();
+           // roomUIs[i].ResetUI();
             roomUIs[i].onRoomClick.gameObject.SetActive(true);
+        }
+    }
+    #endregion
+
+    public void SelectRoom(Room room)
+    {
+        if (selectedRoom == room) return;
+
+        if (selectedRoom != null)
+            selectedRoom.SetSelected(false);
+
+        selectedRoom = room;
+
+        if (selectedRoom != null)
+            selectedRoom.SetSelected(true);
+
+        if(FirstTimeSelectedRoom == false)
+        {
+            FirstTimeSelectedRoom = true;
+            UIManager.Instance.Enter_Room_Button_Helper(true);
         }
     }
 
@@ -247,6 +258,6 @@ public class MapUIManager : MonoBehaviour
             selectedRoom.ResetUI();
             selectedRoom = null;
         }
+        FirstTimeSelectedRoom = false;
     }
-
 }

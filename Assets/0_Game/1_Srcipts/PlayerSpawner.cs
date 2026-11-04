@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerSpawner : MonoBehaviour
 {
-    [SerializeField] CardCollectionPanel cardCollectionPanel;
+    [SerializeField] CardCollection_OnRun cardCollectionPanel;
     [SerializeField] MapUIManager mapUIManager;
     [SerializeField] GameStage_Manager gameFlowManager;
 

@@ -6,12 +6,14 @@ using UnityEngine;
 using NaughtyAttributes;
 public enum DrawAnimationType
 {
-    Straight,   // Đường thẳng
-    Arc         // Đường cong
+    Straight,   
+    Arc       
 }
 
 public class Deck : MonoBehaviour
 {
+    public static Deck instance;
+
     [Header("References")]
     public CardHolder cardHolder;
     public Discard discard;
@@ -39,9 +41,8 @@ public class Deck : MonoBehaviour
     public float peakScale = 1.2f;      
 
     private List<CardData> deck = new List<CardData>();
+    private List<CardData> allCards = new List<CardData>();
     private List<GameObject> currentHand = new List<GameObject>();
-
-    public static Deck instance;
 
     [Header("NewSystem")]
     public HandLayout handLayout;
@@ -58,31 +59,42 @@ public class Deck : MonoBehaviour
         UpdateAllCardCount();
     }
 
-    public void DrawFirstHand(int count)
+    public List<CardData> GetAllCards()
     {
-        hasDrawFisrtRow = true;
-        StartCoroutine(DrawHand(count));
+        return new List<CardData>(allCards);
     }
 
-    public void CacheDeckCountText()
-    {
-        GameObject[] DeckCount = GameObject.FindGameObjectsWithTag("DeckCount");
-        List<TextMeshProUGUI> foundTexts = new List<TextMeshProUGUI>();
+    //public void DrawFirstHand(int count)
+    //{
+    //    hasDrawFisrtRow = true;
+    //    StartCoroutine(DrawHand(count));
+    //}
 
-        foreach (var go in DeckCount)
-        {
-            var tmp = go.GetComponent<TextMeshProUGUI>();
-            if (tmp != null) foundTexts.Add(tmp);
-        }
+    //public void CacheDeckCountText()
+    //{
+    //    GameObject[] DeckCount = GameObject.FindGameObjectsWithTag("DeckCount");
+    //    List<TextMeshProUGUI> foundTexts = new List<TextMeshProUGUI>();
 
-        deckCountText = foundTexts.ToArray();
-        UpdateUI(); 
-    }
+    //    foreach (var go in DeckCount)
+    //    {
+    //        var tmp = go.GetComponent<TextMeshProUGUI>();
+    //        if (tmp != null) foundTexts.Add(tmp);
+    //    }
 
-    public void CacheDeckDiscard()
-    {
-        discardCountText = GetComponent<TextMeshProUGUI>();
-    }
+    //    deckCountText = foundTexts.ToArray();
+    //    UpdateUI(); 
+    //}
+
+    //public void CacheDeckDiscard()
+    //{
+    //    discardCountText = GetComponent<TextMeshProUGUI>();
+    //}
+
+    //public IEnumerator DelayAndDraw()
+    //{
+    //    yield return null;
+    //    yield return StartCoroutine(DrawHand(match.handSize));
+    //}
 
     public void RemoveCardFromHand(GameObject cardGO, MidMatch_Manager matchRef)
     {
@@ -95,28 +107,20 @@ public class Deck : MonoBehaviour
         UpdateUI();
     }
 
-    public IEnumerator DelayAndDraw()
-    {
-        yield return null;
-        yield return StartCoroutine(DrawHand(match.handSize));
-    }
-
     public void BuildDeck(List<CardData> startingCards)
     {
         deck.Clear();
+        allCards.Clear();
 
         if (startingCards == null || startingCards.Count == 0)
         {
-            Debug.LogWarning("Starting Deck is empty!");
+            //Debug.LogWarning("Starting Deck is empty!");
             UpdateUI();
             return;
         }
-
-        // Copy dữ liệu từ Character_Deck_Setup
         deck.AddRange(startingCards);
-
+        allCards.AddRange(startingCards);
         Shuffle(deck);
-
         UpdateUI();
         UpdateAllCardCount();
     }
@@ -159,6 +163,11 @@ public class Deck : MonoBehaviour
         CardDisplay display = cardGO.GetComponent<CardDisplay>();
         if (display != null)
             display.LoadCard(drawnCard);
+
+        display.card_Button.onClick.AddListener(() =>
+        {
+            display.OnCardClick();
+        });
 
         RectTransform rect = cardGO.GetComponent<RectTransform>();
         if (rect == null)
@@ -252,47 +261,6 @@ public class Deck : MonoBehaviour
             draggable.enabled = true;
     }
 
-
-    //private IEnumerator DrawOneCard(int handIndex)
-    //{
-    //    if (deck.Count == 0) yield break;
-
-    //    CardData drawnCard = deck[0];
-    //    deck.RemoveAt(0);
-
-    //    Transform targetSlot = handParent.GetChild(handIndex);
-
-    //    GameObject cardGO = Instantiate(cardPrefab, pileDeckTransform.position, Quaternion.identity, pileDeckTransform.parent);
-    //    currentHand.Add(cardGO);
-
-    //    cardGO.GetComponent<CardDisplay>().LoadCard(drawnCard);
-
-    //    RectTransform rect = cardGO.GetComponent<RectTransform>();
-
-    //    rect.position = pileDeckTransform.position;  
-    //    rect.localScale = Vector3.zero;
-    //    rect.localRotation = Quaternion.Euler(0, 90, 0);
-
-    //    Vector3 worldTargetPos = targetSlot.position;
-
-    //    Sequence seq = DOTween.Sequence();
-    //    seq.Append(rect.DOMove(worldTargetPos, drawDuration).SetEase(Ease.OutQuad));    
-    //    seq.Join(rect.DOScale(Vector3.one, drawDuration).SetEase(Ease.OutBack));       
-    //    seq.Join(rect.DORotate(Vector3.zero, drawDuration, RotateMode.Fast));        
-
-    //    seq.OnComplete(() =>
-    //    {
-    //        rect.SetParent(targetSlot, false);
-    //        rect.anchoredPosition = Vector2.zero;
-    //        rect.localScale = Vector3.one;
-    //        rect.localRotation = Quaternion.identity;
-    //        cardGO.GetComponent<DraggableCard>().enabled = true;
-    //    });
-
-    //    yield return new WaitForSeconds(drawDelay);
-    //}
-
-
     private int GetFirstEmptySlot()
     {
         for (int i = 0; i < handParent.childCount; i++)
@@ -303,7 +271,6 @@ public class Deck : MonoBehaviour
         return -1;
     }
 
-    // Xóa và đồng thời Destroy GameObjects in hand (dùng khi cần xóa ngay)
     public void DestroyAndClearHand()
     {
         foreach (GameObject card in currentHand)
@@ -315,21 +282,12 @@ public class Deck : MonoBehaviour
 
     public IEnumerator AnimateClearHand()
     {
-        // 1. Clean list trước (xoá null nếu có)
         currentHand.RemoveAll(card => card == null);
-
-        // 2. Animate bay về discard
         yield return StartCoroutine(discard.AnimateDiscardHand(currentHand));
-
-        // 3. Khi animation xong, clear list
         currentHand.Clear();
-
-        // 4. Cập nhật UI
         UpdateUI();
     }
 
-
-    // CHỈ xóa tham chiếu trong deck (dùng khi objects đã bị destroy bởi animation khác)
     public void ClearHandReferencesOnly()
     {
         currentHand.Clear();
@@ -337,13 +295,7 @@ public class Deck : MonoBehaviour
 
     public List<GameObject> GetCurrentHandObjects()
     {
-        // Bước 1: Dọn dẹp chính cái list gốc (xóa hết những thằng đã chết/null)
-        // Lệnh này rất mạnh: Nó duyệt cả list và xóa sạch phần tử null
         currentHand.RemoveAll(card => card == null);
-
-        // Bước 2: Trả về một bản COPY của danh sách đã sạch
-        // Việc tạo "new List" giúp đảm bảo nếu bên ngoài có sửa list này 
-        // thì cũng không làm hỏng list gốc trong Deck.
         return new List<GameObject>(currentHand);
     }
 
@@ -356,6 +308,7 @@ public class Deck : MonoBehaviour
     public void ReceiveCards(List<CardData> cards)
     {
         if (cards == null || cards.Count == 0) return;
+        allCards.AddRange(cards);
         deck.AddRange(cards);
         UpdateUI();
     }
@@ -381,6 +334,19 @@ public class Deck : MonoBehaviour
     {
         if (deck.Contains(data))
             deck.Remove(data);
+        UpdateUI();
+    }
+
+    public void RemoveCardFromCollection(CardData data)
+    {
+        if (data == null) return;
+
+        // Xóa khỏi danh sách toàn bộ bài
+        allCards.Remove(data);
+
+        // Xóa khỏi Draw Pile nếu còn tồn tại
+        deck.Remove(data);
+
         UpdateUI();
     }
 
