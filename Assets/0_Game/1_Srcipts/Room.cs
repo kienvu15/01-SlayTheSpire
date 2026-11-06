@@ -70,9 +70,9 @@ public class Room : MonoBehaviour
     {
         Debug.Log($"Room clicked: {type} at {gridPos}");
         if (type == RoomType.Start) return;
-
         Room currentRoom = PlayerMapController.Instance.currentRoom;
-        if (!incoming.Contains(currentRoom)) return;
+        if (currentRoom == null || !incoming.Contains(currentRoom))
+            return;
         MapUIManager.Instance.SelectRoom(this);
 
         //if (incoming.Contains(PlayerMapController.Instance.currentRoom))

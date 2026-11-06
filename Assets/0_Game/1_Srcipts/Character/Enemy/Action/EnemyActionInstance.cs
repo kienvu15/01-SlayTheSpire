@@ -4,20 +4,20 @@
 public class EnemyActionInstance
 {
     public EnemyAction baseAction;
-    public int baseCooldown;       // cooldown gốc sau khi override
+    public int baseCooldown;     
     public int currentCooldown;
 
     public EnemyActionInstance(EnemyAction action, int? overrideCooldown = null)
     {
         baseAction = action;
         baseCooldown = overrideCooldown.HasValue ? overrideCooldown.Value : action.cooldown;
-        currentCooldown = 0; // bắt đầu sẵn sàng
+        currentCooldown = 0; 
     }
 
     public void Apply(EnemyView owner, Character target, List<int> overrides)
     {
         baseAction.Apply(owner, target, overrides);
-        currentCooldown = baseCooldown; // dùng cooldown đã override
+        currentCooldown = baseCooldown; 
     }
 
     public Type Type => baseAction.type;

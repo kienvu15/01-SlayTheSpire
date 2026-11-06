@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class Character_Info_UI : MonoBehaviour
 {
+    public static Character_Info_UI Instance;
+
     [Header("References")]
     public Image characterAvatarIcon_Image;
     public TextMeshProUGUI character_Name;
@@ -11,7 +13,7 @@ public class Character_Info_UI : MonoBehaviour
     public TextMeshProUGUI defText;
     public TextMeshProUGUI spdText;
     
-    [HideInInspector] public Player player; 
+    public Player player; 
 
     public void Init_InfoUI(CharacterData playerData)
     {

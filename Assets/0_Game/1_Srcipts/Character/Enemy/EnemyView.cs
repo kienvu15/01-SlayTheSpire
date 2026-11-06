@@ -51,11 +51,6 @@ public class EnemyView : Enemy
         ShowNextIntent();
     }
 
-    //protected override void Update()
-    //{
-    //  //  base.Update();
-    //}
-
     private IEnumerator Die()
     {
         float duration = 0.8f;

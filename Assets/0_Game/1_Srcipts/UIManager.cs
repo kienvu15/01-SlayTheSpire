@@ -9,7 +9,8 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
-    [Header("LeftHand_Content")]
+    [Header("PlayerHand_Content")]
+    [SerializeField] private Button bag_Button;
     [SerializeField] private Button endTurn_Button;
     [SerializeField] private GameObject drawPile_Button;
     [SerializeField] private GameObject discardPile_Button;
@@ -17,16 +18,21 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button backMap_Button;
 
     [Header("CardInfo_Help")]
-    [SerializeField] private GameObject card_Name;
+    [SerializeField] private GameObject card_NameT;
     [SerializeField] private GameObject manaObject;
-    [SerializeField] private GameObject manaText;
+    [SerializeField] private GameObject manaTextT;
     [SerializeField] private GameObject default_Disciption;
     [SerializeField] private GameObject upgrade_Disciption;
 
+    [Header("Bag Content Panels")]
+    public GameObject[] contentPanels;
+    [SerializeField] private Button Inventory_Button;
+    [SerializeField] private Button Map_Button;
+    [SerializeField] private Button Deck_Button;
+
     [Header("Context Visual")]
     [SerializeField] private GameObject Map_Visual_GameObject;
-
-    //public GameObject Map;
+    [SerializeField] private GameObject Bag_Content_Object;
 
     [Header("UI Panels")]
     public GameObject battleHolder;
@@ -123,6 +129,11 @@ public class UIManager : MonoBehaviour
         //originalManaHolderPos = manaHolder.anchoredPosition;
 
         backMap_Button.onClick.AddListener(BackButton);
+        bag_Button.onClick.AddListener(BagButton_CallBack);
+
+        Inventory_Button.onClick.AddListener(() => ShowContent(0));
+        Map_Button.onClick.AddListener(() => ShowContent(1));
+        Deck_Button.onClick.AddListener(() => ShowContent(2));
     }
 
     #region LeftHand_Content
@@ -154,8 +165,68 @@ public class UIManager : MonoBehaviour
     #endregion
 
     #region CardInfo_Help
-
+    public void CardInfo_Help(bool stage)
+    {
+        card_NameT.SetActive(stage);
+        manaObject.SetActive(stage);
+        manaTextT.SetActive(stage);
+        default_Disciption.SetActive(stage);
+        upgrade_Disciption.SetActive(stage);
+    }
+    public void Init_CardInfor(CardDisplay cardDisplay)
+    {
+        card_NameT.GetComponent<TextMeshProUGUI>().text = cardDisplay.card_Name.text;
+        manaTextT.GetComponent<TextMeshProUGUI>().text = cardDisplay.mana_ConsumeText.text;
+        default_Disciption.GetComponent<TextMeshProUGUI>().text = "Default: " + cardDisplay.descriptionText.text;
+    }
     #endregion
+    #region RelicInfo_Help
+    public void RelicInfo_Help(bool stage)
+    {
+        card_NameT.SetActive(stage);
+        //manaObject.SetActive(stage);
+        //manaTextT.SetActive(stage);
+        default_Disciption.SetActive(stage);
+        upgrade_Disciption.SetActive(stage);
+    }
+    public void Init_RelicInfor(RelicInstance instance)
+    {
+        if (instance == null || instance.relicData == null) return;
+
+        Relic relic = instance.relicData;
+        card_NameT.GetComponent<TextMeshProUGUI>().text = relic.relicName;
+        default_Disciption.GetComponent<TextMeshProUGUI>().text =
+            relic.defaultDescription;
+        upgrade_Disciption.GetComponent<TextMeshProUGUI>().text =
+            relic.upgradeDescription;
+    }
+    #endregion
+    #region Bag
+    public void BagButton_CallBack()
+    {
+        Bag_Content_Object.SetActive(!Bag_Content_Object.activeSelf);
+        //LeftHand_Content(false, false);
+    }
+    public void ShowContent(int index)
+    {
+        for (int i = 0; i < contentPanels.Length; i++)
+        {
+            contentPanels[i].SetActive(i == index);
+        }
+
+        if(index == 1)
+        {
+            LeftHand_Content(false, true);
+        }
+    }
+    #endregion
+
+
+
+
+
+
+
 
     #region MapPanel
     //public void BackButton()

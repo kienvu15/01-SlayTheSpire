@@ -8,9 +8,9 @@ public class MapUIManager : MonoBehaviour
     public static MapUIManager Instance;
     private List<RoomUI> roomUIs = new List<RoomUI>();
 
-    // private reference
+    [Header("Room Selection")]
     private Room selectedRoom;
-    public bool FirstTimeSelectedRoom = false;
+    public Button goButton;
 
     [Header("Battle UI")]
     public BattleCanvasDatabase battleDatabase;
@@ -34,6 +34,7 @@ public class MapUIManager : MonoBehaviour
     public List<GameObject> hideOnEvent;
 
     [Header("References")]
+    public bool FirstTimeSelectedRoom = false;
     public GameObject enemyFM;
     public BattleManager battleManager;
     public Deck deck;
@@ -53,66 +54,6 @@ public class MapUIManager : MonoBehaviour
     }
 
     #region DROP
-    private IEnumerator RegisterEnemiesNextFrame(GameObject go)
-    {
-        yield return null;
-
-        if (enemyFM != null)
-        {
-            EnemyView[] enemyViews = enemyFM.GetComponentsInChildren<EnemyView>(true);
-            Debug.Log($"Sau 1 frame: Tìm thấy {enemyViews.Length} EnemyView trong EnemyFM");
-            BattleManager.Instance.enemies.Clear();
-            BattleManager.Instance.enemies.AddRange(enemyViews);
-        }
-    }
-
-    public void ShowBattleCanvas()
-    {
-        if (battleDatabase == null) return;
-
-        var prefab = battleDatabase.GetRandomBattleCanvas();
-        if (prefab == null) return;
-
-        // battleRoomCount++;
-        Debug.Log($"Player đã vào battle room {battleRoomCount} lần.");
-
-        var battleRoom = Instantiate(prefab, roomCanvasHolder);
-        handDeckCanvas.SetActive(true);
-
-        battleRoom.transform.localPosition = Vector3.zero;
-
-        StartCoroutine(RegisterEnemiesNextFrame(battleRoom));
-
-        CanvasGroup PlaySelfCast = playerSelfCast.GetComponent<CanvasGroup>();
-        if (PlaySelfCast != null)
-        {
-            PlaySelfCast.blocksRaycasts = false; 
-        }
-
-        match.enemySystem = battleRoom.GetComponentInChildren<EnemySystem>();
-
-        GameStage_Manager.Instance.player = player;
-        
-        manaSystem.UpdateManaUI();
-
-        player.canvas.SetActive(true);
-        player.animator.gameObject.SetActive(true);
-        player.StartCoroutine(player.EnableCanvasAfterAnimation("Enter"));
-        PlaySelfCast.blocksRaycasts = true;
-        EndButton.SetActive(true);
-        
-        UIManager.Instance.HandPlayerBottom.SetActive(true);
-        UIManager.Instance.PlaySelftCast.SetActive(true);
-
-        GameSystem.Instance.BattleUICanvas = battleRoom;
-        GameStage_Manager.Instance.isOnBattle = true;
-
-        foreach (var obj in hideOnBattle)
-        {
-            if (obj != null) obj.SetActive(false);
-        }
-    }
-
     public void OpenShop()
     {
         if (shopDatabase == null) return;
@@ -211,8 +152,6 @@ public class MapUIManager : MonoBehaviour
         MapUIManager.Instance.UpdateRoomHighlights();
     }
 
-
-
     public void MapInBattleScene()
     {
         for (int i = 0;  i < roomUIs.Count; i++)
@@ -248,6 +187,87 @@ public class MapUIManager : MonoBehaviour
         {
             FirstTimeSelectedRoom = true;
             UIManager.Instance.Enter_Room_Button_Helper(true);
+
+            goButton.onClick.RemoveListener(EnterSelectedRoom);
+            goButton.onClick.AddListener(EnterSelectedRoom);
+        }
+    }
+
+    public void EnterSelectedRoom()
+    {
+        if (selectedRoom == null) return;
+
+        Room targetRoom = selectedRoom;
+
+        //goButton.gameObject.SetActive(false);
+        selectedRoom = null;
+
+        PlayerMapController.Instance.MoveTo(targetRoom);
+        if (targetRoom.type == RoomType.Battle)
+        {
+            targetRoom.visited = true;
+            GameSystem.Instance.isBattlePhase = true;
+            //UIManager.Instance.FadeOutOverTime();
+
+            //bool sysExists = GameSystem.Instance != null;
+            //bool isBattle = sysExists && GameSystem.Instance.isBattlePhase;
+            //bool deckExists = Deck.instance != null;
+            //bool needDraw = deckExists && !Deck.instance.hasDrawFisrtRow;
+
+            //if (sysExists && isBattle && needDraw)
+            //{
+                Deck.instance.hasDrawFisrtRow = true;
+                StartCoroutine(Deck.instance.DrawHand(MidMatch_Manager.instance.handSize));
+            //}
+            MapUIManager.Instance.ShowBattleCanvas();
+        }
+    }
+
+    public void ShowBattleCanvas()
+    {
+        if (battleDatabase == null) return;
+        var prefab = battleDatabase.GetRandomBattleCanvas();
+        if (prefab == null) return;
+        // battleRoomCount++;
+        Debug.Log($"Player đã vào battle room {battleRoomCount} lần.");
+        var battleRoom = Instantiate(prefab, roomCanvasHolder);
+        //handDeckCanvas.SetActive(true);
+        battleRoom.transform.localPosition = Vector3.zero;
+        StartCoroutine(RegisterEnemiesNextFrame(battleRoom));
+        //CanvasGroup PlaySelfCast = playerSelfCast.GetComponent<CanvasGroup>();
+        //if (PlaySelfCast != null)
+        //{
+          //  PlaySelfCast.blocksRaycasts = false;
+        //}
+        match.enemySystem = battleRoom.GetComponentInChildren<EnemySystem>();
+        GameStage_Manager.Instance.player = player;
+        manaSystem.UpdateManaUI();
+        player.canvas.SetActive(true);
+        player.animator.gameObject.SetActive(true);
+        player.StartCoroutine(player.EnableCanvasAfterAnimation("Enter"));
+        //PlaySelfCast.blocksRaycasts = true;
+        EndButton.SetActive(true);
+
+        UIManager.Instance.HandPlayerBottom.SetActive(true);
+        UIManager.Instance.PlaySelftCast.SetActive(true);
+        GameSystem.Instance.BattleUICanvas = battleRoom;
+        GameStage_Manager.Instance.isOnBattle = true;
+        //foreach (var obj in hideOnBattle)
+        //{
+        //    if (obj != null) obj.SetActive(false);
+        //}
+    }
+
+    private IEnumerator RegisterEnemiesNextFrame(GameObject go)
+    {
+        yield return null;
+
+        if (enemyFM != null)
+        {
+            EnemyView[] enemyViews = enemyFM.GetComponentsInChildren<EnemyView>(true);
+            Debug.Log($"Sau 1 frame: Tìm thấy {enemyViews.Length} EnemyView trong EnemyFM");
+            BattleManager.Instance.enemies.Clear();
+            BattleManager.Instance.enemies.AddRange(enemyViews);
         }
     }
 
@@ -260,4 +280,5 @@ public class MapUIManager : MonoBehaviour
         }
         FirstTimeSelectedRoom = false;
     }
+
 }

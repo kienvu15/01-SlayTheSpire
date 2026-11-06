@@ -34,7 +34,7 @@ public class PlayerSelectionUI : MonoBehaviour
         {
             relicIcon.sprite = data.startRelic.icon;
             relicName.text = data.startRelic.relicName;
-            relicDescription.text = data.startRelic.description;
+            //relicDescription.text = data.startRelic.description;
 
         }
         else

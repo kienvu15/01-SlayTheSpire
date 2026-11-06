@@ -1,10 +1,31 @@
 fileFormatVersion: 2
-guid: bcdae54f0450c6c418c59531f606a6ab
+guid: ddef3277c05561e4bae5099f92798297
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1761384673633253605
-    second: 1525771202126314596_0
+      213: 6608439101572767021
+    second: SellectedBorder_0
+  - first:
+      213: -1066195919986409093
+    second: SellectedBorder_1
+  - first:
+      213: 404645125114123741
+    second: SellectedBorder_2
+  - first:
+      213: -7440180517575384081
+    second: SellectedBorder_3
+  - first:
+      213: -7918985577537566532
+    second: SellectedBorder_4
+  - first:
+      213: -2152238367102484194
+    second: SellectedBorder_5
+  - first:
+      213: -1255565970180431250
+    second: SellectedBorder_6
+  - first:
+      213: 8447867454604916874
+    second: SellectedBorder_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +134,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 1525771202126314596_0
+      name: SellectedBorder_4
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1600
-        height: 900
+        width: 1672
+        height: 941
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 47, y: 48, z: 47, w: 48}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5e83ab84702b17810800000000000000
-      internalID: 1761384673633253605
+      spriteID: cb88e65e29c1a1290800000000000000
+      internalID: -7918985577537566532
       vertices: []
       indices: 
       edges: []
@@ -138,7 +159,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 55e266aeb6c550b409f4239103f861e7
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +169,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      1525771202126314596_0: 1761384673633253605
+      SellectedBorder_0: 6608439101572767021
+      SellectedBorder_1: -1066195919986409093
+      SellectedBorder_2: 404645125114123741
+      SellectedBorder_3: -7440180517575384081
+      SellectedBorder_4: -7918985577537566532
+      SellectedBorder_5: -2152238367102484194
+      SellectedBorder_6: -1255565970180431250
+      SellectedBorder_7: 8447867454604916874
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

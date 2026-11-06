@@ -71,7 +71,7 @@ public class Discard : MonoBehaviour
             RectTransform rect = cardGO.GetComponent<RectTransform>();
             Vector3 droppedPos = rect.position;
 
-            rect.SetParent(discardTransform.parent, true);
+            //rect.SetParent(discardTransform.parent, true);
             rect.position = droppedPos;
 
             Sequence seq = DOTween.Sequence();
@@ -103,7 +103,6 @@ public class Discard : MonoBehaviour
         UpdateDiscardCount();
     }
 
-
     /// Update số lá trong discard lên UI
     private int currentDisplayCount = 0;
 
@@ -119,7 +118,7 @@ public class Discard : MonoBehaviour
         DOTween.To(() => currentDisplayCount, x =>
         {
             currentDisplayCount = x;
-            discardCountText.text = currentDisplayCount.ToString();
+            discardCountText.text = "Discard Pile - " + currentDisplayCount.ToString();
         },
         targetCount, 0.5f) 
         .SetEase(Ease.OutQuad)

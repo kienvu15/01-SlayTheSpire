@@ -9,7 +9,7 @@ public class DrunkToAllEffectData : EffectData
     public override bool Apply(Character self, Character target, ManaSystem manaSystem, Deck deck)
     {
         // tìm player và enemy trong scene
-        MidMatch_Manager match = GameObject.FindFirstObjectByType<MidMatch_Manager>();
+        MidMatch_Manager match = GameObject.FindAnyObjectByType<MidMatch_Manager>();
         if (match == null) return false;
 
         bool applied = false;
@@ -29,7 +29,7 @@ public class DrunkToAllEffectData : EffectData
         }
 
         // --- áp dụng cho toàn bộ Enemies ---
-        EnemySystem enemySystem = Object.FindFirstObjectByType<EnemySystem>();
+        EnemySystem enemySystem = Object.FindAnyObjectByType<EnemySystem>();
         if (enemySystem != null)
         {
             foreach (var enemy in enemySystem.enemies)

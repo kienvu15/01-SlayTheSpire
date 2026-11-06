@@ -36,6 +36,7 @@ public class Player : Character
             animator.SetTrigger("Hit");
             audioSource.Play();
         }
+        Character_Info_UI.Instance.Update_InfoUI();
     }
 
     public override void AddShield(int amount, CardType vfxType = CardType.Special)

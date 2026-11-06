@@ -64,38 +64,6 @@ public class Deck : MonoBehaviour
         return new List<CardData>(allCards);
     }
 
-    //public void DrawFirstHand(int count)
-    //{
-    //    hasDrawFisrtRow = true;
-    //    StartCoroutine(DrawHand(count));
-    //}
-
-    //public void CacheDeckCountText()
-    //{
-    //    GameObject[] DeckCount = GameObject.FindGameObjectsWithTag("DeckCount");
-    //    List<TextMeshProUGUI> foundTexts = new List<TextMeshProUGUI>();
-
-    //    foreach (var go in DeckCount)
-    //    {
-    //        var tmp = go.GetComponent<TextMeshProUGUI>();
-    //        if (tmp != null) foundTexts.Add(tmp);
-    //    }
-
-    //    deckCountText = foundTexts.ToArray();
-    //    UpdateUI(); 
-    //}
-
-    //public void CacheDeckDiscard()
-    //{
-    //    discardCountText = GetComponent<TextMeshProUGUI>();
-    //}
-
-    //public IEnumerator DelayAndDraw()
-    //{
-    //    yield return null;
-    //    yield return StartCoroutine(DrawHand(match.handSize));
-    //}
-
     public void RemoveCardFromHand(GameObject cardGO, MidMatch_Manager matchRef)
     {
         if (cardGO == null) return;
@@ -114,7 +82,6 @@ public class Deck : MonoBehaviour
 
         if (startingCards == null || startingCards.Count == 0)
         {
-            //Debug.LogWarning("Starting Deck is empty!");
             UpdateUI();
             return;
         }
@@ -127,7 +94,7 @@ public class Deck : MonoBehaviour
 
     public IEnumerator DrawHand(int count)
     {
-        SoundManager.Instance.Play("FirstHandDraw");
+        //SoundManager.Instance.Play("FirstHandDraw");
         yield return StartCoroutine(DrawCards(count));
     }
 
@@ -358,14 +325,14 @@ public class Deck : MonoBehaviour
 
     public void UpdateAllCardCount()
     {
-        if (allCardCount == null) return;
+        //if (allCardCount == null) return;
 
-        int total = deck.Count + currentHand.Count;
+        //int total = deck.Count + currentHand.Count;
 
-        if (discard != null)
-            total += discard.Count;
+        //if (discard != null)
+        //    total += discard.Count;
 
-        allCardCount.text = total.ToString();
+        //allCardCount.text = total.ToString();
     }
 
     public void UpdateUI()
@@ -382,7 +349,7 @@ public class Deck : MonoBehaviour
         if (discardCountText != null && discard != null)
             discardCountText.text = "Discard Pile - " + discard.Count;
 
-        UpdateAllCardCount();
+        //UpdateAllCardCount();
     }
 
 }

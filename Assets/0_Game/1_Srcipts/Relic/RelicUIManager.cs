@@ -3,21 +3,29 @@ using UnityEngine;
 
 public class RelicUIManager : MonoBehaviour
 {
+    [Header("References")]
+    public bool isInBag = false;
     public RelicManager relicManager;
-    public GameObject relicHolderPrefab;  
-    public Transform relicPanel;         
-    public Transform relicDiscriptionTransform;
+    public GameObject relicHolderPrefab;
+    public Transform relicPanel;
 
-    private Dictionary<Relic, RelicDisplay> relicToUI 
-        = new Dictionary<Relic, RelicDisplay>();
-
+    private Dictionary<RelicInstance, RelicDisplay> relicToUI
+        = new Dictionary<RelicInstance, RelicDisplay>();
+    
     private void OnEnable()
     {
+        if (relicManager == null) return;
         relicManager.onRelicAdded += AddRelicUI;
         relicManager.onRelicRemoved += RemoveRelicUI;
     }
+    private void OnDisable()
+    {
+        if (relicManager == null) return;
+        relicManager.onRelicAdded -= AddRelicUI;
+        relicManager.onRelicRemoved -= RemoveRelicUI;
+    }
 
-    void Start()
+    private void Start()
     {
         foreach (var relic in relicManager.equippedRelics)
         {
@@ -25,38 +33,45 @@ public class RelicUIManager : MonoBehaviour
         }
     }
 
-    private void OnDisable()
+    public void AddRelicUI(RelicInstance instance)
     {
-        relicManager.onRelicAdded -= AddRelicUI;
-        relicManager.onRelicRemoved -= RemoveRelicUI;
-    }
-
-    public void AddRelicUI(Relic relic)
-    {
-        if (relicToUI.ContainsKey(relic)) return;
+        if (instance == null || relicToUI.ContainsKey(instance))
+            return;
         GameObject holder = Instantiate(relicHolderPrefab, relicPanel);
         RelicDisplay display = holder.GetComponent<RelicDisplay>();
-        if (display != null)
+        if(isInBag == true)
         {
-            display.Setup(relic, false); 
-            display.descriptionPanel.transform.SetParent(relicDiscriptionTransform, false);
-            var rt = display.descriptionPanel.GetComponent<RectTransform>();
-            rt.SetParent(relicDiscriptionTransform, false);
-            rt.anchoredPosition = Vector2.zero;
-            rt.localRotation = Quaternion.identity;
-            rt.localScale = Vector3.one;
-
+            display.OnClickAddLisent();
         }
-        relicToUI[relic] = display;
+        if (display == null)
+        {
+            Destroy(holder);
+            return;
+        }
+        display.Init_Data(instance);
+        relicToUI.Add(instance, display);
     }
 
-    private void RemoveRelicUI(Relic relic)
+    private void RemoveRelicUI(RelicInstance instance)
     {
-        if (!relicToUI.ContainsKey(relic)) return;
-        RelicDisplay display = relicToUI[relic];
+        if (instance == null || !relicToUI.ContainsKey(instance))
+            return;
+
+        RelicDisplay display = relicToUI[instance];
+
         if (display != null)
             Destroy(display.gameObject);
-        relicToUI.Remove(relic);
+
+        relicToUI.Remove(instance);
     }
 
+    public void RefreshRelicUI(RelicInstance instance)
+    {
+        if (instance == null) return;
+
+        if (relicToUI.TryGetValue(instance, out RelicDisplay display))
+        {
+            display.UpdateRelicUI();
+        }
+    }
 }

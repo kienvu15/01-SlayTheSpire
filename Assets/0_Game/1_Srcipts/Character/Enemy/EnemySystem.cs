@@ -49,7 +49,6 @@ public class EnemySystem : MonoBehaviour
         Debug.Log("[EnemySystem] Enemy turn end");
     }
 
-
     public void OnEnemyDied(EnemyView enemy)
     {
         if (enemy.currentSlot != null)
@@ -73,4 +72,5 @@ public class EnemySystem : MonoBehaviour
             spawner.NextWave();
         }
     }
+
 }

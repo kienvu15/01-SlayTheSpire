@@ -18,9 +18,12 @@ public class CardDisplay : MonoBehaviour
 
     [Header("UI References")]
     public TMP_Text card_Name;
+    public Image artworkImage;
+    public GameObject outline_Glow;
     public GameObject mana_Container;
     public TMP_Text mana_ConsumeText;  
     public TMP_Text descriptionText;
+    public Canvas canvas;
 
     [Header("Button")]
     public Button card_Button;
@@ -38,41 +41,137 @@ public class CardDisplay : MonoBehaviour
     [Header("Hand Selection")]
     private HandCardManager handManager;
 
-    private static CardDisplay currentlyOpen;
     [HideInInspector] public CanvasGroup blockerGroup;
-    public CardHolder cardholder;
-
-    public CardData cardData;
-
-    private Canvas canvas;
+    [HideInInspector] public CardHolder cardholder;
+    [HideInInspector] public CardData cardData;
+    private static CardDisplay currentlyOpen;
     private Vector3 originalScale;
-
-    //void OnEnable() => DescriptionPanelManager.Instance.Register(this);
-    //void OnDisable() => DescriptionPanelManager.Instance.Unregister(this);
-
-    //public GameObject GetDescriptionPanel() => descriptionPanel;
-    public GameObject GetRootObject() => gameObject;
-    public void vHideDescription() => HideDescription();
 
     private void Awake()
     {
         originalScale = transform.localScale;
-
-        //if (descriptionPanel != null)
-        //descriptionPanel.SetActive(false);
-
-        //GameObject blocker = GameObject.Find("Block-Panel");
-        //if (blocker != null)
-        //{
-        //    blockerGroup = blocker.GetComponent<CanvasGroup>();
-        //    if (blockerGroup == null)
-        //        blockerGroup = blocker.AddComponent<CanvasGroup>();
-        //}
-
         handManager = GetComponentInParent<HandCardManager>();
         cardholder = FindAnyObjectByType<CardHolder>();
-        goldContainer.SetActive(false);
-        blockerGroup = DescriptionPanelManager.Instance.blockerGroup;
+    }
+
+    void Start()
+    {
+        if (cardData == null) return;
+        canvas.sortingLayerName = "UI";
+        canvas.sortingOrder = 601;
+
+        mana_ConsumeText.text = cardData.manaCost.ToString();
+
+        int intentSum = 0;
+        if (cardData.effects != null)
+        {
+            foreach (var wrapper in cardData.effects)
+            {
+                if (wrapper == null || wrapper.effect == null) continue;
+
+                if (wrapper.overrideValue && wrapper.effect is IOverrideValue overridable)
+                {
+                    intentSum += overridable.GetIntentValue(wrapper.valueOverride);
+                }
+                else
+                {
+                    intentSum += wrapper.effect.GetIntentValue();
+                }
+            }
+
+        }
+    }
+
+    public void LoadCard(CardData data)
+    {
+        cardData = data;
+        // Tên và mana
+        card_Name.text = data.cardName;
+        mana_ConsumeText.text = data.manaCost.ToString();
+        // Artwork
+        artworkImage.sprite = data.artwork;
+        int intentSum = 0;
+        if (data.effects != null)
+        {
+            foreach (var wrapper in cardData.effects)
+            {
+                if (wrapper == null || wrapper.effect == null) continue;
+
+                if (wrapper.overrideValue && wrapper.effect is IOverrideValue overridable)
+                {
+                    intentSum += overridable.GetIntentValue(wrapper.valueOverride);
+                }
+                else
+                {
+                    intentSum += wrapper.effect.GetIntentValue();
+                }
+            }
+
+        }
+        // Description text
+        if (descriptionText != null)
+            descriptionText.text = DescriptionFormatter.Format(data.description);
+    }
+
+    public CardData GetCardData()
+    {
+        return cardData;
+    }
+
+    public void OnCardClick()
+    {
+        SoundManager.Instance.Play("SelectButton");
+
+        if (currentMode == CardMode.Shop)
+        {
+            if (newShopSystem != null)
+            {
+                newShopSystem.SelectCard(this);
+                return;
+            }
+        }
+
+        if (currentMode == CardMode.Reward)
+        {
+            //if (currentlyOpen == this && descriptionPanel.activeSelf)
+            //{
+            //    ConfirmPickReward();
+            //    return;
+            //}
+        }
+
+        if (handManager != null)
+        {
+            handManager.SelectCard(gameObject);
+        }
+    }
+
+    private void ConfirmPickReward()
+    {
+        if (cardholder != null)
+        {
+
+            if (RandomCardSystem.Instance != null)
+            {
+            }
+
+            RectTransform target = UIManager.Instance.deckIcon;
+
+            UIManager.Instance.AnimateCardFly(
+                this.GetComponent<RectTransform>(),
+                target,
+                () => {
+                    RandomCardSystem.Instance.StartCoroutine(RandomCardSystem.Instance.OnCardSelected(this));
+
+                }
+            );
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                transform.GetChild(i).gameObject.SetActive(false);
+            }
+
+            //HideDescription();
+        }
     }
 
     //SHOP
@@ -103,174 +202,13 @@ public class CardDisplay : MonoBehaviour
         useScaleAnimation = true;
     }
 
-    void Start()
-    {
-        if (cardData == null) return;
-
-        canvas = GetComponentInChildren<Canvas>();
-        if(canvas != null)
-        {
-            canvas.sortingLayerName = "UI";
-        }
-
-        //if (cardData.manaCost == 0)
-        //{
-        //    mana_Container.SetActive(false);
-        //}
-
-        //else
-        //{
-            //mana_Container.SetActive(true);
-            mana_ConsumeText.text = cardData.manaCost.ToString();
-        //}
-
-        // Tính tổng intent từ EffectData
-        int intentSum = 0;
-        if (cardData.effects != null)
-        {
-            foreach (var wrapper in cardData.effects)
-            {
-                if (wrapper == null || wrapper.effect == null) continue;
-
-                if (wrapper.overrideValue && wrapper.effect is IOverrideValue overridable)
-                {
-                    intentSum += overridable.GetIntentValue(wrapper.valueOverride);
-                }
-                else
-                {
-                    intentSum += wrapper.effect.GetIntentValue();
-                }
-            }
-
-        }
-
-        // Nếu có giá trị thì hiện stats, không thì ẩn
-        //if (intentSum > 0)
-        //{
-        //    statsBG.SetActive(true);
-        //    statsContainer.SetActive(true);
-        //    statsText.text = intentSum.ToString();
-        //}
-        //else
-        //{
-        //    statsBG.SetActive(false);
-        //    statsContainer.SetActive(false);
-        //}
-
-        //descriptionPanel.GetComponent<Canvas>().sortingLayerName = "UI";
-    }
-
-    public void LoadCard(CardData data)
-    {
-        cardData = data;
-
-        // Tên và mana
-        card_Name.text = data.cardName;
-        mana_ConsumeText.text = data.manaCost.ToString();
-
-        // Artwork
-        //artworkImage.sprite = data.artwork;
-
-        // Icon: tự động lấy từ database
-        //if (typeIconDatabase != null)
-        //{
-        //    Sprite typeIcon = typeIconDatabase.GetIcon(data.cardType);
-        //    if (typeIcon != null)
-        //    {
-        //        iconImage.sprite = typeIcon;
-        //        iconImage.enabled = true;
-        //    }
-        //    else
-        //    {
-        //        iconImage.enabled = false;
-        //    }
-        //}
-        //else
-        //{
-        //    iconImage.enabled = false;
-        //}
-
-        // Stats
-        //string stats = "";
-
-        int intentSum = 0;
-        if (data.effects != null)
-        {
-            foreach (var wrapper in cardData.effects)
-            {
-                if (wrapper == null || wrapper.effect == null) continue;
-
-                if (wrapper.overrideValue && wrapper.effect is IOverrideValue overridable)
-                {
-                    intentSum += overridable.GetIntentValue(wrapper.valueOverride);
-                }
-                else
-                {
-                    intentSum += wrapper.effect.GetIntentValue();
-                }
-            }
-
-        }
-
-        //if (intentSum > 0)
-        //{
-        //    statsBG.SetActive(true);
-        //    statsContainer.SetActive(true);
-        //    statsText.text = intentSum.ToString();
-        //}
-        //else
-        //{
-        //    statsBG.SetActive(false);
-        //    statsContainer.SetActive(false);
-        //}
-
-        //statsText.text = stats.Trim();
-
-        // Description text (panel riêng)
-        if (descriptionText != null)
-            descriptionText.text = data.description;
-    }
-
-    private void ConfirmPickReward()
-    {
-        if (cardholder != null)
-        {
-           
-            if (RandomCardSystem.Instance != null)
-            {
-            }
-
-            RectTransform target = UIManager.Instance.deckIcon; 
-
-            UIManager.Instance.AnimateCardFly(
-                this.GetComponent<RectTransform>(),
-                target,
-                () => {
-                    RandomCardSystem.Instance.StartCoroutine(RandomCardSystem.Instance.OnCardSelected(this));
-
-                }
-            );
-            for (int i = 0; i < transform.childCount; i++)
-            {
-                transform.GetChild(i).gameObject.SetActive(false);
-            }
-
-            HideDescription();
-        }
-    }
-
-    public CardData GetCardData()
-    {
-        return cardData;
-    }
-
     public void ToggleDescription()
     {
         //if (descriptionPanel == null) return;
 
         // Đóng card khác
-        if (currentlyOpen != null && currentlyOpen != this)
-            currentlyOpen.HideDescription();
+        //if (currentlyOpen != null && currentlyOpen != this)
+          //  currentlyOpen.HideDescription();
 
         //bool isOpening = !descriptionPanel.activeSelf;
         //descriptionPanel.SetActive(isOpening);
@@ -297,49 +235,6 @@ public class CardDisplay : MonoBehaviour
         //}
     }
 
-    public void OnCardClick()
-    {
-        SoundManager.Instance.Play("SelectButton");
-
-        if (currentMode == CardMode.Shop)
-        {
-            if (newShopSystem != null)
-            {
-                newShopSystem.SelectCard(this);
-                return;
-            }
-        }
-
-        if (currentMode == CardMode.Reward)
-        {
-            //if (currentlyOpen == this && descriptionPanel.activeSelf)
-            //{
-            //    ConfirmPickReward();
-            //    return;
-            //}
-        }
-
-        if (handManager != null)
-        {
-            handManager.SelectCard(gameObject);
-        }
-
-        //ToggleDescription();
-        //Debug.Log("Card clicked: " + cardData.cardName);
-    }
-
-    public void HideDescription()
-    {
-        //if (descriptionPanel != null)
-        //    descriptionPanel.SetActive(false);
-
-        if (currentlyOpen == this)
-            currentlyOpen = null;
-
-        HideBlocker();
-        ResetScaleAnim();
-    }
-
     private void ResetScaleAnim()
     {
         if (useScaleAnimation)
@@ -349,7 +244,6 @@ public class CardDisplay : MonoBehaviour
             if (canvas != null) canvas.sortingOrder = 0;
         }
     }
-
 
     private void ShowBlocker()
     {
@@ -369,4 +263,5 @@ public class CardDisplay : MonoBehaviour
             blockerGroup.interactable = false;
         }
     }
+
 }

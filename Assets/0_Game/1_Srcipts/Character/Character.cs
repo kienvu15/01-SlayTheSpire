@@ -64,32 +64,6 @@ public class Character : MonoBehaviour
         }
     }
 
-    //protected virtual void Update()
-    //{
-    //    // ==== CHIP EFFECT ====
-    //    if (hpChipBar != null && hpBar != null)
-    //    {
-    //        float currentValue = hpBar.value;
-    //        if (hpChipBar.value > currentValue)
-    //        {
-    //            chipTimer += Time.deltaTime;
-    //            if (chipTimer >= chipDelay)
-    //            {
-    //                hpChipBar.value = Mathf.MoveTowards(
-    //                    hpChipBar.value,
-    //                    currentValue,
-    //                    Time.deltaTime * chipSpeed
-    //                );
-    //            }
-    //        }
-    //        else
-    //        {
-    //            hpChipBar.value = currentValue;
-    //            chipTimer = 0f;
-    //        }
-    //    }
-    //}
-
     public void UpdateUI()
     {
         if (hpBar == null) return;
@@ -163,7 +137,6 @@ public class Character : MonoBehaviour
         stats.shield = 0;
     }
 
-
     // ================== Damage & Heal ==================
     public virtual void TakeDamage(int amount)
     {
@@ -204,7 +177,6 @@ public class Character : MonoBehaviour
             stats.currentHP -= dmg;
             stats.currentHP = Mathf.Max(stats.currentHP, 0);
         }
-
         UpdateUI();
     }
 

@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class CardCollection_OnRun : MonoBehaviour
 {
     [Header("References")]
-    //public CardHolder cardHolder;
     public Deck deck;
-    public GameObject cardDisplayPrefab;   
-    public Transform contentParent;       
-
-    private List<GameObject> spawnedCards = new List<GameObject>();
+    public GameObject cardDisplayPrefab;
+    public GameObject conditionPrefab;
+    public Transform contentParent;
+    public Transform conditionParent;
+    public ConditionIconDatabase conditionDb;
 
     [Header("UI")]
     public Button removeButton; 
@@ -19,11 +19,15 @@ public class CardCollection_OnRun : MonoBehaviour
     private CardDisplay selectedCard;
     private bool isRemoveMode = false;
 
-
+    public static bool firstTimeOpen = false;
+    private List<GameObject> spawnedCards = new List<GameObject>();
+    private List<GameObject> spawnedConditions = new List<GameObject>();
+    
     private void OnEnable()
     {
         RefreshPanel();
     }
+    private void OnDisable() => ClearConditions();
 
     public void RefreshPanel()
     {
@@ -48,16 +52,17 @@ public class CardCollection_OnRun : MonoBehaviour
             canvas.overrideSorting = false;
 
             if (display == null) continue;
-            display.useScaleAnimation = true;
+            //display.useScaleAnimation = true;
             display.LoadCard(data);
             Button btn = newCard.GetComponentInChildren<Button>();
             if (btn != null)
             {
-                CardDisplay capturedDisplay = display;
-                btn.onClick.AddListener(() =>
-                {
-                    selectedCard = capturedDisplay;
-                });
+                //CardDisplay capturedDisplay = display;
+                //btn.onClick.AddListener(() =>
+                //{
+                //    selectedCard = capturedDisplay;
+                //});
+                btn.onClick.AddListener(() => OnCard_Clicked(display));
             }
             spawnedCards.Add(newCard);
         }
@@ -68,6 +73,42 @@ public class CardCollection_OnRun : MonoBehaviour
         string Name = pickedCard.cardData.cardName;
         string Description = pickedCard.cardData.description;
         string manaCost = pickedCard.cardData.manaCost.ToString();
+
+        //if (firstTimeOpen == false)
+        //{
+            UIManager.Instance.CardInfo_Help(true);
+            firstTimeOpen = true;
+        //}
+        ShowConditions(pickedCard.cardData);
+        UIManager.Instance.Init_CardInfor(pickedCard);
+    }
+
+    private void ShowConditions(CardData data)
+    {
+        ClearConditions();
+
+        if (conditionPrefab == null || conditionParent == null || conditionDb == null) return;
+
+        foreach (ConditionType type in data.GetKeywords())
+        {
+            if (!conditionDb.TryGet(type, out var entry)) continue;
+
+            GameObject go = Instantiate(conditionPrefab, conditionParent);
+            go.GetComponent<ConditionInfoItem>().Setup(
+                conditionDb.GetDisplayName(type),
+                entry.description,
+                DescriptionFormatter.GetColor(type),
+                entry.icon);
+
+            spawnedConditions.Add(go);
+        }
+    }
+
+    public void ClearConditions()
+    {
+        foreach (var go in spawnedConditions)
+            if (go != null) Destroy(go);
+        spawnedConditions.Clear();
     }
 
     // Mở panel theo mode
@@ -116,7 +157,7 @@ public class CardCollection_OnRun : MonoBehaviour
                 selectedCard.transform.GetChild(i).gameObject.SetActive(false);
             }
 
-            selectedCard.HideDescription();
+           // selectedCard.HideDescription();
         }
     }
 

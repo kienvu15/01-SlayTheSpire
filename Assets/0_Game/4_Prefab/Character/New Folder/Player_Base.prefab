@@ -449,7 +449,7 @@ MonoBehaviour:
   hpBar: {fileID: 2171479064973450881}
   shieldBar: {fileID: 2899650236103169302}
   hpChipBar: {fileID: 8571483972220328634}
-  chipDelay: 0.45
+  chipDelay: 1
   chipSpeed: 0.5
   maxConditions: 2
   conditionPanelUI: {fileID: 8395710757972567118}

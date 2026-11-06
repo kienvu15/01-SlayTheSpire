@@ -63,7 +63,8 @@ public class EnemySpawner : MonoBehaviour
             GameObject prefab = candidates[Random.Range(0, candidates.Count)];
             if (prefab == null) continue;
 
-            GameObject enemyGO = Instantiate(prefab, systemCanvas.transform);
+            GameObject enemyGO = Instantiate(prefab, slot.transform);
+
             EnemyDropZone dropZone = enemyGO.GetComponentInChildren<EnemyDropZone>();
             dropZone.deck = UIManager.Instance.deck;
             dropZone.discard = UIManager.Instance.discardScript;

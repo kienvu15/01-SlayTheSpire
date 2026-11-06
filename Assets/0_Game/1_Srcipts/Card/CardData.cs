@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public enum CardType
 {
@@ -27,6 +28,7 @@ public class EffectWrapper
 [CreateAssetMenu(fileName = "NewCard", menuName = "Cards/Card Data")]
 public class CardData : ScriptableObject
 {
+    [Header("Basic Info")]
     public string cardName;
     public CardType cardType;
     public EffectOn effectOn;
@@ -42,10 +44,13 @@ public class CardData : ScriptableObject
     public EffectWrapper[] effects;
 
     [Header("Shop")]
-    public int goldCost = 10;   
+    public int goldCost = 10;
 
+    [Header("Keyword Info")]
+    public bool hasKeywordInfo;
+    public List<ConditionType> GetKeywords() => DescriptionFormatter.GetKeywords(description);
 
-    public bool IsSpecial() => cardType == CardType.Special;
+   // public bool IsSpecial() => cardType == CardType.Special;
     public bool IsSelfCast() => effectOn == EffectOn.Self;
     public bool IsOpponentCast() => effectOn == EffectOn.Opponent;
     public bool IsAllCast() => effectOn == EffectOn.All;

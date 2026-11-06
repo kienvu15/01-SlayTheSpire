@@ -23,10 +23,12 @@ public enum BuffTargetMode
 [CreateAssetMenu(fileName = "NewEnemyAction", menuName = "Enemy/Action")]
 public class EnemyAction : ScriptableObject
 {
+    [Header("Action Info")]
     public Type type;
     public BuffTargetMode buffTargetMode; 
     public string actionName;
     public int cooldown; 
+
     [HideInInspector]
     public int currentCooldown;
     public List<EffectData> effects;

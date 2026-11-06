@@ -3,18 +3,18 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RelicDisplay : MonoBehaviour, IHasDescriptionPanel
+public class RelicDisplay : MonoBehaviour
 {
     [Header("UI References")]
     public Image iconImage;
-    public GameObject descriptionPanel;
-    public TextMeshProUGUI[] relicNameText;
-    public TextMeshProUGUI relicDescText;
-    public GameObject nameText;
+    public GameObject selected_Sprite;
+    //public TextMeshProUGUI relicNameText;
+
+    [Header("Button")]
+    public Button relic_Button;
 
     [Header("Shop System")]
     public NewShopSystem shopSystem;
-    private Relic relicData;
     private bool isShopMode = false;
 
     [Header("Shop UI")]
@@ -25,36 +25,63 @@ public class RelicDisplay : MonoBehaviour, IHasDescriptionPanel
 
     public CanvasGroup blockerGroup;
 
-    void OnEnable() => DescriptionPanelManager.Instance.Register(this);
-    void OnDisable() => DescriptionPanelManager.Instance.Unregister(this);
+    private Relic relicData;
+    private RelicInstance relicInstance;
+    private static bool firstTimeClick = false;
+    private static RelicDisplay currentSelected;
 
-    public GameObject GetDescriptionPanel() => descriptionPanel;
-    public GameObject GetRootObject() => gameObject;
-    public void vHideDescription() => HideDescription();
-
-    private void Start()
+    public void Init_Data(RelicInstance data)
     {
-        if (descriptionPanel != null)
-            descriptionPanel.SetActive(false);
-        blockerGroup = DescriptionPanelManager.Instance.blockerGroup;
-        // Setup(relicData, false);
+        relicInstance = data;
+        relicData = data.relicData;
+
+        iconImage.sprite = relicData.icon;
+
+        UpdateRelicUI();
     }
 
-    private void Update()
+    public void UpdateRelicUI()
     {
-        //if (descriptionPanel.activeSelf && Input.GetMouseButtonDown(0))
+        if (relicInstance == null) return;
+        //descriptionText.text = relicInstance.GetDescription();
+        //levelText.text = $"Lv.{relicInstance.level}";
+        //upgradeButton.gameObject.SetActive(relicInstance.CanUpgrade());
+    }
+
+    public void OnClickAddLisent()
+    {
+        relic_Button.onClick.AddListener(relic_Clicked);
+    }
+    public void relic_Clicked()
+    {
+        if (currentSelected != null && currentSelected != this)
+        {
+            currentSelected.Deselect();
+        }
+        currentSelected = this;
+        selected_Sprite.SetActive(true);
+        //if(firstTimeClick == false)
         //{
-        //    if (!RectTransformUtility.RectangleContainsScreenPoint(
-        //            descriptionPanel.GetComponent<RectTransform>(),
-        //            Input.mousePosition, null) &&
-        //        !RectTransformUtility.RectangleContainsScreenPoint(
-        //            iconButton.GetComponent<RectTransform>(),
-        //            Input.mousePosition, null))
-        //    {
-        //        descriptionPanel.SetActive(false);
-        //    }
+            firstTimeClick = true;
+            UIManager.Instance.RelicInfo_Help(true);
         //}
+        UIManager.Instance.Init_RelicInfor(relicInstance);
     }
+
+    public void Deselect()
+    {
+        selected_Sprite.SetActive(false);
+    }
+
+    public static RelicDisplay GetSelectedRelic()
+    {
+        return currentSelected;
+    }
+
+
+
+
+
 
     public void Setup(Relic relic, bool shopMode)
     {
@@ -62,13 +89,15 @@ public class RelicDisplay : MonoBehaviour, IHasDescriptionPanel
         isShopMode = shopMode;
         if (iconImage != null)
             iconImage.sprite = relic.icon;
-        for (int i = 0; i < relicNameText.Length; i++)
-        {
-            relicNameText[i].text = relic.relicName;
-        }
-        relicDescText.text = relic.description;
-        shopSystem = GetComponentInParent<NewShopSystem>();
-        descriptionPanel.SetActive(false);
+        //relicNameText.text = relic.relicName;
+
+        //for (int i = 0; i < relicNameText.Length; i++)
+        //{
+        //    relicNameText[i].text = relic.relicName;
+        //}
+        //relicDescText.text = relic.description;
+        //shopSystem = GetComponentInParent<NewShopSystem>();
+        //descriptionPanel.SetActive(false);
     }
 
     public void Init(Relic data, NewShopSystem shop)
@@ -76,7 +105,7 @@ public class RelicDisplay : MonoBehaviour, IHasDescriptionPanel
         relicData = data;
         shopSystem = shop;
         goldContainer.SetActive(true);
-        priceTXT.text = relicData.goldCost.ToString();
+        priceTXT.text = relicData.gold_Buy.ToString();
         buyButton.gameObject.SetActive(true);
 
         Setup(relicData, true);
@@ -84,8 +113,8 @@ public class RelicDisplay : MonoBehaviour, IHasDescriptionPanel
 
     public void BuyRelic()
     {
-        descriptionPanel.gameObject.SetActive(false);
-        int cost = relicData.goldCost;
+        //descriptionPanel.gameObject.SetActive(false);
+        int cost = relicData.gold_Buy;
         if (CoinManager.Instance != null && CoinManager.Instance.SpendCoins(cost))
         {
             SoundManager.Instance.Play("Coin");
@@ -99,8 +128,8 @@ public class RelicDisplay : MonoBehaviour, IHasDescriptionPanel
 
     public void HideDescription()
     {
-        if (descriptionPanel != null)
-            descriptionPanel.SetActive(false);
+        //if (descriptionPanel != null)
+        //    descriptionPanel.SetActive(false);
 
         // 2. Xóa đoạn check static này đi để tránh lỗi logic
         // if (currentlyOpen == this)
@@ -143,27 +172,27 @@ public class RelicDisplay : MonoBehaviour, IHasDescriptionPanel
 
     public void ToggleDescription()
     {
-        if (descriptionPanel == null) return;
+        //if (descriptionPanel == null) return;
 
-        // 4. Xóa logic đóng card khác ở đây, ShopSystem sẽ lo việc đó
-        // if (currentlyOpen != null && currentlyOpen != this)
-        //    currentlyOpen.HideDescription();
+        //// 4. Xóa logic đóng card khác ở đây, ShopSystem sẽ lo việc đó
+        //// if (currentlyOpen != null && currentlyOpen != this)
+        ////    currentlyOpen.HideDescription();
 
-        bool isOpening = !descriptionPanel.activeSelf;
-        descriptionPanel.SetActive(isOpening);
+        //bool isOpening = !descriptionPanel.activeSelf;
+        //descriptionPanel.SetActive(isOpening);
 
-        if (isOpening)
-        {
-            // currentlyOpen = this; // Xóa
-            ShowBlocker();
+        //if (isOpening)
+        //{
+        //    // currentlyOpen = this; // Xóa
+        //    ShowBlocker();
 
-            // Thêm hình ảnh minh họa cho dễ hình dung luồng dữ liệu (nếu cần)
-            //  -> Không cần thiết ở đây, code khá rõ.
-        }
-        else
-        {
-            // currentlyOpen = null; // Xóa
-            HideBlocker();
-        }
+        //    // Thêm hình ảnh minh họa cho dễ hình dung luồng dữ liệu (nếu cần)
+        //    //  -> Không cần thiết ở đây, code khá rõ.
+        //}
+        //else
+        //{
+        //    // currentlyOpen = null; // Xóa
+        //    HideBlocker();
+        //}
     }
 }

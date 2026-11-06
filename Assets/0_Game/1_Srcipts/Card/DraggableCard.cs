@@ -4,10 +4,12 @@ using UnityEngine.EventSystems;
 public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     private Canvas canvas;               
+    public DraggableCard originalCard;
+    
     private RectTransform rectTransform; 
     private CanvasGroup canvasGroup;     
-    private Transform originalBox;       
-    public DraggableCard originalCard;
+    private Transform originalBox;
+    private bool validDrop = false;
 
     [Header("References")]
     public CardDisplay cardDisplay;
@@ -19,17 +21,14 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         cardDisplay = GetComponent<CardDisplay>();
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
-
-        if (canvasGroup == null)
-            canvasGroup = gameObject.AddComponent<CanvasGroup>();
-
         canvas = GetComponentInParent<Canvas>();
+
         PlaySelfCast = GameObject.Find("PlayerSelfCast")?.GetComponent<CanvasGroup>();
 
-        Debug.Log($"[Drag] Awake: {name}");
-        Debug.Log($"[Drag] Canvas: {canvas}");
-        Debug.Log($"[Drag] CanvasGroup: {canvasGroup}");
-        Debug.Log($"[Drag] PlaySelfCast: {PlaySelfCast}");
+        //Debug.Log($"[Drag] Awake: {name}");
+        //Debug.Log($"[Drag] Canvas: {canvas}");
+        //Debug.Log($"[Drag] CanvasGroup: {canvasGroup}");
+        //Debug.Log($"[Drag] PlaySelfCast: {PlaySelfCast}");
     }
 
     void Start()
@@ -37,19 +36,16 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         BGHold bghold = GetComponentInParent<BGHold>();
         ShopSystem shopSystem = GetComponentInParent<ShopSystem>();
 
-        if (bghold == null || shopSystem != null)
-        {
-            originalCard.enabled = false;
-        }
+        //if (bghold == null || shopSystem != null)
+        //{
+          //  originalCard.enabled = false;
+       // }
 
         if (PlaySelfCast != null)
             PlaySelfCast.blocksRaycasts = false;
 
         Debug.Log($"[Drag] Start: {name} | BGHold: {bghold != null} | Shop: {shopSystem != null}");
     }
-
-
-    private bool validDrop = false;
 
     public void MarkAsValidDrop()
     {
@@ -100,11 +96,9 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void OnEndDrag(PointerEventData eventData)
     {
         Debug.Log($"[Drag] OnEndDrag: {name} | ValidDrop: {validDrop}");
-
         if (!validDrop)
         {
             Debug.Log("[Drag] Drop FAILED -> Return to Hand");
-
             RevertToHand();
         }
 
@@ -120,16 +114,10 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         Debug.Log($"[Drag] RevertToHand: {name}");
 
-        // Giữ nguyên vị trí thế giới khi đưa card về tay
         transform.SetParent(originalBox, true);
-
-        // Khôi phục trạng thái card
         canvasGroup.blocksRaycasts = true;
-
         PlaySelfCast.blocksRaycasts = false;
         PlaySelfCast.alpha = 0;
-
-        // Sắp xếp lại toàn bộ bài trên tay
         if (handLayout != null)
         {
             handLayout.RefreshLayout(true);
@@ -137,7 +125,6 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         else
         {
             Debug.LogWarning("[Drag] HandLayout not found!");
-
             rectTransform.localPosition = Vector3.zero;
             rectTransform.localRotation = Quaternion.identity;
             rectTransform.localScale = Vector3.one;

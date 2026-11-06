@@ -42,7 +42,6 @@ public class MidMatch_Manager : MonoBehaviour
             manaSystem.StartTurn();
     }
 
-
     private IEnumerator EndTurnRoutine()
     {
         GameStage.Instance.SetBusy(true);
@@ -138,24 +137,22 @@ public class MidMatch_Manager : MonoBehaviour
         }
     }
 
-    public void PlayCard(CardData card, Character self, Character target, ManaSystem manaSystem, Deck deck)
-    {
-        if (card == null || card.effects == null) return;
+    //public void PlayCard(CardData card, Character self, Character target, ManaSystem manaSystem, Deck deck)
+    //{
+    //    if (card == null || card.effects == null) return;
 
-        foreach (var wrapper in card.effects)
-        {
-            if (wrapper == null || wrapper.effect == null) continue;
+    //    foreach (var wrapper in card.effects)
+    //    {
+    //        if (wrapper == null || wrapper.effect == null) continue;
 
-            if (wrapper.overrideValue && wrapper.effect is IOverrideValue overridable)
-            {
-                overridable.ApplyWithOverride(self, target, wrapper.valueOverride);
-            }
-            else
-            {
-                wrapper.effect.Apply(self, target, manaSystem, deck);
-            }
-        }
-    }
-
-
+    //        if (wrapper.overrideValue && wrapper.effect is IOverrideValue overridable)
+    //        {
+    //            overridable.ApplyWithOverride(self, target, wrapper.valueOverride);
+    //        }
+    //        else
+    //        {
+    //            wrapper.effect.Apply(self, target, manaSystem, deck);
+    //        }
+    //    }
+    //}
 }

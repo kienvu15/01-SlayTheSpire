@@ -91,17 +91,17 @@ public class NewShopSystem : MonoBehaviour
         // Nếu bấm lại card đang chọn → bỏ chọn
         if (currentSelectedCardDisplay == cardDisplay)
         {
-            cardDisplay.HideDescription();
+           // cardDisplay.HideDescription();
             DeselectCurrentCard();
             return;
         }
 
         // Nếu đang có card khác → đóng
-        if (currentSelectedCardDisplay != null)
-            currentSelectedCardDisplay.HideDescription();
+       // if (currentSelectedCardDisplay != null)
+         //   currentSelectedCardDisplay.HideDescription();
 
         currentSelectedCardDisplay = cardDisplay;
-        cardDisplay.ToggleDescription();
+        //cardDisplay.ToggleDescription();
 
         // Move nút Buy
         if (buttonMoveCoroutine != null) StopCoroutine(buttonMoveCoroutine);
@@ -116,7 +116,7 @@ public class NewShopSystem : MonoBehaviour
     {
         if (currentSelectedCardDisplay != null)
         {
-            currentSelectedCardDisplay.HideDescription();
+           // currentSelectedCardDisplay.HideDescription();
 
             currentSelectedCardDisplay = null;
         }
@@ -213,7 +213,7 @@ public class NewShopSystem : MonoBehaviour
                 currentSelectedCardDisplay.transform.GetChild(i).gameObject.SetActive(false);
             }
 
-            currentSelectedCardDisplay.HideDescription();
+            //currentSelectedCardDisplay.HideDescription();
         }
     }
 
@@ -245,8 +245,8 @@ public class NewShopSystem : MonoBehaviour
         List<Relic> availableRelics = new List<Relic>(allRelicDatabase.allRelics);
 
         // Loại bỏ relic đã trang bị
-        foreach (var equipped in relicManager.equippedRelics)
-            availableRelics.Remove(equipped);
+        //foreach (var equipped in relicManager.equippedRelics)
+            //availableRelics.Remove(equipped);
 
         // Random tối đa 2 relic từ danh sách available (không trùng)
         for (int i = 0; i < 2; i++)
@@ -277,7 +277,7 @@ public class NewShopSystem : MonoBehaviour
         // 1. Đóng Card đang mở (nếu có)
         if (currentSelectedCardDisplay != null)
         {
-            currentSelectedCardDisplay.HideDescription();
+            //currentSelectedCardDisplay.HideDescription();
             DeselectCurrentCard();
         }
 

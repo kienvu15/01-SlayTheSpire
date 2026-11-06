@@ -70,9 +70,26 @@ public class HandLayout : MonoBehaviour
             ClearSelection();
             return;
         }
-
         selectedCard = card;
+        UpdateSelectedGlow();
         ApplyLayout(true);
+    }
+
+    private void UpdateSelectedGlow()
+    {
+        if (currentCards == null) return;
+
+        foreach (GameObject card in currentCards)
+        {
+            if (card == null) continue;
+
+            CardDisplay display = card.GetComponent<CardDisplay>();
+
+            if (display != null && display.outline_Glow != null)
+            {
+                display.outline_Glow.SetActive(card == selectedCard);
+            }
+        }
     }
 
     // CLEAR SELECTION
@@ -82,6 +99,7 @@ public class HandLayout : MonoBehaviour
 
         selectedCard = null;
 
+        UpdateSelectedGlow();
         ApplyLayout(true);
     }
 
@@ -280,15 +298,11 @@ public class HandLayout : MonoBehaviour
 
     private void SetCardOnTop(GameObject card, bool onTop)
     {
-        Canvas canvas = card.GetComponent<Canvas>();
-
-       
-
-        canvas.overrideSorting = onTop;
-
-        if (onTop)
-            canvas.sortingLayerName = "UI";
-            canvas.sortingOrder = 574;
+        //Canvas canvas = card.GetComponent<Canvas>();
+        //canvas.overrideSorting = onTop;
+        //if (onTop)
+        //    canvas.sortingLayerName = "UI";
+        //    canvas.sortingOrder = 574;
     }
 
 }
