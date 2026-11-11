@@ -11,8 +11,6 @@ public class Player : Character
 
     protected override void Start()
     {
-        //base.Start();
-        //UpdateUI();
         audioSource = GetComponent<AudioSource>();
     }
 

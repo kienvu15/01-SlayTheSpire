@@ -1,36 +1,78 @@
-﻿using TMPro;
+﻿
+using System;
+using TMPro;
 using UnityEngine;
+using DG.Tweening;
 
+[RequireComponent(typeof(CanvasGroup))]
 public class DamagePopup : MonoBehaviour
 {
+    [Header("References")]
     public TextMeshProUGUI textMesh;
-    public float moveSpeed = 3.5f;
-    public float lifeTime = 0.3f;
 
-    private float timer;
-    private Vector3 moveDirection;
+    [Header("Animation")]
+    public float moveSpeed = 180f;
+    public float lifeTime = 0.5f;
 
-    public void Setup(int damageAmount, bool isMiss = false)
+    private RectTransform rect;
+    private CanvasGroup canvasGroup;
+    private Sequence sequence;
+
+    private void Awake()
     {
-        if (isMiss)
-            textMesh.text = "MISS";
-        else
-            textMesh.text = damageAmount.ToString();
-
-        textMesh.color = isMiss ? Color.gray : Color.white;
-
-        float randomX = Random.Range(-0.5f, 0.5f);
-        float randomY = Random.Range(0.8f, 1.2f);
-        moveDirection = new Vector3(randomX, randomY, 0).normalized;
+        rect = GetComponent<RectTransform>();
+        canvasGroup = GetComponent<CanvasGroup>();
     }
 
-    private void Update()
+    public void Setup(
+        Vector2 startPosition,
+        int damageAmount,
+        bool isMiss,
+        Action<DamagePopup> onComplete)
     {
-        transform.position += moveDirection * moveSpeed * Time.deltaTime;
-        timer += Time.deltaTime;
-        if (timer >= lifeTime)
+        sequence?.Kill();
+
+        gameObject.SetActive(true);
+
+        rect.anchoredPosition = startPosition;
+        rect.localScale = Vector3.one;
+
+        canvasGroup.alpha = 1f;
+
+        textMesh.text = isMiss ? "MISS" : damageAmount.ToString();
+        textMesh.color = isMiss ? Color.gray : Color.white;
+
+        float randomX = UnityEngine.Random.Range(-0.5f, 0.5f);
+        float randomY = UnityEngine.Random.Range(0.8f, 1.2f);
+
+        Vector2 direction = new Vector2(randomX, randomY).normalized;
+
+        Vector2 targetPosition =
+            startPosition + direction * moveSpeed * lifeTime;
+
+        sequence = DOTween.Sequence();
+
+        sequence.Join(
+            rect.DOAnchorPos(targetPosition, lifeTime)
+                .SetEase(Ease.OutQuad)
+        );
+
+        sequence.Join(
+            canvasGroup.DOFade(0f, lifeTime)
+        );
+
+        sequence.OnComplete(() =>
         {
-            Destroy(gameObject);
-        }
+            onComplete?.Invoke(this);
+        });
+    }
+
+    public void ResetPopup()
+    {
+        sequence?.Kill();
+        sequence = null;
+
+        canvasGroup.alpha = 1f;
+        rect.localScale = Vector3.one;
     }
 }

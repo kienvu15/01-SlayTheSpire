@@ -2,115 +2,127 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class EnemyDropZone : MonoBehaviour, IDropHandler
+public class EnemyDropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [Header("References")]
-    public Enemy enemy;     
-    public Discard discard;
-    public Deck deck;
-    public MidMatch_Manager match;
-    public ManaSystem manaSystem;
+    public EnemyView enemy;
+    public GameObject invalidImage;
+
+    [Header("Drop State")]
+    public bool isInvalidCardHover = false;
+    private DraggableCard currentDraggable;
+
+    [HideInInspector] public Discard discard;
+    [HideInInspector] public Deck deck;
+    [HideInInspector] public MidMatch_Manager match;
+    [HideInInspector] public ManaSystem manaSystem;
+    [HideInInspector] public CardPileViewer cardPileViewer;
 
     void Start()
     {
-        match = FindFirstObjectByType<MidMatch_Manager>();
-        manaSystem = FindFirstObjectByType<ManaSystem>();
+        match = FindAnyObjectByType<MidMatch_Manager>();
+        manaSystem = FindAnyObjectByType<ManaSystem>();
+        cardPileViewer = FindAnyObjectByType<CardPileViewer>();
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        GameObject dragged = eventData.pointerDrag;
+        if (dragged == null) return;
+
+        DraggableCard draggable = dragged.GetComponent<DraggableCard>();
+        if (draggable == null) return;
+
+        CardDisplay display = dragged.GetComponent<CardDisplay>();
+        if (display == null) return;
+
+        CardData data = display.GetCardData();
+
+        // Không phải SelfCast và cũng không phải OpponentCast
+        isInvalidCardHover = data != null && !data.IsSelfCast();
+
+        currentDraggable = draggable;
+        invalidImage.SetActive(isInvalidCardHover);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        isInvalidCardHover = false;
+        currentDraggable = null;
+        invalidImage.SetActive(isInvalidCardHover);
     }
 
     public void OnDrop(PointerEventData eventData)
     {
         GameObject dropped = eventData.pointerDrag;
         if (dropped == null) return;
-
         CardDisplay cardDisplay = dropped.GetComponent<CardDisplay>();
         DraggableCard draggable = dropped.GetComponent<DraggableCard>();
-        if (cardDisplay == null || cardDisplay.cardData == null || draggable == null) return;
-
-        var card = cardDisplay.cardData;
-
-        if (!card.IsOpponentCast())
+        if (cardDisplay == null || cardDisplay.cardInstance == null || draggable == null) return;
+        CardInstance card = cardDisplay.cardInstance;
+        CardData data = card.data;
+        // 1. Kiểm tra loại bài
+        if (!data.IsOpponentCast() || data.isUnplayable)
         {
-            Debug.LogWarning($"{card.cardName} không phải OpponentCast, không thể thả vào Enemy!");
+            //Debug.LogWarning($"{card.Name} không phải OpponentCast, không thể thả vào Enemy!");
             return;
         }
-
-        if (!manaSystem.CanPlayCard(card)) return;
-
-        manaSystem.SpendMana(card.manaCost);
-
-        bool allSuccess = true;
-
-        if (enemy != null && card.effects != null)
+        // Kiểm tra điều kiện
+        if (!draggable.CanPlayCard(match.player))
         {
-            foreach (var wrapper in card.effects)
-            {
-                if (wrapper == null || wrapper.effect == null) continue;
-                Debug.Log($"[EnemyDropZone] Running effect {wrapper.effect.name} on {enemy.name}");
-
-                bool success = true;
-
-                if (wrapper.overrideValue && wrapper.effect is IOverrideValue overridable)
-                {
-                    overridable.ApplyWithOverride(match.player, enemy, wrapper.valueOverride);
-                }
-                else
-                {
-                    success = wrapper.effect.Apply(match.player, enemy, manaSystem, deck);
-                }
-
-                if (!success)
-                {
-                    allSuccess = false;
-                }
-
-            }
+            draggable.RevertToHand();
+            return;
         }
-
-
+        // 2. Kiểm tra mana (theo level)
+        if (!manaSystem.CanPlayCard(card)) return;
+        // 3. Trừ mana => valid drop
+        invalidImage.SetActive(false);
+        manaSystem.SpendMana(card.ManaCost);
+        // 4. Apply effects theo level
+        bool allSuccess = enemy != null && match != null &&
+            CardEffectRunner.Run(
+                card,
+                match.player,
+                enemy,
+                manaSystem,
+                deck,
+                match.player,
+                match.enemySystem.enemies,
+                discard,
+                cardPileViewer
+            );
+        // 5. Animation + discard
         if (allSuccess)
         {
             deck.RemoveCardFromHand(dropped, match);
             draggable.PlaySelfCast.blocksRaycasts = false;
             draggable.MarkAsValidDrop();
-
             RectTransform rect = dropped.GetComponent<RectTransform>();
             RectTransform discardPile = discard.GetComponent<RectTransform>();
-
             rect.SetParent(discardPile.parent, true);
-
             Vector3 startPos = rect.position;
             Vector3 endPos = discardPile.position;
-
-            // Cung bay nhẹ (thấp)
             Vector3 midPos = (startPos + endPos) / 2f + Vector3.up * 9f;
-
             float flyTime = 0.7f;
-
             Sequence seq = DOTween.Sequence();
-
-            // 1️⃣ Bay lên mượt nửa đầu, hơi thu nhỏ
+            // Bay lên nửa đầu, hơi thu nhỏ
             seq.Append(rect.DOScale(0.5f, flyTime * 0.5f).SetEase(Ease.OutSine));
             seq.Join(rect.DOMove(midPos, flyTime * 0.5f).SetEase(Ease.OutQuad));
-
-            // 2️⃣ Rơi xuống nửa sau, xoay ngay khi bắt đầu rơi
+            // Rơi xuống nửa sau, xoay
             Sequence fallSeq = DOTween.Sequence();
             fallSeq.Append(rect.DOMove(endPos, flyTime * 0.5f).SetEase(Ease.InCubic));
             fallSeq.Join(
                 rect.DORotate(new Vector3(0, 0, 720f), flyTime * 0.5f, RotateMode.FastBeyond360)
-                .SetEase(Ease.Linear) 
+                    .SetEase(Ease.Linear)
             );
             seq.Append(fallSeq);
-
-            // 3️⃣ Biến mất nhanh khi gần chạm
-            seq.Join(
-                rect.DOScale(Vector3.zero, flyTime * 0.3f)
-                .SetEase(Ease.InBack)
-                .SetDelay(flyTime * 0.7f)
+            // Biến mất nhanh khi gần chạm
+            seq.Join(rect.DOScale(Vector3.zero, flyTime * 0.3f).SetEase(Ease.InBack).SetDelay(flyTime * 0.7f)
             );
 
             seq.OnComplete(() =>
             {
-            discard.AddToDiscard(card);
+                discard.AddToDiscard(card);   // truyền CardInstance để giữ level
                 Destroy(dropped);
             });
         }
@@ -118,11 +130,5 @@ public class EnemyDropZone : MonoBehaviour, IDropHandler
         {
             draggable.RevertToHand();
         }
-
-
-
-
-
     }
-
 }

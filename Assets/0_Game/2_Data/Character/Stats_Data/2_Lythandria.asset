@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c25acbb36ae87e24d9082b0ef91f76dc, type: 3}
+  m_Name: 2_Lythandria
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  playerName: Lythandria
+  playerSplashArt: {fileID: 0}
+  lore: 
+  maxHP: 75
+  base_DEF: 0
+  base_SPD: 30
+  startCoin: 99
+  maxMana: 3
+  startMana: 3
+  manaPerTurn: 1
+  maxConditions: 5
+  handSize: 5
+  startDeck: {fileID: 11400000, guid: dc31484a1d96d9f49b7bc1f5ffb52349, type: 2}
+  startRelic: {fileID: 11400000, guid: e31d5f7f53a294e459e62df013ba7cd4, type: 2}
+  base_Prefab: {fileID: 3476161769760265376, guid: aada6aca03ff8c648a74b07fc42c5e1a, type: 3}
+  player_Avatar: {fileID: 48119353051907373, guid: a85d46033a630044e812f1ef2c5a3087, type: 3}
+  player_AvatarIcon: {fileID: 1032703236, guid: a85d46033a630044e812f1ef2c5a3087, type: 3}
+  local_Scale: {x: 0.9, y: 0.9, z: 0.9}
+  avatar_localScale: {x: 0.83, y: 0.83, z: 0.83}

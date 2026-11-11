@@ -14,6 +14,7 @@ public class PlayerSpawner : MonoBehaviour
     [SerializeField] CoinManager coinManager;
     [SerializeField] Character_Info_UI character_Info_UI;
     [SerializeField] MidMatch_Manager midMatch_Manager;
+    [SerializeField] PlayerSelfCast playerSelfCast;
 
     [Header("ToolTest")]
     [SerializeField] CharacterData defaultPlayerData;
@@ -83,7 +84,9 @@ public class PlayerSpawner : MonoBehaviour
         midMatch_Manager.player = playerRef;
         midMatch_Manager.handSize = playerRef.stats.handSize;
         #endregion
-
+        #region Player Self Cast
+        playerSelfCast.cardDropHelper = playerRef.cardDropHelper;
+        #endregion
         mapUIManager.manaSystem = manaSystem;
         mapUIManager.player = player.GetComponent<Player>();
 

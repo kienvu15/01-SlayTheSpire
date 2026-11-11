@@ -37,5 +37,5 @@ public class CharacterData : ScriptableObject
     public Sprite player_Avatar;
     public Sprite player_AvatarIcon;
     public Vector3 local_Scale;
-
+    public Vector3 avatar_localScale;
 }

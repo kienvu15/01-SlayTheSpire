@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3793ed6d1b6c36d4497c7d8bc3703ec7, type: 3}
+  m_Name: 1_Thorn Slime_M
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  enemyName: Thorn Slime
+  maxHP: {x: 28, y: 34}
+  base_DEF: 0
+  base_SPD: 10
+  maxConditions: 5
+  base_Prefab: {fileID: 4417705997060379684, guid: f4f994fc76e782f40ad4f83446792732, type: 3}
+  enemy_Avatar: {fileID: 0}
+  local_Scale: {x: 0, y: 0, z: 0}
+  avatar_localScale: {x: 0, y: 0, z: 0}
+  isBoss: 0
+  actionPatternAssets:
+  - {fileID: 0}
+  - {fileID: 11400000, guid: c18a02e23fa5a094c815886dc1549e7b, type: 2}
+  - {fileID: 0}
+  overrideValuesPattern: []

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51fa1d6af9500014db9eafd7ed3957d8, type: 3}
+  m_Name: 1_Vorgath_Deck_Setup
+  m_EditorClassIdentifier: Assembly-CSharp::Character_Deck_Setup
+  allCardData:
+  - {fileID: 11400000, guid: 2b7a666c0be491d4ba9d6f2940bdfa20, type: 2}
+  - {fileID: 11400000, guid: 2b7a666c0be491d4ba9d6f2940bdfa20, type: 2}
+  - {fileID: 11400000, guid: 2b7a666c0be491d4ba9d6f2940bdfa20, type: 2}
+  - {fileID: 11400000, guid: 2b7a666c0be491d4ba9d6f2940bdfa20, type: 2}
+  - {fileID: 11400000, guid: 2b7a666c0be491d4ba9d6f2940bdfa20, type: 2}
+  - {fileID: 11400000, guid: 2b7a666c0be491d4ba9d6f2940bdfa20, type: 2}
+  - {fileID: 11400000, guid: 2b7a666c0be491d4ba9d6f2940bdfa20, type: 2}
+  - {fileID: 11400000, guid: 2b7a666c0be491d4ba9d6f2940bdfa20, type: 2}
+  - {fileID: 11400000, guid: 2b7a666c0be491d4ba9d6f2940bdfa20, type: 2}

@@ -35,6 +35,28 @@ public class HandLayout : MonoBehaviour
     private Dictionary<GameObject, Vector3> originalScales =
         new Dictionary<GameObject, Vector3>();
 
+    public void BeginDragCard(GameObject card)
+    {
+        if (card == null || currentCards == null) return;
+
+        if (!currentCards.Contains(card)) return;
+
+        selectedCard = card;
+
+        UpdateSelectedGlow();
+        ApplyLayout(true);
+    }
+
+    public void EndDragCard(GameObject card)
+    {
+        if (selectedCard != card) return;
+
+        selectedCard = null;
+
+        UpdateSelectedGlow();
+        ApplyLayout(true);
+    }
+
     // ARRANGE
     public void ArrangeCards(List<GameObject> cards, bool animate = true)
     {
@@ -75,7 +97,44 @@ public class HandLayout : MonoBehaviour
         ApplyLayout(true);
     }
 
-    private void UpdateSelectedGlow()
+    // FORCE SELECT - KHÔNG TOGGLE
+    public void SelectCardForce(GameObject card)
+    {
+        if (card == null || currentCards == null) return;
+        if (!currentCards.Contains(card)) return;
+
+        selectedCard = card;
+
+        UpdateSelectedGlow();
+        ApplyLayout(true);
+    }
+
+    // CHỈ SCALE + GLOW KHI DRAG
+    public void PreviewDragCard(GameObject card)
+    {
+        if (card == null) return;
+
+        if (!originalScales.ContainsKey(card))
+            originalScales.Add(card, card.transform.localScale);
+
+        CardDisplay display = card.GetComponent<CardDisplay>();
+
+        if (display != null && display.outline_Glow != null)
+            display.outline_Glow.SetActive(true);
+
+        Canvas displayCV = display.GetComponent<Canvas>();
+        displayCV.sortingOrder = 602;
+
+
+        card.transform.DOKill();
+
+        card.transform.DOScale(
+            originalScales[card] * selectionScale,
+            selectionDuration
+        ).SetEase(Ease.OutCubic);
+    }
+
+    public void UpdateSelectedGlow()
     {
         if (currentCards == null) return;
 
@@ -294,6 +353,28 @@ public class HandLayout : MonoBehaviour
     public void RefreshLayout(bool animate = true)
     {
         ApplyLayout(animate);
+    }
+
+    // KIỂM TRA CARD ĐANG ĐƯỢC CHỌN
+    public bool IsCardSelected(GameObject card)
+    {
+        return selectedCard == card;
+    }
+
+    // LẤY DANH SÁCH CARD HIỆN TẠI
+    public List<GameObject> GetCurrentCards()
+    {
+        return currentCards;
+    }
+
+    public void ResetSortingOrder(GameObject card)
+    {
+        if (card == null) return;
+
+        Canvas displayCV = card.GetComponent<Canvas>();
+
+        if (displayCV != null)
+            displayCV.sortingOrder = 601;
     }
 
     private void SetCardOnTop(GameObject card, bool onTop)

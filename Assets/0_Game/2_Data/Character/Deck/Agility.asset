@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85c5f1589e0e5e24c9e482cd451c75e4, type: 3}
+  m_Name: Agility
+  m_EditorClassIdentifier: Assembly-CSharp::CardData
+  cardName: Agility
+  cardType: 3
+  effectOn: 0
+  isUnplayable: 0
+  artwork: {fileID: -842748779033256923, guid: de3f0983978587a40b4d82ca3a25f149, type: 3}
+  artworkSize: {x: 150, y: 150}
+  artworkPosition: {x: 0, y: 0}
+  artworkRotation: 0
+  manaCost: 1
+  description: Gian 1 Dodge.
+  upgradedDescription: Gian 2 Dodge.
+  canUpgrade: 1
+  maxLevel: 2
+  upgradeCost: 50
+  requirements: []
+  effects:
+  - effect: {fileID: 0}
+    runCondition: 0
+    targetMode: 0
+    targetCount: 2
+    slotRange: 1
+    overrideValue: 0
+    valueOverride: 0
+    upgradeOverrideValue: 0
+    upgradeValueOverride: 0
+  - effect: {fileID: 0}
+    runCondition: 0
+    targetMode: 1
+    targetCount: 0
+    slotRange: 0
+    overrideValue: 1
+    valueOverride: 1
+    upgradeOverrideValue: 1
+    upgradeValueOverride: 2
+  goldCost: 10
+  hasKeywordInfo: 0

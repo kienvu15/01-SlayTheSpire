@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
 
     [Header("PlayerHand_Content")]
     [SerializeField] private Button bag_Button;
-    [SerializeField] private Button endTurn_Button;
+    [SerializeField] public Button endTurn_Button;
     [SerializeField] private GameObject drawPile_Button;
     [SerializeField] private GameObject discardPile_Button;
     [SerializeField] private Button enterRoom_Button;
@@ -21,7 +21,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject card_NameT;
     [SerializeField] private GameObject manaObject;
     [SerializeField] private GameObject manaTextT;
-    [SerializeField] private GameObject default_Disciption;
+    [SerializeField] public GameObject default_Disciption;
     [SerializeField] private GameObject upgrade_Disciption;
 
     [Header("Bag Content Panels")]
@@ -33,6 +33,10 @@ public class UIManager : MonoBehaviour
     [Header("Context Visual")]
     [SerializeField] private GameObject Map_Visual_GameObject;
     [SerializeField] private GameObject Bag_Content_Object;
+    [SerializeField] private GameObject Player_Hand;
+
+    [Header("Ref")]
+    public MidMatch_Manager midMatch_Manager;
 
     [Header("UI Panels")]
     public GameObject battleHolder;
@@ -123,11 +127,6 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        //originEnterButtonAnchoredPos = buttonEnterParent.anchoredPosition;
-        //originalHandPos = hand.anchoredPosition;
-        //originalEndButtonPos = endButton.anchoredPosition;
-        //originalManaHolderPos = manaHolder.anchoredPosition;
-
         backMap_Button.onClick.AddListener(BackButton);
         bag_Button.onClick.AddListener(BagButton_CallBack);
 
@@ -155,6 +154,11 @@ public class UIManager : MonoBehaviour
         buttonText.alpha = interact ? 1f : 0.5f;
     }
 
+    public void PlayerHand(bool stage)
+    {
+        Player_Hand.SetActive(stage);
+    }
+
     //Button Call
     public void BackButton()
     {
@@ -163,7 +167,6 @@ public class UIManager : MonoBehaviour
         Map_Visual_GameObject.SetActive(false);
     }
     #endregion
-
     #region CardInfo_Help
     public void CardInfo_Help(bool stage)
     {
@@ -220,8 +223,35 @@ public class UIManager : MonoBehaviour
         }
     }
     #endregion
+    #region Pile_Helper_Scroll View
+    public void LeftHand_Content_Help(bool group1, bool group2)
+    {
+        endTurn_Button.gameObject.SetActive(group1);
+        endTurn_Button.GetComponentInChildren<TextMeshProUGUI>().text = "Take".ToString();
 
+        drawPile_Button.SetActive(group2);
+        discardPile_Button.SetActive(group2);
+        enterRoom_Button.gameObject.SetActive(group2);
+        backMap_Button.gameObject.SetActive(group2);
+    }
+    public void Context(bool stage, bool stage2)
+    {
+        card_NameT.SetActive(stage2);
+        manaObject.SetActive(stage2);
+        manaTextT.SetActive(stage2);
 
+        default_Disciption.SetActive(stage);
+        default_Disciption.GetComponent<TextMeshProUGUI>().text = "Choose your path".ToString();
+
+        upgrade_Disciption.SetActive(stage2);
+    }
+    #endregion
+    #region Button Helper
+    public void EndTurn_OnClick()
+    {
+        endTurn_Button.onClick.AddListener(() => midMatch_Manager.EndTurn());
+    }
+    #endregion
 
 
 

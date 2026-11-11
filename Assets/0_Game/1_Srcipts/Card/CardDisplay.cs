@@ -1,6 +1,5 @@
 ﻿using TMPro;
 using UnityEngine;
-using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine.UI;
 
@@ -41,9 +40,13 @@ public class CardDisplay : MonoBehaviour
     [Header("Hand Selection")]
     private HandCardManager handManager;
 
+    public CardInstance cardInstance;
+    public CardData cardData => cardInstance?.data;
+    public CardData GetCardData() => cardData;
+    public CardInstance GetCardInstance() => cardInstance;
+
     [HideInInspector] public CanvasGroup blockerGroup;
     [HideInInspector] public CardHolder cardholder;
-    [HideInInspector] public CardData cardData;
     private static CardDisplay currentlyOpen;
     private Vector3 originalScale;
 
@@ -56,66 +59,98 @@ public class CardDisplay : MonoBehaviour
 
     void Start()
     {
-        if (cardData == null) return;
-        canvas.sortingLayerName = "UI";
-        canvas.sortingOrder = 601;
-
-        mana_ConsumeText.text = cardData.manaCost.ToString();
-
-        int intentSum = 0;
-        if (cardData.effects != null)
+        if (canvas != null)
         {
-            foreach (var wrapper in cardData.effects)
-            {
-                if (wrapper == null || wrapper.effect == null) continue;
+            canvas.sortingLayerName = "UI";
+            canvas.sortingOrder = 601;
+        }
 
-                if (wrapper.overrideValue && wrapper.effect is IOverrideValue overridable)
-                {
-                    intentSum += overridable.GetIntentValue(wrapper.valueOverride);
-                }
-                else
-                {
-                    intentSum += wrapper.effect.GetIntentValue();
-                }
-            }
+        if (cardInstance != null)
+            Refresh();
+    }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            TestUpgrade();
         }
     }
 
-    public void LoadCard(CardData data)
+    private void TestUpgrade()
     {
-        cardData = data;
-        // Tên và mana
-        card_Name.text = data.cardName;
-        mana_ConsumeText.text = data.manaCost.ToString();
-        // Artwork
-        artworkImage.sprite = data.artwork;
-        int intentSum = 0;
-        if (data.effects != null)
+        if (cardInstance == null)
         {
-            foreach (var wrapper in cardData.effects)
-            {
-                if (wrapper == null || wrapper.effect == null) continue;
-
-                if (wrapper.overrideValue && wrapper.effect is IOverrideValue overridable)
-                {
-                    intentSum += overridable.GetIntentValue(wrapper.valueOverride);
-                }
-                else
-                {
-                    intentSum += wrapper.effect.GetIntentValue();
-                }
-            }
-
+            Debug.LogWarning("CardInstance is null!");
+            return;
         }
-        // Description text
+
+        if (!cardInstance.CanUpgrade)
+        {
+            Debug.LogWarning($"{cardInstance.Name} cannot upgrade! Current Level: {cardInstance.level}");
+            return;
+        }
+
+        bool success = cardInstance.UpgradeTemp();
+
+        if (success)
+        {
+            Refresh();
+
+            Debug.Log($"UPGRADE SUCCESS: {cardInstance.Name} - Level {cardInstance.level}");
+        }
+    }
+
+    public void LoadCard(CardData data) => LoadCard(new CardInstance(data));
+
+    public void LoadCard(CardInstance instance)
+    {
+        cardInstance = instance;
+        Refresh();
+    }
+
+    public void Refresh()
+    {
+        if (cardInstance == null) return;
+
+        if (card_Name != null)
+            card_Name.text = cardInstance.Name;
+
+        if (mana_ConsumeText != null)
+            mana_ConsumeText.text = cardInstance.ManaCost.ToString();
+
+        if (artworkImage != null)
+        {
+            artworkImage.sprite = cardInstance.Artwork;
+
+            RectTransform rect = artworkImage.rectTransform;
+            rect.sizeDelta = cardData.artworkSize;
+            rect.anchoredPosition = cardData.artworkPosition;
+            rect.localRotation = Quaternion.Euler(
+                0f, cardData.artworkRotation, 0f
+            );
+        }
+
         if (descriptionText != null)
-            descriptionText.text = DescriptionFormatter.Format(data.description);
+            descriptionText.text = DescriptionFormatter.Format(cardInstance.Description);
     }
 
-    public CardData GetCardData()
+    public int GetIntentSum()
     {
-        return cardData;
+        if (cardInstance == null || cardInstance.data.effects == null) return 0;
+
+        var ctx = new EffectContext { level = cardInstance.level };
+
+        int sum = 0;
+        foreach (var wrapper in cardInstance.data.effects)
+        {
+            if (wrapper == null || wrapper.effect == null) continue;
+
+            wrapper.FillContext(ctx);
+            if (wrapper.effect.CountsAsIntend)
+                sum += wrapper.effect.GetIntentValue(ctx);
+        }
+        return sum;
     }
 
     public void OnCardClick()
@@ -178,9 +213,9 @@ public class CardDisplay : MonoBehaviour
     public void InitShop(CardData data, NewShopSystem shop)
     {
         currentMode = CardMode.Shop;
-        cardData = data;
         newShopSystem = shop;
         LoadCard(data);
+
         if (goldContainer != null)
         {
             goldContainer.SetActive(true);
@@ -192,13 +227,9 @@ public class CardDisplay : MonoBehaviour
     //Reward
     public void Init(CardData data, CardHolder holder)
     {
-        currentMode = CardMode.Reward; // Đặt chế độ Reward
-        cardData = data;
+        currentMode = CardMode.Reward;
         cardholder = holder;
-
         LoadCard(data);
-
-        // Bật animation scale cho đẹp
         useScaleAnimation = true;
     }
 

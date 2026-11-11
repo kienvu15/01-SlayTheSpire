@@ -22,12 +22,11 @@ public class Character : MonoBehaviour
     public Slider hpBar;
     public Slider shieldBar;
     public Slider hpChipBar;
+    public Image cardDropHelper;
 
     [Header("HP Chip Effect")]
     [SerializeField] private float chipDelay = 0.5f;
-    [SerializeField] private float chipSpeed = 0.5f;
-    private float targetFill;      
-    private float chipTimer;       
+    [SerializeField] private float chipSpeed = 0.5f;     
 
     [Header("Conditions")]
     public int maxConditions;
@@ -159,6 +158,7 @@ public class Character : MonoBehaviour
             int absorbed = Mathf.Min(stats.shield, remaining);
             stats.shield -= absorbed;
             remaining -= absorbed;
+            UpdateShieldUI();
         }
 
         if (remaining > 0)
@@ -190,7 +190,7 @@ public class Character : MonoBehaviour
 
         // ▶ PLAY VFX HEAL
         // Target là chính mình (this), EffectKind là Heal
-        PlayImpact(this, vfxType, ImpactEffectKind.Heal);
+        //PlayImpact(this, vfxType, ImpactEffectKind.Heal);
 
         Debug.Log($"[Heal] {name} healed {amount} HP");
 
@@ -213,7 +213,7 @@ public class Character : MonoBehaviour
             stats.shield += finalShield;
             //Debug.Log($"[AddShield] {name} gained {finalShield} shield (base {amount}, multiplier {multiplier})");
             UpdateUI();
-            PlayImpact(this, vfxType, ImpactEffectKind.Shield);
+            //PlayImpact(this, vfxType, ImpactEffectKind.Shield);
         }
     }
 
@@ -237,7 +237,7 @@ public class Character : MonoBehaviour
     }
 
     // Deal damage with all checks (miss, dodge, crit, conditions, skills...)
-    public bool DealDamage(Character target, int baseDamage, CardType vfxType = CardType.Mellee)
+    public bool DealDamage(Character target, int baseDamage, ImpactProfile impactProfile = null)
     {
         SoundManager.Instance.Play("Slash");  
         // ===== Check attacker miss =====
@@ -249,9 +249,8 @@ public class Character : MonoBehaviour
         {
             Debug.Log($"[DealDamage] {name} missed due to self condition!");
             DamagePopupManager.Instance.ShowPopup(target.transform.position, 0, true);
-
             // Impact VFX cho Miss
-            PlayImpact(target, vfxType, ImpactEffectKind.Miss);
+            PlayImpact(target, impactProfile, ImpactEffectKind.Miss);
             return false;
         }
 
@@ -265,7 +264,7 @@ public class Character : MonoBehaviour
                 DamagePopupManager.Instance.ShowPopup(target.transform.position, 0, true);
 
                 // Impact VFX cho Dodge
-                PlayImpact(target, vfxType, ImpactEffectKind.Dodge);
+                PlayImpact(target, impactProfile, ImpactEffectKind.Dodge);
                 return false;
             }
         }
@@ -273,7 +272,7 @@ public class Character : MonoBehaviour
         // ===== Damage multiplier =====
         float multiplier = 1f;
         foreach (var cond in activeConditions)
-            multiplier *= cond.GetDamageDealtMultiplier();
+            multiplier *= cond.Get_Damage_Deal_Multiplier();
 
         int dmg = Mathf.RoundToInt(baseDamage * multiplier);
 
@@ -283,13 +282,16 @@ public class Character : MonoBehaviour
 
         // ===== Crit =====
         bool isCrit = false;
-
+        bool forcedBySkill = false;
         foreach (var cond in activeConditions)
             if (cond.ForceCritical()) { isCrit = true; break; }
-
+        if (!isCrit)
+        {
+            foreach (var skill in activeSkills)
+                if (skill.ForceCritical()) { isCrit = true; forcedBySkill = true; break; }
+        }
         if (!isCrit && Random.value < stats.critChance)
             isCrit = true;
-
         if (isCrit)
             dmg = Mathf.RoundToInt(dmg * stats.critDamage);
 
@@ -305,7 +307,6 @@ public class Character : MonoBehaviour
         // Relic AFTER
         if (relicManager != null)
             relicManager.ApplyOnAfterDealDamage(this, target, dmg);
-
         ImpactEffectKind finalImpact =
             GetImpactForHit(
                 isMiss: false,
@@ -313,8 +314,7 @@ public class Character : MonoBehaviour
                 isCrit: isCrit,
                 hitArmor: hitArmor 
             );
-
-        PlayImpact(target, vfxType, finalImpact);
+        PlayImpact(target, impactProfile, finalImpact);
 
         // ===== Damage popup =====
         DamagePopupManager.Instance.ShowPopup(target.transform.position, dmg, isCrit);
@@ -322,7 +322,7 @@ public class Character : MonoBehaviour
         // ===== Skills hook =====
         foreach (var skill in activeSkills.ToArray())
         {
-            skill.OnHit(this, target, dmg);
+            skill.OnHit(this, target, dmg, forcedBySkill && skill.ForceCritical());
             skillPanelUI?.UpdateStacks(skill.type, skill.stacks);
         }
 
@@ -377,7 +377,7 @@ public class Character : MonoBehaviour
                 clone.owner = (this is EnemyView) ? ConditionOwner.EnemyOnSelf : ConditionOwner.Enemy;
 
             activeConditions.Add(clone);
-            PlayImpact(this, vfxType, ImpactEffectKind.Dodge);
+            //PlayImpact(this, vfxType, ImpactEffectKind.Dodge);
             // AttackImpactManager.Instance.ShowConditionImpact(transform, vfxType);
 
             Debug.Log($"[Condition] Added {clone.type} ({clone.duration} turns) from {clone.owner}");
@@ -480,15 +480,13 @@ public class Character : MonoBehaviour
         if (existing != null)
         {
             existing.stacks += newSkill.stacks;
-            Debug.Log($"[Skill] {newSkill.type} stacked! Total stacks = {existing.stacks}");
+            existing.value = Mathf.Max(existing.value, newSkill.value);
         }
         else
         {
             Skill clone = newSkill.Clone();
             activeSkills.Add(clone);
             Debug.Log($"[Skill] Added {newSkill.type} ({newSkill.stacks} stacks)");
-
-            
         }
 
         if (skillPanelUI != null)
@@ -503,7 +501,6 @@ public class Character : MonoBehaviour
         stunDuration = Mathf.Max(stunDuration, turns);
         Debug.Log($"{name} is stunned for {stunDuration} turns!");
     }
-
     public void TickStun()
     {
         if (isStunned)
@@ -515,22 +512,27 @@ public class Character : MonoBehaviour
                 Debug.Log($"{name} recovered from stun!");
             }
         }
-    }    
+    }
 
     // IMPACT CALL
-    private void PlayImpact(Character target, CardType cardType, ImpactEffectKind effect)
-    {
-        HitContext ctx = new HitContext
-        {
-            cardType = cardType,
-            effectKind = effect,
-            target = target.transform,
-            position = target.transform.position,
-            rotation = Quaternion.identity
-        };
 
-        NewAttackImpactManager.Instance.PlayImpact(ctx);
+    private void PlayImpact(
+        Character target,
+        ImpactProfile profile,
+        ImpactEffectKind effect)
+    {
+        if (NewAttackImpactManager.Instance == null)
+            return;
+
+        NewAttackImpactManager.Instance.PlayImpact(
+            profile,
+            effect,
+            transform,
+            target != null ? target.transform : null,
+            target != null ? target.transform.position : transform.position
+        );
     }
+
 
     // RANDOM MINI SYSTEM
     private bool RollMiss() => Random.value < 0.05f;

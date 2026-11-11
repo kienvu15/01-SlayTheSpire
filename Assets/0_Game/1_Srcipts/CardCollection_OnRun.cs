@@ -36,60 +36,49 @@ public class CardCollection_OnRun : MonoBehaviour
             if (obj != null)
                 Destroy(obj);
         }
-
         spawnedCards.Clear();
 
         if (deck == null) return;
 
-        List<CardData> allCards = deck.GetAllCards();
+        List<CardInstance> allCards = deck.GetAllCards();
 
-        foreach (CardData data in allCards)
+        foreach (CardInstance instance in allCards)
         {
             GameObject newCard = Instantiate(cardDisplayPrefab, contentParent);
             CardDisplay display = newCard.GetComponent<CardDisplay>();
+            if (display == null) continue;
 
             Canvas canvas = newCard.GetComponent<Canvas>();
-            canvas.overrideSorting = false;
+            if (canvas != null)
+                canvas.overrideSorting = false;
 
-            if (display == null) continue;
-            //display.useScaleAnimation = true;
-            display.LoadCard(data);
+            display.LoadCard(instance);   // truyền instance để giữ level
+
             Button btn = newCard.GetComponentInChildren<Button>();
             if (btn != null)
-            {
-                //CardDisplay capturedDisplay = display;
-                //btn.onClick.AddListener(() =>
-                //{
-                //    selectedCard = capturedDisplay;
-                //});
                 btn.onClick.AddListener(() => OnCard_Clicked(display));
-            }
+
             spawnedCards.Add(newCard);
         }
     }
 
     public void OnCard_Clicked(CardDisplay pickedCard)
     {
-        string Name = pickedCard.cardData.cardName;
-        string Description = pickedCard.cardData.description;
-        string manaCost = pickedCard.cardData.manaCost.ToString();
+        UIManager.Instance.CardInfo_Help(true);
+        firstTimeOpen = true;
 
-        //if (firstTimeOpen == false)
-        //{
-            UIManager.Instance.CardInfo_Help(true);
-            firstTimeOpen = true;
-        //}
-        ShowConditions(pickedCard.cardData);
+        ShowConditions(pickedCard.cardInstance);
         UIManager.Instance.Init_CardInfor(pickedCard);
     }
 
-    private void ShowConditions(CardData data)
+    private void ShowConditions(CardInstance card)
     {
         ClearConditions();
 
-        if (conditionPrefab == null || conditionParent == null || conditionDb == null) return;
+        if (card == null || conditionPrefab == null || conditionParent == null || conditionDb == null)
+            return;
 
-        foreach (ConditionType type in data.GetKeywords())
+        foreach (ConditionType type in card.data.GetKeywords(card.level))
         {
             if (!conditionDb.TryGet(type, out var entry)) continue;
 

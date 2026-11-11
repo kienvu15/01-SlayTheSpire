@@ -1,21 +1,26 @@
 ﻿using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class ManaSystem : MonoBehaviour
 {
+    public static ManaSystem instance;
+
     [Header("Mana Settings")]
     public int maxMana = 10;          
     public int currentMana = 0;       
     public int manaPerTurn = 1;
+
     public TextMeshProUGUI ManaText;
+    public Image Mana_Icon;
+    public Animator mana_Anim;
+    public GameObject glow_Object;
 
-    //[Header("UI References")]
-    //public Transform manaContainer;   
-    //public GameObject manaImagePrefab;    
-    //public GameObject hollowManaImagePrefab; 
-
-    private List<GameObject> manaIcons = new List<GameObject>();
+    private void Awake()
+    {
+        instance = this;
+    }
 
     public void InitMana(CharacterData playerData)
     {
@@ -30,13 +35,32 @@ public class ManaSystem : MonoBehaviour
     {
         currentMana += manaPerTurn;
         currentMana = Mathf.Clamp(currentMana, 0, maxMana);
+        mana_Anim.SetTrigger("ReFill");
         UpdateManaUI();
     }
 
-    /// Kiểm tra xem có đủ mana để chơi card không
+    public int GainMana(int amount)
+    {
+        if (amount <= 0) return 0;
+
+        int old = currentMana;
+        currentMana = Mathf.Min(currentMana + amount, maxMana);
+        AnimHelper.Instance.PlayManaScale();
+        UpdateManaUI();
+        mana_Anim.SetTrigger("ReFill");
+        return currentMana - old;
+    }
+
+    /// Kiểm tra đủ mana để chơi card (theo level của lá bài)
+    public bool CanPlayCard(CardInstance card)
+    {
+        return card != null && currentMana >= card.ManaCost;
+    }
+
+    /// Overload cũ: dùng mana gốc (level 1)
     public bool CanPlayCard(CardData card)
     {
-        return currentMana >= card.manaCost;
+        return card != null && currentMana >= card.manaCost;
     }
 
     /// Trừ mana khi chơi card
@@ -44,6 +68,7 @@ public class ManaSystem : MonoBehaviour
     {
         currentMana -= amount;
         if (currentMana < 0) currentMana = 0;
+        AnimHelper.Instance.PlayManaScale();
         UpdateManaUI();
     }
 
@@ -58,27 +83,17 @@ public class ManaSystem : MonoBehaviour
     public void UpdateManaUI()
     {
         ManaText.text = $"{currentMana} / {maxMana}";
-
-        // Xóa icon cũ
-        //foreach (var icon in manaIcons)
-        //{
-        //    Destroy(icon);
-        //}
-        //manaIcons.Clear();
-
-        //// Vẽ lại mana (vàng trước)
-        //for (int i = 0; i < currentMana; i++)
-        //{
-        //    GameObject icon = Instantiate(manaImagePrefab, mana_Container);
-        //    manaIcons.Add(icon);
-        //}
-
-        //// Vẽ hollow (xám) cho phần còn lại
-        //for (int i = currentMana; i < maxMana; i++)
-        //{
-        //    GameObject icon = Instantiate(hollowManaImagePrefab, mana_Container);
-        //    manaIcons.Add(icon);
-        //}
+        if (currentMana <= 0)
+        {
+            ManaText.color = Color.red;
+            Mana_Icon.color = new Color32(198, 198, 198, 255);
+            glow_Object.SetActive(false);
+        }
+        else
+        {
+            ManaText.color = Color.white;
+            Mana_Icon.color = Color.white; glow_Object.SetActive(true);
+        }
     }
 
 }

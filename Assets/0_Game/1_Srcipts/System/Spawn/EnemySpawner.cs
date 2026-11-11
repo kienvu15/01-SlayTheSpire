@@ -39,13 +39,6 @@ public class EnemySpawner : MonoBehaviour
         WaveData wave = currentEncounter.waves[waveIndex];
         if (wave == null) return;
 
-        GameObject systemCanvas = GameObject.Find("EnemyFM");
-        if (systemCanvas == null)
-        {
-            Debug.LogError("Không tìm thấy Canvas tên 'EnemyFM'!");
-            return;
-        }
-
         Spot[] slots = SlotManager.Instance.GetAllSlots();
         List<(EnemyType type, Spot slot)> assigned = SlotAssigner.AssignSlots(wave.enemyTypes, slots);
 
@@ -80,7 +73,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 slot.occupant = enemy;
                 slot.isOccupied = true;
-                StartCoroutine(enemy.Move2Slot(slot));
+                enemy.currentSlot = slot;
             }
         }
 

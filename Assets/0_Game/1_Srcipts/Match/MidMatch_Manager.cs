@@ -37,9 +37,6 @@ public class MidMatch_Manager : MonoBehaviour
         }
 
         StartCoroutine(EndTurnRoutine());
-
-        if (manaSystem != null)
-            manaSystem.StartTurn();
     }
 
     private IEnumerator EndTurnRoutine()
@@ -54,7 +51,8 @@ public class MidMatch_Manager : MonoBehaviour
             {
                 if (cardGO == null) continue;
                 CardDisplay cd = cardGO.GetComponent<CardDisplay>();
-                if (cd != null) discard.AddToDiscard(cd.GetCardData());
+                if (cd != null && cd.cardInstance != null)
+                    discard.AddToDiscard(cd.cardInstance);   // giữ level
             }
 
             yield return StartCoroutine(discard.AnimateDiscardHand(handObjects));
@@ -88,19 +86,23 @@ public class MidMatch_Manager : MonoBehaviour
         {
             player.TriggerConditionEffects();
         }
-
+        Debug.Log("[MidMatch_Manager] Player turn start");
         // --- Draw hand ---
         yield return new WaitForSeconds(0.5f);
         yield return StartCoroutine(TryDrawNextHand());
 
         deck.UpdateUI();
         if (discard != null) discard.UpdateDiscardCount();
-
+        Debug.Log("[MidMatch_Manager] Player turn ready");
         GameStage.Instance.SetBusy(false);
     }
 
     private IEnumerator TryDrawNextHand()
     {
+        if (manaSystem != null)
+            manaSystem.StartTurn();
+
+        Debug.Log($"[MidMatch_Manager] Trying to draw {handSize} cards for next hand.");
         int need = handSize;
 
         while (need > 0)
@@ -121,7 +123,7 @@ public class MidMatch_Manager : MonoBehaviour
                 yield return new WaitForSeconds(waitBeforeRefill);
 
                 // Refill từ discard
-                List<CardData> taken = discard.TakeAllCards();
+                List<CardInstance> taken = discard.TakeAllCards();
                 if (taken.Count > 0)
                 {
                     Debug.Log($"[MidMatch_Manager] Taken {taken.Count} cards from discard to deck.");

@@ -147,9 +147,10 @@ public class EnemyAction : ScriptableObject
             }
             else
             {
-                effect.Apply(self, target, null, null);
+                //effect.Apply(self, target, null, null);
             }
         }
 
     }
+
 }

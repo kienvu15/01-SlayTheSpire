@@ -7,48 +7,46 @@ using TMPro;
 public class Discard : MonoBehaviour
 {
     [Header("References")]
-    public Transform discardTransform;          
-    public TextMeshProUGUI discardCountText;     
+    public Transform discardTransform;
+    public TextMeshProUGUI discardCountText;
     public CanvasGroup PlayerSelfCast;
 
     [Header("Animation")]
-    public float moveDuration = 0.5f;            
-    public float scaleDuration = 0.5f;           
-    public float delayBetweenCards = 0.1f;       
+    public float moveDuration = 0.5f;
+    public float scaleDuration = 0.5f;
+    public float delayBetweenCards = 0.1f;
 
     [HideInInspector]
-    public List<CardData> discardPile = new List<CardData>();
+    public List<CardInstance> discardPile = new List<CardInstance>();
 
-    // Đưa vào discard
     public int Count => discardPile.Count;
 
+    // Đưa vào discard (giữ nguyên level)
+    public void AddToDiscard(CardInstance card)
+    {
+        if (card == null) return;
+
+        discardPile.Add(card);
+        Debug.Log($"[Discard] Added {card.Name} (level {card.level}), total now {discardPile.Count}");
+
+        if (PlayerSelfCast != null)
+            PlayerSelfCast.blocksRaycasts = true;
+
+        UpdateDiscardCount();
+        PunchDiscardIcon();
+    }
+
+    // Overload cũ: code nào còn truyền CardData vẫn chạy (level 1)
     public void AddToDiscard(CardData card)
     {
-        if (card != null)
-        {
-            discardPile.Add(card);
-            Debug.Log($"[Discard] Added {card.name}, total now {discardPile.Count}");
-            PlayerSelfCast.blocksRaycasts = true;
-            UpdateDiscardCount();
-
-            if (discardTransform != null)
-            {
-                discardTransform.DOKill(); 
-                discardTransform.localScale = Vector3.one; 
-                discardTransform.DOScale(1.2f, 0.15f)
-                    .SetEase(Ease.OutQuad)
-                    .OnComplete(() =>
-                    {
-                        discardTransform.DOScale(1f, 0.15f).SetEase(Ease.InQuad);
-                    });
-            }
-        }
+        if (card == null) return;
+        AddToDiscard(new CardInstance(card));
     }
 
     /// Lấy toàn bộ bài trong discard và xóa sạch discard
-    public List<CardData> TakeAllCards()
+    public List<CardInstance> TakeAllCards()
     {
-        List<CardData> taken = new List<CardData>(discardPile);
+        List<CardInstance> taken = new List<CardInstance>(discardPile);
         discardPile.Clear();
         UpdateDiscardCount();
         return taken;
@@ -61,6 +59,20 @@ public class Discard : MonoBehaviour
         UpdateDiscardCount();
     }
 
+    private void PunchDiscardIcon()
+    {
+        if (discardTransform == null) return;
+
+        discardTransform.DOKill();
+        discardTransform.localScale = Vector3.one;
+        discardTransform.DOScale(1.2f, 0.15f)
+            .SetEase(Ease.OutQuad)
+            .OnComplete(() =>
+            {
+                discardTransform.DOScale(1f, 0.15f).SetEase(Ease.InQuad);
+            });
+    }
+
     /// Animate hand bay về discard và Destroy card GO
     public IEnumerator AnimateDiscardHand(List<GameObject> handObjects)
     {
@@ -70,8 +82,6 @@ public class Discard : MonoBehaviour
 
             RectTransform rect = cardGO.GetComponent<RectTransform>();
             Vector3 droppedPos = rect.position;
-
-            //rect.SetParent(discardTransform.parent, true);
             rect.position = droppedPos;
 
             Sequence seq = DOTween.Sequence();
@@ -83,18 +93,7 @@ public class Discard : MonoBehaviour
             seq.OnComplete(() =>
             {
                 Destroy(cardGO);
-
-                if (discardTransform != null)
-                {
-                    discardTransform.DOKill();
-                    discardTransform.localScale = Vector3.one;
-                    discardTransform.DOScale(1.2f, 0.15f)
-                        .SetEase(Ease.OutQuad)
-                        .OnComplete(() =>
-                        {
-                            discardTransform.DOScale(1f, 0.15f).SetEase(Ease.InQuad);
-                        });
-                }
+                PunchDiscardIcon();
             });
 
             yield return new WaitForSeconds(delayBetweenCards);
@@ -108,8 +107,7 @@ public class Discard : MonoBehaviour
 
     public void UpdateDiscardCount()
     {
-        if (discardCountText == null)
-            return;
+        if (discardCountText == null) return;
 
         int targetCount = discardPile.Count;
 
@@ -120,9 +118,9 @@ public class Discard : MonoBehaviour
             currentDisplayCount = x;
             discardCountText.text = "Discard Pile - " + currentDisplayCount.ToString();
         },
-        targetCount, 0.5f) 
+        targetCount, 0.5f)
         .SetEase(Ease.OutQuad)
-        .SetId(discardCountText); 
+        .SetId(discardCountText);
     }
 
 }

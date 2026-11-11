@@ -1,95 +1,73 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿//using System.Collections;
+//using System.Collections.Generic;
+//using UnityEngine;
 
-[CreateAssetMenu(fileName = "AttackAndDrawIfEmpty", menuName = "Cards/Effects/AttackAndDrawIfEmpty")]
-public class AttackAndDrawIfEmptyEffect : EffectData, IOverrideValue
-{
-    public int damage = 7;
-    public CardType vfxType = CardType.Mellee;
-    public int drawIfHandEmpty = 1;
+//[CreateAssetMenu(fileName = "AttackAndDrawIfEmpty", menuName = "Cards/Effects/AttackAndDrawIfEmpty")]
+//public class AttackAndDrawIfEmptyEffect : EffectData, IOverrideValue
+//{
+//    public int damage = 7;
+//    public CardType vfxType = CardType.Mellee;
+//    public int drawIfHandEmpty = 1;
 
-    public override bool Apply(Character self, Character target, ManaSystem manaSystem, Deck deck)
-    {
-        if (target == null) return false;
+//    public override bool Apply(Character self, Character target, ManaSystem manaSystem, Deck deck)
+//    {
+//        return DoAttack(self, target, deck, damage);
+//    }
 
-        bool hit = self.DealDamage(target, damage, vfxType);
+//    public void ApplyWithOverride(Character self, Character target, int overrideValue)
+//    {
+//        // ApplyWithOverride không nhận deck nên lấy từ singleton
+//        DoAttack(self, target, Deck.instance, overrideValue);
+//    }
 
-        if (hit)
-        {
-            // 👇 chạy coroutine để check sau khi lá bài bị remove khỏi hand
-            self.StartCoroutine(DelayedCheck(deck));
-        }
+//    // Logic chung, không sửa field của ScriptableObject
+//    private bool DoAttack(Character self, Character target, Deck deck, int dmg)
+//    {
+//        if (target == null) return false;
 
-        return hit;
-    }
+//        bool hit = self.DealDamage(target, dmg, vfxType);
 
-    private IEnumerator DelayedCheck(Deck deck)
-    {
-        yield return null; // chờ 1 frame cho EnemyDropZone xóa card khỏi hand
+//        if (hit && deck != null)
+//        {
+//            // Chờ 1 frame cho drop zone xóa card khỏi hand rồi mới kiểm tra
+//            self.StartCoroutine(DelayedCheck(deck));
+//        }
 
-        if (deck.GetCurrentHandObjects().Count == 0)
-        {
-            Debug.Log($"[AttackAndDrawIfEmptyEffect] Hand empty, draw {drawIfHandEmpty} cards");
+//        return hit;
+//    }
 
-            // Nếu deck + discard đều trống => không rút được gì
-            if (deck.GetDeckCount() == 0 && deck.discard.Count == 0)
-            {
-                Debug.Log("[AttackAndDrawIfEmptyEffect] No cards in deck and discard!");
-                yield break;
-            }
+//    private IEnumerator DelayedCheck(Deck deck)
+//    {
+//        yield return null;
 
-            // Nếu deck rỗng nhưng discard còn => refill trước
-            if (deck.GetDeckCount() == 0 && deck.discard.Count > 0)
-            {
-                yield return RefillAndDraw(deck, drawIfHandEmpty);
-            }
-            else
-            {
-                yield return deck.StartCoroutine(deck.DrawCards(drawIfHandEmpty));
-            }
-        }
-    }
+//        if (deck.GetCurrentHandObjects().Count != 0) yield break;
 
-    private IEnumerator RefillAndDraw(Deck deck, int count)
-    {
-        Debug.Log("[AttackAndDrawIfEmptyEffect] Deck empty, refilling from discard...");
+//        Debug.Log($"[AttackAndDrawIfEmptyEffect] Hand empty, draw {drawIfHandEmpty} cards");
 
-        // chờ hiệu ứng refill (nếu muốn có delay)
-         yield return new WaitForSeconds(0.5f);
+//        if (deck.GetDeckCount() == 0 && deck.discard.Count == 0)
+//        {
+//            Debug.Log("[AttackAndDrawIfEmptyEffect] No cards in deck and discard!");
+//            yield break;
+//        }
 
-        // lấy toàn bộ discard đưa vào deck
-        List<CardData> discardCards = deck.discard.TakeAllCards();
-        deck.ReceiveCards(discardCards);
-        deck.ShuffleDeck();
+//        if (deck.GetDeckCount() == 0)
+//            yield return RefillAndDraw(deck, drawIfHandEmpty);
+//        else
+//            yield return deck.StartCoroutine(deck.DrawCards(drawIfHandEmpty));
+//    }
 
-        // sau khi refill thì rút tiếp
-        yield return deck.StartCoroutine(deck.DrawCards(count));
-    }
+//    private IEnumerator RefillAndDraw(Deck deck, int count)
+//    {
+//        yield return new WaitForSeconds(0.5f);
 
-    public override int GetIntentValue()
-    {
-        return damage;
-    }
+//        List<CardInstance> discardCards = deck.discard.TakeAllCards();
+//        deck.ReceiveCards(discardCards);
+//        deck.ShuffleDeck();
 
-    public int GetIntentValue(int? overrideValue = null)
-    {
-        return overrideValue ?? damage;
-    }
+//        yield return deck.StartCoroutine(deck.DrawCards(count));
+//    }
 
-    public void ApplyWithOverride(Character self, Character target, int overrideValue)
-    {
-        if (target == null) return;
+//    public override int GetIntentValue() => damage;
 
-        int old = damage;
-        damage = overrideValue;
-        bool hit = self.DealDamage(target, damage);
-
-        if (hit)
-            Debug.Log($"[AttackEffect] {self.name} dealt {overrideValue} damage to {target.name} (override)");
-        else
-            Debug.Log($"[AttackEffect] {self.name} missed {target.name} (override)");
-
-        damage = old;
-    }
-}
+//    public int GetIntentValue(int? overrideValue = null) => overrideValue ?? damage;
+//}

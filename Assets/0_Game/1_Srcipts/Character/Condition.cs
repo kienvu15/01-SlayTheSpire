@@ -11,6 +11,7 @@ public enum ConditionType
     Injury,
     Mark,
     Weakened,
+    Vulnerable,
 }
 
 public enum ConditionOwner
@@ -69,7 +70,7 @@ public class Condition
         return 0f;
     }
 
-    public float GetDamageDealtMultiplier()
+    public float Get_Damage_Deal_Multiplier()
     {
         switch (type)
         {
@@ -83,7 +84,8 @@ public class Condition
     {
         switch (type)
         {
-            // case ConditionType.Fragile: return 1.5f; // -50% armor effect ~ nhận nhiều dmg hơn
+            case ConditionType.Vulnerable:
+                return 1.5f;
         }
         return 1f;
     }
@@ -114,4 +116,5 @@ public class Condition
     {
         return type == ConditionType.Immunity;
     }
+
 }

@@ -13,7 +13,12 @@ public class Character_Info_UI : MonoBehaviour
     public TextMeshProUGUI defText;
     public TextMeshProUGUI spdText;
     
-    public Player player; 
+    [HideInInspector] public Player player;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     public void Init_InfoUI(CharacterData playerData)
     {

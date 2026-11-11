@@ -11,56 +11,51 @@ public enum SkillType
 public class Skill
 {
     public SkillType type;
-    public int stacks = 1;   // số lần có thể kích hoạt
+    public int stacks = 1;   
+
+    // helper
+    public int value = 100;   // LifeSteal: % sát thương hồi lại. Skill khác bỏ qua
 
     public Skill Clone() => (Skill)MemberwiseClone();
 
-    /// <summary>
-    /// Gọi trước khi damage apply (cho phép chỉnh crit, bonus damage…)
-    /// </summary>
-    public void OnDealDamage(Character self, Character target, ref int damage, ref bool isCrit)
+    public bool IsExpired => stacks <= 0;
+
+    // ===== Hook giống Condition: Character gọi để hỏi =====
+
+    /// Đòn kế tiếp có chắc chắn crit không
+    public bool ForceCritical() => type == SkillType.HeadShot && stacks > 0;
+
+    /// Gọi sau khi đòn đã trúng. forcedCrit = đòn này crit là do skill ép
+    public void OnHit(Character self, Character target, int damageDealt, bool forcedCrit)
     {
+        if (stacks <= 0) return;
+
         switch (type)
         {
             case SkillType.HeadShot:
-                // đòn tiếp theo chắc chắn crit
-                isCrit = true;
-                Debug.Log($"[Skill] {self.name} triggered HeadShot!");
-                stacks--;
-                break;
-
-            case SkillType.Stun:
-                // Stun sẽ xử lý sau khi hit, không làm gì ở đây
+                if (forcedCrit)
+                {
+                    stacks--;
+                    Debug.Log($"[Skill] {self.name} used HeadShot");
+                }
                 break;
 
             case SkillType.LifeSteal:
-                // Không can thiệp damage, chỉ xử lý ở OnHit
-                break;
-        }
-    }
-
-    /// <summary>
-    /// Gọi sau khi damage đã apply (cho heal, stun…)
-    /// </summary>
-    public void OnHit(Character self, Character target, int damageDealt)
-    {
-        switch (type)
-        {
-            case SkillType.LifeSteal:
-                int heal = Mathf.RoundToInt(damageDealt * 1f); // 100% heal, tỉ lệ này để EffectData quyết định
-                self.Heal(heal);
-                Debug.Log($"[Skill] {self.name} healed {heal} HP from LifeSteal!");
+                int heal = Mathf.RoundToInt(damageDealt * value / 100f);
+                if (heal > 0) self.Heal(heal);
                 stacks--;
+                Debug.Log($"[Skill] {self.name} healed {heal} HP from LifeSteal");
                 break;
 
             case SkillType.Stun:
                 if (target != null)
                 {
                     target.ApplyStun(1);
-                    Debug.Log($"[Skill] {self.name} stunned {target.name}!");
                     stacks--;
+                    Debug.Log($"[Skill] {self.name} stunned {target.name}");
                 }
                 break;
         }
     }
+
 }

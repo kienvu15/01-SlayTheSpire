@@ -1,48 +1,48 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿//using System.Collections.Generic;
+//using UnityEngine;
 
-[CreateAssetMenu(fileName = "DrawCardEffect", menuName = "Cards/Effects/Draw Card")]
-public class DrawCardEffect : EffectData
-{
-    public int amount = 1;
+//[CreateAssetMenu(fileName = "DrawCardEffect", menuName = "Cards/Effects/Draw Card")]
+//public class DrawCardEffect : EffectData, IOverrideValue
+//{
+//    public int amount = 1;
 
-    public override bool Apply(Character self, Character target, ManaSystem manaSystem, Deck deck)
-    {
-        if (deck == null) return false;
+//    public override bool Apply(Character self, Character target, ManaSystem manaSystem, Deck deck)
+//        => DoDraw(deck, amount);
 
-        // Nếu deck + discard đều trống => không rút được gì
-        if (deck.GetDeckCount() == 0 && deck.discard.Count == 0)
-        {
-            Debug.Log("[DrawCardEffect] No cards in deck and discard!");
-            return false;
-        }
+//    public void ApplyWithOverride(Character self, Character target, int overrideValue)
+//        => DoDraw(Deck.instance, overrideValue);
 
-        // Nếu deck rỗng nhưng discard còn => refill trước
-        if (deck.GetDeckCount() == 0 && deck.discard.Count > 0)
-        {
-            deck.StartCoroutine(RefillAndDraw(deck, amount));
-        }
-        else
-        {
-            deck.StartCoroutine(deck.DrawCards(amount));
-        }
+//    public override int GetIntentValue() => amount;
+//    public int GetIntentValue(int? overrideValue = null) => overrideValue ?? amount;
 
-        return true;
-    }
+//    private bool DoDraw(Deck deck, int count)
+//    {
+//        if (deck == null) return false;
 
-    private System.Collections.IEnumerator RefillAndDraw(Deck deck, int count)
-    {
-        Debug.Log("[DrawCardEffect] Deck empty, refilling from discard...");
+//        if (deck.GetDeckCount() == 0 && deck.discard.Count == 0)
+//        {
+//            Debug.Log("[DrawCardEffect] No cards in deck and discard!");
+//            return false;
+//        }
 
-        // chờ 1 chút cho hiệu ứng refill
-        yield return new WaitForSeconds(deck.refillDelay);
+//        if (deck.GetDeckCount() == 0)
+//            deck.StartCoroutine(RefillAndDraw(deck, count));
+//        else
+//            deck.StartCoroutine(deck.DrawCards(count));
 
-        // lấy toàn bộ discard đưa vào deck
-        List<CardData> discardCards = deck.discard.TakeAllCards();
-        deck.ReceiveCards(discardCards);
-        deck.ShuffleDeck();
+//        return true;
+//    }
 
-        // sau khi refill thì rút tiếp
-        yield return deck.StartCoroutine(deck.DrawCards(count));
-    }
-}
+//    private System.Collections.IEnumerator RefillAndDraw(Deck deck, int count)
+//    {
+//        Debug.Log("[DrawCardEffect] Deck empty, refilling from discard...");
+
+//        yield return new WaitForSeconds(deck.refillDelay);
+
+//        List<CardInstance> discardCards = deck.discard.TakeAllCards();
+//        deck.ReceiveCards(discardCards);
+//        deck.ShuffleDeck();
+
+//        yield return deck.StartCoroutine(deck.DrawCards(count));
+//    }
+//}

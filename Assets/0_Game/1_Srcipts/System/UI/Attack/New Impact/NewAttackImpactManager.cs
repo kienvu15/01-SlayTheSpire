@@ -1,13 +1,11 @@
-﻿using System.Collections.Generic;
+﻿
+using System.Collections.Generic;
 using UnityEngine;
 
 public class NewAttackImpactManager : MonoBehaviour
 {
     public static NewAttackImpactManager Instance;
 
-    [SerializeField] private ImpactDictionaryAsset dictionary;
-
-    // Pool: Prefab → Queue Instance
     private Dictionary<GameObject, Queue<GameObject>> poolDict = new();
 
     private void Awake()
@@ -19,64 +17,115 @@ public class NewAttackImpactManager : MonoBehaviour
         }
 
         Instance = this;
-
-        if (dictionary != null)
-            dictionary.Initialize();
     }
 
-    public void PlayImpact(HitContext ctx)
+    public void PlayImpact(
+        ImpactProfile profile,
+        ImpactEffectKind effectKind,
+        Transform attacker,
+        Transform target,
+        Vector3 worldPosition)
     {
-        if (dictionary.TryGetImpact(ctx, out var prefab))
+        if (profile == null) return;
+
+        ImpactVFXEntry entry = profile.GetImpact(effectKind);
+
+        if (entry == null || entry.prefab == null)
+            return;
+
+        Transform anchor = null;
+
+        switch (entry.spawnAnchor)
         {
-            GameObject vfxInstance = GetFromPool(prefab);
-            vfxInstance.transform.SetParent(null);
-            // Position
-            vfxInstance.transform.position = ctx.position;
-            vfxInstance.transform.rotation = ctx.rotation;
-            // Optionally attach:
-            // if (ctx.target != null) vfxInstance.transform.SetParent(ctx.target);
+            case ImpactSpawnAnchor.Target:
+                anchor = target;
+                break;
 
-            vfxInstance.SetActive(true);
+            case ImpactSpawnAnchor.Attacker:
+                anchor = attacker;
+                break;
+        }
 
-            ImpactFadeOut ip = vfxInstance.GetComponentInChildren<ImpactFadeOut>();
-            if (ip != null)
+        Vector3 spawnPosition = worldPosition;
+        Quaternion spawnRotation = Quaternion.identity;
+
+        if (anchor != null)
+        {
+            spawnPosition = anchor.TransformPoint(entry.positionOffset);
+            spawnRotation = anchor.rotation *
+                Quaternion.Euler(entry.rotationOffset);
+        }
+        else if (entry.spawnAnchor == ImpactSpawnAnchor.WorldPosition)
+        {
+            spawnPosition += entry.positionOffset;
+            spawnRotation = Quaternion.Euler(entry.rotationOffset);
+        }
+
+        GameObject instance = GetFromPool(entry.prefab);
+
+        // Luôn parent vào Canvas chứa Manager
+        instance.transform.SetParent(transform, false);
+
+        instance.transform.position = spawnPosition;
+        instance.transform.rotation = spawnRotation;
+
+        // Scale lấy trực tiếp từ ImpactProfile
+        instance.transform.localScale = entry.scale;
+
+        instance.SetActive(true);
+
+        ImpactFadeOut fade = instance.GetComponentInChildren<ImpactFadeOut>();
+
+        if (fade != null)
+        {
+            fade.PlayFadeOut(_ =>
             {
-                ip.PlayFadeOut(_ => ReturnToPool(prefab, vfxInstance));
-            }
+                ReturnToPool(entry.prefab, instance);
+            });
         }
         else
         {
-            Debug.LogWarning($"Impact VFX not found for {ctx.cardType} / {ctx.effectKind}");
+            Debug.LogWarning(
+                $"Impact prefab {entry.prefab.name} has no ImpactFadeOut."
+            );
+            ReturnToPool(entry.prefab, instance);
         }
     }
 
-    private GameObject GetFromPool(GameObject prefabKey)
+    private GameObject GetFromPool(GameObject prefab)
     {
-        if (!poolDict.ContainsKey(prefabKey))
-            poolDict[prefabKey] = new Queue<GameObject>();
+        if (!poolDict.ContainsKey(prefab))
+            poolDict[prefab] = new Queue<GameObject>();
 
-        Queue<GameObject> pool = poolDict[prefabKey];
+        Queue<GameObject> pool = poolDict[prefab];
 
-        if (pool.Count > 0)
+        while (pool.Count > 0)
         {
             GameObject obj = pool.Dequeue();
+
             if (obj != null)
                 return obj;
         }
 
-        return Instantiate(prefabKey);
+        return Instantiate(prefab, transform);
     }
 
-    private void ReturnToPool(GameObject prefabKey, GameObject instance)
+    private void ReturnToPool(
+        GameObject prefab,
+        GameObject instance)
     {
         if (instance == null) return;
 
         instance.SetActive(false);
-        instance.transform.SetParent(transform);
+        instance.transform.SetParent(transform, false);
+        instance.transform.localPosition = Vector3.zero;
+        instance.transform.localRotation = Quaternion.identity;
+        instance.transform.localScale = Vector3.one;
 
-        if (!poolDict.ContainsKey(prefabKey))
-            poolDict[prefabKey] = new Queue<GameObject>();
+        if (!poolDict.ContainsKey(prefab))
+            poolDict[prefab] = new Queue<GameObject>();
 
-        poolDict[prefabKey].Enqueue(instance);
+        poolDict[prefab].Enqueue(instance);
     }
+
 }

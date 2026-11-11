@@ -1,59 +1,59 @@
-﻿using UnityEngine;
+﻿//using UnityEngine;
 
-[CreateAssetMenu(fileName = "DrunkToAllEffect", menuName = "Cards/Effects/Drunk To All")]
-public class DrunkToAllEffectData : EffectData
-{
-    public int duration = 2;   // số lượt tồn tại mặc định
-    public CardType vfxType = CardType.Magic; // set trong inspector
+//[CreateAssetMenu(fileName = "DrunkToAllEffect", menuName = "Cards/Effects/Drunk To All")]
+//public class DrunkToAllEffectData : EffectData
+//{
+//    public int duration = 2;   // số lượt tồn tại mặc định
+//    public CardType vfxType = CardType.Magic; // set trong inspector
 
-    public override bool Apply(Character self, Character target, ManaSystem manaSystem, Deck deck)
-    {
-        // tìm player và enemy trong scene
-        MidMatch_Manager match = GameObject.FindAnyObjectByType<MidMatch_Manager>();
-        if (match == null) return false;
+//    public override bool Apply(Character self, Character target, ManaSystem manaSystem, Deck deck)
+//    {
+//        // tìm player và enemy trong scene
+//        MidMatch_Manager match = GameObject.FindAnyObjectByType<MidMatch_Manager>();
+//        if (match == null) return false;
 
-        bool applied = false;
+//        bool applied = false;
 
-        // --- áp dụng cho Player ---
-        if (match.player != null)
-        {
-            Condition drunk = new Condition
-            {
-                type = ConditionType.Drunk,
-                duration = duration
-            };
-            bool isFromPlayer = self is Player;
-            match.player.AddCondition(drunk, isFromPlayer, vfxType);
-            Debug.Log($"[DrunkToAllEffect] Applied Drunk x ({drunk.duration}) to {match.player.name}");
-            applied = true;
-        }
+//        // --- áp dụng cho Player ---
+//        if (match.player != null)
+//        {
+//            Condition drunk = new Condition
+//            {
+//                type = ConditionType.Drunk,
+//                duration = duration
+//            };
+//            bool isFromPlayer = self is Player;
+//            match.player.AddCondition(drunk, isFromPlayer, vfxType);
+//            Debug.Log($"[DrunkToAllEffect] Applied Drunk x ({drunk.duration}) to {match.player.name}");
+//            applied = true;
+//        }
 
-        // --- áp dụng cho toàn bộ Enemies ---
-        EnemySystem enemySystem = Object.FindAnyObjectByType<EnemySystem>();
-        if (enemySystem != null)
-        {
-            foreach (var enemy in enemySystem.enemies)
-            {
-                if (enemy == null) continue;
-                Condition drunk = new Condition
-                {
-                    type = ConditionType.Drunk,
-                    duration = duration
-                };
-                bool isFromPlayer = self is Player;
-                enemy.AddCondition(drunk, isFromPlayer, vfxType);
-//                AttackImpactManager.Instance.ShowConditionImpact(enemy.transform, vfxType);
+//        // --- áp dụng cho toàn bộ Enemies ---
+//        EnemySystem enemySystem = Object.FindAnyObjectByType<EnemySystem>();
+//        if (enemySystem != null)
+//        {
+//            foreach (var enemy in enemySystem.enemies)
+//            {
+//                if (enemy == null) continue;
+//                Condition drunk = new Condition
+//                {
+//                    type = ConditionType.Drunk,
+//                    duration = duration
+//                };
+//                bool isFromPlayer = self is Player;
+//                enemy.AddCondition(drunk, isFromPlayer, vfxType);
+////                AttackImpactManager.Instance.ShowConditionImpact(enemy.transform, vfxType);
 
-                Debug.Log($"[DrunkToAllEffect] Applied Drunk x ({drunk.duration}) to {enemy.name}");
-                applied = true;
-            }
-        }
+//                Debug.Log($"[DrunkToAllEffect] Applied Drunk x ({drunk.duration}) to {enemy.name}");
+//                applied = true;
+//            }
+//        }
 
-        return applied;
-    }
+//        return applied;
+//    }
 
-    public override int GetIntentValue()
-    {
-        return duration;
-    }
-}
+//    public override int GetIntentValue()
+//    {
+//        return duration;
+//    }
+//}

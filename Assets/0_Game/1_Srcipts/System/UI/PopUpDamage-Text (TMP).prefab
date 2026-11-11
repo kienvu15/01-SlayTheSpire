@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6205405062629806799}
   - component: {fileID: 3917607231052444796}
   - component: {fileID: 1612820011598063848}
+  - component: {fileID: 1586136397190781763}
   m_Layer: 5
   m_Name: PopUpDamage-Text (TMP)
   m_TagString: Untagged
@@ -66,10 +67,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Miss
+  m_text: 7
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 364c8035d07902d4fba0cbd15afd1891, type: 2}
-  m_sharedMaterial: {fileID: -2420410056217187504, guid: 364c8035d07902d4fba0cbd15afd1891, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fa92ff4f0f20ae648a575469cff6e17d, type: 2}
+  m_sharedMaterial: {fileID: -5037611459980742648, guid: fa92ff4f0f20ae648a575469cff6e17d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -93,23 +94,24 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 52.58
-  m_fontSizeBase: 52.58
+  m_fontSize: 66
+  m_fontSizeBase: 53
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 66
   m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 4096
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
+  m_TextWrappingMode: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -152,3 +154,15 @@ MonoBehaviour:
   textMesh: {fileID: 3917607231052444796}
   moveSpeed: 3.5
   lifeTime: 0.5
+--- !u!225 &1586136397190781763
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8992193514768795557}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6a124c9fba55b8439fbb49bd3157174, type: 3}
+  m_Name: 3D_3X Multi Hit Damage Effect
+  m_EditorClassIdentifier: Assembly-CSharp::MultiHitDamageEffect
+  damagePerHit: 3
+  hits: 3
+  vfxType: 0
+  targeting: 0
+  stopWhenTargetDies: 1
+  overrideApplies: 1
+  hitInterval: 0.12
