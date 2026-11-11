@@ -20,6 +20,7 @@ MonoBehaviour:
   artworkSize: {x: 205.25, y: 129.21}
   artworkPosition: {x: 0, y: 0}
   artworkRotation: 0
+  impactProfile: {fileID: 0}
   manaCost: 2
   description: Deal 6 damage. Deals an additional 1 damage for ALL of melee card
     in your hand.
@@ -39,5 +40,5 @@ MonoBehaviour:
     valueOverride: 5
     upgradeOverrideValue: 1
     upgradeValueOverride: 7
-  goldCost: 10
+  goldCost: 44
   hasKeywordInfo: 0

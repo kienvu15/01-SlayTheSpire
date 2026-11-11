@@ -50,7 +50,7 @@ public class RandomCardSystem : MonoBehaviour
             GameObject slot = Instantiate(cardDisplayPrefab, shopSlotsParent);
             CardDisplay display = slot.GetComponent<CardDisplay>();
 
-            display.useScaleAnimation = true;
+           // display.useScaleAnimation = true;
             display.LoadCard(randomCard);
 
             display.Init(randomCard, cardHolder);

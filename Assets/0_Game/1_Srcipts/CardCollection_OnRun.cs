@@ -71,7 +71,7 @@ public class CardCollection_OnRun : MonoBehaviour
         UIManager.Instance.Init_CardInfor(pickedCard);
     }
 
-    private void ShowConditions(CardInstance card)
+    public void ShowConditions(CardInstance card)
     {
         ClearConditions();
 

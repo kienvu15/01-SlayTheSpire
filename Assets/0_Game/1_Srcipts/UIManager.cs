@@ -23,6 +23,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject manaTextT;
     [SerializeField] public GameObject default_Disciption;
     [SerializeField] private GameObject upgrade_Disciption;
+    [SerializeField] private TextMeshProUGUI goldTxt;
 
     [Header("Bag Content Panels")]
     public GameObject[] contentPanels;
@@ -181,6 +182,14 @@ public class UIManager : MonoBehaviour
         card_NameT.GetComponent<TextMeshProUGUI>().text = cardDisplay.card_Name.text;
         manaTextT.GetComponent<TextMeshProUGUI>().text = cardDisplay.mana_ConsumeText.text;
         default_Disciption.GetComponent<TextMeshProUGUI>().text = "Default: " + cardDisplay.descriptionText.text;
+    }
+    public void Init_CardInfor(CardDisplay cardDisplay, CardData data)
+    {
+        card_NameT.GetComponent<TextMeshProUGUI>().text = cardDisplay.card_Name.text;
+        manaTextT.GetComponent<TextMeshProUGUI>().text = cardDisplay.mana_ConsumeText.text;
+        default_Disciption.GetComponent<TextMeshProUGUI>().text = "Default: " + cardDisplay.descriptionText.text;
+        upgrade_Disciption.GetComponent<TextMeshProUGUI>().text = "Upgrade: " + cardDisplay.descriptionText.text;
+        goldTxt.text = data.goldCost.ToString();
     }
     #endregion
     #region RelicInfo_Help
@@ -581,76 +590,14 @@ public class UIManager : MonoBehaviour
     public void LevaveShop()
     {
         newShopSystem.DeselectCurrentCard();
-        if (serviceButton.anchoredPosition != newShopSystem.buyButtonOriginalPos)
-        {
-            newShopSystem.StartCoroutine(newShopSystem.ButtonMovetoLeft());
-        }
-        StartCoroutine(LeaveDialugue());
-        StartCoroutine(LeaveButton());
-        StartCoroutine(LeaveShopBGImage());
+
+       
 
     }
 
-    public IEnumerator LeaveButton()
-    {
-        Vector2 startPos = newShopSystem.leaveButtonRect.anchoredPosition;
-        Vector2 targetPos = startPos - new Vector2(325f, 0f);
-
-        float duration = 0.4f;
-        float elapsed = 0f;
+    
 
 
-        while (elapsed < duration)
-        {
-            elapsed += Time.deltaTime;
-            float t = elapsed / duration;
-            newShopSystem.leaveButtonRect.anchoredPosition = Vector2.Lerp(startPos, targetPos, t);
-            yield return null;
-        }
-
-        newShopSystem.leaveButtonRect.anchoredPosition = targetPos;
-    }
-
-    public IEnumerator LeaveDialugue()
-    {
-        Vector2 startPos = newShopSystem.dialogBoxRect.anchoredPosition;
-        Vector2 targetPos = startPos - new Vector2(0f, 300f);
-
-        float duration = 0.4f;
-        float elapsed = 0f;
-
-
-        while (elapsed < duration)
-        {
-            elapsed += Time.deltaTime;
-            float t = elapsed / duration;
-            newShopSystem.dialogBoxRect.anchoredPosition = Vector2.Lerp(startPos, targetPos, t);
-            yield return null;
-        }
-
-        newShopSystem.dialogBoxRect.anchoredPosition = targetPos;
-    }
-
-    public IEnumerator LeaveShopBGImage()
-    {
-        Vector2 startPos = newShopSystem.bgImageRect.anchoredPosition;
-        Vector2 targetPos = startPos + new Vector2(0f, 1100f);
-
-        float duration = 0.4f;
-        float elapsed = 0f;
-
-
-        while (elapsed < duration)
-        {
-            elapsed += Time.deltaTime;
-            float t = elapsed / duration;
-            newShopSystem.bgImageRect.anchoredPosition = Vector2.Lerp(startPos, targetPos, t);
-            yield return null;
-        }
-
-        newShopSystem.bgImageRect.anchoredPosition = targetPos;
-        Shop.SetActive(false);
-    }
 
     public void RemoveCardService()
     {

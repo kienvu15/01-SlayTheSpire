@@ -38,5 +38,5 @@ MonoBehaviour:
     valueOverride: 6
     upgradeOverrideValue: 1
     upgradeValueOverride: 10
-  goldCost: 10
+  goldCost: 23
   hasKeywordInfo: 0

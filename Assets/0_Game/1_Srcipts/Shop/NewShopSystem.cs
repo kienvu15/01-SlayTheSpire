@@ -1,15 +1,28 @@
-﻿using DG.Tweening;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class NewShopSystem : MonoBehaviour
 {
-    [Header("References")]
+    [Header("Helper")]
+    public CardCollection_OnRun cardCollection_OnRun;
+    public float shopSelectionScale = 1.05f;
+    public float shopSelectionDuration = 0.18f;
+    private Dictionary<Transform, Vector3> originalShopScales = new();
+
+    [Header("UI_Helper")]
+    public TextMeshProUGUI goldText;
+    public Button Enturn_BuyButton;
+    public RectTransform Player_Info;
+
+    [Header("Data_References")]
     public AllCardData allCardDatabase;
     public CardHolder playerCardHolder;
-    public Transform shopSlotsParent;
+    public Transform shopSlotsParent3;
+    public Transform shopSlotsParent2;
     public GameObject cardDisplayPrefab;
     private List<CardData> shopCards = new List<CardData>();
 
@@ -20,201 +33,192 @@ public class NewShopSystem : MonoBehaviour
     private List<Relic> shopRelics = new List<Relic>();
     public RelicManager relicManager;
 
-    [Header("UI")]
-    public RectTransform buyButtonRect;
-    [HideInInspector] public Vector2 buyButtonOriginalPos;
-    public RectTransform bgImageRect;
-    [HideInInspector] public Vector2 bgImageOriginalPos;
-    public RectTransform leaveButtonRect;
-    [HideInInspector] public Vector2 leaveButtonOriginalPos;
-    public RectTransform dialogBoxRect;
-    [HideInInspector] public Vector2 dialogBoxOriginalPos;
-    public CanvasGroup shopOusideBlocker;
-
-    public Button buyButton;
 
     private CardDisplay currentSelectedCardDisplay;
     private RelicDisplay currentSelectedRelicDisplay;
-
-    private void OnEnable()
-    {
-        buyButtonRect.anchoredPosition = new Vector2(-1215, -96);
-        bgImageRect.anchoredPosition = new Vector2(121, 66);
-        leaveButtonRect.anchoredPosition = new Vector2(-952, -256);
-        dialogBoxRect.anchoredPosition = new Vector2(255, -342);
-    }
+    public List<RelicDisplay> spawnedRelicDisplays = new List<RelicDisplay>();
 
     void Start()
     {
-        if (buyButton != null)
-        {
-            buyButton.onClick.AddListener(BuySelectedCard);
-            buyButtonOriginalPos = buyButtonRect.anchoredPosition;
-            bgImageOriginalPos = bgImageRect.anchoredPosition;
-        }
-
         GenerateShop();
-        GenerateRelicShop();
+       // GenerateRelicShop();
     }
 
     public void GenerateShop()
     {
-        foreach (Transform child in shopSlotsParent)
+        foreach (Transform child in shopSlotsParent3)
+            Destroy(child.gameObject);
+
+        foreach (Transform child in shopSlotsParent2)
             Destroy(child.gameObject);
 
         shopCards.Clear();
         currentSelectedCardDisplay = null; 
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 3; i++)
         {
             CardData randomCard = allCardDatabase.GetRandomCard();
             if (randomCard == null) continue;
             shopCards.Add(randomCard);
-            GameObject slot = Instantiate(cardDisplayPrefab, shopSlotsParent);
+            GameObject slot = Instantiate(cardDisplayPrefab, shopSlotsParent3);
+
             CardDisplay display = slot.GetComponent<CardDisplay>();
-            display.useScaleAnimation = true;
-            display.InitShop(randomCard, this);
+            display.gameObject.GetComponent<Canvas>().overrideSorting = false;
+            display.card_Button.onClick.AddListener(() => OnCard_Clicked(display, randomCard));
+            InitShop(display, randomCard, this);
         }
+
+        for (int i = 0; i < 2; i++)
+        {
+            CardData randomCard = allCardDatabase.GetRandomCard();
+            if (randomCard == null) continue;
+            shopCards.Add(randomCard);
+            GameObject slot = Instantiate(cardDisplayPrefab, shopSlotsParent2);
+
+            CardDisplay display = slot.GetComponent<CardDisplay>();
+            display.gameObject.GetComponent<Canvas>().overrideSorting = false;
+            display.card_Button.onClick.AddListener(() => OnCard_Clicked(display, randomCard));
+            InitShop(display, randomCard, this);
+        }
+    }
+
+    public void OnCard_Clicked(CardDisplay pickedCard, CardData data)
+    {
+        SelectCard(pickedCard);
+
+        UIManager.Instance.CardInfo_Help(true);
+        cardCollection_OnRun.ShowConditions(pickedCard.cardInstance);
+        UIManager.Instance.Init_CardInfor(pickedCard, data);
+    }
+
+    private void SetShopSelectionVisual(
+    Transform target,
+    bool selected,
+    GameObject outlineGlow = null)
+    {
+        if (target == null) return;
+
+        if (!originalShopScales.ContainsKey(target))
+            originalShopScales.Add(target, target.localScale);
+
+        target.DOKill();
+
+        Vector3 originalScale = originalShopScales[target];
+
+        Vector3 targetScale = selected
+            ? originalScale * shopSelectionScale
+            : originalScale;
+
+        target.DOScale(targetScale, shopSelectionDuration)
+            .SetEase(Ease.OutCubic);
+
+        if (outlineGlow != null)
+            outlineGlow.SetActive(selected);
+    }
+
+    public void InitShop(CardDisplay display, CardData data, NewShopSystem shop)
+    {
+        display.LoadCard(data);
     }
 
     public void SelectCard(CardDisplay cardDisplay)
     {
         if (cardDisplay == null) return;
-
-        // Nếu đang có relic mở → đóng
-        if (currentSelectedRelicDisplay != null)
-        {
-            currentSelectedRelicDisplay.HideDescription();
-            currentSelectedRelicDisplay = null;
-        }
-
-        // Nếu bấm lại card đang chọn → bỏ chọn
+        // Click lại card đang chọn -> bỏ chọn
         if (currentSelectedCardDisplay == cardDisplay)
         {
-           // cardDisplay.HideDescription();
             DeselectCurrentCard();
             return;
         }
 
-        // Nếu đang có card khác → đóng
-       // if (currentSelectedCardDisplay != null)
-         //   currentSelectedCardDisplay.HideDescription();
-
+        // Trả card cũ về trạng thái ban đầu
+        if (currentSelectedCardDisplay != null)
+        {
+            SetShopSelectionVisual(
+                currentSelectedCardDisplay.transform,
+                false,
+                currentSelectedCardDisplay.outline_Glow
+            );
+        }
         currentSelectedCardDisplay = cardDisplay;
-        //cardDisplay.ToggleDescription();
+        // Hiệu ứng card mới
+        SetShopSelectionVisual(
+            cardDisplay.transform,
+            true,
+            cardDisplay.outline_Glow
+        );
 
-        // Move nút Buy
-        if (buttonMoveCoroutine != null) StopCoroutine(buttonMoveCoroutine);
-        buyButtonRect.anchoredPosition = buyButtonOriginalPos;
-        buttonMoveCoroutine = StartCoroutine(ButtonMovetoRight());
-
+        Enturn_BuyButton.onClick.AddListener(() => BuySelectedCard());
         Debug.Log("Đã chọn mua: " + cardDisplay.cardData.cardName);
     }
 
+    // Button Helper
+    public void BuySelectedCard()
+    {
+        if (currentSelectedCardDisplay == null)
+        {
+            Debug.Log("Chưa chọn card để mua!");
+            return;
+        }
+
+        CardDisplay selectedDisplay = currentSelectedCardDisplay;
+        CardData cardToBuy = selectedDisplay.cardData;
+
+        if (cardToBuy == null || playerCardHolder == null)
+            return;
+
+        int cost = cardToBuy.goldCost;
+
+        if (CoinManager.Instance == null ||
+            !CoinManager.Instance.SpendCoins(cost))
+        {
+            Debug.Log("Không đủ vàng!");
+            return;
+        }
+
+        SoundManager.Instance.Play("Coin");
+
+        playerCardHolder.AddCard(cardToBuy);
+
+        shopCards.Remove(cardToBuy);
+
+        // Khóa lựa chọn để tránh mua liên tục
+        currentSelectedCardDisplay = null;
+
+        SetShopSelectionVisual(
+            selectedDisplay.transform,
+            false,
+            selectedDisplay.outline_Glow
+        );
+
+        Debug.Log("Mua thành công: " + cardToBuy.cardName);
+
+        ConfirmPickReward(selectedDisplay);
+    }
 
     public void DeselectCurrentCard()
     {
         if (currentSelectedCardDisplay != null)
         {
-           // currentSelectedCardDisplay.HideDescription();
-
             currentSelectedCardDisplay = null;
         }
-
-        if (buyButtonRect != null)
-        {
-            if (buttonMoveCoroutine != null) StopCoroutine(buttonMoveCoroutine);
-            buttonMoveCoroutine = StartCoroutine(ButtonMovetoLeft()); 
-        }
-
         Debug.Log("Đã bỏ chọn");
     }
 
-    private Coroutine buttonMoveCoroutine;
-
-    public IEnumerator ButtonMovetoRight()
+    private void ConfirmPickReward(CardDisplay purchasedCard)
     {
-        Vector2 startPos = buyButtonRect.anchoredPosition;
-        Vector2 targetPos = startPos + new Vector2(325f, 0f);
+        if (purchasedCard == null) return;
 
-        float duration = 0.4f;
-        float elapsed = 0f;
+        RectTransform target = Player_Info;
 
-        //SoundManager.Instance.Play("RockMove");
-
-        while (elapsed < duration)
-        {
-            elapsed += Time.deltaTime;
-            float t = elapsed / duration;
-            buyButtonRect.anchoredPosition = Vector2.Lerp(startPos, targetPos, t);
-            yield return null;
-        }
-
-        buyButtonRect.anchoredPosition = targetPos;
-    }
-
-    public IEnumerator ButtonMovetoLeft()
-    {
-        Vector2 startPos = buyButtonRect.anchoredPosition;
-        Vector2 targetPos = startPos - new Vector2(325f, 0f);
-
-        float duration = 0.4f;
-        float elapsed = 0f;
-
-        //SoundManager.Instance.Play("RockMove");
-
-        while (elapsed < duration)
-        {
-            elapsed += Time.deltaTime;
-            float t = elapsed / duration;
-            buyButtonRect.anchoredPosition = Vector2.Lerp(startPos, targetPos, t);
-            yield return null;
-        }
-
-        buyButtonRect.anchoredPosition = targetPos;
-    }
-
-    public void BuySelectedCard()
-    {
-
-        if (currentSelectedCardDisplay == null) return;
-        CardData cardToBuy = currentSelectedCardDisplay.cardData;
-        int cost = cardToBuy.goldCost;
-        if (CoinManager.Instance != null && CoinManager.Instance.SpendCoins(cost))
-        {
-            SoundManager.Instance.Play("Coin");
-            playerCardHolder.AddCard(cardToBuy);
-            ConfirmPickReward();
-        }
-    }
-
-    private void ConfirmPickReward()
-    {
-        if (playerCardHolder != null)
-        {
-
-            if (RandomCardSystem.Instance != null)
+        UIManager.Instance.AnimateCardFly(
+            purchasedCard.GetComponent<RectTransform>(),
+            target,
+            () =>
             {
+                Destroy(purchasedCard.gameObject);
             }
-
-            RectTransform target = UIManager.Instance.deckIcon;
-
-            UIManager.Instance.AnimateCardFly(
-                currentSelectedCardDisplay.GetComponent<RectTransform>(),
-                target,
-                () => {
-                    StartCoroutine(OnCardSelected(currentSelectedCardDisplay));
-                    DeselectCurrentCard();
-
-                }
-            );
-            for (int i = 0; i < currentSelectedCardDisplay.transform.childCount; i++)
-            {
-                currentSelectedCardDisplay.transform.GetChild(i).gameObject.SetActive(false);
-            }
-
-            //currentSelectedCardDisplay.HideDescription();
-        }
+        );
     }
 
     public IEnumerator OnCardSelected(CardDisplay pickedCard)
@@ -231,8 +235,6 @@ public class NewShopSystem : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
     }
 
-
-    public List<RelicDisplay> spawnedRelicDisplays = new List<RelicDisplay>();
     public void GenerateRelicShop()
     {
         // Xoá relic shop cũ
@@ -268,8 +270,6 @@ public class NewShopSystem : MonoBehaviour
         }
     }
 
-    // Trong NewShopSystem.cs
-
     public void SelectRelic(RelicDisplay relicDisplay)
     {
         if (relicDisplay == null) return;
@@ -303,8 +303,6 @@ public class NewShopSystem : MonoBehaviour
         // hoặc gọi hàm Show riêng. Ở đây dùng Toggle cũng được vì ta đã Hide cái cũ rồi.
         relicDisplay.ToggleDescription();
     }
-
-
 
     public void BuyCard(CardData card)
     {

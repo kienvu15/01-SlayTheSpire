@@ -20,6 +20,7 @@ MonoBehaviour:
   artworkSize: {x: 205.25, y: 129.21}
   artworkPosition: {x: 0, y: 2}
   artworkRotation: 0
+  impactProfile: {fileID: 0}
   manaCost: 1
   description: Gain 6 Block.
   upgradedDescription: Gain 8 Block.
@@ -37,5 +38,5 @@ MonoBehaviour:
     valueOverride: 6
     upgradeOverrideValue: 0
     upgradeValueOverride: 0
-  goldCost: 10
+  goldCost: 32
   hasKeywordInfo: 0

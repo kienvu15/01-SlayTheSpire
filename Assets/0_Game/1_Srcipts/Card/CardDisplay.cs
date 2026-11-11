@@ -33,9 +33,9 @@ public class CardDisplay : MonoBehaviour
     public NewShopSystem newShopSystem;
 
     [Header("Animation Settings")]
-    public bool useScaleAnimation = false; 
-    public float scaleMultiplier = 1.15f;
-    public float animDuration = 0.2f;
+    //public bool useScaleAnimation = false; 
+    //public float scaleMultiplier = 1.15f;
+    //public float animDuration = 0.2f;
 
     [Header("Hand Selection")]
     private HandCardManager handManager;
@@ -221,7 +221,7 @@ public class CardDisplay : MonoBehaviour
             goldContainer.SetActive(true);
             goldText.text = data.goldCost.ToString();
         }
-        useScaleAnimation = true;
+       // useScaleAnimation = true;
     }
 
     //Reward
@@ -230,7 +230,7 @@ public class CardDisplay : MonoBehaviour
         currentMode = CardMode.Reward;
         cardholder = holder;
         LoadCard(data);
-        useScaleAnimation = true;
+       // useScaleAnimation = true;
     }
 
     public void ToggleDescription()
@@ -268,12 +268,12 @@ public class CardDisplay : MonoBehaviour
 
     private void ResetScaleAnim()
     {
-        if (useScaleAnimation)
-        {
-            transform.DOKill();
-            transform.DOScale(originalScale, animDuration).SetEase(Ease.OutQuad);
-            if (canvas != null) canvas.sortingOrder = 0;
-        }
+        //if (useScaleAnimation)
+        //{
+        //    transform.DOKill();
+        //    transform.DOScale(originalScale, animDuration).SetEase(Ease.OutQuad);
+        //    if (canvas != null) canvas.sortingOrder = 0;
+        //}
     }
 
     private void ShowBlocker()
