@@ -526,32 +526,43 @@ public class UIManager : MonoBehaviour
     {
         pickMeCardPanel.SetActive(true);
     }
-    public void AnimateCardFly(RectTransform startCard, RectTransform targetRect, System.Action onComplete = null)
+    public void AnimateCardFly(
+    RectTransform startCard,
+    RectTransform targetRect,
+    System.Action onComplete = null)
     {
-        GameObject dummyCard = Instantiate(startCard.gameObject, animationLayer);
+        if (startCard == null || targetRect == null) return;
 
-        Destroy(dummyCard.GetComponent<CardDisplay>());
-        Destroy(dummyCard.GetComponent<Button>());
+        RectTransform cardRect = startCard;
 
-        RectTransform dummyRect = dummyCard.GetComponent<RectTransform>();
+        Vector3 startWorldPos = cardRect.position;
+        Vector3 targetWorldPos = targetRect.position;
 
-        Vector3 screenPos = Camera.main.WorldToScreenPoint(startCard.position);
-        dummyRect.position = screenPos;
+        // Đưa card lên Canvas animation
+        cardRect.SetParent(animationLayer, true);
+        cardRect.SetAsLastSibling();
 
-        dummyRect.rotation = Quaternion.identity; 
-        dummyRect.localScale = Vector3.one;     
-        
+        cardRect.position = startWorldPos;
+
+        cardRect.DOKill();
+
         Sequence seq = DOTween.Sequence();
 
-        seq.Join(dummyRect.DOMove(targetRect.position, 0.8f).SetEase(Ease.InBack));
+        // Bay đến Deck
+        seq.Join(
+            cardRect.DOMove(targetWorldPos, 0.8f)
+                .SetEase(Ease.InBack)
+        );
 
-        seq.Join(dummyRect.DOScale(Vector3.zero, 0.8f).SetEase(Ease.InBack));
-
-        seq.Join(dummyRect.DORotate(new Vector3(0, 0, 360), 0.8f, RotateMode.FastBeyond360));
+        // Thu nhỏ dần
+        seq.Join(
+            cardRect.DOScale(Vector3.zero, 0.8f)
+                .SetEase(Ease.InBack)
+        );
 
         seq.OnComplete(() =>
         {
-            Destroy(dummyCard);
+            Destroy(cardRect.gameObject);
             onComplete?.Invoke();
         });
     }

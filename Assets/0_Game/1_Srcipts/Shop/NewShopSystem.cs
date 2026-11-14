@@ -41,7 +41,7 @@ public class NewShopSystem : MonoBehaviour
     void Start()
     {
         GenerateShop();
-       // GenerateRelicShop();
+        GenerateRelicShop();
     }
 
     public void GenerateShop()
@@ -193,7 +193,10 @@ public class NewShopSystem : MonoBehaviour
 
         Debug.Log("Mua thành công: " + cardToBuy.cardName);
 
-        ConfirmPickReward(selectedDisplay);
+        UIManager.Instance.AnimateCardFly(
+            selectedDisplay.GetComponent<RectTransform>(),
+            Player_Info
+        );
     }
 
     public void DeselectCurrentCard()
@@ -203,36 +206,6 @@ public class NewShopSystem : MonoBehaviour
             currentSelectedCardDisplay = null;
         }
         Debug.Log("Đã bỏ chọn");
-    }
-
-    private void ConfirmPickReward(CardDisplay purchasedCard)
-    {
-        if (purchasedCard == null) return;
-
-        RectTransform target = Player_Info;
-
-        UIManager.Instance.AnimateCardFly(
-            purchasedCard.GetComponent<RectTransform>(),
-            target,
-            () =>
-            {
-                Destroy(purchasedCard.gameObject);
-            }
-        );
-    }
-
-    public IEnumerator OnCardSelected(CardDisplay pickedCard)
-    {
-        currentSelectedCardDisplay.goldContainer.SetActive(false);
-        UIManager.Instance.AnimateCardFly(
-           pickedCard.GetComponent<RectTransform>(),
-           UIManager.Instance.deckIcon, 
-           () =>
-           {
-               currentSelectedCardDisplay = null;
-
-           });
-        yield return new WaitForSeconds(0.3f);
     }
 
     public void GenerateRelicShop()
@@ -245,10 +218,11 @@ public class NewShopSystem : MonoBehaviour
 
         // Lấy toàn bộ relic có thể bán
         List<Relic> availableRelics = new List<Relic>(allRelicDatabase.allRelics);
-
-        // Loại bỏ relic đã trang bị
-        //foreach (var equipped in relicManager.equippedRelics)
-            //availableRelics.Remove(equipped);
+        availableRelics.RemoveAll(relic =>
+            relicManager.equippedRelics.Exists(equipped =>
+                equipped != null && equipped.relicData == relic
+            )
+        );
 
         // Random tối đa 2 relic từ danh sách available (không trùng)
         for (int i = 0; i < 2; i++)
@@ -258,67 +232,31 @@ public class NewShopSystem : MonoBehaviour
             Relic randomRelic = availableRelics[index];
 
             shopRelics.Add(randomRelic);
-
-            // Bỏ relic này khỏi danh sách để không trùng
             availableRelics.RemoveAt(index);
 
             // Tạo UI slot
             GameObject slot = Instantiate(relicDisplayPrefab, relicSlotsParent);
             RelicDisplay display = slot.GetComponent<RelicDisplay>();
-            display.Init(randomRelic, this);
+
+            // Tạo RelicInstance
+            RelicInstance instance = new RelicInstance
+            {
+                relicData = randomRelic,
+                level = 1
+            };
+
+            display.Init_Data(instance);
+            display.shopSystem = this;
+
+            display.priceTXT.text = randomRelic.gold_Buy.ToString();
+
+            display.goldContainer.SetActive(true);
+            display.OnClickAddLisent();
+
             spawnedRelicDisplays.Add(display);
         }
     }
 
-    public void SelectRelic(RelicDisplay relicDisplay)
-    {
-        if (relicDisplay == null) return;
-
-        // 1. Đóng Card đang mở (nếu có)
-        if (currentSelectedCardDisplay != null)
-        {
-            //currentSelectedCardDisplay.HideDescription();
-            DeselectCurrentCard();
-        }
-
-        // 2. Nếu bấm vào chính Relic đang mở -> Đóng lại và hủy chọn
-        if (currentSelectedRelicDisplay == relicDisplay)
-        {
-            relicDisplay.HideDescription();
-            currentSelectedRelicDisplay = null;
-            return;
-        }
-
-        // 3. Nếu đang mở một Relic KHÁC -> Đóng cái cũ đi
-        if (currentSelectedRelicDisplay != null)
-        {
-            currentSelectedRelicDisplay.HideDescription();
-        }
-
-        // 4. Mở cái mới
-        currentSelectedRelicDisplay = relicDisplay;
-
-        // Đảm bảo bật lên (Thay vì dùng Toggle, ta ép nó Show luôn để tránh lỗi state)
-        // Nhưng vì hàm bên kia là ToggleDescription, ta cần đảm bảo nó đang tắt trước khi gọi, 
-        // hoặc gọi hàm Show riêng. Ở đây dùng Toggle cũng được vì ta đã Hide cái cũ rồi.
-        relicDisplay.ToggleDescription();
-    }
-
-    public void BuyCard(CardData card)
-    {
-        if (card == null) return;
-        playerCardHolder.AddCard(card);
-        shopCards.Remove(card); // Loại bỏ khỏi danh sách shopCards
-        Debug.Log("Mua thành công: " + card.cardName);
-
-        // Ở đây bạn có thể thêm logic trừ tiền, v.v.
-    }
-
-    public void BuyRelic(Relic relic)
-    {
-        if (relic == null) return;
-        relicManager.AddRelic(relic);
-        Debug.Log("Mua thành công relic: " + relic.relicName);
-    }
+  
 
 }
