@@ -1,4 +1,5 @@
 ﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,20 +19,24 @@ public class NewAttackImpactManager : MonoBehaviour
 
         Instance = this;
     }
+    public int ActiveCount { get; private set; }
 
-    public void PlayImpact(
-        ImpactProfile profile,
-        ImpactEffectKind effectKind,
-        Transform attacker,
-        Transform target,
-        Vector3 worldPosition)
+    public IEnumerator WaitForAllImpacts(float timeout = 2f)
     {
-        if (profile == null) return;
+        float t = 0f;
+        while (ActiveCount > 0 && t < timeout)   // timeout chống kẹt nếu callback không bao giờ gọi
+        {
+            t += Time.deltaTime;
+            yield return null;
+        }
+    }
+
+    public void PlayImpact(ImpactProfile profile, ImpactEffectKind effectKind, Transform attacker, Transform target, Vector3 worldPosition, System.Action onFinished = null)
+    {
+        if (profile == null) { onFinished?.Invoke(); return; }
 
         ImpactVFXEntry entry = profile.GetImpact(effectKind);
-
-        if (entry == null || entry.prefab == null)
-            return;
+        if (entry == null || entry.prefab == null) { onFinished?.Invoke(); return; }
 
         Transform anchor = null;
 
@@ -73,22 +78,23 @@ public class NewAttackImpactManager : MonoBehaviour
         instance.transform.localScale = entry.scale;
 
         instance.SetActive(true);
-
+        ActiveCount++;
         ImpactFadeOut fade = instance.GetComponentInChildren<ImpactFadeOut>();
-
         if (fade != null)
         {
             fade.PlayFadeOut(_ =>
             {
                 ReturnToPool(entry.prefab, instance);
+                ActiveCount--;
+                onFinished?.Invoke();
             });
         }
         else
         {
-            Debug.LogWarning(
-                $"Impact prefab {entry.prefab.name} has no ImpactFadeOut."
-            );
+            Debug.LogWarning($"Impact prefab {entry.prefab.name} has no ImpactFadeOut.");
             ReturnToPool(entry.prefab, instance);
+            ActiveCount--;
+            onFinished?.Invoke();
         }
     }
 

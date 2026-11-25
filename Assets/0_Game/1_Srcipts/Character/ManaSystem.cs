@@ -17,10 +17,7 @@ public class ManaSystem : MonoBehaviour
     public Animator mana_Anim;
     public GameObject glow_Object;
 
-    private void Awake()
-    {
-        instance = this;
-    }
+    private void Awake() => instance = this;
 
     public void InitMana(CharacterData playerData)
     {
@@ -80,9 +77,19 @@ public class ManaSystem : MonoBehaviour
     }
 
     /// Cập nhật UI Mana bằng icon
+    public void UpdateAllCardManaColors()
+    {
+        CardDisplay[] cards = FindObjectsByType<CardDisplay>();
+
+        foreach (CardDisplay card in cards)
+        {
+            card.UpdateManaColor();
+        }
+    }
     public void UpdateManaUI()
     {
         ManaText.text = $"{currentMana} / {maxMana}";
+
         if (currentMana <= 0)
         {
             ManaText.color = Color.red;
@@ -92,8 +99,11 @@ public class ManaSystem : MonoBehaviour
         else
         {
             ManaText.color = Color.white;
-            Mana_Icon.color = Color.white; glow_Object.SetActive(true);
+            Mana_Icon.color = Color.white;
+            glow_Object.SetActive(true);
         }
+
+        UpdateAllCardManaColors();
     }
 
 }

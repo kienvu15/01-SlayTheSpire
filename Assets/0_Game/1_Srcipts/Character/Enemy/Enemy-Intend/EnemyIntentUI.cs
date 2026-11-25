@@ -11,6 +11,15 @@ public class EnemyIntentUI : MonoBehaviour
     public void SetIntent(Sprite intentIcon, int value)
     {
         if (icon != null) icon.sprite = intentIcon;
-        if (valueText != null) valueText.text = value.ToString();
+
+        if (value <= 0)
+        {
+            valueText.gameObject.SetActive(false);
+        }
+        else if (value > 0)
+        {
+            valueText.gameObject.SetActive(true);
+            if (valueText != null) valueText.text = value.ToString();
+        }
     }
 }

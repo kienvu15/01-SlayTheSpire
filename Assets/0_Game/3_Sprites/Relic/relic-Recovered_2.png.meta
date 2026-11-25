@@ -1,0 +1,1320 @@
+fileFormatVersion: 2
+guid: 71f6fa06a2fb08448be18f9b20e522f5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4209860191185417990
+    second: relic-Recovered_2_0
+  - first:
+      213: -8177974259772396585
+    second: relic-Recovered_2_1
+  - first:
+      213: -630191853141360369
+    second: relic-Recovered_2_2
+  - first:
+      213: -2367511710206480
+    second: relic-Recovered_2_3
+  - first:
+      213: 5651889190755826039
+    second: relic-Recovered_2_4
+  - first:
+      213: -4238828941654483907
+    second: relic-Recovered_2_5
+  - first:
+      213: -4518209696484647747
+    second: relic-Recovered_2_6
+  - first:
+      213: 3704673280454417501
+    second: relic-Recovered_2_7
+  - first:
+      213: -4924843076665284636
+    second: relic-Recovered_2_8
+  - first:
+      213: 5801098476346531086
+    second: relic-Recovered_2_9
+  - first:
+      213: -4532985447808868672
+    second: relic-Recovered_2_10
+  - first:
+      213: 6628325638331356543
+    second: relic-Recovered_2_11
+  - first:
+      213: -7796566765501801411
+    second: relic-Recovered_2_12
+  - first:
+      213: 7895643651644690160
+    second: relic-Recovered_2_13
+  - first:
+      213: -1132271123106939594
+    second: relic-Recovered_2_14
+  - first:
+      213: 2090021633071624324
+    second: relic-Recovered_2_15
+  - first:
+      213: 681434143717942540
+    second: relic-Recovered_2_16
+  - first:
+      213: -859625567592016160
+    second: relic-Recovered_2_17
+  - first:
+      213: 6415775408148735496
+    second: relic-Recovered_2_18
+  - first:
+      213: -1407665835957869511
+    second: relic-Recovered_2_19
+  - first:
+      213: 3160098526370977751
+    second: relic-Recovered_2_20
+  - first:
+      213: 1870606238754872795
+    second: relic-Recovered_2_21
+  - first:
+      213: -5905097547086704020
+    second: relic-Recovered_2_22
+  - first:
+      213: -1926042802672813883
+    second: relic-Recovered_2_23
+  - first:
+      213: 8112912821507687462
+    second: relic-Recovered_2_24
+  - first:
+      213: -744861040617082741
+    second: relic-Recovered_2_25
+  - first:
+      213: -722808885827925737
+    second: relic-Recovered_2_26
+  - first:
+      213: 7757164581144420592
+    second: relic-Recovered_2_27
+  - first:
+      213: -5917765206994014353
+    second: relic-Recovered_2_28
+  - first:
+      213: 4414416250244190605
+    second: relic-Recovered_2_29
+  - first:
+      213: -767780772725048736
+    second: relic-Recovered_2_30
+  - first:
+      213: -8780433052299822095
+    second: relic-Recovered_2_31
+  - first:
+      213: -3733601074517224900
+    second: relic-Recovered_2_32
+  - first:
+      213: -3956384573830059722
+    second: relic-Recovered_2_33
+  - first:
+      213: 7607662072079627694
+    second: relic-Recovered_2_34
+  - first:
+      213: 1110497498332273985
+    second: relic-Recovered_2_35
+  - first:
+      213: -1429741419969267244
+    second: relic-Recovered_2_36
+  - first:
+      213: 1416928314118357364
+    second: relic-Recovered_2_37
+  - first:
+      213: -1701160899697741415
+    second: relic-Recovered_2_38
+  - first:
+      213: -8718084555536397820
+    second: relic-Recovered_2_39
+  - first:
+      213: 7856462446476901242
+    second: relic-Recovered_2_40
+  - first:
+      213: -8744839032692308533
+    second: relic-Recovered_2_41
+  - first:
+      213: -835034324587080012
+    second: relic-Recovered_2_42
+  - first:
+      213: 4193492041446913802
+    second: relic-Recovered_2_43
+  - first:
+      213: 6923588292047198992
+    second: relic-Recovered_2_44
+  - first:
+      213: 3715902831397445860
+    second: relic-Recovered_2_45
+  - first:
+      213: 5403773176060965973
+    second: relic-Recovered_2_46
+  - first:
+      213: -2721319644884796953
+    second: relic-Recovered_2_47
+  - first:
+      213: -5169041505781136129
+    second: relic-Recovered_2_48
+  - first:
+      213: -2399012762731477708
+    second: relic-Recovered_2_49
+  - first:
+      213: -1496648922311811577
+    second: relic-Recovered_2_50
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: relic-Recovered_2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 756
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6073aa10a8d6c6a30800000000000000
+      internalID: 4209860191185417990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_1
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 756
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7db6aff4dbff18e80800000000000000
+      internalID: -8177974259772396585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_2
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 756
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f010a2539db1147f0800000000000000
+      internalID: -630191853141360369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_3
+      rect:
+        serializedVersion: 2
+        x: 639
+        y: 756
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f5f289b2c697fff0800000000000000
+      internalID: -2367511710206480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_4
+      rect:
+        serializedVersion: 2
+        x: 852
+        y: 756
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 779fed4264b8f6e40800000000000000
+      internalID: 5651889190755826039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_5
+      rect:
+        serializedVersion: 2
+        x: 1065
+        y: 756
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3c1a0d2987ac25c0800000000000000
+      internalID: -4238828941654483907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_6
+      rect:
+        serializedVersion: 2
+        x: 1278
+        y: 756
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbc9e4438381c41c0800000000000000
+      internalID: -4518209696484647747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_7
+      rect:
+        serializedVersion: 2
+        x: 1491
+        y: 756
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5cdd5a68b4a96330800000000000000
+      internalID: 3704673280454417501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_8
+      rect:
+        serializedVersion: 2
+        x: 1704
+        y: 756
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e7e2d0905177abb0800000000000000
+      internalID: -4924843076665284636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 567
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0dd1b52454a18050800000000000000
+      internalID: 5801098476346531086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_10
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 567
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ce565380c99711c0800000000000000
+      internalID: -4532985447808868672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_11
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 567
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f75da58bc0b8cfb50800000000000000
+      internalID: 6628325638331356543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_12
+      rect:
+        serializedVersion: 2
+        x: 639
+        y: 567
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3c16a2b5d70dc390800000000000000
+      internalID: -7796566765501801411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_13
+      rect:
+        serializedVersion: 2
+        x: 852
+        y: 567
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fe89597116f29d60800000000000000
+      internalID: 7895643651644690160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_14
+      rect:
+        serializedVersion: 2
+        x: 1065
+        y: 567
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63d37cd996d5940f0800000000000000
+      internalID: -1132271123106939594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_15
+      rect:
+        serializedVersion: 2
+        x: 1278
+        y: 567
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 480bd141a9f310d10800000000000000
+      internalID: 2090021633071624324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_16
+      rect:
+        serializedVersion: 2
+        x: 1491
+        y: 567
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c05612a4eb0f47900800000000000000
+      internalID: 681434143717942540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_17
+      rect:
+        serializedVersion: 2
+        x: 1704
+        y: 567
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e695dbc91ff114f0800000000000000
+      internalID: -859625567592016160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 378
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8066461ddb9690950800000000000000
+      internalID: 6415775408148735496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_19
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 378
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 934274d5167f67ce0800000000000000
+      internalID: -1407665835957869511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_20
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 378
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d7d397eddceadb20800000000000000
+      internalID: 3160098526370977751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_21
+      rect:
+        serializedVersion: 2
+        x: 639
+        y: 378
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdd1d97967ab5f910800000000000000
+      internalID: 1870606238754872795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_22
+      rect:
+        serializedVersion: 2
+        x: 852
+        y: 378
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c62ddd54111ec0ea0800000000000000
+      internalID: -5905097547086704020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_23
+      rect:
+        serializedVersion: 2
+        x: 1065
+        y: 378
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c83d7c86425545e0800000000000000
+      internalID: -1926042802672813883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_24
+      rect:
+        serializedVersion: 2
+        x: 1278
+        y: 378
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6248da32a3bd69070800000000000000
+      internalID: 8112912821507687462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_25
+      rect:
+        serializedVersion: 2
+        x: 1491
+        y: 378
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b80bdfa74d8b9a5f0800000000000000
+      internalID: -744861040617082741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_26
+      rect:
+        serializedVersion: 2
+        x: 1704
+        y: 378
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7190bbfd52118f5f0800000000000000
+      internalID: -722808885827925737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_27
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 189
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f0ea5b561cf6ab60800000000000000
+      internalID: 7757164581144420592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_28
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 189
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6fa4fcd5efdfdda0800000000000000
+      internalID: -5917765206994014353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_29
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 189
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d815486e038234d30800000000000000
+      internalID: 4414416250244190605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_30
+      rect:
+        serializedVersion: 2
+        x: 639
+        y: 189
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06a3950847b4855f0800000000000000
+      internalID: -767780772725048736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_31
+      rect:
+        serializedVersion: 2
+        x: 852
+        y: 189
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fbf19fd8a2a52680800000000000000
+      internalID: -8780433052299822095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_32
+      rect:
+        serializedVersion: 2
+        x: 1065
+        y: 189
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c32526caa959f2cc0800000000000000
+      internalID: -3733601074517224900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_33
+      rect:
+        serializedVersion: 2
+        x: 1278
+        y: 189
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 639260221391819c0800000000000000
+      internalID: -3956384573830059722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_34
+      rect:
+        serializedVersion: 2
+        x: 1491
+        y: 189
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea5b481f858d39960800000000000000
+      internalID: 7607662072079627694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_35
+      rect:
+        serializedVersion: 2
+        x: 1704
+        y: 189
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14d1e005797496f00800000000000000
+      internalID: 1110497498332273985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d9b11ee0c9882ce0800000000000000
+      internalID: -1429741419969267244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_37
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 0
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 471c7336bc0f9a310800000000000000
+      internalID: 1416928314118357364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_38
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 0
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9917bb3cc234468e0800000000000000
+      internalID: -1701160899697741415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_39
+      rect:
+        serializedVersion: 2
+        x: 639
+        y: 0
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40a0f618944230780800000000000000
+      internalID: -8718084555536397820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_40
+      rect:
+        serializedVersion: 2
+        x: 852
+        y: 0
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7bb37148f2c70d60800000000000000
+      internalID: 7856462446476901242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_41
+      rect:
+        serializedVersion: 2
+        x: 1065
+        y: 0
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc5876e5b3714a680800000000000000
+      internalID: -8744839032692308533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_42
+      rect:
+        serializedVersion: 2
+        x: 1278
+        y: 0
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b69abbb4bc5964f0800000000000000
+      internalID: -835034324587080012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_43
+      rect:
+        serializedVersion: 2
+        x: 1491
+        y: 0
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a07feda2bc6423a30800000000000000
+      internalID: 4193492041446913802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: relic-Recovered_2_44
+      rect:
+        serializedVersion: 2
+        x: 1704
+        y: 0
+        width: 213
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01bd68e6ed6851060800000000000000
+      internalID: 6923588292047198992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: d78c6588817a6854ca4294f4a32152bf
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":9.0,"y":5.0},"gridSpriteSize":{"x":213.0,"y":189.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      relic-Recovered_2_0: 4209860191185417990
+      relic-Recovered_2_1: -8177974259772396585
+      relic-Recovered_2_10: -4532985447808868672
+      relic-Recovered_2_11: 6628325638331356543
+      relic-Recovered_2_12: -7796566765501801411
+      relic-Recovered_2_13: 7895643651644690160
+      relic-Recovered_2_14: -1132271123106939594
+      relic-Recovered_2_15: 2090021633071624324
+      relic-Recovered_2_16: 681434143717942540
+      relic-Recovered_2_17: -859625567592016160
+      relic-Recovered_2_18: 6415775408148735496
+      relic-Recovered_2_19: -1407665835957869511
+      relic-Recovered_2_2: -630191853141360369
+      relic-Recovered_2_20: 3160098526370977751
+      relic-Recovered_2_21: 1870606238754872795
+      relic-Recovered_2_22: -5905097547086704020
+      relic-Recovered_2_23: -1926042802672813883
+      relic-Recovered_2_24: 8112912821507687462
+      relic-Recovered_2_25: -744861040617082741
+      relic-Recovered_2_26: -722808885827925737
+      relic-Recovered_2_27: 7757164581144420592
+      relic-Recovered_2_28: -5917765206994014353
+      relic-Recovered_2_29: 4414416250244190605
+      relic-Recovered_2_3: -2367511710206480
+      relic-Recovered_2_30: -767780772725048736
+      relic-Recovered_2_31: -8780433052299822095
+      relic-Recovered_2_32: -3733601074517224900
+      relic-Recovered_2_33: -3956384573830059722
+      relic-Recovered_2_34: 7607662072079627694
+      relic-Recovered_2_35: 1110497498332273985
+      relic-Recovered_2_36: -1429741419969267244
+      relic-Recovered_2_37: 1416928314118357364
+      relic-Recovered_2_38: -1701160899697741415
+      relic-Recovered_2_39: -8718084555536397820
+      relic-Recovered_2_4: 5651889190755826039
+      relic-Recovered_2_40: 7856462446476901242
+      relic-Recovered_2_41: -8744839032692308533
+      relic-Recovered_2_42: -835034324587080012
+      relic-Recovered_2_43: 4193492041446913802
+      relic-Recovered_2_44: 6923588292047198992
+      relic-Recovered_2_5: -4238828941654483907
+      relic-Recovered_2_6: -4518209696484647747
+      relic-Recovered_2_7: 3704673280454417501
+      relic-Recovered_2_8: -4924843076665284636
+      relic-Recovered_2_9: 5801098476346531086
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

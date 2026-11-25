@@ -98,8 +98,8 @@ public class EventManager : MonoBehaviour
                 case EventResultType.Leave:
                     gameObject.SetActive(false);
                     UIManager.Instance.ToolImage.SetActive(true);
-                    GameSystem.Instance.isBattlePhase = false;
-                    GameSystem.Instance.BattleUICanvas = null;
+                    //GameSystem.Instance.isBattlePhase = false;
+                    //GameSystem.Instance.BattleUICanvas = null;
                     break;
 
                 case EventResultType.Gold:
@@ -117,7 +117,7 @@ public class EventManager : MonoBehaviour
                     break;
 
                 case EventResultType.Combat:
-                    MapUIManager.Instance.ShowBattleCanvas();
+                   // MapUIManager.Instance.ShowBattleCanvas();
                     break;
 
                 case EventResultType.Shop:

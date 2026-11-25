@@ -17,7 +17,6 @@ public class Deck : MonoBehaviour
     public GameObject cardPrefab;
     public Transform handParent;
     public Transform pileDeckTransform;
-
     public MidMatch_Manager match;
 
     [Header("UI Debug")]
@@ -36,6 +35,12 @@ public class Deck : MonoBehaviour
     public float arcHeightRatio = 0.25f;
     public float startScale = 0.5f;
     public float peakScale = 1.2f;
+
+    [Header("Animation")]
+    public Transform playerInfo;
+    public float cardFlyDuration = 0.35f;
+    public float cardCollectDuration = 0.4f;
+    public float startOffsetX = 300f;
 
     // Draw pile / toàn bộ bài / bài tạm: đều là CardInstance (giữ level)
     private List<CardInstance> deck = new List<CardInstance>();
@@ -119,7 +124,6 @@ public class Deck : MonoBehaviour
     {
         yield return StartCoroutine(DrawCards(count));
     }
-
     public IEnumerator DrawCards(int count)
     {
         if (handParent == null || handLayout == null) yield break;
@@ -131,12 +135,10 @@ public class Deck : MonoBehaviour
             UpdateUI();
         }
     }
-
     private IEnumerator DrawOneCard(int handIndex)
     {
         yield return DrawOneCard(handIndex, DrawAnimationType.Straight);
     }
-
     private IEnumerator DrawOneCard(int handIndex, DrawAnimationType animationType)
     {
         if (deck.Count == 0 || handParent == null ||
@@ -260,14 +262,80 @@ public class Deck : MonoBehaviour
     }
 
     // Thêm vào discard pile
+
     public void AddCardToDiscardPile(CardInstance card, bool temporary)
     {
-        if (card == null || discard == null || IsTemporarilyRemoved(card)) return;
+        if (card == null || discard == null || IsTemporarilyRemoved(card))
+            return;
 
+        GameObject cardTemplate = Instantiate(
+            cardPrefab,
+            UIManager.Instance.Instaniate_Helper_Transform
+        );
+
+        CardDisplay display = cardTemplate.GetComponent<CardDisplay>();
+        display.LoadCard(card);
+
+        // Add card data
         allCards.Add(card);
-        if (temporary) temporaryCards.Add(card);
-        discard.AddToDiscard(card); //  ?????
-        UpdateUI();
+
+        if (temporary)
+            temporaryCards.Add(card);
+
+        // Animation
+        PlayCardCollectAnimation(cardTemplate.transform, card);
+    }
+
+    private void PlayCardCollectAnimation(Transform cardTransform, CardInstance card)
+    {
+        if (cardTransform == null) return;
+
+        if (playerInfo == null)
+        {
+            Destroy(cardTransform.gameObject);
+            return;
+        }
+        RectTransform cardRect = cardTransform as RectTransform;
+        RectTransform helperRect =
+            UIManager.Instance.Instaniate_Helper_Transform as RectTransform;
+        if (cardRect == null || helperRect == null)
+        {
+            Destroy(cardTransform.gameObject);
+            return;
+        }
+        cardRect.localScale = Vector3.zero;
+        cardRect.anchoredPosition = new Vector2(startOffsetX, 0f);
+        Sequence sequence = DOTween.Sequence();
+
+        // Phase 1: Bay vào giữa + phóng to
+        sequence.Append(
+            cardRect.DOAnchorPos(Vector2.zero, cardFlyDuration)
+                .SetEase(Ease.OutCubic)
+        );
+        sequence.Join(
+            cardRect.DOScale(Vector3.one, cardFlyDuration)
+                .SetEase(Ease.OutBack)
+        );
+
+        // Chờ tại vị trí trung tâm
+        sequence.AppendInterval(0.5f);
+
+        // Phase 2: Bay về PlayerInfo + thu nhỏ
+        sequence.Append(
+            cardRect.DOMove(playerInfo.position, cardCollectDuration)
+                .SetEase(Ease.InCubic)
+        );
+        sequence.Join(
+            cardRect.DOScale(Vector3.one * 0.4f, cardCollectDuration)
+                .SetEase(Ease.InCubic)
+        );
+
+        sequence.OnComplete(() =>
+        {
+            discard.AddToDiscard(card);
+            UpdateUI();
+            Destroy(cardTransform.gameObject);
+        });
     }
 
     // ================= TEMPORARY CARDS =================
@@ -450,26 +518,6 @@ public class Deck : MonoBehaviour
         return new List<CardInstance>(discard.discardPile);
     }
 
-    public void MoveDiscardToHand(List<CardInstance> cards)
-    {
-        if (cards == null || cards.Count == 0 || discard == null) return;
-
-        int moved = 0;
-        foreach (var card in cards)
-        {
-            if (card == null) continue;
-            if (!discard.discardPile.Remove(card)) continue;   // không còn trong discard thì bỏ qua
-            deck.Insert(0, card);                              // lên đỉnh draw pile để rút ngay
-            moved++;
-        }
-
-        discard.UpdateDiscardCount();
-        UpdateUI();
-
-        //if (moved > 0)
-          //  StartCoroutine(DrawCards(moved));
-    }
-
     public List<CardInstance> GetHandCards(CardInstance exclude = null)
     {
         var list = new List<CardInstance>();
@@ -566,17 +614,6 @@ public class Deck : MonoBehaviour
         UpdateUI();
     }
 
-    // Overload cũ: xóa MỘT lá có data tương ứng (không xóa hết bản sao)
-    public void RemoveCardFromCollection(CardData data)
-    {
-        if (data == null) return;
-
-        int i = allCards.FindIndex(c => c.data == data);
-        if (i < 0) return;
-
-        RemoveCardFromCollection(allCards[i]);
-    }
-
     // ================= HAND =================
     private int GetFirstEmptySlot()
     {
@@ -648,11 +685,48 @@ public class Deck : MonoBehaviour
             foreach (var text in deckCountText)
             {
                 if (text != null)
-                    text.text = "Draw Pile - " + deck.Count;
+                    text.text = "" + deck.Count;
             }
         }
 
         if (discardCountText != null && discard != null)
-            discardCountText.text = "Discard Pile - " + discard.Count;
+            discardCountText.text = "" + discard.Count;
     }
+
+    // Trả lá về tay khi effect thất bại
+    public void ReturnCardToHand(GameObject go)
+    {
+        if (go == null) return;
+
+        go.transform.SetParent(handParent, false);
+        currentHand.Add(go);
+
+        var cg = go.GetComponent<CanvasGroup>();
+        if (cg != null) cg.blocksRaycasts = true;
+        var drag = go.GetComponent<DraggableCard>();
+        if (drag != null) drag.enabled = true;
+        var disp = go.GetComponent<CardDisplay>();
+        if (disp != null && disp.card_Button != null) disp.card_Button.interactable = true;
+
+        handLayout.ArrangeCards(currentHand, true);
+        UpdateUI();
+    }
+
+    public IEnumerator MoveDiscardToHand(List<CardInstance> cards)
+    {
+        if (cards == null || cards.Count == 0 || discard == null) yield break;
+
+        int moved = 0;
+        foreach (var card in cards)
+        {
+            if (card == null || !discard.discardPile.Remove(card)) continue;
+            deck.Insert(0, card);
+            moved++;
+        }
+        discard.UpdateDiscardCount();
+        UpdateUI();
+
+        if (moved > 0) yield return DrawCards(moved);
+    }
+
 }

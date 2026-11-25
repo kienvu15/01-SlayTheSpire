@@ -23,6 +23,7 @@ public class RelicDisplay : MonoBehaviour
     private static bool firstTimeClick = false;
     private static RelicDisplay currentSelected;
     [HideInInspector] public NewShopSystem shopSystem;
+    public Relic RelicData => relicData;
 
     public void Init_Data(RelicInstance data)
     {
@@ -37,6 +38,25 @@ public class RelicDisplay : MonoBehaviour
     public void UpdateRelicUI()
     {
         if (relicInstance == null) return;
+    }
+
+    public void OnClickAddLisentShop()
+    {
+        relic_Button.onClick.AddListener(relic_ClickedShop);
+    }
+    public void relic_ClickedShop()
+    {
+        shopSystem.SelectRelic(this);
+
+        if (shopSystem.IsRelicSelected(this)) // hoặc kiểm tra selected_Sprite.activeSelf
+        {
+            UIManager.Instance.RelicInfo_Help(true);
+            UIManager.Instance.Init_RelicInforShop(relicInstance);
+        }
+    }
+    public void SetSelected(bool value)
+    {
+        selected_Sprite.SetActive(value);
     }
 
     public void OnClickAddLisent()
@@ -63,9 +83,16 @@ public class RelicDisplay : MonoBehaviour
         selected_Sprite.SetActive(false);
     }
 
-    public static RelicDisplay GetSelectedRelic()
+    public void SetSoldOut()
     {
-        return currentSelected;
+        soldOut.SetActive(true);
+        goldContainer.SetActive(false);
+        Color color = iconImage.color;
+        color.a = 0.5f;
+        iconImage.color = color;
+        relic_Button.onClick.RemoveAllListeners();
     }
+
+
 
 }

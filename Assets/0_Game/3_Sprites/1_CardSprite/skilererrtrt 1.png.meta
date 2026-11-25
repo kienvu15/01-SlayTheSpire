@@ -1,0 +1,687 @@
+fileFormatVersion: 2
+guid: 460a7481a6cc4ff47a363804220866c1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -240310081138734488
+    second: skilererrtrt 1_0
+  - first:
+      213: 8562700159344512706
+    second: skilererrtrt 1_1
+  - first:
+      213: -1741000676269158885
+    second: skilererrtrt 1_2
+  - first:
+      213: -2691293566963129852
+    second: skilererrtrt 1_3
+  - first:
+      213: -2918760877881769199
+    second: skilererrtrt 1_4
+  - first:
+      213: -4376636081175627987
+    second: skilererrtrt 1_5
+  - first:
+      213: 131087500713450439
+    second: skilererrtrt 1_6
+  - first:
+      213: 7531593136292364199
+    second: skilererrtrt 1_7
+  - first:
+      213: 7463486864961828691
+    second: skilererrtrt 1_8
+  - first:
+      213: 639172258697740197
+    second: skilererrtrt 1_9
+  - first:
+      213: -1655277904130562691
+    second: skilererrtrt 1_10
+  - first:
+      213: 488898312142121254
+    second: skilererrtrt 1_11
+  - first:
+      213: 7976538871896010672
+    second: skilererrtrt 1_12
+  - first:
+      213: 3989945173592504954
+    second: skilererrtrt 1_13
+  - first:
+      213: -1545817373557007975
+    second: skilererrtrt 1_14
+  - first:
+      213: 309755665280625289
+    second: skilererrtrt 1_15
+  - first:
+      213: -5310171894400618804
+    second: skilererrtrt 1_16
+  - first:
+      213: 3044693960486959417
+    second: skilererrtrt 1_17
+  - first:
+      213: -4733597828808510532
+    second: skilererrtrt 1_18
+  - first:
+      213: 2579096986947946500
+    second: skilererrtrt 1_19
+  - first:
+      213: 1589478586769819868
+    second: skilererrtrt 1_20
+  - first:
+      213: 3655236425541949761
+    second: skilererrtrt 1_21
+  - first:
+      213: 3593175120348213261
+    second: skilererrtrt 1_22
+  - first:
+      213: -6156093036055597663
+    second: skilererrtrt 1_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: skilererrtrt 1_0
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 1461
+        width: 275
+        height: 266
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86ac7c1214f3aacf0800000000000000
+      internalID: -240310081138734488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skilererrtrt 1_1
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 1459
+        width: 269
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ce09e38d62d4d670800000000000000
+      internalID: 8562700159344512706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skilererrtrt 1_2
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 1459
+        width: 270
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1e0341fb19b6d7e0800000000000000
+      internalID: -1741000676269158885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skilererrtrt 1_3
+      rect:
+        serializedVersion: 2
+        x: 863
+        y: 1458
+        width: 551
+        height: 270
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4026eda82ca96aad0800000000000000
+      internalID: -2691293566963129852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skilererrtrt 1_4
+      rect:
+        serializedVersion: 2
+        x: 1138
+        y: 887
+        width: 1128
+        height: 841
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 113cc81227a7e77d0800000000000000
+      internalID: -2918760877881769199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skilererrtrt 1_5
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 1170
+        width: 271
+        height: 270
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d277e5e2ca01343c0800000000000000
+      internalID: -4376636081175627987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skilererrtrt 1_6
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 1170
+        width: 270
+        height: 270
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cbd48a2367b1d100800000000000000
+      internalID: 131087500713450439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skilererrtrt 1_7
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 887
+        width: 272
+        height: 278
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7aff979ad08958860800000000000000
+      internalID: 7531593136292364199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skilererrtrt 1_8
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 887
+        width: 270
+        height: 267
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 357f7dba2c1a39760800000000000000
+      internalID: 7463486864961828691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skilererrtrt 1_9
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 605
+        width: 273
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5af76f568cbced800800000000000000
+      internalID: 639172258697740197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skilererrtrt 1_10
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 605
+        width: 272
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d75aeb724854709e0800000000000000
+      internalID: -1655277904130562691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skilererrtrt 1_11
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 605
+        width: 272
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 629e482bc6ae8c600800000000000000
+      internalID: 488898312142121254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skilererrtrt 1_12
+      rect:
+        serializedVersion: 2
+        x: 863
+        y: 318
+        width: 272
+        height: 556
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bfe47ca7db52be60800000000000000
+      internalID: 7976538871896010672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skilererrtrt 1_13
+      rect:
+        serializedVersion: 2
+        x: 1138
+        y: 605
+        width: 271
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7af349eef12f5730800000000000000
+      internalID: 3989945173592504954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skilererrtrt 1_14
+      rect:
+        serializedVersion: 2
+        x: 1422
+        y: 605
+        width: 272
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 999d181f9472c8ae0800000000000000
+      internalID: -1545817373557007975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skilererrtrt 1_15
+      rect:
+        serializedVersion: 2
+        x: 1702
+        y: 605
+        width: 547
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98a673ce2297c4400800000000000000
+      internalID: 309755665280625289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skilererrtrt 1_16
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 318
+        width: 273
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cceecf9ebca7e46b0800000000000000
+      internalID: -5310171894400618804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skilererrtrt 1_17
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 318
+        width: 271
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9393a9c860de04a20800000000000000
+      internalID: 3044693960486959417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skilererrtrt 1_18
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 0
+        width: 1663
+        height: 587
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb3fe48bad1ee4eb0800000000000000
+      internalID: -4733597828808510532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skilererrtrt 1_19
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 28
+        width: 273
+        height: 270
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40800548b0bcac320800000000000000
+      internalID: 2579096986947946500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skilererrtrt 1_20
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 28
+        width: 269
+        height: 270
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd8418e6a56fe0610800000000000000
+      internalID: 1589478586769819868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 9f3d30c417a433244b0e8bc7f07149ab
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      skilererrtrt 1_0: -240310081138734488
+      skilererrtrt 1_1: 8562700159344512706
+      skilererrtrt 1_10: -1655277904130562691
+      skilererrtrt 1_11: 488898312142121254
+      skilererrtrt 1_12: 7976538871896010672
+      skilererrtrt 1_13: 3989945173592504954
+      skilererrtrt 1_14: -1545817373557007975
+      skilererrtrt 1_15: 309755665280625289
+      skilererrtrt 1_16: -5310171894400618804
+      skilererrtrt 1_17: 3044693960486959417
+      skilererrtrt 1_18: -4733597828808510532
+      skilererrtrt 1_19: 2579096986947946500
+      skilererrtrt 1_2: -1741000676269158885
+      skilererrtrt 1_20: 1589478586769819868
+      skilererrtrt 1_3: -2691293566963129852
+      skilererrtrt 1_4: -2918760877881769199
+      skilererrtrt 1_5: -4376636081175627987
+      skilererrtrt 1_6: 131087500713450439
+      skilererrtrt 1_7: 7531593136292364199
+      skilererrtrt 1_8: 7463486864961828691
+      skilererrtrt 1_9: 639172258697740197
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

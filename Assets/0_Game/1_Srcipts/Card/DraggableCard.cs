@@ -30,14 +30,11 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         canvas = GetComponentInParent<Canvas>();
 
         playSelfCast = GameObject.Find("PlayerSelfCast")?.GetComponent<PlayerSelfCast>();
-        PlaySelfCast = playSelfCast.GetComponent<CanvasGroup>();
+        PlaySelfCast = playSelfCast != null ? playSelfCast.GetComponent<CanvasGroup>() : null;
     }
 
     void Start()
     {
-        //BGHold bghold = GetComponentInParent<BGHold>();
-        ShopSystem shopSystem = GetComponentInParent<ShopSystem>();
-
         if (PlaySelfCast != null)
             PlaySelfCast.blocksRaycasts = false;
     }
@@ -110,6 +107,7 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        //if (GameStage.Instance.isBusy || CardPileViewer.IsSelecting) { eventData.pointerDrag = null; return; }
         validDrop = false;
 
         originalBox = transform.parent;

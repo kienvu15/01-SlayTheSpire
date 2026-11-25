@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: Bone Knife
   m_EditorClassIdentifier: Assembly-CSharp::BoneKnife
   relicName: Bone Knife
-  description: +1 melee damage.
-  icon: {fileID: 21300000, guid: 8a72f5ae9d60dd24c8b4a534f79c2db5, type: 3}
+  icon: {fileID: 1693417489492968788, guid: 1786128e9fe1f5748baa3bf8e83f50cf, type: 3}
+  defaultDescription: 
+  upgradeDescription: 
+  gold_Buy: 10
+  gold_Sell: 10
+  maxLevel: 2
+  upgradeCost: 50
   bonusDamage: 1

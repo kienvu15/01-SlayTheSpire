@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3793ed6d1b6c36d4497c7d8bc3703ec7, type: 3}
+  m_Name: 1_Fungi Beast
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  enemyName: Fungi Beast
+  maxHP: {x: 22, y: 28}
+  base_DEF: 0
+  base_SPD: 25
+  maxConditions: 5
+  enemySprite: {fileID: -4981241387220138696, guid: 26e69d75ac9d1da4d8405c54942c187f, type: 3}
+  rotation: {x: 0, y: 0, z: 0}
+  CanvasHieght: 459.97
+  hpSlider_Hieght: 200
+  hpSlider_Position: {x: -35, y: 14}
+  CardDrop: {x: 287.36, y: 331.96}
+  CardDropPosition: {x: -6.3225, y: 0}
+  local_Scale: {x: 0.9, y: 0.9, z: 0.9}
+  avatar_localScale: {x: 0.8, y: 0.8, z: 0.8}
+  isBoss: 0
+  canBeMoved: 1
+  actionPatternAssets:
+  - {fileID: 11400000, guid: e3097f096604e3249ab4efbe0ff291c5, type: 2}
+  - {fileID: 11400000, guid: 198ad18800058d245afb0d0bf6737da6, type: 2}
+  overrideValuesPattern:
+  - values: 07000000
+    overrideCooldown: 0
+  - values: 03000000
+    overrideCooldown: 0

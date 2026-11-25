@@ -35,12 +35,13 @@ public class Discard : MonoBehaviour
         UpdateDiscardCount();
         PunchDiscardIcon();
     }
-
-    // Overload cũ: code nào còn truyền CardData vẫn chạy (level 1)
-    public void AddToDiscard(CardData card)
+    public void AddDirect(CardInstance card)
     {
         if (card == null) return;
-        AddToDiscard(new CardInstance(card));
+
+        discardPile.Add(card);
+        UpdateDiscardCount();
+        PunchDiscardIcon();
     }
 
     /// Lấy toàn bộ bài trong discard và xóa sạch discard

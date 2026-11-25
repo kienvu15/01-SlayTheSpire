@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using UnityEngine.UI;
+using NaughtyAttributes;
 
 public class EnemyView : Character
 {
@@ -15,20 +17,19 @@ public class EnemyView : Character
     public EnemyIntentUI intentUI;
 
     [Header("Helper")]
-    public Spot currentSlot;
+    public Transform avatarImage;
+    public Image EavatarImage;
     public GameObject canvas;
+    public RectTransform cardDrop_Helper;
     public CanvasGroup canvasGroup;
+    
     public EnemySystem system;
+    public Spot currentSlot;
 
     [Header("Enemy Type")]
     public bool isBoss = false;
     private bool isActive = true;
     private int nextActionIndex = 0; 
-    public EnemyType enemyType;
-
-    [Header("Randomize HP")]
-    public bool randomizeHP = false;
-    public int randomRange = 3;
 
     private List<EnemyActionInstance> actionPattern;
     private int currentActionIndex = 0;
@@ -52,46 +53,72 @@ public class EnemyView : Character
         }
     }
 
+    [NaughtyAttributes.Button]
+    public void Initialize()
+    {
+        stats.maxHP = Random.Range(enemyData.maxHP.x, enemyData.maxHP.y + 1);
+        stats.currentHP = stats.maxHP;
+        // Enemy Type
+        isBoss = enemyData.isBoss;
+        // Visual
+        transform.localScale = enemyData.local_Scale;
+        EavatarImage.sprite = enemyData.enemySprite;
+        avatarImage.localScale = enemyData.avatar_localScale;
+        RectTransform rect = transform as RectTransform;
+        rect.sizeDelta = new Vector2(rect.sizeDelta.x, enemyData.CanvasHieght);
+        hpBar.GetComponent<RectTransform>().sizeDelta = new Vector2(enemyData.hpSlider_Hieght, 10);
+        cardDrop_Helper.sizeDelta = enemyData.CardDrop;
+        cardDrop_Helper.anchoredPosition = enemyData.CardDropPosition;
+        // Action Pattern
+        actionPattern = new List<EnemyActionInstance>();
+        foreach (EnemyAction action in enemyData.actionPatternAssets)
+        {
+            if (action == null) continue;
+
+            actionPattern.Add(
+                new EnemyActionInstance(action)
+            );
+        }
+        // Reset Action Index
+        currentActionIndex = 0;
+        nextActionIndex = 0;
+
+
+        UpdateUI();
+        ShowNextIntent();
+    }
+
     public void Initialize(EnemyData data)
     {
         enemyData = data;
-
-        // Stats
-        //stats.maxHP = data.maxHP;
-       // stats.currentHP = data.maxHP;
-
+        stats.maxHP = Random.Range(enemyData.maxHP.x, enemyData.maxHP.y + 1);
+        stats.currentHP = stats.maxHP;
         // Enemy Type
-        isBoss = data.isBoss;
-
+        isBoss = enemyData.isBoss;
         // Visual
-        transform.localScale = data.local_Scale;
-
+        transform.localScale = enemyData.local_Scale;
+        EavatarImage.sprite = enemyData.enemySprite;
+        avatarImage.localScale = enemyData.avatar_localScale;
+        avatarImage.localEulerAngles = enemyData.rotation;
+        RectTransform rect = transform as RectTransform;
+        rect.sizeDelta = new Vector2(rect.sizeDelta.x, enemyData.CanvasHieght);
+        hpBar.GetComponent<RectTransform>().sizeDelta = new Vector2(enemyData.hpSlider_Hieght, 10);
+        cardDrop_Helper.sizeDelta = enemyData.CardDrop;
+        cardDrop_Helper.anchoredPosition = enemyData.CardDropPosition;
         // Action Pattern
         actionPattern = new List<EnemyActionInstance>();
-
-        for (int i = 0; i < data.actionPatternAssets.Count; i++)
+        foreach (EnemyAction action in enemyData.actionPatternAssets)
         {
-            int? cdOverride = null;
-
-            if (data.overrideValuesPattern != null &&
-                i < data.overrideValuesPattern.Count)
-            {
-                int cd = data.overrideValuesPattern[i].overrideCooldown;
-
-                if (cd >= 0)
-                    cdOverride = cd;
-            }
+            if (action == null) continue;
 
             actionPattern.Add(
-                new EnemyActionInstance(data.actionPatternAssets[i], cdOverride)
+                new EnemyActionInstance(action)
             );
         }
+        // Reset Action Index
+        currentActionIndex = 0;
+        nextActionIndex = 0;
 
-        if (randomizeHP)
-        {
-            int offset = Random.Range(-randomRange, randomRange + 1);
-            stats.maxHP = Mathf.Max(1, stats.maxHP + offset);
-        }
 
         UpdateUI();
         ShowNextIntent();
@@ -149,7 +176,6 @@ public class EnemyView : Character
         if (isBoss)
         {
             int startIndex = currentActionIndex;
-
             do
             {
                 EnemyActionInstance action = actionPattern[currentActionIndex];
@@ -250,10 +276,8 @@ public class EnemyView : Character
                 ];
             }
         }
-
         if (nextActionIndex < 0 || nextActionIndex >= actionPattern.Count)
             return;
-
         EnemyActionInstance nextAction = actionPattern[nextActionIndex];
 
         List<int> overrides = GetOverrides(nextActionIndex);
@@ -270,7 +294,7 @@ public class EnemyView : Character
             ctx.hasOverride = ov >= 0;
             ctx.overrideValue = ov;
 
-            //if (damageOnly && !effect.CountsAsDamage) continue;
+            if (!effect.CountsAsIntend) continue;
 
             displayValue += effect.GetIntentValue(ctx);
         }

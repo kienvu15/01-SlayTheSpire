@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3793ed6d1b6c36d4497c7d8bc3703ec7, type: 3}
+  m_Name: 1_Spike Slime_S
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  enemyName: Spike Slime_S
+  maxHP: {x: 10, y: 15}
+  base_DEF: 0
+  base_SPD: 10
+  maxConditions: 5
+  enemySprite: {fileID: -3120489902717986474, guid: e410863df7b72404c8d5a56b38eb2015, type: 3}
+  CanvasHieght: 313.23
+  hpSlider_Hieght: 155
+  CardDrop: {x: 289.99, y: 351.1}
+  CardDropPosition: {x: 5.01, y: -22.29}
+  local_Scale: {x: 0.9, y: 0.9, z: 0.9}
+  avatar_localScale: {x: 0.5, y: 0.5, z: 0.5}
+  isBoss: 0
+  canBeMoved: 1
+  actionPatternAssets:
+  - {fileID: 11400000, guid: e3097f096604e3249ab4efbe0ff291c5, type: 2}
+  - {fileID: 11400000, guid: e3097f096604e3249ab4efbe0ff291c5, type: 2}
+  overrideValuesPattern:
+  - values: 05000000
+    overrideCooldown: 0
+  - values: 06000000
+    overrideCooldown: 0

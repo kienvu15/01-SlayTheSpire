@@ -12,8 +12,9 @@ public class UIManager : MonoBehaviour
     [Header("PlayerHand_Content")]
     [SerializeField] private Button bag_Button;
     [SerializeField] public Button endTurn_Button;
-    [SerializeField] private GameObject drawPile_Button;
-    [SerializeField] private GameObject discardPile_Button;
+    [SerializeField] public Image endTurn_Button_Glow;
+    [SerializeField] public GameObject drawPile_Button;
+    [SerializeField] public GameObject discardPile_Button;
     [SerializeField] private Button enterRoom_Button;
     [SerializeField] private Button backMap_Button;
 
@@ -35,10 +36,19 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject Map_Visual_GameObject;
     [SerializeField] private GameObject Bag_Content_Object;
     [SerializeField] private GameObject Player_Hand;
+    [SerializeField] private GameObject Relic_Game_Run;
 
     [Header("Ref")]
     public MidMatch_Manager midMatch_Manager;
+    public Animator Transition_Animator;
+    public Transform Instaniate_Helper_Transform;
+    public GameObject drawPlie_Object;
+    public GameObject discardPile_Object;
 
+
+    /// <summary>
+    /// ///
+    /// </summary>
     [Header("UI Panels")]
     public GameObject battleHolder;
     public GameObject Bg;
@@ -123,17 +133,20 @@ public class UIManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        //if (animationLayer == null) animationLayer = transform;
     }
 
     void Start()
     {
         backMap_Button.onClick.AddListener(BackButton);
         bag_Button.onClick.AddListener(BagButton_CallBack);
+        endTurn_Button.onClick.AddListener(()=>FirstTime_Embrace());
 
+
+        //
         Inventory_Button.onClick.AddListener(() => ShowContent(0));
         Map_Button.onClick.AddListener(() => ShowContent(1));
         Deck_Button.onClick.AddListener(() => ShowContent(2));
+
     }
 
     #region LeftHand_Content
@@ -145,6 +158,12 @@ public class UIManager : MonoBehaviour
 
         enterRoom_Button.gameObject.SetActive(group2);
         backMap_Button.gameObject.SetActive(group2);
+    }
+
+    public void EnturnButton_Helper()
+    {
+        endTurn_Button.onClick.RemoveAllListeners();
+        endTurn_Button.GetComponentInChildren<TextMeshProUGUI>().text = "End Turn";
     }
 
     public void Enter_Room_Button_Helper(bool interact)
@@ -196,7 +215,7 @@ public class UIManager : MonoBehaviour
     public void RelicInfo_Help(bool stage)
     {
         card_NameT.SetActive(stage);
-        //manaObject.SetActive(stage);
+        manaObject.SetActive(false);
         //manaTextT.SetActive(stage);
         default_Disciption.SetActive(stage);
         upgrade_Disciption.SetActive(stage);
@@ -207,6 +226,18 @@ public class UIManager : MonoBehaviour
 
         Relic relic = instance.relicData;
         card_NameT.GetComponent<TextMeshProUGUI>().text = relic.relicName;
+        default_Disciption.GetComponent<TextMeshProUGUI>().text =
+            relic.defaultDescription;
+        upgrade_Disciption.GetComponent<TextMeshProUGUI>().text =
+            relic.upgradeDescription;
+    }
+    public void Init_RelicInforShop(RelicInstance instance)
+    {
+        if (instance == null || instance.relicData == null) return;
+
+        Relic relic = instance.relicData;
+        card_NameT.GetComponent<TextMeshProUGUI>().text = relic.relicName;
+        goldTxt.text = relic.gold_Buy.ToString();
         default_Disciption.GetComponent<TextMeshProUGUI>().text =
             relic.defaultDescription;
         upgrade_Disciption.GetComponent<TextMeshProUGUI>().text =
@@ -261,43 +292,27 @@ public class UIManager : MonoBehaviour
         endTurn_Button.onClick.AddListener(() => midMatch_Manager.EndTurn());
     }
     #endregion
-
+    #region Map_Controller
+    public void FirstTime_Embrace()
+    {
+        Bag_Content_Object.SetActive(true);
+        endTurn_Button_Glow.enabled = false;
+        LeftHand_Content(false, true);
+        Relic_Game_Run.SetActive(false);
+    }
+    #endregion
 
 
 
 
 
     #region MapPanel
-    //public void BackButton()
-    //{
-    //    SoundManager.Instance.Play("SelectButton", null, 1);
-
-    //    foreach (GameObject button in backMap)
-    //    {
-    //        button.SetActive(!button.activeSelf);
-    //    }
-
-    //    if (Mathf.Abs(buttonEnterParent.anchoredPosition.x - 380.33f) > 0.01f)
-    //    {
-    //        buttonEnterParent.anchoredPosition = new Vector2(originEnterButtonAnchoredPos.x, buttonEnterParent.anchoredPosition.y);
-    //    }
-    //    else
-    //    {
-    //        buttonEnterParent.anchoredPosition = new Vector2(380.33f, buttonEnterParent.anchoredPosition.y);
-    //    }
-
-    //    if (GameStage_Manager.Instance.isOnBattle == true)
-    //    {
-    //        buttonEnterParent.gameObject.SetActive(false);
-    //    }
-    //}
-
     public void MapIcon()
     {
-        if (GameStage_Manager.Instance.isOnBattle)
-        {
-            mapUiManager.MapInBattleScene();
-        }
+        //if (GameStage_Manager.Instance.isOnBattle)
+        //{
+          //  mapUiManager.MapInBattleScene();
+        //}
         SoundManager.Instance.Play("SelectButton", null, 1);
 
         deckUI.SetActive(false);
@@ -309,12 +324,12 @@ public class UIManager : MonoBehaviour
             button.SetActive(isMapOpening); 
         }
 
-        if (GameStage_Manager.Instance.isOnBattle)
-        {
-            buttonEnterParent.gameObject.SetActive(false);
-        }
-        else
-        {
+       // if (GameStage_Manager.Instance.isOnBattle)
+       // {
+           // buttonEnterParent.gameObject.SetActive(false);
+       // }
+       // else
+       // {
             buttonEnterParent.gameObject.SetActive(isMapOpening);
 
             if (isMapOpening)
@@ -322,7 +337,7 @@ public class UIManager : MonoBehaviour
                 buttonEnterParent.anchoredPosition =
                     new Vector2(originEnterButtonAnchoredPos.x, buttonEnterParent.anchoredPosition.y);
             }
-        }
+       // }
 
         if (tutorialCanvas != null)
         {
@@ -375,16 +390,16 @@ public class UIManager : MonoBehaviour
         }
 
         transitionImage.fillAmount = 1f;
-        if (GameStage_Manager.Instance.isFirstBattle == true)
-        {
-            UIManager.Instance.removeBattleCanvas();
-            GameStage_Manager.Instance.isFirstBattle = false;
-        }
-        else if (GameStage_Manager.Instance.isFirstBattle == false 
-            && GameSystem.Instance.isBattlePhase == true)
-        {
+       // if (GameStage_Manager.Instance.isFirstBattle == true)
+       // {
+        //    UIManager.Instance.removeBattleCanvas();
+          //  GameStage_Manager.Instance.isFirstBattle = false;
+      //  }
+        //else if (GameStage_Manager.Instance.isFirstBattle == false )
+            //&& GameSystem.Instance.isBattlePhase == true)
+        //{
             Destroy(BattlleUIHolder.transform.GetChild(0).gameObject);
-        }
+       // }
             OnTransitionFilled?.Invoke();
     }
 

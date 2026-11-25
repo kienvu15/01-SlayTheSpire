@@ -70,7 +70,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -514,7 +514,8 @@ MonoBehaviour:
   stunDuration: 0
   relicManager: {fileID: 0}
   avatarImage: {fileID: 9095121453033858136}
-  animator: {fileID: 0}
+  avatarImageTR: {fileID: 4589646237766689507}
+  animator: {fileID: 2676543294936384503}
   canvas: {fileID: 4139408344368554205}
 --- !u!95 &2676543294936384503
 Animator:
@@ -524,7 +525,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3476161769760265376}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 1890c284a1d55df43b1e1bdc509c4f17, type: 2}
   m_CullingMode: 0
@@ -601,7 +602,7 @@ RectTransform:
   m_GameObject: {fileID: 3554357915949399820}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.72, y: 0.72, z: 0.72}
+  m_LocalScale: {x: 0.82, y: 0.82, z: 0.82}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6599868868818463454}
@@ -642,7 +643,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2252609198873438862, guid: acdcec5049ea36a439a89ade6501090e, type: 3}
+  m_Sprite: {fileID: -5486394981216724548, guid: 2c151056355b6d245853e38025637474, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1487,7 +1488,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

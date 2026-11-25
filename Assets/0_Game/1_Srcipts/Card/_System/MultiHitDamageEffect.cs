@@ -37,6 +37,29 @@ public class MultiHitDamageEffect : EffectData
 
     public override int GetIntentValue(EffectContext ctx) => GetDamage(ctx) * GetHits(ctx);
 
+    public override IEnumerator ApplyRoutine(EffectContext ctx, System.Action<bool> done)
+    {
+        int dmg = GetDamage(ctx), count = GetHits(ctx);
+        ImpactProfile profile = impactProfile != null ? impactProfile : ctx.impactProfile;
+        bool anyHit = false;
+
+        for (int i = 0; i < count; i++)
+        {
+            Character t = PickTarget(ctx.target, ctx.enemies);
+            if (t == null) break;
+
+            if (ctx.self.DealDamage(t, dmg, profile))
+            {
+                anyHit = true;
+                ctx.hitTargets.Add(t);
+            }
+            if (hitInterval > 0) yield return new WaitForSeconds(hitInterval);
+        }
+
+        ctx.lastHit = anyHit;
+        done(true);
+    }
+
     public override bool Apply(EffectContext ctx)
     {
         if (ctx.self == null) return false;
@@ -134,6 +157,7 @@ public class MultiHitDamageEffect : EffectData
     {
         if (targeting == MultiHitTargeting.SameTarget)
         {
+            if (fixedTarget == null) return null;
             if (stopWhenTargetDies && fixedTarget.stats.currentHP <= 0) return null;
             return fixedTarget;
         }
@@ -147,4 +171,5 @@ public class MultiHitDamageEffect : EffectData
 
         return alive.Count == 0 ? null : alive[Random.Range(0, alive.Count)];
     }
+
 }

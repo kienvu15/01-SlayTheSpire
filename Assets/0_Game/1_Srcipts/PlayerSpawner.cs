@@ -3,10 +3,6 @@ using UnityEngine;
 
 public class PlayerSpawner : MonoBehaviour
 {
-    [SerializeField] CardCollection_OnRun cardCollectionPanel;
-    [SerializeField] MapUIManager mapUIManager;
-    [SerializeField] GameStage_Manager gameFlowManager;
-
     [Header("Player_Spawn_Pile")]
     [SerializeField] CardHolder cardHolder;
     [SerializeField] RelicManager relicManager;
@@ -15,14 +11,14 @@ public class PlayerSpawner : MonoBehaviour
     [SerializeField] Character_Info_UI character_Info_UI;
     [SerializeField] MidMatch_Manager midMatch_Manager;
     [SerializeField] PlayerSelfCast playerSelfCast;
+    [SerializeField] MapUIManager mapUIManager;
 
     [Header("ToolTest")]
     [SerializeField] CharacterData defaultPlayerData;
 
-    void Start()
+    public void OnGameStart_Init()
     {
         CharacterData data = null;
-
         #region Get_data
         if (PlayerSelectionManager.Instance != null)
         {
@@ -45,17 +41,18 @@ public class PlayerSpawner : MonoBehaviour
         Character character = playerRef.GetComponent<Character>();
 
         playerRef.avatarImage.sprite = data.player_Avatar;
+        playerRef.avatarImageTR.localScale = data.avatar_localScale;
 
         playerRef.stats.maxHP = data.maxHP;
         playerRef.stats.currentHP = data.maxHP;
         playerRef.stats.shield = data.base_DEF;
         playerRef.stats.spd = data.base_SPD;
-        //coinManager.currentCoin = data.startCoin;
 
         player.transform.parent = this.transform;
         RectTransform rect = player.GetComponent<RectTransform>();
         rect.anchoredPosition = Vector2.zero;
         rect.localScale = data.local_Scale;
+
         #endregion
         #region Initialize_Card
         cardHolder.Initialize(data);
@@ -87,12 +84,8 @@ public class PlayerSpawner : MonoBehaviour
         #region Player Self Cast
         playerSelfCast.cardDropHelper = playerRef.cardDropHelper;
         #endregion
-        mapUIManager.manaSystem = manaSystem;
-        mapUIManager.player = player.GetComponent<Player>();
 
-
-
-        gameFlowManager.player = player.GetComponent<Player>();
-
+        mapUIManager.player = playerRef;
     }
+
 }

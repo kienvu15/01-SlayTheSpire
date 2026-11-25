@@ -15,14 +15,23 @@ public class CardPileViewer : MonoBehaviour
     public Deck deck;
     public GameObject cardDisplayPrefab;
     public Transform contentParent;
+    public Transform pileParent;
     public CenterScaleScroll scroller;
 
     [Header("Select Mode")]
     public Button chooseButton;               // nút "Chọn" duy nhất
     public TMPro.TMP_Text selectHintText;     // tuỳ chọn: "Chọn 1 lá"
 
-    private CardPileType currentPile = CardPileType.DrawPile;
+    [Header("Button Helper")]
+    public Button drawPile_Button;
+    public GameObject drawPile_Glow;
+    public GameObject drawPile_Object;
+    public TextMeshProUGUI header_Text;
+    public Button disCard_Button;
+    public GameObject disCard_Glow;
+    public GameObject disCard_Object;
 
+    private CardPileType currentPile = CardPileType.DrawPile;
     private readonly List<GameObject> spawnedCards = new();
     private readonly Dictionary<CardInstance, GameObject> objectByCard = new();
 
@@ -31,6 +40,12 @@ public class CardPileViewer : MonoBehaviour
     private int remainingPicks;
     private System.Action<List<CardInstance>> onPicked;
     private readonly List<CardInstance> picked = new();
+
+    private void Start()
+    {
+        drawPile_Button.onClick.AddListener(() => DrawPlie_Helper());
+        disCard_Button.onClick.AddListener(() => DisCard_Helper());
+    }
 
     public CardData GetSelectedCardData()
     {
@@ -46,21 +61,55 @@ public class CardPileViewer : MonoBehaviour
         return display != null ? display.cardInstance : null;
     }
 
-    // ================= SWITCH PILE (chỉ xem) =================
-    public void ShowDrawPile()
+    // Button Helper
+    public void DrawPlie_Helper()
     {
+        bool isActive = !drawPile_Object.activeSelf;
+
+        UIManager.Instance.endTurn_Button.gameObject.SetActive(!isActive);
+        UIManager.Instance.discardPile_Button.SetActive(!isActive);
+
+        header_Text.text = isActive ? "Draw Pile" : "";
+
+        drawPile_Glow.SetActive(isActive);
+        ShowDrawPile(pileParent, drawPile_Object);
+    }
+    public void DisCard_Helper()
+    {
+        bool isActive = !drawPile_Object.activeSelf;
+        UIManager.Instance.endTurn_Button.gameObject.SetActive(!isActive);
+        UIManager.Instance.drawPile_Button.SetActive(!isActive);
+        header_Text.text = "Discard Pile";
+        disCard_Glow.SetActive(!disCard_Glow.activeSelf);
+        ShowDiscardPile(pileParent, disCard_Object);
+    }
+    // ================= SWITCH PILE =================
+    public void ShowDrawPile(Transform contentParent, GameObject gameObject)
+    {
+        bool isActive = !gameObject.activeSelf;
+
+        gameObject.SetActive(isActive);
+        drawPile_Glow.SetActive(isActive);
+
+        if (!isActive) return;
+
         selectMode = false;
-        gameObject.SetActive(true);
         currentPile = CardPileType.DrawPile;
-        RefreshPanel();
+        RefreshPanel(contentParent);
     }
 
-    public void ShowDiscardPile()
+    public void ShowDiscardPile(Transform contentParent, GameObject gameObject)
     {
+        bool isActive = !gameObject.activeSelf;
+
+        gameObject.SetActive(isActive);
+        disCard_Glow.SetActive(isActive);
+
+        if (!isActive) return;
+
         selectMode = false;
-        gameObject.SetActive(true);
         currentPile = CardPileType.DiscardPile;
-        RefreshPanel();
+        RefreshPanel(contentParent);
     }
 
     // ================= SELECT MODE =================
@@ -82,7 +131,7 @@ public class CardPileViewer : MonoBehaviour
         chooseButton.onClick.AddListener(()=>OnClickChoose());
         chooseButton.GetComponentInChildren<TextMeshProUGUI>().text = "Choose".ToString();
 
-        RefreshPanel();
+        RefreshPanel(contentParent);
 
         remainingPicks = Mathf.Min(count, spawnedCards.Count);
         UpdateSelectUI();
@@ -156,7 +205,7 @@ public class CardPileViewer : MonoBehaviour
     }
 
     // ================= REFRESH =================
-    public void RefreshPanel()
+    public void RefreshPanel(Transform contentParent)
     {
         ClearCards();
 
@@ -214,7 +263,7 @@ public class CardPileViewer : MonoBehaviour
 
     public void RefreshCurrentPile()
     {
-        RefreshPanel();
+        RefreshPanel(contentParent);
     }
 
 }

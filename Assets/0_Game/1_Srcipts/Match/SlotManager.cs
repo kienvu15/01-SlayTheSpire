@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class SlotManager : MonoBehaviour
 {
-
     public static SlotManager Instance;
-    private Spot[] slots;
 
+    private Spot[] slots;
     private void Awake()
     {
         Instance = this;
+
         slots = GetComponentsInChildren<Spot>()
                 .OrderBy(s => s.transform.rotation.z)
                 .ToArray();

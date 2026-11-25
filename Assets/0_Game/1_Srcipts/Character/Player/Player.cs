@@ -4,7 +4,9 @@ using UnityEngine.UI;
 
 public class Player : Character
 {
+    [Header("Player")]
     public Image avatarImage;
+    public RectTransform avatarImageTR;
     public Animator animator;
     public GameObject canvas;
     AudioSource audioSource;
@@ -46,5 +48,6 @@ public class Player : Character
             animator.SetTrigger("Up");
         }
     }
+
 }
 

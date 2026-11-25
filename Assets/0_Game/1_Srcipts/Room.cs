@@ -41,7 +41,6 @@ public class Room : MonoBehaviour
 
         roomImage.sprite = GetSprite(newType);
     }
-
     private Sprite GetSprite(RoomType type)
     {
         return type switch
@@ -111,4 +110,5 @@ public class Room : MonoBehaviour
     {
         SetSelected(false);
     }
+
 }

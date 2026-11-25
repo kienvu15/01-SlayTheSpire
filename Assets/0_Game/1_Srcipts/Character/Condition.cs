@@ -2,16 +2,18 @@
 
 public enum ConditionType
 {
-    Dodge,
-    Drunk,
-    Immunity,
-    Rage,
-    Blind,
-    Fragile,
-    Injury,
-    Mark,
-    Weakened,
-    Vulnerable,
+    Dodge, // Dodge
+    Drunk, // 50% more damage, 50% miss
+    Immunity, // cannot gain status
+    Rage, // deal more damage
+    Blind, // change to miss
+    Fragile, // -50% shield gain
+    Injury, // deal x damage at turn
+    Mark, // force crit
+    Weakened,// deal less damage
+    Vulnerable, // take more damage
+    Poisoned, 
+    Entangled
 }
 
 public enum ConditionOwner
@@ -37,8 +39,12 @@ public class Condition
         switch (type)
         {
             case ConditionType.Injury:
-                int dmg = Mathf.RoundToInt(duration); 
-                character.TakeDamage(dmg);
+                int Injury_dmg = Mathf.RoundToInt(duration); 
+                character.TakeDamage(Injury_dmg);
+                break;
+            case ConditionType.Poisoned:
+                int Poisoned_dmg = Mathf.RoundToInt(duration + 1);
+                character.TakeDamage(Poisoned_dmg);
                 break;
         }
     }
@@ -105,7 +111,7 @@ public class Condition
         switch (type)
         {
             case ConditionType.Mark:
-                return true; // mọi đòn đánh đều crit
+                return true; 
             case ConditionType.Drunk:
                 return Random.value < 0.5f; // 50% crit
         }

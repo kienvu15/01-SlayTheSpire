@@ -48,10 +48,10 @@ public class RoomUI : MonoBehaviour
         hasMovedOnce = false;
         selectSlider.value = 0f;
 
-        if (GameStage_Manager.Instance.isOnBattle)
-        {
-           return;
-        }
+        //if (GameStage_Manager.Instance.isOnBattle)
+        //{
+          // return;
+        //}
 
         if (PlayerMapController.Instance != null && room.incoming.Contains(PlayerMapController.Instance.currentRoom))
         {
@@ -143,20 +143,20 @@ public class RoomUI : MonoBehaviour
         {
             room.visited = true;
             //SetAsVisited();
-            GameSystem.Instance.isBattlePhase = true;
+            //GameSystem.Instance.isBattlePhase = true;
             UIManager.Instance.FadeOutOverTime();
 
-            bool sysExists = GameSystem.Instance != null;
-            bool isBattle = sysExists && GameSystem.Instance.isBattlePhase;
+            //bool sysExists = GameSystem.Instance != null;
+            //bool isBattle = sysExists && GameSystem.Instance.isBattlePhase;
             bool deckExists = Deck.instance != null;
             bool needDraw = deckExists && !Deck.instance.hasDrawFisrtRow;
 
-            if (sysExists && isBattle && needDraw)
-            {
+          //  if (sysExists && isBattle && needDraw)
+            //{
                 Deck.instance.hasDrawFisrtRow = true;
                 StartCoroutine(Deck.instance.DrawHand(MidMatch_Manager.instance.handSize));
-            }
-            MapUIManager.Instance.ShowBattleCanvas();
+          //  }
+           // MapUIManager.Instance.ShowBattleCanvas();
         }
         //else if (room.type == RoomType.Shop)
         //{

@@ -27,7 +27,7 @@ MonoBehaviour:
   startDeck: {fileID: 11400000, guid: dc31484a1d96d9f49b7bc1f5ffb52349, type: 2}
   startRelic: {fileID: 11400000, guid: e31d5f7f53a294e459e62df013ba7cd4, type: 2}
   base_Prefab: {fileID: 3476161769760265376, guid: aada6aca03ff8c648a74b07fc42c5e1a, type: 3}
-  player_Avatar: {fileID: 48119353051907373, guid: a85d46033a630044e812f1ef2c5a3087, type: 3}
-  player_AvatarIcon: {fileID: 1032703236, guid: a85d46033a630044e812f1ef2c5a3087, type: 3}
+  player_Avatar: {fileID: -5486394981216724548, guid: 2c151056355b6d245853e38025637474, type: 3}
+  player_AvatarIcon: {fileID: -1786960363, guid: 2c151056355b6d245853e38025637474, type: 3}
   local_Scale: {x: 0.9, y: 0.9, z: 0.9}
   avatar_localScale: {x: 0.83, y: 0.83, z: 0.83}

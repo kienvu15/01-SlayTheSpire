@@ -20,6 +20,7 @@ MonoBehaviour:
   artworkSize: {x: 205.25, y: 129.21}
   artworkPosition: {x: 0, y: 2}
   artworkRotation: 0
+  impactProfile: {fileID: 0}
   manaCost: 1
   description: Deal 6 damage. Add a copy of this card to your discard pile.
   upgradedDescription: Deal 8 damage. Add a copy of this card to your discard pile.
@@ -40,8 +41,8 @@ MonoBehaviour:
   - effect: {fileID: 11400000, guid: 6e2b8452f4bd5ff43945af68390ba7af, type: 2}
     runCondition: 0
     targetMode: 0
-    targetCount: 2
-    slotRange: 1
+    targetCount: 0
+    slotRange: 0
     overrideValue: 1
     valueOverride: 1
     upgradeOverrideValue: 0

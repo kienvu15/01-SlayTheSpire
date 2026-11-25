@@ -16,8 +16,13 @@ public class EnemyData : ScriptableObject
     public int maxConditions = 2;
 
     [Header("Enemy_Prefab")]
-    public GameObject base_Prefab;
-    public Sprite enemy_Avatar;
+    public Sprite enemySprite;
+    public Vector3 rotation;
+    public float CanvasHieght;
+    public float hpSlider_Hieght = 250;
+    public Vector2 hpSlider_Position = new Vector2(0.5f,0);
+    public Vector2 CardDrop;
+    public Vector2 CardDropPosition;
     public Vector3 local_Scale;
     public Vector3 avatar_localScale;
 

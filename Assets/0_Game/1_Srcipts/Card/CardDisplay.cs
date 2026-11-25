@@ -32,11 +32,6 @@ public class CardDisplay : MonoBehaviour
     public TMP_Text goldText;
     public NewShopSystem newShopSystem;
 
-    [Header("Animation Settings")]
-    //public bool useScaleAnimation = false; 
-    //public float scaleMultiplier = 1.15f;
-    //public float animDuration = 0.2f;
-
     [Header("Hand Selection")]
     private HandCardManager handManager;
 
@@ -48,11 +43,9 @@ public class CardDisplay : MonoBehaviour
     [HideInInspector] public CanvasGroup blockerGroup;
     [HideInInspector] public CardHolder cardholder;
     private static CardDisplay currentlyOpen;
-    private Vector3 originalScale;
 
     private void Awake()
     {
-        originalScale = transform.localScale;
         handManager = GetComponentInParent<HandCardManager>();
         cardholder = FindAnyObjectByType<CardHolder>();
     }
@@ -67,38 +60,6 @@ public class CardDisplay : MonoBehaviour
 
         if (cardInstance != null)
             Refresh();
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            TestUpgrade();
-        }
-    }
-
-    private void TestUpgrade()
-    {
-        if (cardInstance == null)
-        {
-            Debug.LogWarning("CardInstance is null!");
-            return;
-        }
-
-        if (!cardInstance.CanUpgrade)
-        {
-            Debug.LogWarning($"{cardInstance.Name} cannot upgrade! Current Level: {cardInstance.level}");
-            return;
-        }
-
-        bool success = cardInstance.UpgradeTemp();
-
-        if (success)
-        {
-            Refresh();
-
-            Debug.Log($"UPGRADE SUCCESS: {cardInstance.Name} - Level {cardInstance.level}");
-        }
     }
 
     public void LoadCard(CardData data) => LoadCard(new CardInstance(data));
@@ -133,6 +94,18 @@ public class CardDisplay : MonoBehaviour
 
         if (descriptionText != null)
             descriptionText.text = DescriptionFormatter.Format(cardInstance.Description);
+
+        UpdateManaColor();
+    }
+
+    public void UpdateManaColor()
+    {
+        if (mana_ConsumeText == null || cardInstance == null) return;
+
+        bool canPlay = ManaSystem.instance != null &&
+                       ManaSystem.instance.CanPlayCard(cardInstance);
+
+        mana_ConsumeText.color = canPlay ? Color.white : Color.red;
     }
 
     public int GetIntentSum()
@@ -168,11 +141,7 @@ public class CardDisplay : MonoBehaviour
 
         if (currentMode == CardMode.Reward)
         {
-            //if (currentlyOpen == this && descriptionPanel.activeSelf)
-            //{
-            //    ConfirmPickReward();
-            //    return;
-            //}
+
         }
 
         if (handManager != null)
@@ -181,118 +150,12 @@ public class CardDisplay : MonoBehaviour
         }
     }
 
-    private void ConfirmPickReward()
-    {
-        if (cardholder != null)
-        {
-
-            if (RandomCardSystem.Instance != null)
-            {
-            }
-
-            RectTransform target = UIManager.Instance.deckIcon;
-
-            UIManager.Instance.AnimateCardFly(
-                this.GetComponent<RectTransform>(),
-                target,
-                () => {
-                    RandomCardSystem.Instance.StartCoroutine(RandomCardSystem.Instance.OnCardSelected(this));
-
-                }
-            );
-            for (int i = 0; i < transform.childCount; i++)
-            {
-                transform.GetChild(i).gameObject.SetActive(false);
-            }
-
-            //HideDescription();
-        }
-    }
-
-    //SHOP
-    public void InitShop(CardData data, NewShopSystem shop)
-    {
-        currentMode = CardMode.Shop;
-        newShopSystem = shop;
-        LoadCard(data);
-
-        if (goldContainer != null)
-        {
-            goldContainer.SetActive(true);
-            goldText.text = data.goldCost.ToString();
-        }
-       // useScaleAnimation = true;
-    }
-
     //Reward
     public void Init(CardData data, CardHolder holder)
     {
         currentMode = CardMode.Reward;
         cardholder = holder;
         LoadCard(data);
-       // useScaleAnimation = true;
-    }
-
-    public void ToggleDescription()
-    {
-        //if (descriptionPanel == null) return;
-
-        // Đóng card khác
-        //if (currentlyOpen != null && currentlyOpen != this)
-          //  currentlyOpen.HideDescription();
-
-        //bool isOpening = !descriptionPanel.activeSelf;
-        //descriptionPanel.SetActive(isOpening);
-
-        //if (isOpening)
-        //{
-        //    currentlyOpen = this;
-        //    ShowBlocker();
-
-        //    // Hiệu ứng Scale (áp dụng cho cả Shop lẫn Reward nếu muốn)
-        //    if (useScaleAnimation)
-        //    {
-        //        transform.DOKill();
-        //        transform.DOScale(originalScale * scaleMultiplier, animDuration).SetEase(Ease.OutBack);
-        //        if (canvas != null) canvas.sortingOrder = 10;
-        //    }
-        //}
-        //else
-        //{
-        //    // Đóng lại
-        //    currentlyOpen = null;
-        //    HideBlocker();
-        //    ResetScaleAnim();
-        //}
-    }
-
-    private void ResetScaleAnim()
-    {
-        //if (useScaleAnimation)
-        //{
-        //    transform.DOKill();
-        //    transform.DOScale(originalScale, animDuration).SetEase(Ease.OutQuad);
-        //    if (canvas != null) canvas.sortingOrder = 0;
-        //}
-    }
-
-    private void ShowBlocker()
-    {
-        if (blockerGroup != null)
-        {
-            blockerGroup.alpha = 0; 
-            blockerGroup.blocksRaycasts = true; 
-            blockerGroup.interactable = true;
-        }
-    }
-
-    private void HideBlocker()
-    {
-        if (blockerGroup != null)
-        {
-            blockerGroup.blocksRaycasts = false; // cho click xuyên qua
-            blockerGroup.interactable = false;
-        }
     }
 
 }

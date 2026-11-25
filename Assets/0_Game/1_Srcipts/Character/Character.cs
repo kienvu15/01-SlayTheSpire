@@ -515,7 +515,6 @@ public class Character : MonoBehaviour
     }
 
     // IMPACT CALL
-
     private void PlayImpact(
         Character target,
         ImpactProfile profile,

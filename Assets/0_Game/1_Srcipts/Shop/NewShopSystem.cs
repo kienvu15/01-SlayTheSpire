@@ -13,6 +13,18 @@ public class NewShopSystem : MonoBehaviour
     public float shopSelectionDuration = 0.18f;
     private Dictionary<Transform, Vector3> originalShopScales = new();
 
+    [Header("Remove_Helper")]
+    public Button Remove_card_Service;
+    public GameObject remove_Panel;
+    public Transform removeParent;
+    public float removeSelectScale = 1.15f;
+    public float removeSelectDuration = 0.18f;
+    public float removeDestroyDuration = 0.25f;
+
+    private CardDisplay currentSelectedRemoveCardDisplay;
+    private CardInstance selectedRemoveCardInstance;
+    private Dictionary<Transform, Vector3> removeOriginalScales = new();
+
     [Header("UI_Helper")]
     public TextMeshProUGUI goldText;
     public Button Enturn_BuyButton;
@@ -33,15 +45,20 @@ public class NewShopSystem : MonoBehaviour
     private List<Relic> shopRelics = new List<Relic>();
     public RelicManager relicManager;
 
-
     private CardDisplay currentSelectedCardDisplay;
     private RelicDisplay currentSelectedRelicDisplay;
     public List<RelicDisplay> spawnedRelicDisplays = new List<RelicDisplay>();
+    public bool IsRelicSelected(RelicDisplay d) => currentSelectedRelicDisplay == d;
 
     void Start()
     {
         GenerateShop();
         GenerateRelicShop();
+
+        Enturn_BuyButton.onClick.RemoveAllListeners();
+        Enturn_BuyButton.onClick.AddListener(BuySelected);
+
+        Remove_card_Service.onClick.AddListener(() => Open_Remove_Service());
     }
 
     public void GenerateShop()
@@ -86,15 +103,72 @@ public class NewShopSystem : MonoBehaviour
     {
         SelectCard(pickedCard);
 
+        if (currentSelectedCardDisplay == null) return; // vừa bỏ chọn
+
         UIManager.Instance.CardInfo_Help(true);
         cardCollection_OnRun.ShowConditions(pickedCard.cardInstance);
         UIManager.Instance.Init_CardInfor(pickedCard, data);
     }
 
-    private void SetShopSelectionVisual(
-    Transform target,
-    bool selected,
-    GameObject outlineGlow = null)
+    public void InitShop(CardDisplay display, CardData data, NewShopSystem shop)
+    {
+        display.LoadCard(data);
+    }
+
+    public void SelectCard(CardDisplay cardDisplay)
+    {
+        if (cardDisplay == null) return;
+
+        // click lại cái đang chọn -> bỏ chọn
+        if (currentSelectedCardDisplay == cardDisplay)
+        {
+            DeselectAll();
+            return;
+        }
+
+        DeselectAll(); // bỏ chọn cả card cũ lẫn relic cũ
+
+        currentSelectedCardDisplay = cardDisplay;
+        SetShopSelectionVisual(cardDisplay.transform, true, cardDisplay.outline_Glow);
+    }
+
+    // ---------- RELIC ----------
+    public void SelectRelic(RelicDisplay relicDisplay)
+    {
+        if (relicDisplay == null) return;
+
+        if (currentSelectedRelicDisplay == relicDisplay)
+        {
+            DeselectAll();
+            return;
+        }
+
+        DeselectAll(); // bỏ chọn card đang chọn (nếu có)
+
+        currentSelectedRelicDisplay = relicDisplay;
+        relicDisplay.SetSelected(true);
+    }
+
+    // ---------- CHUNG ----------
+    public void DeselectAll()
+    {
+        if (currentSelectedCardDisplay != null)
+        {
+            SetShopSelectionVisual(
+                currentSelectedCardDisplay.transform,
+                false,
+                currentSelectedCardDisplay.outline_Glow);
+            currentSelectedCardDisplay = null;
+        }
+
+        if (currentSelectedRelicDisplay != null)
+        {
+            currentSelectedRelicDisplay.SetSelected(false);
+            currentSelectedRelicDisplay = null;
+        }
+    }
+
+    private void SetShopSelectionVisual(Transform target, bool selected, GameObject outlineGlow = null)
     {
         if (target == null) return;
 
@@ -116,40 +190,35 @@ public class NewShopSystem : MonoBehaviour
             outlineGlow.SetActive(selected);
     }
 
-    public void InitShop(CardDisplay display, CardData data, NewShopSystem shop)
+    public void BuySelected()
     {
-        display.LoadCard(data);
+        if (currentSelectedCardDisplay != null)
+            BuySelectedCard();
+        else if (currentSelectedRelicDisplay != null)
+            BuySelectedRelic();
+        else
+            Debug.Log("Chưa chọn gì để mua!");
     }
 
-    public void SelectCard(CardDisplay cardDisplay)
+    public void BuySelectedRelic()
     {
-        if (cardDisplay == null) return;
-        // Click lại card đang chọn -> bỏ chọn
-        if (currentSelectedCardDisplay == cardDisplay)
+        var display = currentSelectedRelicDisplay;
+        if (display == null) return;
+
+        Relic relic = display.RelicData;
+        if (CoinManager.Instance == null || !CoinManager.Instance.SpendCoins(relic.gold_Buy))
         {
-            DeselectCurrentCard();
+            Debug.Log("Không đủ vàng!");
             return;
         }
 
-        // Trả card cũ về trạng thái ban đầu
-        if (currentSelectedCardDisplay != null)
-        {
-            SetShopSelectionVisual(
-                currentSelectedCardDisplay.transform,
-                false,
-                currentSelectedCardDisplay.outline_Glow
-            );
-        }
-        currentSelectedCardDisplay = cardDisplay;
-        // Hiệu ứng card mới
-        SetShopSelectionVisual(
-            cardDisplay.transform,
-            true,
-            cardDisplay.outline_Glow
-        );
+        SoundManager.Instance.Play("Coin");
 
-        Enturn_BuyButton.onClick.AddListener(() => BuySelectedCard());
-        Debug.Log("Đã chọn mua: " + cardDisplay.cardData.cardName);
+        relicManager.AddRelic(relic);
+
+        shopRelics.Remove(relic);
+        DeselectAll();
+        display.SetSoldOut();
     }
 
     // Button Helper
@@ -251,12 +320,113 @@ public class NewShopSystem : MonoBehaviour
             display.priceTXT.text = randomRelic.gold_Buy.ToString();
 
             display.goldContainer.SetActive(true);
-            display.OnClickAddLisent();
+            display.OnClickAddLisentShop();
 
             spawnedRelicDisplays.Add(display);
         }
     }
 
-  
+    //UI Helper
+    public void Open_Remove_Service()
+    {
+        remove_Panel.SetActive(true);
+
+        removeOriginalScales.Clear(); // card cũ bị rebuild nên bỏ scale cũ
+        currentSelectedRemoveCardDisplay = null;
+        selectedRemoveCardInstance = null;
+
+        cardCollection_OnRun.RefreshPanel(removeParent, OnRemoveCardClicked);
+
+        Enturn_BuyButton.onClick.RemoveAllListeners();
+        Enturn_BuyButton.onClick.AddListener(ConfirmRemoveCard);
+
+        TextMeshProUGUI btnText = Enturn_BuyButton.GetComponentInChildren<TextMeshProUGUI>();
+        if (btnText != null)
+            btnText.text = "Remove";
+    }
+
+    public void OnRemoveCardClicked(CardDisplay display)
+    {
+        if (display == null || display.cardInstance == null) return;
+
+        // bấm lại lá đang chọn -> bỏ chọn
+        if (currentSelectedRemoveCardDisplay == display)
+        {
+            DeselectRemoveCard();
+            return;
+        }
+
+        DeselectRemoveCard(); // thu nhỏ lá cũ
+
+        currentSelectedRemoveCardDisplay = display;
+        selectedRemoveCardInstance = display.cardInstance;
+        SetRemoveSelectionVisual(display.transform, true, display.outline_Glow);
+    }
+
+    private void DeselectRemoveCard()
+    {
+        if (currentSelectedRemoveCardDisplay != null)
+        {
+            SetRemoveSelectionVisual(
+                currentSelectedRemoveCardDisplay.transform,
+                false,
+                currentSelectedRemoveCardDisplay.outline_Glow);
+        }
+        currentSelectedRemoveCardDisplay = null;
+        selectedRemoveCardInstance = null;
+    }
+
+    private void SetRemoveSelectionVisual(Transform target, bool selected, GameObject outlineGlow = null)
+    {
+        if (target == null) return;
+
+        if (!removeOriginalScales.ContainsKey(target))
+            removeOriginalScales.Add(target, target.localScale);
+
+        Vector3 original = removeOriginalScales[target];
+
+        target.DOKill();
+        target.DOScale(selected ? original * removeSelectScale : original, removeSelectDuration)
+              .SetEase(Ease.OutCubic)
+              .SetLink(target.gameObject);
+
+        if (outlineGlow != null)
+            outlineGlow.SetActive(selected);
+    }
+
+    public void ConfirmRemoveCard()
+    {
+        if (selectedRemoveCardInstance == null ||
+            currentSelectedRemoveCardDisplay == null ||
+            cardCollection_OnRun.deck == null)
+        {
+            Debug.Log("Chưa chọn lá bài nào để xóa!");
+            return;
+        }
+
+        CardInstance cardToRemove = selectedRemoveCardInstance;
+        CardDisplay displayToDestroy = currentSelectedRemoveCardDisplay;
+
+        // Xóa khỏi toàn bộ bộ bài (allCards + draw pile)
+        cardCollection_OnRun.deck.RemoveCardFromCollection(cardToRemove);
+
+        Debug.Log("Đã xóa thành công lá bài: " + cardToRemove.data.cardName);
+
+        // Reset lựa chọn trước, tránh bấm Remove nhiều lần lên cùng 1 lá
+        currentSelectedRemoveCardDisplay = null;
+        selectedRemoveCardInstance = null;
+        removeOriginalScales.Remove(displayToDestroy.transform);
+
+        // Destroy card trong panel (thu nhỏ rồi xóa)
+        if (displayToDestroy.card_Button != null)
+            displayToDestroy.card_Button.interactable = false;
+
+        GameObject go = displayToDestroy.gameObject;
+        go.transform.DOKill();
+        go.transform.DOScale(Vector3.zero, removeDestroyDuration)
+            .SetEase(Ease.InBack)
+            .SetLink(go)
+            .OnComplete(() => Destroy(go));
+    }
 
 }

@@ -1,5 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class EffectContext
 {
@@ -37,4 +38,10 @@ public abstract class EffectData : ScriptableObject
 
     // Cho UI intent/tooltip
     public virtual int GetIntentValue(EffectContext ctx) => 0;
+
+    public virtual IEnumerator ApplyRoutine(EffectContext ctx, System.Action<bool> done)
+    {
+        done(Apply(ctx));
+        yield break;
+    }
 }

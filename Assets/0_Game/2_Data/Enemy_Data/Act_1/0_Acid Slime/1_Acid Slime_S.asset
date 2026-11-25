@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3793ed6d1b6c36d4497c7d8bc3703ec7, type: 3}
+  m_Name: 1_Acid Slime_S
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  enemyName: Acid Slime (S)
+  maxHP: {x: 8, y: 13}
+  base_DEF: 0
+  base_SPD: 10
+  maxConditions: 5
+  enemySprite: {fileID: 267683540797770922, guid: 78fcfac3a2b959d4187d9b4dc0828a0a, type: 3}
+  CanvasHieght: 387.33
+  hpSlider_Hieght: 250
+  hpSlider_Position: {x: 0.5, y: 0}
+  CardDrop: {x: 300, y: 449}
+  CardDropPosition: {x: 8.49, y: -51}
+  local_Scale: {x: 0.9, y: 0.9, z: 0.9}
+  avatar_localScale: {x: 0.5, y: 0.5, z: 0.5}
+  isBoss: 0
+  canBeMoved: 1
+  actionPatternAssets:
+  - {fileID: 11400000, guid: e3097f096604e3249ab4efbe0ff291c5, type: 2}
+  - {fileID: 11400000, guid: e3097f096604e3249ab4efbe0ff291c5, type: 2}
+  - {fileID: 11400000, guid: d302a99b6c54875478c87e068e85fe9c, type: 2}
+  overrideValuesPattern:
+  - values: 03000000
+    overrideCooldown: 0
+  - values: 04000000
+    overrideCooldown: 0
+  - values: 01000000
+    overrideCooldown: 0

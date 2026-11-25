@@ -9,7 +9,9 @@ public class CardCollection_OnRun : MonoBehaviour
     public Deck deck;
     public GameObject cardDisplayPrefab;
     public GameObject conditionPrefab;
+
     public Transform contentParent;
+
     public Transform conditionParent;
     public ConditionIconDatabase conditionDb;
 
@@ -17,7 +19,6 @@ public class CardCollection_OnRun : MonoBehaviour
     public Button removeButton; 
 
     private CardDisplay selectedCard;
-    private bool isRemoveMode = false;
 
     public static bool firstTimeOpen = false;
     private List<GameObject> spawnedCards = new List<GameObject>();
@@ -62,6 +63,45 @@ public class CardCollection_OnRun : MonoBehaviour
         }
     }
 
+    public void RefreshPanel(Transform parent, System.Action<CardDisplay> onCardClickedCallback)
+    {
+        foreach (var obj in spawnedCards)
+        {
+            if (obj != null)
+                Destroy(obj);
+        }
+        spawnedCards.Clear();
+
+        if (deck == null) return;
+
+        List<CardInstance> allCards = deck.GetAllCards();
+
+        foreach (CardInstance instance in allCards)
+        {
+            GameObject newCard = Instantiate(cardDisplayPrefab, parent);
+            CardDisplay display = newCard.GetComponent<CardDisplay>();
+            if (display == null) continue;
+
+            Canvas canvas = newCard.GetComponent<Canvas>();
+            if (canvas != null)
+                canvas.overrideSorting = false;
+
+            display.LoadCard(instance);   // truyền instance để giữ level
+
+            Button btn = newCard.GetComponentInChildren<Button>();
+            if (btn != null)
+            {
+                btn.onClick.AddListener(() =>
+                {
+                    OnCard_Clicked(display); // Vẫn gọi hiển thị thông tin nếu muốn
+                    onCardClickedCallback?.Invoke(display); // Gọi logic riêng (ví dụ: chọn để xóa)
+                });
+            }
+
+            spawnedCards.Add(newCard);
+        }
+    }
+
     public void OnCard_Clicked(CardDisplay pickedCard)
     {
         UIManager.Instance.CardInfo_Help(true);
@@ -98,82 +138,6 @@ public class CardCollection_OnRun : MonoBehaviour
         foreach (var go in spawnedConditions)
             if (go != null) Destroy(go);
         spawnedConditions.Clear();
-    }
-
-    // Mở panel theo mode
-    public void Open(bool removeMode = false)
-    {
-        isRemoveMode = removeMode;
-        gameObject.SetActive(true);
-        RefreshPanel();
-    }
-
-    public void Close()
-    {
-        gameObject.SetActive(false);
-    }
-
-    // Gọi khi bấm nút Remove
-    public void OnClickRemove()
-    {
-        //if (selectedCard != null && cardHolder != null)
-        //{
-        //    ConfirmPickReward();
-        //}
-    }
-
-    private void ConfirmPickReward()
-    {
-        if (selectedCard != null)
-        {
-
-            if (RandomCardSystem.Instance != null)
-            {
-            }
-
-            RectTransform target = UIManager.Instance.deckIcon;
-
-                UIManager.Instance.AnimateCardFly(
-                    selectedCard.GetComponent<RectTransform>(),
-                    target,
-                    () => {
-                        StartCoroutine(OnCardSelected(selectedCard));
-
-                }
-            );
-            for (int i = 0; i < selectedCard.transform.childCount; i++)
-            {
-                selectedCard.transform.GetChild(i).gameObject.SetActive(false);
-            }
-
-           // selectedCard.HideDescription();
-        }
-    }
-
-    public IEnumerator OnCardSelected(CardDisplay pickedCard)
-    {
-        selectedCard.goldContainer.SetActive(false);
-        UIManager.Instance.AnimateCardFly(
-           pickedCard.GetComponent<RectTransform>(),
-           UIManager.Instance.deckIcon,
-           () =>
-           {
-               selectedCard = null;
-
-           });
-        yield return new WaitForSeconds(0.3f);
-
-        //cardHolder.RemoveCard(selectedCard.cardData);
-        deck.RemoveFromDeck(selectedCard.cardData);
-        CardDisplay di = selectedCard.GetComponent<CardDisplay>();
-        //if (di.descriptionPanel != null)
-        //{
-        //    if (di.descriptionPanel.activeSelf)
-        //    {
-        //        Destroy(di.descriptionPanel);
-        //    }
-        //}
-        RefreshPanel();
     }
 
 }

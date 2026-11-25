@@ -27,6 +27,14 @@ public class MidMatch_Manager : MonoBehaviour
         instance = this;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            EndTurn();
+        }
+    }
+
     // Button END TURN được gọi từ UI
     public void EndTurn()
     {
@@ -43,57 +51,35 @@ public class MidMatch_Manager : MonoBehaviour
     {
         GameStage.Instance.SetBusy(true);
 
-        // --- discard ---
-        List<GameObject> handObjects = new List<GameObject>(deck.GetCurrentHandObjects());
+        // 1. Chờ mọi lá đã xếp hàng chạy xong
+        yield return ActionQueue.Instance.WaitUntilIdle();
+
+        // 2. Discard tay còn lại
+        var handObjects = new List<GameObject>(deck.GetCurrentHandObjects());
+        foreach (var go in handObjects)
+        {
+            var cd = go != null ? go.GetComponent<CardDisplay>() : null;
+            if (cd != null && cd.cardInstance != null)
+                discard.AddDirect(cd.cardInstance);
+        }
         if (handObjects.Count > 0)
         {
-            foreach (GameObject cardGO in handObjects)
-            {
-                if (cardGO == null) continue;
-                CardDisplay cd = cardGO.GetComponent<CardDisplay>();
-                if (cd != null && cd.cardInstance != null)
-                    discard.AddToDiscard(cd.cardInstance);   // giữ level
-            }
-
             yield return StartCoroutine(discard.AnimateDiscardHand(handObjects));
             deck.ClearHandReferencesOnly();
         }
         yield return new WaitForSeconds(waitAfterDiscardAnimations);
 
-        // --- Enemy TURN ---
-        if (enemySystem != null)
-        {
-            // StartTurn của enemy (trigger poison/regen/v.v…)
-            foreach (var enemy in enemySystem.enemies)
-                enemy.TriggerConditionEffects();
+        // 3. Enemy turn qua queue
+        ActionQueue.Instance.Enqueue(new EnemyTurnAction());
+        yield return ActionQueue.Instance.WaitUntilIdle();
 
-            yield return StartCoroutine(enemySystem.EnemyTurn(player));
-
-            // EndTurn của enemy -> giảm condition do PLAYER cast lên enemy
-            foreach (var enemy in enemySystem.enemies)
-                enemy.DecreasePlayerConditions();
-
-            // giảm luôn condition mà Enemy tự cast lên Enemy
-            foreach (var enemy in enemySystem.enemies)
-                enemy.DecreaseEnemySelfConditions();
-
-            // giảm luôn condition mà Player tự cast lên Player
-            player.DecreasePlayerSelfConditions();
-        }
-
-        // --- Player START TURN ---
-        if (player != null)
-        {
-            player.TriggerConditionEffects();
-        }
-        Debug.Log("[MidMatch_Manager] Player turn start");
-        // --- Draw hand ---
+        // 4. Player start turn
+        if (player != null) player.TriggerConditionEffects();
         yield return new WaitForSeconds(0.5f);
         yield return StartCoroutine(TryDrawNextHand());
 
         deck.UpdateUI();
         if (discard != null) discard.UpdateDiscardCount();
-        Debug.Log("[MidMatch_Manager] Player turn ready");
         GameStage.Instance.SetBusy(false);
     }
 
@@ -139,22 +125,4 @@ public class MidMatch_Manager : MonoBehaviour
         }
     }
 
-    //public void PlayCard(CardData card, Character self, Character target, ManaSystem manaSystem, Deck deck)
-    //{
-    //    if (card == null || card.effects == null) return;
-
-    //    foreach (var wrapper in card.effects)
-    //    {
-    //        if (wrapper == null || wrapper.effect == null) continue;
-
-    //        if (wrapper.overrideValue && wrapper.effect is IOverrideValue overridable)
-    //        {
-    //            overridable.ApplyWithOverride(self, target, wrapper.valueOverride);
-    //        }
-    //        else
-    //        {
-    //            wrapper.effect.Apply(self, target, manaSystem, deck);
-    //        }
-    //    }
-    //}
 }

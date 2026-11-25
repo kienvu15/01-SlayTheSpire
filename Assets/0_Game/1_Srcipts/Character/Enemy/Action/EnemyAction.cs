@@ -116,6 +116,7 @@ public class EnemyAction : ScriptableObject
                 }
                 break;
             case Type.Attack:
+
             case Type.BadBuff:
             case Type.Charge:
                 if (target == null)
@@ -132,23 +133,27 @@ public class EnemyAction : ScriptableObject
                 break;
         }
 
+        var ctx = new EffectContext
+        {
+            self = self,
+            target = target,
+            level = 1,
+            player = BattleManager.Instance.player,
+            enemies = BattleManager.Instance.enemies,   
+            deck = Deck.instance                      
+        };
+
         for (int i = 0; i < effects.Count; i++)
         {
             var effect = effects[i];
             if (effect == null) continue;
 
-            int overrideValue = (overrideValues != null && i < overrideValues.Count)
-                ? overrideValues[i]
-                : -1;
+            int ov = (overrideValues != null && i < overrideValues.Count) ? overrideValues[i] : -1;
+            ctx.hasOverride = ov >= 0;
+            ctx.overrideValue = ov;
+            ctx.target = target; 
 
-            if (effect is IOverrideValue o && overrideValue > -1)
-            {
-                o.ApplyWithOverride(self, target, overrideValue);
-            }
-            else
-            {
-                //effect.Apply(self, target, null, null);
-            }
+            effect.Apply(ctx);
         }
 
     }
